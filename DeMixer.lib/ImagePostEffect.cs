@@ -26,7 +26,7 @@ namespace DeMixer.lib {
 		}
 		
 		/// <summary>
-		/// Вызов диалога настроек
+		/// Вызов диалога настроек эффекта
 		/// </summary>
 		public virtual void ShowDialog() {			
 		}
