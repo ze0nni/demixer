@@ -98,6 +98,8 @@ namespace DeMixer.lib {
 		}
 		
 		public abstract Image GetNextImage();
+		//todo: get next images ex. With multi threads and multi gets
+		
 		public abstract Image GetImageFromSource(string source);
 		
 		public virtual void ReadSettings(IDeMixerKernel k) {

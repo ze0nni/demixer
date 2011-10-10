@@ -1,5 +1,5 @@
 core.menu next=Дальше
-core.menu abort=Остановить
+core.menu abort=Оборвать
 core.menu start=Запустить
 core.menu stop=Остановить
 core.menu profiles=Профили
