@@ -4,6 +4,8 @@ using System.IO;
 using System.Drawing;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace DeMixer.lib {
 	
@@ -98,8 +100,6 @@ namespace DeMixer.lib {
 		}
 		
 		public abstract Image GetNextImage();
-		//todo: get next images ex. With multi threads and multi gets
-		
 		public abstract Image GetImageFromSource(string source);
 		
 		public virtual void ReadSettings(IDeMixerKernel k) {
@@ -113,6 +113,46 @@ namespace DeMixer.lib {
 			} finally {
 				fs.Close();
 			}
+		}
+		
+		public void GetNextImages(Image[] buffer, uint tryCount) {
+			ManualResetEvent endChek = new ManualResetEvent(false);
+			Exception lastExc = null;
+			List<Image> images = new List<Image>();			
+			endChek.Reset();
+			
+			for (int i=0; i<buffer.Length; i++) {
+				Thread t = new Thread((ThreadStart)delegate {
+					Image img = null;
+					Exception exc = null;
+					for (int trys=0; trys<tryCount; trys++) {					
+						try {
+							exc = null;
+							img = GetNextImage();	
+							break;
+						} catch (Exception e) {
+							exc = e;
+						}					
+					}
+					lock (endChek) {
+						if (exc==null) {
+							images.Add(img);	
+						} else {
+							lastExc = exc;
+							images.Add(null);
+						}			
+						Console.WriteLine(images.Count);
+						if (buffer.Length == images.Count) endChek.Set();
+					}
+				});				
+				t.Start();
+			}
+			
+			endChek.WaitOne();			
+			if (lastExc != null) throw lastExc;
+			for (int i=0; i<buffer.Length; i++) {
+				buffer[i] = images[i];
+			}			
 		}
 		
 		public virtual void WriteSettings(IDeMixerKernel k) {

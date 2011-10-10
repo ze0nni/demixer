@@ -6,7 +6,9 @@ namespace DeMixer.lib.std {
 	public class CompositionAutoSize : ImagesComposition {		
 		
 		public override Image GetCompostion(int width, int height) {
-			Image img = Source.GetNextImage();
+			Image[] imgs = new Image[1];
+			Source.GetNextImages(imgs, 3);
+			Image img = imgs[0];
 			float sx = (float)width / img.Width;
 			float sy = (float)height / img.Height;
 			float sn = Math.Max(sx, sy);
