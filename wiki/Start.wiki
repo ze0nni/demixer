@@ -1,6 +1,16 @@
-#summary One-sentence summary of this page.
+#Работа с DeMixer
 
 = Инструкции =
 
 
-= Details =
+= Особенности =
+
+== Windows ==
+Работа тестировалась для Windows XP и Windows 7.
+%AppData%\ZeDevel\DeMixer\
+
+== Linux ==
+Тестировалось на OpenSuse 11.2 и 11.4 под Gnome
+Домашняя папка программы ~/.config/ZeDevel/DeMixer/
+Для автозагрузки необходимо вручную добавить программу а втозагрузку.
+Ни каких специальных средств для смены обоев не используется, необходимо вручную указать в качестве фона рабочего стола ~/.config/ZeDevel/DeMixer/courient.bmp Gnome будет самостоятельно следить за изменениями этого файла.
