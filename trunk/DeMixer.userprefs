@@ -3,18 +3,19 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib/IDeMixerKernel.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib/ImagePostEffect.cs" ctype="Workbench">
     <Files>
       <File FileName="DeMixer/DeMixerMainClass.cs" Line="522" Column="15" />
       <File FileName="DeMixer/ConfigDialog.cs" Line="208" Column="7" />
       <File FileName="DeMixer.lib/ImagesSource.cs" Line="88" Column="27" />
-      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="132" Column="48" />
+      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="131" Column="17" />
+      <File FileName="DeMixer.lib/ImagePostEffect.cs" Line="29" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="DeMixer.lib" expanded="True">
-            <Node name="IDeMixerKernel.cs" selected="True" />
+            <Node name="ImagePostEffect.cs" selected="True" />
           </Node>
         </State>
       </Pad>
