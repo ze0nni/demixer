@@ -50,7 +50,7 @@ namespace DeMixer.lib.std {
 		
 		public override Image GetCompostion (int width, int height) {
 			Image[] imgs = new Image[imagesCount];
-			Source.GetNextImages(imgs, 3);
+			Source.GetNextImages(imgs, 5);
 			
 			Image des = new Bitmap(width, height);
 			Graphics g = Graphics.FromImage(des);

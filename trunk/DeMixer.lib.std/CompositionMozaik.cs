@@ -25,8 +25,7 @@ namespace DeMixer.lib.std {
 		Random rnd = new Random();
 		public override Image GetCompostion(int width, int height) {			
 			Image[] imgs = new Image[ImagesCount];
-			for (int i=0; i<imgs.Length; i++)
-				imgs[i] = Source.GetNextImage();
+			Source.GetNextImages(imgs, 5);
 			
 			for (int i=0; i<imgs.Length; i++) {
 				Image img = imgs[i];
