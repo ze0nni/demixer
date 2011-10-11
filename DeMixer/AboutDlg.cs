@@ -87,7 +87,7 @@ namespace DeMixer {
 		void initText() {
 			List<string> l = new List<string>();
 			
-			l.Add("DeMixer v1.0");
+			l.Add(String.Format("DeMixer {0}", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version));			
 			
 			l.Add("");
 			l.Add("Лицензия:");
