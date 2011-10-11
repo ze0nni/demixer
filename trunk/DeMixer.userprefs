@@ -3,12 +3,17 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/AboutDlg.cs" ctype="Workbench">
     <Files>
       <File FileName="DeMixer/DeMixerMainClass.cs" Line="467" Column="8" />
       <File FileName="DeMixer/ConfigDialog.cs" Line="208" Column="7" />
-      <File FileName="DeMixer.lib/ImagesSource.cs" Line="88" Column="27" />
+      <File FileName="DeMixer.lib/ImagesSource.cs" Line="143" Column="11" />
       <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="83" Column="1" />
+      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="1" Column="1" />
+      <File FileName="DeMixer.lib.std/CompositionMozaik.cs" Line="28" Column="4" />
+      <File FileName="DeMixer.lib.std/CompositionSeasons.cs" Line="53" Column="32" />
+      <File FileName="DeMixer.lib.std/CompositionAutoSize.cs" Line="12" Column="35" />
+      <File FileName="DeMixer/AboutDlg.cs" Line="17" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
