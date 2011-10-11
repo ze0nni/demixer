@@ -5,18 +5,14 @@
   </MonoDevelop.Ide.DebuggingService>
   <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="484" Column="17" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="467" Column="8" />
       <File FileName="DeMixer/ConfigDialog.cs" Line="208" Column="7" />
       <File FileName="DeMixer.lib/ImagesSource.cs" Line="88" Column="27" />
       <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="83" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="DeMixer" expanded="True">
-            <Node name="DeMixerMainClass.cs" selected="True" />
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True">

@@ -7,7 +7,7 @@ namespace DeMixer.lib.std {
 		
 		public override Image GetCompostion(int width, int height) {
 			Image[] imgs = new Image[1];
-			Source.GetNextImages(imgs, 3);
+			Source.GetNextImages(imgs, 5);
 			Image img = imgs[0];
 			float sx = (float)width / img.Width;
 			float sy = (float)height / img.Height;
