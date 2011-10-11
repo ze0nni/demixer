@@ -141,7 +141,6 @@ namespace DeMixer.lib {
 							lastExc = exc;
 							images.Add(null);
 						}			
-						Console.WriteLine(images.Count);
 						if (buffer.Length == images.Count) endChek.Set();
 					}
 				});				
