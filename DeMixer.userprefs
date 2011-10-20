@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/CompositionMozaik.cs" ctype="Workbench">
     <Files>
       <File FileName="DeMixer/DeMixerMainClass.cs" Line="422" Column="23" />
       <File FileName="DeMixer/ConfigDialog.cs" Line="208" Column="7" />
@@ -13,7 +13,9 @@
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True" selected="True">
+          <Node name="DeMixer.lib.std" expanded="True" />
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True">
