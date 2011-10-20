@@ -145,10 +145,7 @@ namespace DeMixer {
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
 				TrayIcon.BalloonTipIcon = ToolTipIcon.Info;
 				
-				NextMenuItem.Text = Translate("core.menu next");
-				//TrayIcon.BalloonTipTitle = "Прервано";
-				//TrayIcon.BalloonTipText = "Создание изображения было прервано, до следующей попытки 5 минут.";
-				//TrayIcon.ShowBalloonTip(15*1000);
+				NextMenuItem.Text = Translate("core.menu next");				
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
 			}
 		}
@@ -236,19 +233,19 @@ namespace DeMixer {
 					NextMenuItem.Text = Translate("core.menu next");
 				}
 			} catch(Exception exc) {
-					TrayIcon.BalloonTipIcon = ToolTipIcon.Error;
-					TrayIcon.BalloonTipTitle = Translate("core.error get_image");
-					TrayIcon.BalloonTipText = Translate("core.error get_image from {0} error {1} repeat {2}",
-					                                        ActiveSource.PluginTitle,
-					                                        exc.Message,
-					                                        5);
-					TrayIcon.ShowBalloonTip(15*1000);
+					WriteLog(exc);
+					ShowNotify(
+				           Translate("core.error get_image"),
+							Translate("core.error get_image from {0} error {1} repeat {2}",
+                                    ActiveSource.PluginTitle,
+                                    exc.Message,
+                                    5),
+				           true);					
 					IsGenerateNewPhoto = false;
 					NextMenuItem.Text = Translate("core.menu next");
 					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);
 					TrayIcon.ContextMenu = GetMenu();
 					AbortThread();
-					WriteLog(exc);				
 			}
 			finally {
 				RefreshMemory();
@@ -298,8 +295,9 @@ namespace DeMixer {
 				try {
 					BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
 					//SIGN
+
 					bw.Write(System.Text.Encoding.ASCII.GetBytes("dmcf"));
-					//VERSION 
+					//VERSION 					
 					byte[] ver = {1, 0};
 					bw.Write(ver);
 					//ActiveSource
@@ -307,11 +305,14 @@ namespace DeMixer {
 					//Active composition
 					bw.Write(ActiveComposition.GetType().FullName);				
 					//Interval
-					bw.Write((Int32)UpdateInterval);					
+					bw.Write((Int32)UpdateInterval);										
 					bw.Write((Int32)UpdateIntervalMode);
 					//history
+					
 					bw.Write(SaveHistory);
+					
 					bw.Write((Int32)SaveHistorySize);
+					
 					bw.Write(SaveHistoryPath);
 				} catch(Exception exc) {
 					WriteLog(exc);
@@ -373,58 +374,66 @@ namespace DeMixer {
 				#endregion
 
 				#region config
-				string fileName = GetUserFileName("config");
-				FileStream fs = new FileStream(fileName, FileMode.Open);
 				try {
-					BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-					String sign = System.Text.Encoding.ASCII.GetString(br.ReadBytes(4));
-					//SIGN
-					if (sign != "dmcf") throw new Exception();
-					//VER
-					byte[] ver = br.ReadBytes(2);
-					//ActiveSource
-					string activeSourceName = br.ReadString();
-					int sIndex = GetSourceIndex(activeSourceName);
-					//ActiveIndex
-					string activeCompositionName = br.ReadString();
-					int cIndex = GetCompositionIndex(activeCompositionName);										
-					
-					//Interval
-					UpdateInterval = br.ReadInt32();
-					UpdateIntervalMode = br.ReadInt32();
-					
-					ActiveSourceIndex = sIndex == -1 ? 0 : sIndex;
-					ActiveCompositionIndex = cIndex == -1 ? 0 :  cIndex;					
-					//History
-					if (br.BaseStream.CanRead) SaveHistory = br.ReadBoolean();
-					if (br.BaseStream.CanRead)SaveHistorySize = br.ReadInt32();
-					if (br.BaseStream.CanRead)SaveHistoryPath = br.ReadString();
-				} finally {
-					fs.Close();	
+					string fileName = GetUserFileName("config");
+					FileStream fs = new FileStream(fileName, FileMode.Open);
+					try {
+						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
+						String sign = System.Text.Encoding.ASCII.GetString(br.ReadBytes(4));
+						//SIGN
+						if (sign != "dmcf") throw new Exception("bad config file");
+						//VER
+						byte[] ver = br.ReadBytes(2);
+						//ActiveSource
+						string activeSourceName = br.ReadString();
+						int sIndex = GetSourceIndex(activeSourceName);
+						//ActiveIndex
+						string activeCompositionName = br.ReadString();
+						int cIndex = GetCompositionIndex(activeCompositionName);										
+						
+						//Interval
+						UpdateInterval = br.ReadInt32();
+						UpdateIntervalMode = br.ReadInt32();
+						
+						ActiveSourceIndex = sIndex == -1 ? 0 : sIndex;
+						ActiveCompositionIndex = cIndex == -1 ? 0 :  cIndex;					
+						//History
+						if (br.BaseStream.CanRead) SaveHistory = br.ReadBoolean();
+						if (br.BaseStream.CanRead)SaveHistorySize = br.ReadInt32();
+						if (br.BaseStream.CanRead)SaveHistoryPath = br.ReadString();
+					} finally {
+						fs.Close();	
+					}
+				} catch (Exception exc) {
+					WriteLog(exc);	
 				}
-				#endregion
+				#endregion				
 				#region effects
 				//Effects
-				fileName = GetUserFileName("effects");
-				fs = new FileStream(fileName, FileMode.Open);
 				try {
-					BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-					int effCount = br.ReadInt32();
-					List<ImagePostEffect> effList = new List<ImagePostEffect>();
-					for (int i=0; i<effCount; i++) {
-						string peName = br.ReadString();
-						ImagePostEffect pe = PostEffectByName(peName);
-						if (pe == null) {
-							MessageBox.Show(Translate("core.error effect not found {0}", peName));
-							throw new Exception();
-						}						
-						pe.Load(br);
-						effList.Add(pe);
-					}
-					ActiveEffects = effList.ToArray();
-				}finally {
-					fs.Close();
-				} 				
+					string fileName = GetUserFileName("effects");
+					FileStream fs = new FileStream(fileName, FileMode.Open);
+					try {
+						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
+						int effCount = br.ReadInt32();
+						List<ImagePostEffect> effList = new List<ImagePostEffect>();
+						for (int i=0; i<effCount; i++) {
+							string peName = br.ReadString();
+							ImagePostEffect pe = PostEffectByName(peName);
+							if (pe == null) {
+								MessageBox.Show(Translate("core.error effect not found {0}", peName));
+								throw new Exception();
+							}						
+							pe.Load(br);
+							effList.Add(pe);
+						}
+						ActiveEffects = effList.ToArray();
+					}finally {
+						fs.Close();
+					} 				
+				} catch (Exception exc) {
+					WriteLog(exc);	
+				}
 				#endregion
 			} catch(Exception exc) {WriteLog(exc);}
 		}
@@ -855,7 +864,7 @@ namespace DeMixer {
 				}
 				FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
 				try {
-					try {
+					try {						
 						BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
 						//SIGN
 						bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
@@ -908,7 +917,7 @@ namespace DeMixer {
 			set { saveHistory = value; }
 		}
 		
-		string saveHistoryPath;
+		string saveHistoryPath = "";
 		public string SaveHistoryPath {
 			get { return saveHistoryPath; }
 			set { saveHistoryPath = value; }
@@ -1021,6 +1030,26 @@ namespace DeMixer {
 			if (translateDict.TryGetValue(format, out formato))
 				format = formato;
 			return String.Format(format, args);
+		}
+		
+		public void ShowNotify(string title, string message, bool errorIcon) {
+			switch (Environment.OSVersion.Platform) {				
+				case PlatformID.Unix:					
+					MessageBox.Show(
+				                message,
+				                String.Format("{0} - DeMixer", title),
+				                MessageBoxButtons.OK,
+				                errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
+					break;
+				case PlatformID.Win32Windows:
+				case PlatformID.Win32NT:
+				default:
+					TrayIcon.BalloonTipTitle = title;
+					TrayIcon.BalloonTipText = message;
+					TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
+					TrayIcon.ShowBalloonTip(1000*15);
+					break;
+			}	
 		}
 	#endregion
 	}

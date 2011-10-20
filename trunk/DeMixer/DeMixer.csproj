@@ -39,11 +39,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\RowDialog\bin\Release\RowDialog.dll</HintPath>
     </Reference>
-    <Reference Include="DeMixer.lib, Version=1.0.4301.17012, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="DeMixer.lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DeMixer.lib\bin\Release\DeMixer.lib.dll</HintPath>
     </Reference>
-    <Reference Include="DeMixer.lib.std, Version=1.0.4301.17013, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="DeMixer.lib.std, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DeMixer.lib.std\bin\Release\DeMixer.lib.std.dll</HintPath>
     </Reference>
