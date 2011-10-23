@@ -70,8 +70,5 @@ namespace DeMixer.lib.std {
 			g = (byte)(255*G);
 			b = (byte)(255*B);
 		}
-		
-		private void init() {
-		}
 	}
 }
