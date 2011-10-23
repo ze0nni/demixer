@@ -1033,21 +1033,23 @@ namespace DeMixer {
 		}
 		
 		public void ShowNotify(string title, string message, bool errorIcon) {
-			switch (Environment.OSVersion.Platform) {				
-				case PlatformID.Unix:					
-					MessageBox.Show(
-				                message,
-				                String.Format("{0} - DeMixer", title),
-				                MessageBoxButtons.OK,
-				                errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
-					break;
+			switch (Environment.OSVersion.Platform) {								
 				case PlatformID.Win32Windows:
-				case PlatformID.Win32NT:
-				default:
+				case PlatformID.Win32NT:				
 					TrayIcon.BalloonTipTitle = title;
 					TrayIcon.BalloonTipText = message;
 					TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
 					TrayIcon.ShowBalloonTip(1000*15);
+					break;
+				case PlatformID.Unix:	
+				default:
+					(new System.Threading.Thread((System.Threading.ThreadStart)delegate {
+						MessageBox.Show(
+				                message,
+				                String.Format("{0} - DeMixer", title),
+				                MessageBoxButtons.OK,
+				                errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
+					})).Start();					
 					break;
 			}	
 		}
