@@ -153,7 +153,7 @@ namespace DeMixer {
             this.notebook1 = new Gtk.Notebook();
             this.notebook1.CanFocus = true;
             this.notebook1.Name = "notebook1";
-            this.notebook1.CurrentPage = 3;
+            this.notebook1.CurrentPage = 0;
             // Container child notebook1.Gtk.Notebook+NotebookChild
             this.SourceVBox = new Gtk.VBox();
             this.SourceVBox.Name = "SourceVBox";
