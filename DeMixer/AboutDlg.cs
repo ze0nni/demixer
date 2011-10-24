@@ -1,10 +1,8 @@
 
 using System;
-using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using RowDialog;
 using DeMixer.lib;
 using System.IO;
 using System.Collections.Generic;
@@ -12,7 +10,7 @@ using System.Collections.Generic;
 namespace DeMixer {
 	
 	
-	public class AboutDlg : RowDialogClass {
+	public class AboutDlg : Form {
 		
 		private IDeMixerKernel Kernel;
 		public AboutDlg(IDeMixerKernel k) {

@@ -5,6 +5,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Gdk;
 
 namespace DeMixer.lib.std {
 	public class DirectorySource : ImagesSource {
@@ -36,9 +37,9 @@ namespace DeMixer.lib.std {
 				get { return false; }
 		}
 		
-		public override Control ExpandTagsControl {
+		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return new DirectorySourceExpandTagsControl(this);
+				return new Gtk.Button();
 			}
 		}
 
@@ -66,12 +67,8 @@ namespace DeMixer.lib.std {
 			return true;
 		}		
 		
-		public override void ShowDialog(System.Windows.Forms.Form parent) {
-			
-		}
-		
 		private Random rnd = new Random();
-		public override Image GetNextImage() {
+		public override System.Drawing.Image GetNextImage() {
 			try {
 				List<string> files = new List<string>();
 				foreach (string d in FSeekPath) {
@@ -80,20 +77,20 @@ namespace DeMixer.lib.std {
 					 	files.Add(f.FullName);	
 					}
 				}					
-				return Image.FromFile(files[rnd.Next(0, files.Count)]);
+				return System.Drawing.Image.FromFile(files[rnd.Next(0, files.Count)]);
 			} catch(Exception exc) {
 				Console.WriteLine(exc);
 				Bitmap bmp = new Bitmap(320, 200);
 				Graphics g = Graphics.FromImage(bmp);
-				g.Clear(Color.Black);
+				g.Clear(System.Drawing.Color.Black);
 				g.DrawString("NO FILES",
-				             new Font(FontFamily.GenericSerif, 25, GraphicsUnit.Pixel),
+				             new System.Drawing.Font(FontFamily.GenericSerif, 25, GraphicsUnit.Pixel),
 				             Brushes.Red, 5, 5);
 				return bmp;	
 			}
 		}
 		
-		public override Image GetImageFromSource(string source) {
+		public override System.Drawing.Image GetImageFromSource(string source) {
 			return null;
 		}
 	}	

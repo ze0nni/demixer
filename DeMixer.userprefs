@@ -3,19 +3,19 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/CompositionMozaik.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="422" Column="23" />
-      <File FileName="DeMixer/ConfigDialog.cs" Line="208" Column="7" />
-      <File FileName="DeMixer.lib/ImagesSource.cs" Line="144" Column="56" />
-      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="83" Column="1" />
-      <File FileName="DeMixer.lib.std/CompositionMozaik.cs" Line="28" Column="4" />
+      <File FileName="DeMixer/ConfigurationDialog.cs" Line="17" Column="1" />
+      <File FileName="DeMixer.lib/ImagesSource.cs" Line="74" Column="1" />
+      <File FileName="DeMixer.lib.std/DirectorySource.cs" Line="87" Column="37" />
+      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="86" Column="19" />
+      <File FileName="DeMixer.lib.std/konachancomSource.cs" Line="90" Column="32" />
+      <File FileName="DeMixer/AboutDlg.cs" Line="13" Column="27" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="32" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="DeMixer.lib.std" expanded="True" />
-        </State>
+        <State expanded="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True">

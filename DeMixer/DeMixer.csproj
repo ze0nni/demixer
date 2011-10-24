@@ -32,28 +32,29 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="RowDialog, Version=1.0.4300.21561, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RowDialog\bin\Release\RowDialog.dll</HintPath>
-    </Reference>
-    <Reference Include="DeMixer.lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="DeMixer.lib, Version=1.0.4314.16565, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DeMixer.lib\bin\Release\DeMixer.lib.dll</HintPath>
     </Reference>
-    <Reference Include="DeMixer.lib.std, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DeMixer.lib.std\bin\Release\DeMixer.lib.std.dll</HintPath>
-    </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeMixerMainClass.cs" />
-    <Compile Include="ConfigDialog.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="ConfigMasterDlg.cs" />
-    <Compile Include="AboutDlg.cs" />
-    <Compile Include="UpdateDialog.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="AboutDialog.cs" />
+    <Compile Include="gtk-gui\DeMixer.AboutDialog.cs" />
+    <Compile Include="gtk-gui\DeMixer.ConfigurationDialog.cs" />
+    <Compile Include="ConfigurationDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\src\logo.png" />
   </ItemGroup>
 </Project>
