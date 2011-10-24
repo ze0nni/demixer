@@ -24,18 +24,35 @@ namespace DeMixer
 		
 		void init() {
 			foreach (ImagesSource s in Kernel.SourceList) {
-				SourceComboBox.AppendText(s.ToString());
+				SourceComboBox.AppendText(s.PluginTitle);
 			}			
+			SourceComboBox.Active = Kernel.ActiveSourceIndex;
 			SourceComboBox.ShowAll();
 			
 			foreach (ImagesComposition c in Kernel.CompositionList) {
-				CompositionComboBox.AppendText(c.ToString());	
+				CompositionComboBox.AppendText(c.PluginTitle);	
 			}
+			CompositionComboBox.Active = Kernel.ActiveCompositionIndex;
 			CompositionComboBox.ShowAll();
 			foreach (ImagePostEffect e in Kernel.PostEffectsList) {
-				EffectsComboBox.AppendText(e.ToString());	
+				EffectsComboBox.AppendText(e.PluginTitle);	
 			}
 			EffectsComboBox.ShowAll();
+		}
+
+		protected virtual void OnSourceComboBoxChanged (object sender, System.EventArgs e) {
+			Kernel.ActiveSourceIndex = SourceComboBox.Active;
+			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
+		}
+
+		protected virtual void OnCompositionComboBoxChanged (object sender, System.EventArgs e) {
+			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
+			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
+		}
+
+		protected virtual void OnEffectsComboBoxChanged (object sender, System.EventArgs e) {
+			EffectInformationLabel.Markup = 
+				Kernel.PostEffectsList[EffectsComboBox.Active].PluginDescription;
 		}
 	}
 }

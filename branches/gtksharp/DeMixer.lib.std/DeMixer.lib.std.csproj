@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="GoogleSearchAPI.Net20, Version=0.4.0.133, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\bin\DotNet20\GoogleSearchAPI.Net20.dll</HintPath>
@@ -41,7 +42,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\bin\DotNet20\Newtonsoft.Json.Net20.dll</HintPath>
     </Reference>
-    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -57,14 +57,14 @@
     <Compile Include="parser\Json2Xml.cs" />
     <Compile Include="EffectCurves.cs" />
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="parser\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeMixer.lib\DeMixer.lib.csproj">
       <Project>{72F931A6-F049-4379-94E5-FAB51993EAB4}</Project>
       <Name>DeMixer.lib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="parser\" />
   </ItemGroup>
 </Project>

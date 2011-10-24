@@ -5,15 +5,28 @@
   </MonoDevelop.Ide.DebuggingService>
   <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/ConfigDlg.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="37" Column="39" />
-      <File FileName="DeMixer/ConfigDlg.cs" Line="26" Column="44" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="5" Column="19" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="27" Column="32" />
+      <File FileName="DeMixer.lib.std/CompositionMozaik.cs" Line="5" Column="14" />
+      <File FileName="DeMixer.lib.std/CompositionSeasons.cs" Line="8" Column="1" />
+      <File FileName="DeMixer.lib.std/EffectShadow.cs" Line="5" Column="1" />
+      <File FileName="DeMixer.lib.std/EffectText.cs" Line="78" Column="6" />
+      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="7" Column="7" />
+      <File FileName="DeMixer.lib.std/CompositionAutoSize.cs" Line="6" Column="44" />
+      <File FileName="Assembly Browser" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="DeMixer" expanded="True">
+            <Node name="References">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="UserInterface" expanded="True" />
             <Node name="ConfigDlg.cs" selected="True" />
           </Node>
+          <Node name="DeMixer.lib.std" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

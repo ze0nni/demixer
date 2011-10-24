@@ -3,7 +3,6 @@ using System;
 using DeMixer.lib;
 using System.IO;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using Gdk;
 
@@ -95,7 +94,8 @@ namespace DeMixer.lib.std {
 		}
 	}	
 	
-	public class DirectorySourceExpandTagsControl : UserControl {
+	/*
+	public class DirectorySourceExpandTagsControl : Gtk.Widget {
 		private DirectorySource Source;
 		public DirectorySourceExpandTagsControl(DirectorySource source) {
 			Source = source;
@@ -179,4 +179,5 @@ namespace DeMixer.lib.std {
 			}
 		}
 	}
+	*/
 }
