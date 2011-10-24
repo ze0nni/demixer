@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using RowDialog;
 using System.Windows.Forms;
 
 namespace DeMixer.lib.std {	
@@ -41,8 +40,8 @@ namespace DeMixer.lib.std {
 		}
 
 		public override void ShowDialog () {			
-			EffectShadowDlg dlg = new EffectShadowDlg(this);
-			dlg.ShowDialog();			
+			//EffectShadowDlg dlg = new EffectShadowDlg(this);
+			//dlg.ShowDialog();			
 		}
 
 		
@@ -115,6 +114,7 @@ namespace DeMixer.lib.std {
  
 	}
 	
+	/*
 	class EffectShadowDlg : RowDialogClass {
 		
 		private EffectShadow Effect;
@@ -215,4 +215,5 @@ namespace DeMixer.lib.std {
 			this.LockDialogHeight();
 		}
 	}
+	*/
 }

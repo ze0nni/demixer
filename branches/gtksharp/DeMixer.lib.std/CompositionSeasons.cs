@@ -1,7 +1,6 @@
 
 using System;
 using System.Drawing;
-using RowDialog;
 using System.Windows.Forms;
 using System.IO;
 
@@ -116,11 +115,12 @@ namespace DeMixer.lib.std {
 		}
 		
 		public override void ShowDialog () {
-			CompositionSeasonsDlg dlg = new CompositionSeasonsDlg(this);
-			dlg.ShowDialog();
+			//CompositionSeasonsDlg dlg = new CompositionSeasonsDlg(this);
+			//dlg.ShowDialog();
 		}
 	}
 	
+	/*
 	internal class CompositionSeasonsDlg : RowDialogClass {
 		
 		public CompositionSeasonsDlg(CompositionSeasons eff) : base() {	
@@ -203,4 +203,5 @@ namespace DeMixer.lib.std {
 		}
 				
 	}
+	*/
 }

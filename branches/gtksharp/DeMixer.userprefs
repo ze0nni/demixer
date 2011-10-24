@@ -1,21 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" ctype="Workspace" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/ConfigDlg.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer/ConfigurationDialog.cs" Line="17" Column="1" />
-      <File FileName="DeMixer.lib/ImagesSource.cs" Line="74" Column="1" />
-      <File FileName="DeMixer.lib.std/DirectorySource.cs" Line="87" Column="37" />
-      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="86" Column="19" />
-      <File FileName="DeMixer.lib.std/konachancomSource.cs" Line="90" Column="32" />
-      <File FileName="DeMixer/AboutDlg.cs" Line="13" Column="27" />
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="32" Column="31" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="37" Column="39" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="26" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="DeMixer" expanded="True">
+            <Node name="ConfigDlg.cs" selected="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True">
