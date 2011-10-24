@@ -3,31 +3,12 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.Threading;
 using System.Collections.Generic;
+using Gtk;
 
 namespace DeMixer.lib {
-	
-	public class GetImageEventArgs : EventArgs {
-		public GetImageEventArgs(		                         
-		                         Image img,
-		                         string source) : base() {
-			FNextImage = img;
-			FImageSource = source;
-		}
 		
-		private Image FNextImage;
-		public Image NextImage {
-			get { return FNextImage; }
-		}
-		
-		private string FImageSource;
-		public string ImageSource {
-			get { return FImageSource; }
-		}
-	}
-	
 	public abstract class ImagesSource {
 		
 		public ImagesSource() {
@@ -71,7 +52,7 @@ namespace DeMixer.lib {
 			set { FTags = value; }
 		}
 		
-		public virtual Control ExpandTagsControl {
+		public virtual Gtk.Widget ExpandTagsControl {
 			get { return null; }		
 		}
 		
@@ -90,17 +71,9 @@ namespace DeMixer.lib {
 			Tags = br.ReadString();
 			return true;
 		}
-		
-		public virtual bool AcceptDialog {
-			get { return false; }
-		}
-		
-		public virtual void ShowDialog(System.Windows.Forms.Form parent) {
-				
-		}
-		
-		public abstract Image GetNextImage();
-		public abstract Image GetImageFromSource(string source);
+
+		public abstract System.Drawing.Image GetNextImage();
+		public abstract System.Drawing.Image GetImageFromSource(string source);
 		
 		public virtual void ReadSettings(IDeMixerKernel k) {
 			string fileName = k.GetUserFileName("plugins",
@@ -115,15 +88,15 @@ namespace DeMixer.lib {
 			}
 		}
 		
-		public void GetNextImages(Image[] buffer, uint tryCount) {
+		public void GetNextImages(System.Drawing.Image[] buffer, uint tryCount) {
 			ManualResetEvent endChek = new ManualResetEvent(false);
 			Exception lastExc = null;
-			List<Image> images = new List<Image>();			
+			List<System.Drawing.Image> images = new List<System.Drawing.Image>();			
 			endChek.Reset();
 			
 			for (int i=0; i<buffer.Length; i++) {
 				Thread t = new Thread((ThreadStart)delegate {
-					Image img = null;
+					System.Drawing.Image img = null;
 					Exception exc = null;
 					for (int trys=0; trys<tryCount; trys++) {					
 						try {

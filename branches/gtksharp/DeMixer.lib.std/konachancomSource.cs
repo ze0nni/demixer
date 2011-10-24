@@ -3,9 +3,9 @@ using System;
 using DeMixer.lib;
 using System.IO;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Net;
 using System.Xml;
+using Gtk;
 
 namespace DeMixer.lib.std {
 	
@@ -41,9 +41,9 @@ namespace DeMixer.lib.std {
 				get { return true; }
 		}
 		
-		public override Control ExpandTagsControl {
+		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return base.ExpandTagsControl;
+				return new Button();
 			}
 		}
 		
@@ -55,16 +55,8 @@ namespace DeMixer.lib.std {
 			return base.LoadConfig(stream);
 		}
 		
-		public override bool AcceptDialog {
-			get { return false; }
-		}
-		
-		public override void ShowDialog(System.Windows.Forms.Form parent) {
-				
-		}
-		
 		private Random rnd = new Random();
-		public override Image GetNextImage() {			
+		public override System.Drawing.Image GetNextImage() {			
 			WebClient wc = new WebClient();
 			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
 			XmlDocument doc = new XmlDocument();
@@ -90,15 +82,15 @@ namespace DeMixer.lib.std {
 			return int.Parse(req.Attributes["count"].Value);
 		}
 		
-		private Image GetImage(XmlDocument doc) {
+		private System.Drawing.Image GetImage(XmlDocument doc) {
 			XmlNode req = doc.SelectSingleNode("posts").SelectSingleNode("post");
 			string imgPath = req.Attributes["sample_url"].Value;
 			WebClient wc = new WebClient();
 			byte[] d = wc.DownloadData(new Uri(imgPath));
-			return Image.FromStream(new MemoryStream(d));
+			return System.Drawing.Image.FromStream(new MemoryStream(d));
 		}
 		
-		public override Image GetImageFromSource(string source) {
+		public override System.Drawing.Image GetImageFromSource(string source) {
 			return null;
 		}
 	}

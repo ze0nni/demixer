@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Net;
 using Google.API.Search;
 using System.Collections.Generic;
+using Gdk;
 
 namespace DeMixer.lib.std
 {
@@ -66,16 +67,8 @@ namespace DeMixer.lib.std
 			return true;
 		}
 		
-		public override bool AcceptDialog {
-			get { return false; }
-		}
-		
-		public override void ShowDialog(System.Windows.Forms.Form parent) {
-				
-		}
-		
 		Random rnd = new Random();
-		public override Image GetNextImage() {
+		public override System.Drawing.Image GetNextImage() {
 			GimageSearchClient gs = new GimageSearchClient(Guid.NewGuid().ToString());
 			IList<IImageResult> res =  gs.Search(
 				Tags,
@@ -90,7 +83,7 @@ namespace DeMixer.lib.std
 			
 			WebClient wc = new WebClient();
 			byte[] imgData = wc.DownloadData(res[rnd.Next(res.Count)].Url);			
-			Image bmp = Image.FromStream(new MemoryStream(imgData));
+			System.Drawing.Image bmp = System.Drawing.Image.FromStream(new MemoryStream(imgData));
 			
 			try {
 				if (saveToHistory && Kernel.SaveHistory) {
@@ -110,12 +103,14 @@ namespace DeMixer.lib.std
 			return bmp;
 		}
 		
-		public override Image GetImageFromSource(string source) {
+		public override System.Drawing.Image GetImageFromSource(string source) {
 			return null;
 		}
 		
-		public override Control ExpandTagsControl {
+		public override Gtk.Widget ExpandTagsControl {
 			get {
+				return new Gtk.Button();
+				/*
 				Panel p = new Panel();
 				
 				TextBox searchTb = new TextBox();
@@ -190,6 +185,7 @@ namespace DeMixer.lib.std
 								
 				
 				return p;
+				*/
 			}
 		}
 	}

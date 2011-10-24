@@ -1,7 +1,6 @@
 
 using System;
 using System.Reflection;
-using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using DeMixer.lib;
@@ -12,9 +11,10 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Resources;
 using System.Diagnostics;
+using Gdk;
 
 namespace DeMixer {
-	public class DeMixerMainClass : ApplicationContext, IDeMixerKernel {
+	public class DeMixerMainClass : IDeMixerKernel {
 		[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
             public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
 		
@@ -24,17 +24,26 @@ namespace DeMixer {
 		
 		[STAThread]
 		private static void Main(string[] args) {
-			Application.Run(new DeMixerMainClass());	
+			Gtk.Application.Init("demixer", ref args);
+			DeMixerMainClass mainClass = new DeMixerMainClass();
+			Gtk.Application.Run();
 		}
 		
-		private NotifyIcon TrayIcon = new NotifyIcon();		
-		private Timer UpdateTimer = new Timer();
-		public DeMixerMainClass() {									
-						
-			Application.ThreadException += delegate(object sender, System.Threading.ThreadExceptionEventArgs e) {
-				AbortThread();
-				WriteLog(e.Exception);			
+		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
+		//private Timer UpdateTimer = new Timer();
+		public DeMixerMainClass() {
+
+			
+			TrayIcon.Activate += delegate {
+				Gtk.Application.Quit();	
 			};
+			
+			/*
+			Application.ThreadException += delegate(object sender, System.Threading.ThreadExceptionEventArgs e) {
+				//AbortThread();
+				//WriteLog(e.Exception);			
+			};
+			*/			
 			UpdatePlugins();			
 			ReadSettings();
 			LoadDictionary("ru");
@@ -45,7 +54,8 @@ namespace DeMixer {
 			udlg.ShowDialog();
 			Application.Exit();
 			return;
-			*/
+			
+			/*
 			
 			if (UserRegistry.GetValue("firt", "true").ToString() == "true") {
 				ConfigMasterDlg dlg = new ConfigMasterDlg(this);				
@@ -54,6 +64,7 @@ namespace DeMixer {
 				UserRegistry.SetValue("firt", "false");
 				RefreshMemory();
 			}
+			*/
 			
 			
 			switch (UpdateIntervalMode) {
@@ -67,28 +78,19 @@ namespace DeMixer {
 				break;
 			}
 			
-			Application.ApplicationExit += HandleApplicationExit;
+			//Application.ApplicationExit += HandleApplicationExit;
 			
-			TrayIcon.Icon = GetrayIcon("icon.ico");
-			TrayIcon.Text = "DeMixer";
-			TrayIcon.DoubleClick += HandleDoubleClick;
-			TrayIcon.ContextMenu = GetMenu();
+			TrayIcon.File = @"./icon.png";
+			//todo: TrayIcon.Text = "DeMixer";
+			//todo: TrayIcon.DoubleClick += HandleDoubleClick;
+			//todo: TrayIcon.ContextMenu = GetMenu();
 			TrayIcon.Visible = true;	
 			
-			UpdateTimer.Interval = 1000;
-			UpdateTimer.Tick += HandleTick;
-			UpdateTimer.Start();
+			//todo: UpdateTimer.Interval = 1000;
+			//todo: UpdateTimer.Tick += HandleTick;
+			//todo: UpdateTimer.Start();
 			
 			RefreshMemory();
-		}
-		
-		private Icon GetrayIcon(string filename) {
-			FileInfo fi = new FileInfo(Application.ExecutablePath);
-			string fname = String.Format("{1}{0}{2}",
-			                             Path.DirectorySeparatorChar,
-			                             fi.Directory.FullName,
-			                             filename);
-			return new Icon(fname);
 		}
 		
 		void HandleDoubleClick(object sender, EventArgs e) {
@@ -101,14 +103,14 @@ namespace DeMixer {
 			set { 				
 				FIsGenerateNewPhoto = value;
 				if (value) 
-					TrayIcon.Icon = GetrayIcon("iconu.ico");
+					TrayIcon.File = @"./iconu.png";
 				else
-					TrayIcon.Icon = GetrayIcon("icon.ico");
+					TrayIcon.File = @"./icon.png";
 			}
 		}
 		
 		private DateTime LastUpdateTick = DateTime.Now;
-		private void HandleTick(object sender, EventArgs e) {		
+		/*todo:private void HandleTick(object sender, EventArgs e) {		
 			try {	
 				lock (NextProcessThreadSync) {
 					if (IsGenerateNewPhoto) return;					
@@ -121,10 +123,12 @@ namespace DeMixer {
 				WriteLog(exc);
 			}
 		}
+		*/
 		
 		private System.Threading.Thread NextProcessThread;
 		private object NextProcessThreadSync = new object();
 		
+		/*
 		private void StartThread() {			
 			lock (NextProcessThreadSync) {
 				//if (NextProcessThread != null) throw new Exception("DoNext() Thread already exists");				
@@ -136,6 +140,7 @@ namespace DeMixer {
 				
 			}
 		}
+		*/
 		
 		private void AbortThread() {
 			lock (NextProcessThreadSync) {
@@ -143,9 +148,9 @@ namespace DeMixer {
 				try { NextProcessThread.Abort(); } catch {}
 				NextProcessThread = null;
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
-				TrayIcon.BalloonTipIcon = ToolTipIcon.Info;
+				//todo: TrayIcon.BalloonTipIcon = ToolTipIcon.Info;
 				
-				NextMenuItem.Text = Translate("core.menu next");				
+				//todo: NextMenuItem.Text = Translate("core.menu next");				
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
 			}
 		}
@@ -153,7 +158,7 @@ namespace DeMixer {
 		private void DoNext() {		
 			try {
 				ActiveComposition.Source = ActiveSource;				
-				Image img = null;
+				System.Drawing.Image img = null;
 				switch (Environment.OSVersion.Platform) {
 				case PlatformID.Unix:
 					//img = ActiveComposition.GetCompostion(1280, 1024);
@@ -252,7 +257,7 @@ namespace DeMixer {
 			}
 		}
 		
-		private void ApplyEffectsAndSetAsWallpaper(Image img) {
+		private void ApplyEffectsAndSetAsWallpaper(System.Drawing.Image img) {
 			foreach (ImagePostEffect ef in ActiveEffects) {
 				img = ef.Execute(img);	
 			}
@@ -451,9 +456,9 @@ namespace DeMixer {
 		private bool FIsRunning = true;
 		private DateTime FStopTime;
 		
-		private MenuItem NextMenuItem;
-		private List<Image> FMenuImage = new List<Image>();
-		private  ContextMenu GetMenu() {
+		//private MenuItem NextMenuItem;
+		//private List<Image> FMenuImage = new List<Image>();
+		/*private  ContextMenu GetMenu() {			
 			ContextMenu menu = new ContextMenu();
 			NextMenuItem = new MenuItem();
 			NextMenuItem.Text = Translate("core.menu next");
@@ -552,6 +557,7 @@ namespace DeMixer {
 			menu.MenuItems.Add(Translate("core.menu exit"), MenuExitClick);
 			return menu;
 		}
+		*/
 		
 	#region клик по изображению						
 	void MenuUseImageClick(object sender, EventArgs e) {
