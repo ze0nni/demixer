@@ -3,23 +3,18 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/ConfigDlg.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/DirectorySourceConfigView.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="1063" Column="101" />
-      <File FileName="DeMixer/ConfigDlg.cs" Line="33" Column="52" />
-      <File FileName="DeMixer.lib/ImagesSource.cs" Line="38" Column="3" />
-      <File FileName="DeMixer.lib/ImagesComposition.cs" Line="22" Column="25" />
-      <File FileName="DeMixer.lib/ImagePostEffect.cs" Line="21" Column="4" />
+      <File FileName="DeMixer.lib.std/DirectorySourceConfigView.cs" Line="15" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="DeMixer" expanded="True">
             <Node name="References">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
-            <Node name="ConfigDlg.cs" selected="True" />
           </Node>
           <Node name="DeMixer.lib" expanded="True" />
           <Node name="DeMixer.lib.std" expanded="True" />
