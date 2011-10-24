@@ -161,14 +161,18 @@ namespace DeMixer {
 				System.Drawing.Image img = null;
 				switch (Environment.OSVersion.Platform) {
 				case PlatformID.Unix:
+					//todo:
 					//img = ActiveComposition.GetCompostion(1280, 1024);
 					//break;
 				case PlatformID.Win32Windows:
 				case PlatformID.Win32NT:
 				default:
+					img = ActiveComposition.GetCompostion(1280, 1024);
+					/*todo:
 					img = ActiveComposition.GetCompostion(
 					                                      SystemInformation.PrimaryMonitorSize.Width,
 					                                      SystemInformation.PrimaryMonitorSize.Height);
+					                                      */
 					break;
 				}				
 				
@@ -186,11 +190,13 @@ namespace DeMixer {
 						try { 
 							img.Save(historyfName, ImageFormat.Png); 
 						} catch (Exception exc) {
+							/*todo:
 							TrayIcon.ShowBalloonTip(
 							                        0,
 							                        Translate("core.error"),
 							                        Translate("core.error save file {0} in history error {1}", historyfName, exc.Message),
 							                        ToolTipIcon.Error);
+							                        */
 							WriteLog(exc);
 						}
 					}
@@ -230,12 +236,12 @@ namespace DeMixer {
 				UserRegistry.SetValue("LastTick", LastUpdateTick);
 				IsGenerateNewPhoto = false;
 				
-				TrayIcon.ContextMenu = GetMenu();
+				//todo: TrayIcon.ContextMenu = GetMenu();
 				
 				lock (NextProcessThreadSync) {
 					IsGenerateNewPhoto = false;
 					NextProcessThread = null;					
-					NextMenuItem.Text = Translate("core.menu next");
+					//todo: NextMenuItem.Text = Translate("core.menu next");
 				}
 			} catch(Exception exc) {
 					WriteLog(exc);
@@ -247,9 +253,9 @@ namespace DeMixer {
                                     5),
 				           true);					
 					IsGenerateNewPhoto = false;
-					NextMenuItem.Text = Translate("core.menu next");
+					//todo: NextMenuItem.Text = Translate("core.menu next");
 					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);
-					TrayIcon.ContextMenu = GetMenu();
+					//todo: TrayIcon.ContextMenu = GetMenu();
 					AbortThread();
 			}
 			finally {
@@ -287,7 +293,7 @@ namespace DeMixer {
 		
 		public void UpdateEffectForLastWallpaper() {
 			try {
-				Image img = Image.FromFile(UserRegistry.GetValue("courient").ToString());
+				System.Drawing.Image img = System.Drawing.Image.FromFile(UserRegistry.GetValue("courient").ToString());
 				ApplyEffectsAndSetAsWallpaper(img);
 			} catch {
 			}
@@ -426,7 +432,7 @@ namespace DeMixer {
 							string peName = br.ReadString();
 							ImagePostEffect pe = PostEffectByName(peName);
 							if (pe == null) {
-								MessageBox.Show(Translate("core.error effect not found {0}", peName));
+								//todo: MessageBox.Show(Translate("core.error effect not found {0}", peName));
 								throw new Exception();
 							}						
 							pe.Load(br);
@@ -559,9 +565,10 @@ namespace DeMixer {
 		}
 		*/
 		
-	#region клик по изображению						
+	#region клик по изображению		
+	/*todo
 	void MenuUseImageClick(object sender, EventArgs e) {
-		MenuItem mi = (MenuItem)sender;
+		//todo: MenuItem mi = (MenuItem)sender;
 		string iName = (String)mi.Tag;
 		string cName = GetUserFileName("courient.png");							
 		//заменяем текущее изображение новым
@@ -593,7 +600,8 @@ namespace DeMixer {
 		LastUpdateTick = DateTime.Now;
 		TrayIcon.ContextMenu = GetMenu();
 	}
-	#endregion		
+	*/
+	#endregion
 		
 	#region события на меню
 		private void MenuNextClick(object sender, EventArgs e) {
@@ -607,22 +615,23 @@ namespace DeMixer {
 		
 		private void MenuStartStopClick(object sender, EventArgs e) {
 			FIsRunning = !FIsRunning;
-			TrayIcon.ContextMenu = GetMenu();
+			//todo: TrayIcon.ContextMenu = GetMenu();
 			if (FIsRunning) {
 				//Запущено
 				LastUpdateTick = LastUpdateTick.Add(DateTime.Now - FStopTime);
-				TrayIcon.Icon = GetrayIcon("icon.ico");
-				UpdateTimer.Start();
+				TrayIcon.File = @"./icon.png";
+				//todo: UpdateTimer.Start();
 				
 			} else {
 				//Остановлено
 				FStopTime = DateTime.Now;
-				UpdateTimer.Stop();
-				TrayIcon.Icon = GetrayIcon("icond.ico");
+				//todo: UpdateTimer.Stop();
+				TrayIcon.File = @"./icond.ico";
 			}
 		}
 		
 		private void MenuConfigClick(object sender, EventArgs e) {
+			/*todo
 			ConfigDialog dlg = new ConfigDialog(this);
 			dlg.Icon = GetrayIcon("icon.ico");
 			dlg.StartPosition = FormStartPosition.CenterScreen;
@@ -630,17 +639,21 @@ namespace DeMixer {
 			SaveSettings();
 			TrayIcon.ContextMenu = GetMenu();
 			RefreshMemory();
+			*/
 		}
 		
 		private void MenuAboutClick(object sender, EventArgs e) {
+			/*todo
 			AboutDlg dlg = new AboutDlg(this);
 			dlg.Icon = GetrayIcon("icon.ico");
 			dlg.ShowDialog();
 			RefreshMemory();
+			*/
 		}
 		
 		private void MenuExitClick(object sender, EventArgs e) {
-			Application.Exit();
+			//todo
+			Gtk.Application.Quit();
 		}
 		
 		private ImagePostEffect PostEffectByName(string name) {
@@ -658,7 +671,7 @@ namespace DeMixer {
 		private List<ImagesComposition> FCompositions = new List<ImagesComposition>();
 		private List<ImagePostEffect> FEffects = new List<ImagePostEffect>();
 		private void UpdatePlugins() {
-			string dir = (new FileInfo(Application.ExecutablePath)).Directory.FullName +
+			string dir = (new FileInfo(@"./")).Directory.FullName +
 				Path.DirectorySeparatorChar;
 			foreach (FileInfo f in (new DirectoryInfo(dir)).GetFiles()) {
 				SeekInAssembly(f.FullName);
@@ -757,7 +770,7 @@ namespace DeMixer {
 		#region Directoryes		
 		public string AppDir {
 			get {
-				FileInfo fi = new FileInfo(Application.ExecutablePath);
+				FileInfo fi = new FileInfo("./");
 				return fi.Directory.ToString() + Path.DirectorySeparatorChar;
 			}
 		}
@@ -773,6 +786,8 @@ namespace DeMixer {
 		
 		public string UserDir {
 			get { 
+				return "~/.config/demixer";
+				/*todo
 				string appDir = 
 				String.Format("{1}{0}{2}{0}{3}{0}",
 				              Path.DirectorySeparatorChar,
@@ -781,6 +796,7 @@ namespace DeMixer {
 					          Application.ProductName);
 				System.IO.Directory.CreateDirectory(appDir);
 				return appDir;
+				*/
 			}
 		}
 		
@@ -791,14 +807,18 @@ namespace DeMixer {
 			return res;
 		}
 		
+		
 		public RegistryKey UserRegistry {
 			get {
+				return null;
+				/*
 				return
 					Registry.CurrentUser.
 						CreateSubKey("Software").
-						CreateSubKey(Application.CompanyName).
-						CreateSubKey(Application.ProductName);			}
+						CreateSubKey(Application.CompanyName);
+						CreateSubKey(Application.ProductName);*/}
 		}
+		
 		
 		#endregion
 		
@@ -815,7 +835,7 @@ namespace DeMixer {
 			string filename = GetUserFileName("profiles", configName);		
 			FileInfo fi = new FileInfo(filename);
 			if (!fi.Exists) {
-				MessageBox.Show(Translate("core.error profile not found"), Translate("core.error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+				//todo! MessageBox.Show(Translate("core.error profile not found"), Translate("core.error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 			try {
@@ -835,7 +855,7 @@ namespace DeMixer {
 				if (! ActiveSource.LoadConfig(fs)) throw new Exception();
 				
 				UserRegistry.SetValue("SelectionProfile", configName);
-				TrayIcon.ContextMenu = GetMenu();
+				//todo TrayIcon.ContextMenu = GetMenu();
 				try {
 					
 				} finally {
@@ -843,6 +863,7 @@ namespace DeMixer {
 				}
 			} catch(Exception exc) {
 				WriteLog(exc);
+				/*todo
 				if (MessageBox.Show(
 				                    Translate("core.error profile read error delete"),
 				                    Translate("core.error"),
@@ -850,6 +871,7 @@ namespace DeMixer {
 				{
 					fi.Delete();
 				}
+				*/
 				RefreshMemory();
 			}
 			return true;
@@ -857,16 +879,17 @@ namespace DeMixer {
 		
 		public bool SaveConfig(string configName) {
 			if (configName == "") {
-				MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				//todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			try {
 				string filename = GetUserFileName("profiles", configName);
 				if (File.Exists(filename)) {
-					if (MessageBox.Show("Профиль уже существует, хотите заменить?",
+					/*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
 					                   "Замена профиля",
 					                   MessageBoxButtons.YesNo,
 					                   MessageBoxIcon.Question) != DialogResult.Yes) return false;
+					                   */
 				}
 				FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
 				try {
@@ -890,9 +913,9 @@ namespace DeMixer {
 				}
 			} catch(Exception exc) {
 				WriteLog(exc);
-				MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);				
+				//todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);				
 			}
-			TrayIcon.ContextMenu = GetMenu();
+			//todo TrayIcon.ContextMenu = GetMenu();
 			return true;
 		}
 		#endregion
@@ -1042,13 +1065,16 @@ namespace DeMixer {
 			switch (Environment.OSVersion.Platform) {								
 				case PlatformID.Win32Windows:
 				case PlatformID.Win32NT:				
+					/* todo
 					TrayIcon.BalloonTipTitle = title;
 					TrayIcon.BalloonTipText = message;
 					TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
 					TrayIcon.ShowBalloonTip(1000*15);
+					*/
 					break;
 				case PlatformID.Unix:	
 				default:
+					/*todo!
 					(new System.Threading.Thread((System.Threading.ThreadStart)delegate {
 						MessageBox.Show(
 				                message,
@@ -1056,6 +1082,7 @@ namespace DeMixer {
 				                MessageBoxButtons.OK,
 				                errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
 					})).Start();					
+					*/
 					break;
 			}	
 		}
