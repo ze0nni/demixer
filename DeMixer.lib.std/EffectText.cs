@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using RowDialog;
 using System.Windows.Forms;
 using System.IO;
 
@@ -21,8 +20,8 @@ namespace DeMixer.lib.std
 		}
 		
 		public override void ShowDialog () {
-			EffectTextDlg dlg = new EffectTextDlg(this);
-			dlg.ShowDialog();
+			//EffectTextDlg dlg = new EffectTextDlg(this);
+			//dlg.ShowDialog();
 		}
 
 		
@@ -125,6 +124,7 @@ namespace DeMixer.lib.std
 		public Color FrameColor = Color.Gray;
 	}
 	
+	/*
 	class EffectTextDlg : RowDialogClass {
 		private EffectText Effect;
 		public EffectTextDlg(EffectText eff) {
@@ -244,4 +244,5 @@ namespace DeMixer.lib.std
 			this.LockDialogHeight();
 		}
 	}
+	*/
 }

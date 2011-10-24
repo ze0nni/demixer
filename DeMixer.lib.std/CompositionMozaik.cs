@@ -108,12 +108,12 @@ namespace DeMixer.lib.std {
 		
 		
 		public override void ShowDialog (){
-			CompositionMozaikDlg dlg = new CompositionMozaikDlg(this);
-			dlg.ShowDialog();
+			//CompositionMozaikDlg dlg = new CompositionMozaikDlg(this);
+			//dlg.ShowDialog();
 		}
 
 	}
-	
+	/*
 	internal class CompositionMozaikDlg : RowDialog.RowDialogClass {
 		CompositionMozaik Comp;
 		public CompositionMozaikDlg(CompositionMozaik comp) : base() {
@@ -135,4 +135,5 @@ namespace DeMixer.lib.std {
 			LockDialogHeight();
 		}
 	}
+	*/
 }

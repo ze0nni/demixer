@@ -41,15 +41,21 @@
     <Reference Include="System.Drawing" />
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="Mono.Posix" />
+    <Reference Include="DeMixer.lib.std, Version=1.0.4314.22685, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DeMixer.lib.std\bin\Debug\DeMixer.lib.std.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeMixerMainClass.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="AboutDialog.cs" />
     <Compile Include="gtk-gui\DeMixer.AboutDialog.cs" />
-    <Compile Include="gtk-gui\DeMixer.ConfigurationDialog.cs" />
-    <Compile Include="ConfigurationDialog.cs" />
+    <Compile Include="DeMixerMainClass.cs" />
+    <Compile Include="ConfigDlg.cs" />
+    <Compile Include="gtk-gui\DeMixer.ConfigDlg.cs" />
+    <Compile Include="SaveProfileDialog.cs" />
+    <Compile Include="gtk-gui\DeMixer.SaveProfileDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
