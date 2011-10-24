@@ -40,14 +40,29 @@ namespace DeMixer
 			EffectsComboBox.ShowAll();
 		}
 
+		Gtk.Widget lastView = null;
 		protected virtual void OnSourceComboBoxChanged (object sender, System.EventArgs e) {
 			Kernel.ActiveSourceIndex = SourceComboBox.Active;
 			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
+			Gtk.Widget view = Kernel.ActiveSource.ExpandTagsControl;
+			
+			if (lastView != null) {
+				SourceVBox.Remove(lastView);	
+			}
+			
+			if (view==null) {
+				view = new Gtk.Label(Kernel.Translate("no options"));	
+			}
+				
+			lastView = view;
+			SourceVBox.Add(view);
+			view.ShowAll();			
 		}
 
 		protected virtual void OnCompositionComboBoxChanged (object sender, System.EventArgs e) {
 			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
 			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
+					
 		}
 
 		protected virtual void OnEffectsComboBoxChanged (object sender, System.EventArgs e) {

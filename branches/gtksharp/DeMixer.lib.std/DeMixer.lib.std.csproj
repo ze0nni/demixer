@@ -34,6 +34,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
     <Reference Include="GoogleSearchAPI.Net20, Version=0.4.0.133, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\bin\DotNet20\GoogleSearchAPI.Net20.dll</HintPath>
@@ -56,6 +58,9 @@
     <Compile Include="CompositionSeasons.cs" />
     <Compile Include="parser\Json2Xml.cs" />
     <Compile Include="EffectCurves.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="DirectorySourceConfigView.cs" />
+    <Compile Include="gtk-gui\DeMixer.lib.std.DirectorySourceConfigView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -66,5 +71,10 @@
       <Project>{72F931A6-F049-4379-94E5-FAB51993EAB4}</Project>
       <Name>DeMixer.lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
