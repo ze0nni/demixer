@@ -1060,7 +1060,7 @@ void MenuUseImageClick(object sender, EventArgs e) {
                         string formato;
                         if (translateDict.TryGetValue(format, out formato))
                                 format = formato;
-                        return String.Format(format, args);
+                        return String.Format(format, args).Replace("\\n", "\n").Replace("\\t", "\t");
                 }
                 
                 public void ShowNotify(string title, string message, bool errorIcon) {

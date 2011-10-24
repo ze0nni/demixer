@@ -16,6 +16,10 @@ namespace DeMixer.lib {
 			get { return Kernel.Translate(string.Format("{0} title", GetType().FullName)); }
 		}
 		
+		public virtual string PluginDescription {
+			get { return Kernel.Translate(string.Format("{0}.description", GetType().FullName)); }
+		}
+		
 		public void Init(IDeMixerKernel k) {
 			kernel = k;
 		}

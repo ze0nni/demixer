@@ -35,6 +35,11 @@ namespace DeMixer.lib {
 			get { return ""; }	
 		}
 		
+		public virtual string PluginDescription {
+			get { return Kernel.Translate(string.Format("{0}.description", GetType().FullName)); }
+		}
+			
+		
 		public virtual void UrlClick() {
 			ProcessStartInfo psi = new ProcessStartInfo(Url);
             Process p = new Process();

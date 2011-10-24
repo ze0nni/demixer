@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using System.IO;
 
 namespace DeMixer.lib.std
@@ -27,6 +26,8 @@ namespace DeMixer.lib.std
 		
 		Random rnd = new Random();
 		public override Image Execute(Image img) {
+			return img;
+			/*todo 
 			Graphics g = Graphics.FromImage(img);
 			
 			string t = Text;			
@@ -74,6 +75,7 @@ namespace DeMixer.lib.std
 			g.DrawString(t, TextFont, bb, tx+1, ty+1);
 			g.DrawString(t, TextFont, b, tx, ty);
 			return img;	
+			*/
 		}
 		
 		public override string ToString () {			
