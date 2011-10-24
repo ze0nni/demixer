@@ -1,6 +1,5 @@
 
 using System;
-using Microsoft.Win32;
 
 namespace DeMixer.lib {
 	public interface IDeMixerKernel {
@@ -46,10 +45,6 @@ namespace DeMixer.lib {
 		string UserDir {
 			get;	
 		}		
-		
-		RegistryKey UserRegistry {
-			get;
-		}
 				
 		string[] GetProfileList();		
 		bool LoadConfig(string configName);
