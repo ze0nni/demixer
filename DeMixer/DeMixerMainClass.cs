@@ -10,7 +10,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Resources;
 using System.Diagnostics;
-using Gdk;
+using System.Threading;
 
 namespace DeMixer {
         public class DeMixerMainClass : IDeMixerKernel {		
@@ -29,84 +29,67 @@ namespace DeMixer {
     }
     
     private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
-    //private Timer UpdateTimer = new Timer();
-    public DeMixerMainClass() {
-
-            
+    private System.Threading.Timer UpdateTimer = null;
+    public DeMixerMainClass() {            
             TrayIcon.Activate += HandleActivate;
-			TrayIcon.PopupMenu += delegate {
-				Gtk.Application.Quit();
+			TrayIcon.PopupMenu += (o, e) => {
+				HandlePopupMenu();	
 			};
-	
-			
-                
-                /*
-                Application.ThreadException += delegate(object sender, System.Threading.ThreadExceptionEventArgs e) {
-                        //AbortThread();
-                        //WriteLog(e.Exception);                        
-                };
-                */                      
-                UpdatePlugins();                        
-                ReadSettings();
-                LoadDictionary("ru");
-                /*      
-                UpdateDialog udlg = new UpdateDialog(this);
-                udlg.Width *= 2;
-                udlg.StartPosition = FormStartPosition.CenterParent;
-                udlg.ShowDialog();
-                Application.Exit();
-                return;
-                
-                /*
-                
-                if (UserRegistry.GetValue("firt", "true").ToString() == "true") {
-                        ConfigMasterDlg dlg = new ConfigMasterDlg(this);                                
-                        dlg.Icon = GetrayIcon("icon.ico");
-                        dlg.ShowDialog();
-                        UserRegistry.SetValue("firt", "false");
-                        RefreshMemory();
-                }
-                */
-                
-                
-                switch (UpdateIntervalMode) {
-                case 0:
-                        LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
-                        break;                          
-                case 1:
-                        LastUpdateTick = DateTime.Now;
-                        break;
-                case 2:
-                        break;
-                }
-                
-                //Application.ApplicationExit += HandleApplicationExit;
-                
-                TrayIcon.File = @"./icon.png";
-                //todo: TrayIcon.Text = "DeMixer";
-                //todo: TrayIcon.DoubleClick += HandleDoubleClick;
-                //todo: TrayIcon.ContextMenu = GetMenu();
-                TrayIcon.Visible = true;        
-                
-                //todo: UpdateTimer.Interval = 1000;
-                //todo: UpdateTimer.Tick += HandleTick;
-                //todo: UpdateTimer.Start();
-                
-                RefreshMemory();
+				
+            /*
+            Application.ThreadException += delegate(object sender, System.Threading.ThreadExceptionEventArgs e) {
+                    //AbortThread();
+                    //WriteLog(e.Exception);                        
+            };            
+            */
+            UpdatePlugins();                        
+            ReadSettings();
+            LoadDictionary("ru");
+            /*      
+            UpdateDialog udlg = new UpdateDialog(this);
+            udlg.Width *= 2;
+            udlg.StartPosition = FormStartPosition.CenterParent;
+            udlg.ShowDialog();
+            Application.Exit();
+            return;
+            
+            /*
+            
+            if (UserRegistry.GetValue("firt", "true").ToString() == "true") {
+                    ConfigMasterDlg dlg = new ConfigMasterDlg(this);                                
+                    dlg.Icon = GetrayIcon("icon.ico");
+                    dlg.ShowDialog();
+                    UserRegistry.SetValue("firt", "false");
+                    RefreshMemory();
+            }
+            */
+            
+            
+            switch (UpdateIntervalMode) {
+            case 0:
+                    LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
+                    break;                          
+            case 1:
+                    LastUpdateTick = DateTime.Now;
+                    break;
+            case 2:
+                    break;
+            }
+            
+            //Application.ApplicationExit += HandleApplicationExit;
+            
+            TrayIcon.File = @"/usr/share/demixer/icon";            
+            TrayIcon.Visible = true;        
+            					
+			UpdateTimer = new Timer(HandleTick);
+			UpdateTimer.Change(0, 1000);
+            
+            RefreshMemory();			
         }
 
-		ConfigDlg cfgdlg;
+
 	    void HandleActivate(object sender, EventArgs e) {
-			if (cfgdlg != null) {
-				cfgdlg.Activate();
-				return;	
-			}
-			try {
-					ConfigDlg cfgdlg = new ConfigDlg(this);
-					dlg.ShowAll();
-			} finally {
-				cfgdlg = null;		
-			}
+			
 		}		
         
         void HandleDoubleClick(object sender, EventArgs e) {
@@ -119,44 +102,45 @@ namespace DeMixer {
                 set {                           
                         FIsGenerateNewPhoto = value;
                         if (value) 
-                                TrayIcon.File = @"./iconu.png";
+                                TrayIcon.File = @"/usr/share/demixer/iconu";
                         else
-                                TrayIcon.File = @"./icon.png";
+                                TrayIcon.File = @"/usr/share/demixer/icon";
                 }
         }
         
         private DateTime LastUpdateTick = DateTime.Now;
-        /*todo:private void HandleTick(object sender, EventArgs e) {            
-                try {   
-                        lock (NextProcessThreadSync) {
-                                if (IsGenerateNewPhoto) return;                                 
-                                if (LastUpdateTick.AddMilliseconds(UpdateInterval) <= DateTime.Now) {
-                                        Application.DoEvents();
-                                        StartThread();
-                                }
-                        }
-                } catch(Exception exc) {
-                        WriteLog(exc);
-                }
+		
+        private void HandleTick(object state) {			
+	        try {  
+				Console.WriteLine(DateTime.Now);				
+				Console.WriteLine(ActiveSource);
+				return;
+	            lock (NextProcessThreadSync) {					
+	                if (IsGenerateNewPhoto) return;					
+	                if (LastUpdateTick.AddMilliseconds(UpdateInterval) <= DateTime.Now) {
+	                	//todo: Application.DoEvents();						
+	                    StartThread();			
+					}					
+	            }
+	        } catch(Exception exc) {
+	                WriteLog(exc);
+	        }
         }
-        */
         
         private System.Threading.Thread NextProcessThread;
         private object NextProcessThreadSync = new object();
         
-        /*
+        
         private void StartThread() {                    
-                lock (NextProcessThreadSync) {
-                        //if (NextProcessThread != null) throw new Exception("DoNext() Thread already exists");                         
-                        IsGenerateNewPhoto = true;
-                        
-                        NextMenuItem.Text = Translate("core.menu abort");
-                        NextProcessThread = new System.Threading.Thread(DoNext);
-                        NextProcessThread.Start();
-                        
-                }
+	        lock (NextProcessThreadSync) {
+	            //if (NextProcessThread != null) throw new Exception("DoNext() Thread already exists");                         
+	            IsGenerateNewPhoto = true;
+	            
+	            NextProcessThread = new System.Threading.Thread(DoNext);
+				NextProcessThread.Priority = ThreadPriority.BelowNormal;
+	            NextProcessThread.Start();                        
+	        }
         }
-        */
         
         private void AbortThread() {
                 lock (NextProcessThreadSync) {
@@ -581,6 +565,79 @@ namespace DeMixer {
         }
         */
         
+		void HandlePopupMenu() {
+    		Gtk.Menu trayMenu = new Gtk.Menu();
+			
+			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem("Next wallpaper");			
+			miNext.Activated += (o, e) => {
+				LastUpdateTick = DateTime.Now;	
+			};
+			
+			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem("Enable");
+			
+			#region menu Previous
+			Gdk.Pixbuf[] prev = getPreviousImages();
+			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem("Previous");
+			if (prev.Length==0) {
+				miLast.Sensitive = false;
+			} else {
+				miEnable.Submenu = new Gtk.Menu();
+				foreach (Gdk.Pixbuf img in prev) {
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem("");					
+					((Gtk.Menu)miEnable.Submenu).Append(pmi);
+				}
+			}
+			#endregion			
+			#region menu profiles
+			string[] profiles = GetProfileList();			
+			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem("Profiles");
+			if (profiles.Length == 0) {
+				miProfiles.Sensitive = false;
+			} else {
+				miProfiles.Submenu = new Gtk.Menu();
+				foreach (string pname in GetProfileList()) {
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);
+					((Gtk.Menu)miProfiles.Submenu).Append(pmi);
+				}
+			}
+			#endregion
+			
+			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem("Configuration");
+			miConfig.Activated += (o, e) => {
+				ConfigDlg dlg = new ConfigDlg(this);
+				dlg.Modal = true;
+				dlg.ShowAll();
+			};
+			
+			Gtk.ImageMenuItem miAbout = new Gtk.ImageMenuItem("About");
+			miAbout.Activated  += (o, e) => {
+				AboutDialog dlg = new AboutDialog();
+				dlg.Modal = true;
+				dlg.ShowAll();
+			};
+			
+			Gtk.MenuItem miExit = new Gtk.ImageMenuItem("Exit");
+			miExit.Activated += (o, e) => {
+				Gtk.Application.Quit();	
+			};
+			
+			
+			trayMenu.Append(miNext);
+			trayMenu.Append(miEnable);
+			trayMenu.Append(miLast);
+			trayMenu.Append(miProfiles);
+			trayMenu.Append(miConfig);
+			trayMenu.Append(miAbout);
+			trayMenu.Append(miExit);
+			
+			trayMenu.ShowAll();
+			trayMenu.Popup();
+    	}
+		
+		Gdk.Pixbuf[] getPreviousImages() {
+			return new Gdk.Pixbuf[0];
+		}
+		
 #region клик по изображению             
 /*todo
 void MenuUseImageClick(object sender, EventArgs e) {

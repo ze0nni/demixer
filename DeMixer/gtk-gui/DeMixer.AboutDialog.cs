@@ -15,7 +15,7 @@ namespace DeMixer {
         
         private Gtk.VBox vbox2;
         
-        private Gtk.Image image1;
+        private Gtk.Image logoImage;
         
         private Gtk.IconView iconview1;
         
@@ -28,6 +28,8 @@ namespace DeMixer {
             // Widget DeMixer.AboutDialog
             this.Name = "DeMixer.AboutDialog";
             this.WindowPosition = ((Gtk.WindowPosition)(4));
+            this.Resizable = false;
+            this.AllowGrow = false;
             this.HasSeparator = false;
             // Internal child DeMixer.AboutDialog.VBox
             Gtk.VBox w1 = this.VBox;
@@ -38,10 +40,10 @@ namespace DeMixer {
             this.vbox2.Name = "vbox2";
             this.vbox2.Spacing = 6;
             // Container child vbox2.Gtk.Box+BoxChild
-            this.image1 = new Gtk.Image();
-            this.image1.Name = "image1";
-            this.vbox2.Add(this.image1);
-            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.vbox2[this.image1]));
+            this.logoImage = new Gtk.Image();
+            this.logoImage.Name = "logoImage";
+            this.vbox2.Add(this.logoImage);
+            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.vbox2[this.logoImage]));
             w2.Position = 0;
             w2.Expand = false;
             // Container child vbox2.Gtk.Box+BoxChild
@@ -89,7 +91,7 @@ namespace DeMixer {
                 this.Child.ShowAll();
             }
             this.DefaultWidth = 404;
-            this.DefaultHeight = 300;
+            this.DefaultHeight = 373;
             this.Show();
         }
     }

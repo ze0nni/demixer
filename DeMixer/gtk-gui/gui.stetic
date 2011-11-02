@@ -9,9 +9,11 @@
     <widget-library name="../../DeMixer.lib.std/bin/Debug/DeMixer.lib.std.dll" />
     <widget-library name="../bin/Debug/DeMixer.exe" internal="true" />
   </import>
-  <widget class="Gtk.Dialog" id="DeMixer.AboutDialog" design-size="404 300">
+  <widget class="Gtk.Dialog" id="DeMixer.AboutDialog" design-size="404 373">
     <property name="MemberName" />
     <property name="WindowPosition">CenterOnParent</property>
+    <property name="Resizable">False</property>
+    <property name="AllowGrow">False</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
     <property name="HasSeparator">False</property>
@@ -24,7 +26,7 @@
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Image" id="image1">
+              <widget class="Gtk.Image" id="logoImage">
                 <property name="MemberName" />
               </widget>
               <packing>
@@ -114,7 +116,7 @@
               <widget class="Gtk.Notebook" id="notebook1">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="CurrentPage">0</property>
+                <property name="CurrentPage">3</property>
                 <child>
                   <widget class="Gtk.VBox" id="SourceVBox">
                     <property name="MemberName" />
@@ -249,7 +251,28 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder />
+                      <widget class="Gtk.HBox" id="hbox11">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <placeholder />
+                        </child>
+                        <child>
+                          <widget class="Gtk.Image" id="image776">
+                            <property name="MemberName" />
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
                     </child>
                   </widget>
                   <packing>
@@ -297,7 +320,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <widget class="Gtk.Button" id="button37">
+                                  <widget class="Gtk.Button" id="effectAddBtn">
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextAndIcon</property>
@@ -357,9 +380,17 @@
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.IconView" id="iconview1">
+                          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                             <property name="MemberName" />
-                            <property name="CanFocus">True</property>
+                            <property name="ShadowType">In</property>
+                            <child>
+                              <widget class="Gtk.TreeView" id="EffectsList">
+                                <property name="MemberName" />
+                                <property name="CanFocus">True</property>
+                                <property name="ShowScrollbars">True</property>
+                                <signal name="CursorChanged" handler="OnEffectsListCursorChanged" />
+                              </widget>
+                            </child>
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -373,8 +404,9 @@
                             <property name="Size">5</property>
                             <property name="LayoutStyle">Start</property>
                             <child>
-                              <widget class="Gtk.Button" id="button38">
+                              <widget class="Gtk.Button" id="editEffectBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-edit Menu</property>
@@ -387,8 +419,9 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button39">
+                              <widget class="Gtk.Button" id="upEffectBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-go-up Menu</property>
@@ -402,8 +435,9 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button40">
+                              <widget class="Gtk.Button" id="downEffectBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-go-down Menu</property>
@@ -417,8 +451,9 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button41">
+                              <widget class="Gtk.Button" id="cloneEffectBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-copy Menu</property>
@@ -432,8 +467,9 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button42">
+                              <widget class="Gtk.Button" id="deleteEffectBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-delete Menu</property>
@@ -484,13 +520,14 @@
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.CheckButton" id="checkbutton1">
+                          <widget class="Gtk.CheckButton" id="saveHistoryChBox">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">Save history</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnSaveHistoryChBoxClicked" />
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -500,24 +537,27 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.FileChooserButton" id="filechooserbutton1">
+                          <widget class="Gtk.FileChooserButton" id="selectSaveHostoryFolderBox">
                             <property name="MemberName" />
+                            <property name="Sensitive">False</property>
                             <property name="Action">SelectFolder</property>
                             <property name="ShowHidden">True</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
-                            <property name="AutoSize">True</property>
+                            <property name="AutoSize">False</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.CheckButton" id="checkbutton2">
+                          <widget class="Gtk.CheckButton" id="historyLimitSizeChBox">
                             <property name="MemberName" />
+                            <property name="Sensitive">False</property>
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">Max size</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnHistoryLimitSizeChBoxClicked" />
                           </widget>
                           <packing>
                             <property name="Position">2</property>
@@ -527,8 +567,9 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.SpinButton" id="spinbutton2">
+                          <widget class="Gtk.SpinButton" id="historyMaxSizeSpin">
                             <property name="MemberName" />
+                            <property name="Sensitive">False</property>
                             <property name="CanFocus">True</property>
                             <property name="Upper">100</property>
                             <property name="PageIncrement">10</property>
@@ -604,28 +645,16 @@
                           </widget>
                           <packing>
                             <property name="Position">2</property>
-                            <property name="AutoSize">True</property>
+                            <property name="AutoSize">False</property>
                           </packing>
                         </child>
-                      </widget>
-                      <packing>
-                        <property name="Position">1</property>
-                        <property name="AutoSize">True</property>
-                        <property name="Expand">False</property>
-                        <property name="Fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="Gtk.HBox" id="hbox6">
-                        <property name="MemberName" />
-                        <property name="Spacing">6</property>
                         <child>
                           <widget class="Gtk.Label" id="label11">
                             <property name="MemberName" />
                             <property name="LabelProp" translatable="yes">Update Mode</property>
                           </widget>
                           <packing>
-                            <property name="Position">0</property>
+                            <property name="Position">3</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
                             <property name="Fill">False</property>
@@ -641,13 +670,15 @@ Wait from last update</property>
                             <property name="Active">1</property>
                           </widget>
                           <packing>
-                            <property name="Position">1</property>
-                            <property name="AutoSize">False</property>
+                            <property name="Position">4</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
                           </packing>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">1</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -678,11 +709,12 @@ Wait from last update</property>
                           <packing>
                             <property name="Position">1</property>
                             <property name="AutoSize">False</property>
+                            <property name="Expand">False</property>
                           </packing>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">3</property>
+                        <property name="Position">2</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -698,8 +730,8 @@ Wait from last update</property>
                         <property name="UseUnderline">True</property>
                       </widget>
                       <packing>
-                        <property name="Position">4</property>
-                        <property name="AutoSize">True</property>
+                        <property name="Position">3</property>
+                        <property name="AutoSize">False</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
                       </packing>
@@ -767,8 +799,9 @@ Wait from last update</property>
                             <property name="Size">3</property>
                             <property name="LayoutStyle">End</property>
                             <child>
-                              <widget class="Gtk.Button" id="button82">
+                              <widget class="Gtk.Button" id="applyProfileBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-apply Menu</property>
@@ -781,14 +814,15 @@ Wait from last update</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button83">
+                              <widget class="Gtk.Button" id="saveProfileBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-save Menu</property>
                                 <property name="Label" translatable="yes">_Save</property>
                                 <property name="UseUnderline">True</property>
-                                <signal name="Clicked" handler="OnButton83Clicked" />
+                                <signal name="Clicked" handler="OnsaveProfileBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -797,8 +831,9 @@ Wait from last update</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button84">
+                              <widget class="Gtk.Button" id="deleteProfileBtn">
                                 <property name="MemberName" />
+                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-delete Menu</property>
