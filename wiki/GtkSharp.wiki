@@ -1,0 +1,5 @@
+Совсем скоро интерфейс будет переписан для GTK#
+----
+Very soon, the interface will be re-written for GTK #
+
+http://demixer.googlecode.com/svn/wiki/gtk.png
