@@ -3,29 +3,28 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/DirectorySourceConfigView.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs" ctype="Workbench">
     <Files>
-      <File FileName="DeMixer.lib.std/DirectorySourceConfigView.cs" Line="20" Column="36" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="581" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="DeMixer">
+          <Node name="DeMixer" expanded="True">
             <Node name="References">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
+            <Node name="DeMixerMainClass.cs" selected="True" />
           </Node>
-          <Node name="DeMixer.lib.std" expanded="True">
-            <Node name="DirectorySourceConfigView.cs" selected="True" />
-          </Node>
+          <Node name="DeMixer.lib.std" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True">
-          <Node name="DeMixer" expanded="True" />
-          <Node name="DeMixer.lib" expanded="True" />
-          <Node name="DeMixer.lib.std" expanded="True" />
+        <State expanded="True">
+          <Node name="DeMixer.lib.std" expanded="True">
+            <Node name="References" expanded="True" selected="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>

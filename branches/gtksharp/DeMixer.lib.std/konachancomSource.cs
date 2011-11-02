@@ -43,7 +43,7 @@ namespace DeMixer.lib.std {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return null;
+				return new konachancomSourceConfigView(this);
 			}
 		}
 		
