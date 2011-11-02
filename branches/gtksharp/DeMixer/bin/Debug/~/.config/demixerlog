@@ -1,0 +1,1420 @@
+
+==24.10.2011 12:56:40==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 12:56:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 12:56:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 12:58:10==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 12:58:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 12:58:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 12:59:52==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 12:59:52==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 12:59:52==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:00:29==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:00:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:00:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:02:22==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:02:22==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:02:22==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:04:32==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:04:32==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:04:32==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:05:01==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:05:01==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:05:01==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:05:58==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:05:58==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:05:58==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:06:44==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:06:44==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:06:44==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:10:04==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:10:04==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:10:04==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:11:29==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:11:29==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:11:29==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:12:10==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:12:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:12:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:12:15==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:12:15==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:12:15==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:12:46==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:12:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:12:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:13:37==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:13:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:13:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:14:10==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:14:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:14:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:15:04==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:15:04==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:15:04==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:15:58==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:15:59==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:15:59==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:16:31==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:16:31==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:16:31==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:16:45==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:16:45==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:16:45==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:17:30==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:17:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:17:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:17:42==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:17:42==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:17:42==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:18:37==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:18:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:18:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:20:37==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:20:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:20:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:21:28==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:21:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:21:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:21:42==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:21:42==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:21:42==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:23:03==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:23:03==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:23:03==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:23:28==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:23:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:23:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:25:10==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:25:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:25:10==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:27:53==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:27:53==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:27:53==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:29:32==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:29:32==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:29:32==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:31:24==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:31:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:31:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:32:40==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:32:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:32:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:35:55==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:35:55==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:35:55==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:41:46==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:41:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:41:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:42:24==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:42:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:42:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:42:51==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:42:51==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:42:51==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:44:47==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:44:47==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:44:47==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:46:21==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:46:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:46:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:50:14==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:50:14==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:50:14==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:53:28==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:53:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:53:28==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 13:54:24==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 13:54:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 13:54:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:00:18==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:00:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:00:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:01:18==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:01:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:01:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:03:25==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:03:25==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:03:25==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:04:18==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:04:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:04:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:14:09==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:09==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:09==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:22==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:22==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:22==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:37==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:14:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:15:53==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:15:53==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:15:53==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] 
+
+==24.10.2011 14:28:16==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:28:16==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:28:16==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:31:00==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:31:00==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:31:00==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:32:30==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:32:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:32:30==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:33:21==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:33:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:33:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:39:08==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:39:08==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:39:08==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:40:05==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:40:06==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:40:06==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:41:20==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:41:20==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:41:20==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:44:23==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:44:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:44:24==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:45:21==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:45:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:45:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 14:45:49==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 14:45:49==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 14:45:49==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==24.10.2011 15:02:34==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==24.10.2011 15:02:34==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==24.10.2011 15:02:34==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 8:28:35==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 8:28:36==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 8:28:36==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 8:28:40==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 8:28:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 8:28:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 8:40:40==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 8:40:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 8:40:40==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:09:46==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:09:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:09:46==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:10:43==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:10:43==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:10:43==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:10:58==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:10:58==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:10:58==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:18:37==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:18:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:18:37==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:19:21==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:19:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:19:21==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==27.10.2011 9:20:43==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==27.10.2011 9:20:43==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==27.10.2011 9:20:43==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
+
+==02.11.2011 9:50:18==
+System.NullReferenceException: Object reference not set to an instance of an object
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00000] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:384 
+
+==02.11.2011 9:50:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixerconfig'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x00059] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:395 
+
+==02.11.2011 9:50:18==
+System.IO.FileNotFoundException: Could not find file "/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects"
+File name: '/home/onni/Projects/demixer/DeMixer/bin/Debug/~/.config/demixereffects'
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00265] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/System.IO/FileStream.cs:304 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode) [0x00000] in /usr/src/packages/BUILD/mono-2.4.2.3/mcs/class/corlib/Assembly/AssemblyInfo.cs:1 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+  at DeMixer.DeMixerMainClass.ReadSettings () [0x001a4] in /home/onni/Projects/demixer/DeMixer/DeMixerMainClass.cs:431 
