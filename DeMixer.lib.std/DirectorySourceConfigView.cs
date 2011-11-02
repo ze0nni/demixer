@@ -12,7 +12,15 @@ namespace DeMixer.lib.std
 		DirectorySource Source;
 		public DirectorySourceConfigView(DirectorySource source) {
 			this.Build();
-			Source = source;			
+			Source = source;
+			//
+			FolderView.AppendColumn("column",
+			                        new Gtk.CellRendererText(),
+			                        "text", 0);
+			FolderView.AppendColumn("column1",
+			                        new Gtk.CellRendererText(),
+			                        "text", 0);
+			FolderView.ShowAll();                        
 		}
 	}
 }

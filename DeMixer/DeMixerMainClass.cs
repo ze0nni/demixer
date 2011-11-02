@@ -33,12 +33,9 @@ namespace DeMixer {
     public DeMixerMainClass() {
 
             
-            TrayIcon.Activate += delegate {                    
-				ConfigDlg dlg = new ConfigDlg(this);
-				dlg.ShowAll();
-                };
+            TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += delegate {
-				Gtk.Application.Quit(); 
+				Gtk.Application.Quit();
 			};
 	
 			
@@ -96,7 +93,21 @@ namespace DeMixer {
                 //todo: UpdateTimer.Start();
                 
                 RefreshMemory();
-        }		
+        }
+
+		ConfigDlg cfgdlg;
+	    void HandleActivate(object sender, EventArgs e) {
+			if (cfgdlg != null) {
+				cfgdlg.Activate();
+				return;	
+			}
+			try {
+					ConfigDlg cfgdlg = new ConfigDlg(this);
+					dlg.ShowAll();
+			} finally {
+				cfgdlg = null;		
+			}
+		}		
         
         void HandleDoubleClick(object sender, EventArgs e) {
                 
