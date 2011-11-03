@@ -25,6 +25,7 @@
                 <property name="MemberName" />
                 <property name="Title" translatable="yes">browse folder</property>
                 <property name="Action">SelectFolder</property>
+                <signal name="SelectionChanged" handler="OnFolderNavBoxSelectionChanged" />
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -42,6 +43,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <signal name="CursorChanged" handler="OnFoldersListCursorChanged" />
                   </widget>
                 </child>
               </widget>
@@ -60,23 +62,8 @@
           <widget class="Gtk.VButtonBox" id="vbuttonbox1">
             <property name="MemberName" />
             <property name="Spacing">4</property>
-            <property name="Size">3</property>
+            <property name="Size">2</property>
             <property name="LayoutStyle">Start</property>
-            <child>
-              <widget class="Gtk.Button" id="ApplyEditBtn">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-apply Menu</property>
-                <property name="Label" translatable="yes">_Apply</property>
-                <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="OnApplyEditBtnClicked" />
-              </widget>
-              <packing>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
             <child>
               <widget class="Gtk.Button" id="folderAddBtn">
                 <property name="MemberName" />
@@ -88,7 +75,6 @@
                 <signal name="Clicked" handler="OnFolderAddBtnClicked" />
               </widget>
               <packing>
-                <property name="Position">1</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
@@ -101,9 +87,10 @@
                 <property name="Icon">stock:gtk-delete Menu</property>
                 <property name="Label" translatable="yes">_Delete</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnFolderDeleteBtnClicked" />
               </widget>
               <packing>
-                <property name="Position">2</property>
+                <property name="Position">1</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
