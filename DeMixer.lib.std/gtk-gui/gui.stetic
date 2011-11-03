@@ -9,7 +9,7 @@
     <widget-library name="../../DeMixer.lib/bin/Debug/DeMixer.lib.dll" />
     <widget-library name="../bin/Debug/DeMixer.lib.std.dll" internal="true" />
   </import>
-  <widget class="Gtk.Bin" id="DeMixer.lib.std.DirectorySourceConfigView" design-size="446 295">
+  <widget class="Gtk.Bin" id="DeMixer.lib.std.DirectorySourceConfigView" design-size="529 306">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -25,7 +25,6 @@
                 <property name="MemberName" />
                 <property name="Title" translatable="yes">browse folder</property>
                 <property name="Action">SelectFolder</property>
-                <signal name="SelectionChanged" handler="OnFolderNavBoxSelectionChanged" />
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -55,14 +54,14 @@
           </widget>
           <packing>
             <property name="Position">0</property>
-            <property name="AutoSize">True</property>
+            <property name="AutoSize">False</property>
           </packing>
         </child>
         <child>
           <widget class="Gtk.VButtonBox" id="vbuttonbox1">
             <property name="MemberName" />
             <property name="Spacing">4</property>
-            <property name="Size">2</property>
+            <property name="Size">3</property>
             <property name="LayoutStyle">Start</property>
             <child>
               <widget class="Gtk.Button" id="folderAddBtn">
@@ -80,6 +79,22 @@
               </packing>
             </child>
             <child>
+              <widget class="Gtk.Button" id="folderApplyBtn">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-apply Menu</property>
+                <property name="Label" translatable="yes">_Apply</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnFolderApplyBtnClicked" />
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
               <widget class="Gtk.Button" id="folderDeleteBtn">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
@@ -90,7 +105,7 @@
                 <signal name="Clicked" handler="OnFolderDeleteBtnClicked" />
               </widget>
               <packing>
-                <property name="Position">1</property>
+                <property name="Position">2</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
