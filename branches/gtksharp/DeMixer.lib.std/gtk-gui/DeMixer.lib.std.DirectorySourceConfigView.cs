@@ -27,6 +27,8 @@ namespace DeMixer.lib.std {
         
         private Gtk.Button folderAddBtn;
         
+        private Gtk.Button folderApplyBtn;
+        
         private Gtk.Button folderDeleteBtn;
         
         protected virtual void Build() {
@@ -96,44 +98,70 @@ namespace DeMixer.lib.std {
             w13.Expand = false;
             w13.Fill = false;
             // Container child vbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
-            this.folderDeleteBtn = new Gtk.Button();
-            this.folderDeleteBtn.CanFocus = true;
-            this.folderDeleteBtn.Name = "folderDeleteBtn";
-            this.folderDeleteBtn.UseUnderline = true;
-            // Container child folderDeleteBtn.Gtk.Container+ContainerChild
+            this.folderApplyBtn = new Gtk.Button();
+            this.folderApplyBtn.CanFocus = true;
+            this.folderApplyBtn.Name = "folderApplyBtn";
+            this.folderApplyBtn.UseUnderline = true;
+            // Container child folderApplyBtn.Gtk.Container+ContainerChild
             Gtk.Alignment w14 = new Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
             // Container child GtkAlignment.Gtk.Container+ContainerChild
             Gtk.HBox w15 = new Gtk.HBox();
             w15.Spacing = 2;
             // Container child GtkHBox.Gtk.Container+ContainerChild
             Gtk.Image w16 = new Gtk.Image();
-            w16.Pixbuf = Stetic.IconLoader.LoadIcon(this, "gtk-delete", Gtk.IconSize.Menu, 19);
+            w16.Pixbuf = Stetic.IconLoader.LoadIcon(this, "gtk-apply", Gtk.IconSize.Menu, 19);
             w15.Add(w16);
             // Container child GtkHBox.Gtk.Container+ContainerChild
             Gtk.Label w18 = new Gtk.Label();
-            w18.LabelProp = Mono.Unix.Catalog.GetString("_Delete");
+            w18.LabelProp = Mono.Unix.Catalog.GetString("_Apply");
             w18.UseUnderline = true;
             w15.Add(w18);
             w14.Add(w15);
-            this.folderDeleteBtn.Add(w14);
-            this.vbuttonbox1.Add(this.folderDeleteBtn);
-            Gtk.ButtonBox.ButtonBoxChild w22 = ((Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderDeleteBtn]));
+            this.folderApplyBtn.Add(w14);
+            this.vbuttonbox1.Add(this.folderApplyBtn);
+            Gtk.ButtonBox.ButtonBoxChild w22 = ((Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderApplyBtn]));
             w22.Position = 1;
             w22.Expand = false;
             w22.Fill = false;
+            // Container child vbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
+            this.folderDeleteBtn = new Gtk.Button();
+            this.folderDeleteBtn.CanFocus = true;
+            this.folderDeleteBtn.Name = "folderDeleteBtn";
+            this.folderDeleteBtn.UseUnderline = true;
+            // Container child folderDeleteBtn.Gtk.Container+ContainerChild
+            Gtk.Alignment w23 = new Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
+            // Container child GtkAlignment.Gtk.Container+ContainerChild
+            Gtk.HBox w24 = new Gtk.HBox();
+            w24.Spacing = 2;
+            // Container child GtkHBox.Gtk.Container+ContainerChild
+            Gtk.Image w25 = new Gtk.Image();
+            w25.Pixbuf = Stetic.IconLoader.LoadIcon(this, "gtk-delete", Gtk.IconSize.Menu, 19);
+            w24.Add(w25);
+            // Container child GtkHBox.Gtk.Container+ContainerChild
+            Gtk.Label w27 = new Gtk.Label();
+            w27.LabelProp = Mono.Unix.Catalog.GetString("_Delete");
+            w27.UseUnderline = true;
+            w24.Add(w27);
+            w23.Add(w24);
+            this.folderDeleteBtn.Add(w23);
+            this.vbuttonbox1.Add(this.folderDeleteBtn);
+            Gtk.ButtonBox.ButtonBoxChild w31 = ((Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderDeleteBtn]));
+            w31.Position = 2;
+            w31.Expand = false;
+            w31.Fill = false;
             this.hbox1.Add(this.vbuttonbox1);
-            Gtk.Box.BoxChild w23 = ((Gtk.Box.BoxChild)(this.hbox1[this.vbuttonbox1]));
-            w23.Position = 1;
-            w23.Expand = false;
-            w23.Fill = false;
+            Gtk.Box.BoxChild w32 = ((Gtk.Box.BoxChild)(this.hbox1[this.vbuttonbox1]));
+            w32.Position = 1;
+            w32.Expand = false;
+            w32.Fill = false;
             this.Add(this.hbox1);
             if ((this.Child != null)) {
                 this.Child.ShowAll();
             }
             this.Hide();
-            this.folderNavBox.SelectionChanged += new System.EventHandler(this.OnFolderNavBoxSelectionChanged);
             this.FoldersList.CursorChanged += new System.EventHandler(this.OnFoldersListCursorChanged);
             this.folderAddBtn.Clicked += new System.EventHandler(this.OnFolderAddBtnClicked);
+            this.folderApplyBtn.Clicked += new System.EventHandler(this.OnFolderApplyBtnClicked);
             this.folderDeleteBtn.Clicked += new System.EventHandler(this.OnFolderDeleteBtnClicked);
         }
     }

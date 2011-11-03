@@ -42,21 +42,7 @@ namespace DeMixer.lib.std
 			FoldersList.ShowAll();
 						
 			FoldersListStore.AppendValues(new object[]{true, "/home/onni/images"});
-		}
-		
-		protected virtual void OnFolderAddBtnClicked (object sender, System.EventArgs e) {			
-			Gtk.TreeIter itr = FoldersListStore.AppendValues(new object[]{true, folderNavBox.Filename});
-			FoldersList.Selection.SelectIter(itr);
-			updateSeekPath();
-		}
-
-		protected virtual void OnFolderNavBoxSelectionChanged (object sender, System.EventArgs e){
-			Gtk.TreeIter itr;
-			if (FoldersList.Selection.GetSelected(out itr)) {
-				FoldersListStore.SetValue(itr, 1, folderNavBox.Filename);
-				updateSeekPath();
-			}
-		}
+		}			
 
 		protected virtual void OnFoldersListCursorChanged (object sender, System.EventArgs e) {
 			Gtk.TreeIter itr;
@@ -89,6 +75,20 @@ namespace DeMixer.lib.std
 					if (!FoldersListStore.IterNext(ref itr)) break;
 				} while (true);
 			}
+		}
+
+		protected virtual void OnFolderApplyBtnClicked (object sender, System.EventArgs e) {
+			Gtk.TreeIter itr;
+			if (FoldersList.Selection.GetSelected(out itr)) {
+				FoldersListStore.SetValue(itr, 1, folderNavBox.Filename);
+				updateSeekPath();
+			}	
+		}
+
+		protected virtual void OnFolderAddBtnClicked (object sender, System.EventArgs e) {
+			Gtk.TreeIter itr = FoldersListStore.AppendValues(new object[]{true, folderNavBox.Filename});
+			FoldersList.Selection.SelectIter(itr);
+			updateSeekPath();
 		}
 	}
 }
