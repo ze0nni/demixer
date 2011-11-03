@@ -26,8 +26,7 @@ namespace DeMixer.lib.std
 			
 			Gtk.TreeViewColumn folderColumt = new Gtk.TreeViewColumn ();
 			folderColumt.Title = "folder";
-			Gtk.CellRendererText folderCell = new Gtk.CellRendererText();
-			folderCell.Editable = true;
+			Gtk.CellRendererText folderCell = new Gtk.CellRendererText();			
 			
 			folderColumt.PackStart(folderCell, true);
 			folderColumt.AddAttribute(folderCell, "text", 1);
@@ -41,19 +40,56 @@ namespace DeMixer.lib.std
 			FoldersList.Model = FoldersListStore;
 									
 			FoldersList.ShowAll();
-			
+						
 			FoldersListStore.AppendValues(new object[]{true, "/home/onni/images"});
 		}
 		
-		protected virtual void OnFolderAddBtnClicked (object sender, System.EventArgs e) {
-			
-			FoldersListStore.AppendValues(new object[]{true, folderNavBox.Filename});
+		protected virtual void OnFolderAddBtnClicked (object sender, System.EventArgs e) {			
+			Gtk.TreeIter itr = FoldersListStore.AppendValues(new object[]{true, folderNavBox.Filename});
+			FoldersList.Selection.SelectIter(itr);
+			updateSeekPath();
 		}
 
-		protected virtual void OnApplyEditBtnClicked (object sender, System.EventArgs e) {			
-			
-		}		
+		protected virtual void OnFolderNavBoxSelectionChanged (object sender, System.EventArgs e){
+			Gtk.TreeIter itr;
+			if (FoldersList.Selection.GetSelected(out itr)) {
+				FoldersListStore.SetValue(itr, 1, folderNavBox.Filename);
+				updateSeekPath();
+			}
+		}
+
+		protected virtual void OnFoldersListCursorChanged (object sender, System.EventArgs e) {
+			Gtk.TreeIter itr;
+			if (FoldersList.Selection.GetSelected(out itr)) {
+				folderNavBox.SetCurrentFolder(FoldersListStore.GetValue(itr, 1).ToString());
+				updateSeekPath();
+			}
+		}
+
+		protected virtual void OnFolderDeleteBtnClicked (object sender, System.EventArgs e) {
+			Gtk.TreeIter itr;
+			if (FoldersList.Selection.GetSelected(out itr)) {
+				Gtk.TreeIter itrn = itr;
+				if (FoldersListStore.IterNext(ref itrn)) {
+					FoldersList.Selection.SelectIter(itrn);		
+				} //todo: before
+				FoldersListStore.Remove(ref itr);
+				updateSeekPath();
+			}
+		}
 		
+		void updateSeekPath() {
+			Source.FSeekPath.Clear();
+			Gtk.TreeIter itr;
+			if (FoldersListStore.GetIterFirst(out itr)) {
+				do {
+					Value val = Value.Empty;
+					FoldersListStore.GetValue(itr, 1, ref val);
+					Source.FSeekPath.Add(val.Val.ToString());
+					if (!FoldersListStore.IterNext(ref itr)) break;
+				} while (true);
+			}
+		}
 	}
 }
 

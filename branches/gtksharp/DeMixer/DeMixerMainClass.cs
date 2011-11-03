@@ -28,8 +28,7 @@ namespace DeMixer {
             Gtk.Application.Run();
     }
     
-    private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
-    private System.Threading.Timer UpdateTimer = null;
+    private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();    
     public DeMixerMainClass() {            
             TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += (o, e) => {
@@ -79,10 +78,7 @@ namespace DeMixer {
             //Application.ApplicationExit += HandleApplicationExit;
             
             TrayIcon.File = @"/usr/share/demixer/icon";            
-            TrayIcon.Visible = true;        
-            					
-			UpdateTimer = new Timer(HandleTick);
-			UpdateTimer.Change(0, 1000);
+            TrayIcon.Visible = true;                    					
             
             RefreshMemory();			
         }
@@ -111,9 +107,7 @@ namespace DeMixer {
         private DateTime LastUpdateTick = DateTime.Now;
 		
         private void HandleTick(object state) {			
-	        try {  
-				Console.WriteLine(DateTime.Now);				
-				Console.WriteLine(ActiveSource);
+	        try {  				
 				return;
 	            lock (NextProcessThreadSync) {					
 	                if (IsGenerateNewPhoto) return;					
@@ -122,7 +116,7 @@ namespace DeMixer {
 	                    StartThread();			
 					}					
 	            }
-	        } catch(Exception exc) {
+	        } catch(Exception exc) {					
 	                WriteLog(exc);
 	        }
         }
@@ -137,7 +131,7 @@ namespace DeMixer {
 	            IsGenerateNewPhoto = true;
 	            
 	            NextProcessThread = new System.Threading.Thread(DoNext);
-				NextProcessThread.Priority = ThreadPriority.BelowNormal;
+				//NextProcessThread.Priority = ThreadPriority.BelowNormal;
 	            NextProcessThread.Start();                        
 	        }
         }
@@ -155,112 +149,111 @@ namespace DeMixer {
                 }
         }
         
-        private void DoNext() {         
-                try {
-                        ActiveComposition.Source = ActiveSource;                                
-                        System.Drawing.Image img = null;
-                        switch (Environment.OSVersion.Platform) {
-                        case PlatformID.Unix:
-                                //todo:
-                                //img = ActiveComposition.GetCompostion(1280, 1024);
-                                //break;
-                        case PlatformID.Win32Windows:
-                        case PlatformID.Win32NT:
-                        default:
-                                img = ActiveComposition.GetCompostion(1280, 1024);
-                                /*todo:
-                                img = ActiveComposition.GetCompostion(
-                                                                      SystemInformation.PrimaryMonitorSize.Width,
-                                                                      SystemInformation.PrimaryMonitorSize.Height);
-                                                                      */
-                                break;
-                        }                               
-                        
-                        #region сохраняем в png без эффектов
-                        {       
-                                string fName = GetUserFileName("courient.png");
-                                img.Save(fName, ImageFormat.Png);
-                                UserRegistry.SetValue("courient", fName);
-                                //ведем историю
-                                if (saveHistory) {
-                                        string historyfName = String.Format("{1}{0}{2}.png",
-                                                                            Path.DirectorySeparatorChar,
-                                                                            SaveHistoryPath,
-                                                                            DateTime.Now.ToString());
-                                        try { 
-                                                img.Save(historyfName, ImageFormat.Png); 
-                                        } catch (Exception exc) {
-                                                /*todo:
-                                                TrayIcon.ShowBalloonTip(
-                                                                        0,
-                                                                        Translate("core.error"),
-                                                                        Translate("core.error save file {0} in history error {1}", historyfName, exc.Message),
-                                                                        ToolTipIcon.Error);
-                                                                        */
-                                                WriteLog(exc);
-                                        }
-                                }
-                                #region сохраняем десять последних
-                                /*
-                                string fDir = String.Format("{1}{0}{2}{0}",
-                                                            Path.DirectorySeparatorChar,
-                                                            Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                                                            Application.ProductName);                                   
-                                Directory.CreateDirectory(fDir);
-                                */                                      
-                                string fDir = GetUserFileName("last") + Path.DirectorySeparatorChar;
-                                Directory.CreateDirectory(fDir);
-                                for (int i=7; i>0; i--) {
-                                        fName = String.Format("{0}{1}.png", fDir, i);
-                                        string fNewName = String.Format("{0}{1}.png", fDir, i+1);
-                                        try {
-                                                try { File.Delete(fNewName); } catch  {}
-                                                File.Move(fName, fNewName);     
-                                        } catch(Exception exc) {
-                                                
-                                        }
-                                }                                       
-                                fName = String.Format("{0}{1}.png", fDir, 1);
-                                File.Delete(fName);                                     
-                                img.Save(fName, ImageFormat.Png);
-                                
-                                #endregion
-                                
-                        }
-                        #endregion                                                      
-                        ApplyEffectsAndSetAsWallpaper(img);                                                             
-                        
-                        if (UpdateInterval < 60*1000) UpdateInterval = 60*1000;                         
-                        LastUpdateTick = DateTime.Now;
-                        
-                        UserRegistry.SetValue("LastTick", LastUpdateTick);
+        private void DoNext() {         			
+            try {
+                ActiveComposition.Source = ActiveSource;                                
+                System.Drawing.Image img = null;
+                switch (Environment.OSVersion.Platform) {
+                case PlatformID.Unix:
+                        //todo:
+                        //img = ActiveComposition.GetCompostion(1280, 1024);
+                        //break;
+                case PlatformID.Win32Windows:
+                case PlatformID.Win32NT:
+                default:
+                        img = ActiveComposition.GetCompostion(1280, 1024);
+                        /*todo:
+                        img = ActiveComposition.GetCompostion(
+                                                              SystemInformation.PrimaryMonitorSize.Width,
+                                                              SystemInformation.PrimaryMonitorSize.Height);
+                                                              */
+                        break;					
+                }                               
+                
+                #region сохраняем в png без эффектов
+                {       
+                    string fName = GetUserFileName("courient.png");
+                    img.Save(fName, ImageFormat.Png);
+                    UserRegistry.SetValue("courient", fName);
+                    //ведем историю
+                    if (saveHistory) {
+	                    string historyfName = String.Format("{1}{0}{2}.png",
+	                                                        Path.DirectorySeparatorChar,
+	                                                        SaveHistoryPath,
+	                                                        DateTime.Now.ToString());
+	                    try { 
+	                            img.Save(historyfName, ImageFormat.Png); 
+	                    } catch (Exception exc) {
+                            /*todo:                            
+                            TrayIcon.ShowBalloonTip(
+                                                    0,
+                                                    Translate("core.error"),
+                                                    Translate("core.error save file {0} in history error {1}", historyfName, exc.Message),
+                                                    ToolTipIcon.Error);
+                                                    */
+                            WriteLog(exc);
+						}
+                    }
+                    #region сохраняем десять последних
+                    /*
+                    string fDir = String.Format("{1}{0}{2}{0}",
+                                                Path.DirectorySeparatorChar,
+                                                Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                                                Application.ProductName);                                   
+                    Directory.CreateDirectory(fDir);
+                    */                                      
+                    string fDir = GetUserFileName("last") + Path.DirectorySeparatorChar;
+                    Directory.CreateDirectory(fDir);
+                    for (int i=7; i>0; i--) {
+                            fName = String.Format("{0}{1}.png", fDir, i);
+                            string fNewName = String.Format("{0}{1}.png", fDir, i+1);
+                            try {
+                                    try { File.Delete(fNewName); } catch  {}
+                                    File.Move(fName, fNewName);     
+                            } catch(Exception exc) {
+                                    
+                            }
+                    }                                       
+                    fName = String.Format("{0}{1}.png", fDir, 1);
+                    File.Delete(fName);                                     
+                    img.Save(fName, ImageFormat.Png);
+                    
+                    #endregion					                        
+                }
+                #endregion   				
+                ApplyEffectsAndSetAsWallpaper(img);                                                             
+                
+                if (UpdateInterval < 60*1000) UpdateInterval = 60*1000;                         
+                LastUpdateTick = DateTime.Now;
+                
+                UserRegistry.SetValue("LastTick", LastUpdateTick);
+                IsGenerateNewPhoto = false;
+                
+                //todo: TrayIcon.ContextMenu = GetMenu();
+                
+                lock (NextProcessThreadSync) {
                         IsGenerateNewPhoto = false;
-                        
-                        //todo: TrayIcon.ContextMenu = GetMenu();
-                        
-                        lock (NextProcessThreadSync) {
-                                IsGenerateNewPhoto = false;
-                                NextProcessThread = null;                                       
-                                //todo: NextMenuItem.Text = Translate("core.menu next");
-                        }
-                } catch(Exception exc) {
-                                WriteLog(exc);
-                                ShowNotify(
-                                   Translate("core.error get_image"),
-                                                Translate("core.error get_image from {0} error {1} repeat {2}",
-                            ActiveSource.PluginTitle,
-                            exc.Message,
-                            5),
-                                   true);                                       
-                                IsGenerateNewPhoto = false;
-                                //todo: NextMenuItem.Text = Translate("core.menu next");
-                                LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);
-                                //todo: TrayIcon.ContextMenu = GetMenu();
-                                AbortThread();
+                        NextProcessThread = null;                                       
+                        //todo: NextMenuItem.Text = Translate("core.menu next");
                 }
-                finally {
-                        RefreshMemory();
-                }
+            } catch(Exception exc) {
+                            WriteLog(exc);
+                            ShowNotify(
+                               Translate("core.error get_image"),
+                                            Translate("core.error get_image from {0} error {1} repeat {2}",
+                        ActiveSource.PluginTitle,
+                        exc.Message,
+                        5),
+                               true);                                       
+                            IsGenerateNewPhoto = false;
+                            //todo: NextMenuItem.Text = Translate("core.menu next");
+                            LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);
+                            //todo: TrayIcon.ContextMenu = GetMenu();
+                            AbortThread();
+            }
+            finally {
+                    RefreshMemory();
+            }
         }
         
         private void ApplyEffectsAndSetAsWallpaper(System.Drawing.Image img) {
@@ -804,358 +797,359 @@ void MenuUseImageClick(object sender, EventArgs e) {
             } 
         } 
                 
-#region IDeMixerKernel
-                public ImagesSource[] SourceList {
-                        get { return FSources.ToArray(); } 
-                }
-                
-                public ImagesComposition[] CompositionList {
-                        get { return FCompositions.ToArray(); }
-                }
-                
-                public ImagePostEffect[] PostEffectsList {
-                        get { return FEffects.ToArray(); }
-                }
-                                
-                private ImagePostEffect[] FActiveEffects = new ImagePostEffect[0];
-                public ImagePostEffect[] ActiveEffects {
-                        get { return FActiveEffects; }
-                        set { 
-                                lock(ActiveEffects) {
-                                        FActiveEffects = value;
-                                }
+		#region IDeMixerKernel
+        public ImagesSource[] SourceList {
+			get { return FSources.ToArray(); } 
+        }
+        
+        public ImagesComposition[] CompositionList {
+			get { return FCompositions.ToArray(); }
+        }
+        
+        public ImagePostEffect[] PostEffectsList {
+                get { return FEffects.ToArray(); }
+        }
+                        
+        private ImagePostEffect[] FActiveEffects = new ImagePostEffect[0];
+        public ImagePostEffect[] ActiveEffects {
+                get { return FActiveEffects; }
+                set { 
+                        lock(ActiveEffects) {
+                                FActiveEffects = value;
                         }
                 }
-                
-                public int ActiveSourceIndex {
-                        get { return FActiveSouceIndex; }
-                        set { FActiveSouceIndex = value; }
+        }
+        
+        public int ActiveSourceIndex {
+                get { return FActiveSouceIndex; }
+                set { FActiveSouceIndex = value; }
+        }
+        
+        public int ActiveCompositionIndex {
+                get { return FActiveCompositionIndex; }
+                set { FActiveCompositionIndex = value; }
+        }
+        
+        #region Directoryes             
+        public string AppDir {
+                get {
+                        FileInfo fi = new FileInfo("./");
+                        return fi.Directory.ToString() + Path.DirectorySeparatorChar;
                 }
-                
-                public int ActiveCompositionIndex {
-                        get { return FActiveCompositionIndex; }
-                        set { FActiveCompositionIndex = value; }
-                }
-                
-                #region Directoryes             
-                public string AppDir {
-                        get {
-                                FileInfo fi = new FileInfo("./");
-                                return fi.Directory.ToString() + Path.DirectorySeparatorChar;
-                        }
-                }
-                
-                public string GetAppFileName(params string[] args) {
-                        string res = AppDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
-                        try {
-                                FileInfo fi = new FileInfo(res);
-                                Directory.CreateDirectory(fi.Directory.FullName);
-                        } catch { }                     
-                        return res;
-                }
-                
-                public string UserDir {
-                        get { 
-                                return "~/.config/demixer";
-                                /*todo
-                                string appDir = 
-                                String.Format("{1}{0}{2}{0}{3}{0}",
-                                              Path.DirectorySeparatorChar,
-                                              Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                                              Application.CompanyName,
-                                                  Application.ProductName);
-                                System.IO.Directory.CreateDirectory(appDir);
-                                return appDir;
-                                */
-                        }
-                }
-                
-                public string GetUserFileName(params string[] args) {           
-                        string res = UserDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
+        }
+        
+        public string GetAppFileName(params string[] args) {
+                string res = AppDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
+                try {
                         FileInfo fi = new FileInfo(res);
                         Directory.CreateDirectory(fi.Directory.FullName);
-                        return res;
+                } catch { }                     
+                return res;
+        }
+        
+        public string UserDir {
+                get { 
+                        return "~/.config/demixer";
+                        /*todo
+                        string appDir = 
+                        String.Format("{1}{0}{2}{0}{3}{0}",
+                                      Path.DirectorySeparatorChar,
+                                      Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                                      Application.CompanyName,
+                                          Application.ProductName);
+                        System.IO.Directory.CreateDirectory(appDir);
+                        return appDir;
+                        */
                 }
-                
-                
-                public RegistryKey UserRegistry {
-                        get {
-                                return null;
-                                /*
-                                return
-                                        Registry.CurrentUser.
-                                                CreateSubKey("Software").
-                                                CreateSubKey(Application.CompanyName);
-                                                CreateSubKey(Application.ProductName);*/}
+        }
+        
+        public string GetUserFileName(params string[] args) {           
+                string res = UserDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
+                FileInfo fi = new FileInfo(res);
+                Directory.CreateDirectory(fi.Directory.FullName);
+                return res;
+        }
+        
+        
+        public RegistryKey UserRegistry {
+                get {
+                        return null;
+                        /*
+                        return
+                                Registry.CurrentUser.
+                                        CreateSubKey("Software").
+                                        CreateSubKey(Application.CompanyName);
+                                        CreateSubKey(Application.ProductName);*/}
+        }
+        
+        
+        #endregion
+        
+        #region Profile
+        public string[] GetProfileList() {
+                string dname = GetUserFileName("profiles", "");
+                List<string> ls = new List<string>();
+                foreach (FileInfo f in (new DirectoryInfo(dname).GetFiles())) {
+                        ls.Add(f.Name);
                 }
-                
-                
-                #endregion
-                
-                #region Profile
-                public string[] GetProfileList() {
-                        string dname = GetUserFileName("profiles", "");
-                        List<string> ls = new List<string>();
-                        foreach (FileInfo f in (new DirectoryInfo(dname).GetFiles())) {
-                                ls.Add(f.Name);
-                        }
-                        return ls.ToArray();
+                return ls.ToArray();
+        }
+        public bool LoadConfig(string configName) {
+                string filename = GetUserFileName("profiles", configName);              
+                FileInfo fi = new FileInfo(filename);
+                if (!fi.Exists) {
+                        //todo! MessageBox.Show(Translate("core.error profile not found"), Translate("core.error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
                 }
-                public bool LoadConfig(string configName) {
-                        string filename = GetUserFileName("profiles", configName);              
-                        FileInfo fi = new FileInfo(filename);
-                        if (!fi.Exists) {
-                                //todo! MessageBox.Show(Translate("core.error profile not found"), Translate("core.error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return false;
-                        }
-                        try {
-                                FileStream fs = new FileStream(filename, FileMode.Open);
-                                BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-                                //SIGN
-                                byte[] sign = br.ReadBytes(4);
-                                if (System.Text.Encoding.ASCII.GetString(sign) != "dmxc") throw new Exception();                                
-                                //имя плагина
-                                string pluginClass = br.ReadString();
-                                //имя сборки
-                                string assemblyName = br.ReadString();
-                                //загружаем сборку                              
-                                int sourceIndex = GetSourceIndex(pluginClass);                          
-                                if (sourceIndex == -1) throw new Exception();                           
-                                ActiveSourceIndex = sourceIndex;                                
-                                if (! ActiveSource.LoadConfig(fs)) throw new Exception();
-                                
-                                UserRegistry.SetValue("SelectionProfile", configName);
-                                //todo TrayIcon.ContextMenu = GetMenu();
-                                try {
-                                        
-                                } finally {
-                                        fs.Close();
-                                }
-                        } catch(Exception exc) {
-                                WriteLog(exc);
-                                /*todo
-                                if (MessageBox.Show(
-                                                    Translate("core.error profile read error delete"),
-                                                    Translate("core.error"),
-                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)                                                         
-                                {
-                                        fi.Delete();
-                                }
-                                */
-                                RefreshMemory();
-                        }
-                        return true;
-                }
-                
-                public bool SaveConfig(string configName) {
-                        if (configName == "") {
-                                //todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return false;
-                        }
-                        try {
-                                string filename = GetUserFileName("profiles", configName);
-                                if (File.Exists(filename)) {
-                                        /*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
-                                                           "Замена профиля",
-                                                           MessageBoxButtons.YesNo,
-                                                           MessageBoxIcon.Question) != DialogResult.Yes) return false;
-                                                           */
-                                }
-                                FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-                                try {
-                                        try {                                           
-                                                BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-                                                //SIGN
-                                                bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
-                                                //имя класса
-                                                ImagesSource aSource = ActiveSource;
-                                                bw.Write(aSource.GetType().FullName);
-                                                //имя сборки
-                                                bw.Write(aSource.GetType().Assembly.FullName);
-                                                if (!aSource.SaveConfig(fs)) throw new Exception();
-                                        } finally {
-                                                fs.Close();
-                                        }
-                                } catch(Exception exc) {
-                                        WriteLog(exc);
-                                        File.Delete(filename);
-                                        throw;  
-                                }
-                        } catch(Exception exc) {
-                                WriteLog(exc);
-                                //todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);                               
-                        }
+                try {
+                        FileStream fs = new FileStream(filename, FileMode.Open);
+                        BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
+                        //SIGN
+                        byte[] sign = br.ReadBytes(4);
+                        if (System.Text.Encoding.ASCII.GetString(sign) != "dmxc") throw new Exception();                                
+                        //имя плагина
+                        string pluginClass = br.ReadString();
+                        //имя сборки
+                        string assemblyName = br.ReadString();
+                        //загружаем сборку                              
+                        int sourceIndex = GetSourceIndex(pluginClass);                          
+                        if (sourceIndex == -1) throw new Exception();                           
+                        ActiveSourceIndex = sourceIndex;                                
+                        if (! ActiveSource.LoadConfig(fs)) throw new Exception();
+                        
+                        UserRegistry.SetValue("SelectionProfile", configName);
                         //todo TrayIcon.ContextMenu = GetMenu();
-                        return true;
-                }
-                #endregion
-                
+                        try {
                                 
-                
-                public int GetSourceIndex(string name) {
-                        int i = 0;
-                        foreach (ImagesSource s in FSources) {
-                                if (s.GetType().FullName == name) return i;
-                                i++;
-                        }
-                        return -1;
-                }
-                
-                public int GetCompositionIndex(string name) {
-                        int i = 0;
-                        foreach (ImagesComposition c in FCompositions) {
-                                if (c.GetType().FullName == name) return i;
-                                i++;
-                        }                       
-                        return -1;
-                }
-                
-                bool saveHistory = false;
-                public bool SaveHistory {
-                        get { return saveHistory; }
-                        set { saveHistory = value; }
-                }
-                
-                string saveHistoryPath = "";
-                public string SaveHistoryPath {
-                        get { return saveHistoryPath; }
-                        set { saveHistoryPath = value; }
-                }
-                
-                int saveHistorySize;
-                public int SaveHistorySize {
-                        get { return saveHistorySize; }
-                        set { saveHistorySize = value; }
-                }
-                
-                private int FUpdateInterval;
-                public int UpdateInterval {
-                        get { return FUpdateInterval; }
-                        set { FUpdateInterval = value; }
-                }
-                
-                private int FUpdateIntervalMode = 0;
-                public int UpdateIntervalMode {
-                        get { return FUpdateIntervalMode; }
-                        set { FUpdateIntervalMode = value; }
-                }
-                
-                public TimeSpan TimeLeft {
-                        get {
-                                if (FIsRunning)
-                                        return 
-                                                LastUpdateTick.AddMilliseconds(UpdateInterval) - DateTime.Now;
-                                else
-                                        return
-                                                LastUpdateTick.AddMilliseconds(UpdateInterval) - FStopTime;
-                        }
-                }
-                
-                public void WriteLog(object obj) {
-                        WriteLog(obj.ToString());
-                }
-                
-                public void WriteLog(string str) {
-                        lock (this) {
-                                string fname = GetUserFileName("log");
-                                long fsize = 0;
-                                FileStream fs = new FileStream(fname, FileMode.Append | FileMode.OpenOrCreate);                 
-                                string ln = String.Format(
-                                            "\n=={0}==\n{1}{2}",
-                                            DateTime.Now.ToString(),
-                                            str,
-                                            Environment.NewLine);                               
-                                byte[] buff = System.Text.Encoding.UTF8.GetBytes(ln);
-                                fs.Write(buff, 0, buff.Length);
-                                fsize = fs.Position;
-                                
+                        } finally {
                                 fs.Close();
-                                
-                                if (fsize > 1024*1024*5) {
-                                        try { 
-                                                File.Delete(GetUserFileName("log2"));
-                                                File.Move(GetUserFileName("log1"), GetUserFileName("log2"));
-                                        } catch {}
-                                        try { 
-                                                File.Delete(GetUserFileName("log1"));
-                                                File.Move(fname, GetUserFileName("log1"));
-                                        } catch {}
-                                }
                         }
+                } catch(Exception exc) {
+                        WriteLog(exc);
+                        /*todo
+                        if (MessageBox.Show(
+                                            Translate("core.error profile read error delete"),
+                                            Translate("core.error"),
+                                            MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)                                                         
+                        {
+                                fi.Delete();
+                        }
+                        */
+                        RefreshMemory();
                 }
-                
-                public string Language {
-                        get { return "en English"; }
-                        set { }
+                return true;
+        }
+        
+        public bool SaveConfig(string configName) {
+                if (configName == "") {
+                        //todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                 }
-                
-                public string[] Languages {
-                        get { return new string[]{"en English"}; }
-                }
-                
-                void LoadDictionary(string locName) {
-                        translateDict.Clear();
+                try {
+                        string filename = GetUserFileName("profiles", configName);
+                        if (File.Exists(filename)) {
+                                /*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
+                                                   "Замена профиля",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question) != DialogResult.Yes) return false;
+                                                   */
+                        }
+                        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
                         try {
-                                DirectoryInfo alocDir= new DirectoryInfo(GetAppFileName("loc"));
-                                searchLocInDir(alocDir, locName);
-                        } catch {}
-                        try {
-                                DirectoryInfo ulocDir= new DirectoryInfo(GetUserFileName("loc"));
-                                searchLocInDir(ulocDir, locName);
-                        } catch {}
-                }
-                
-                void searchLocInDir(DirectoryInfo locDir, string locName) {
-                        foreach (FileInfo f in locDir.GetFiles(String.Format("*.{0}", locName))) {
-                                FileStream fs = new FileStream(f.FullName, FileMode.Open);
-                                try {
-                                        StreamReader sr = new StreamReader(fs);
-                                        string[] lines = sr.ReadToEnd().Split('\n');
-                                        foreach(string ln in lines) {
-                                                string[] args=ln.Split(new char[]{'='}, 2);
-                                                if (args.Length==2) {                                                   
-                                                        translateDict[args[0]] = args[1];       
-                                                }
-                                        }
+                                try {                                           
+                                        BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
+                                        //SIGN
+                                        bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
+                                        //имя класса
+                                        ImagesSource aSource = ActiveSource;
+                                        bw.Write(aSource.GetType().FullName);
+                                        //имя сборки
+                                        bw.Write(aSource.GetType().Assembly.FullName);
+                                        if (!aSource.SaveConfig(fs)) throw new Exception();
                                 } finally {
                                         fs.Close();
                                 }
+                        } catch(Exception exc) {
+                                WriteLog(exc);
+                                File.Delete(filename);
+                                throw;  
+                        }
+                } catch(Exception exc) {
+                        WriteLog(exc);
+                        //todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);                               
+                }
+                //todo TrayIcon.ContextMenu = GetMenu();
+                return true;
+        }
+        #endregion
+        
+                        
+        
+        public int GetSourceIndex(string name) {
+                int i = 0;
+                foreach (ImagesSource s in FSources) {
+                        if (s.GetType().FullName == name) return i;
+                        i++;
+                }
+                return -1;
+        }
+        
+        public int GetCompositionIndex(string name) {
+                int i = 0;
+                foreach (ImagesComposition c in FCompositions) {
+                        if (c.GetType().FullName == name) return i;
+                        i++;
+                }                       
+                return -1;
+        }
+        
+        bool saveHistory = false;
+        public bool SaveHistory {
+                get { return saveHistory; }
+                set { saveHistory = value; }
+        }
+        
+        string saveHistoryPath = "";
+        public string SaveHistoryPath {
+                get { return saveHistoryPath; }
+                set { saveHistoryPath = value; }
+        }
+        
+        int saveHistorySize;
+        public int SaveHistorySize {
+                get { return saveHistorySize; }
+                set { saveHistorySize = value; }
+        }
+        
+        private int FUpdateInterval;
+        public int UpdateInterval {
+                get { return FUpdateInterval; }
+                set { FUpdateInterval = value; }
+        }
+        
+        private int FUpdateIntervalMode = 0;
+        public int UpdateIntervalMode {
+                get { return FUpdateIntervalMode; }
+                set { FUpdateIntervalMode = value; }
+        }
+        
+        public TimeSpan TimeLeft {
+                get {
+                        if (FIsRunning)
+                                return 
+                                        LastUpdateTick.AddMilliseconds(UpdateInterval) - DateTime.Now;
+                        else
+                                return
+                                        LastUpdateTick.AddMilliseconds(UpdateInterval) - FStopTime;
+                }
+        }
+        
+        public void WriteLog(object obj) {
+                WriteLog(obj.ToString());
+        }
+        
+        public void WriteLog(string str) {
+                lock (this) {
+                        string fname = GetUserFileName("log");
+                        long fsize = 0;
+                        FileStream fs = new FileStream(fname, FileMode.Append | FileMode.OpenOrCreate);                 
+                        string ln = String.Format(
+                                    "\n=={0}==\n{1}{2}",
+                                    DateTime.Now.ToString(),
+                                    str,
+                                    Environment.NewLine);                               
+                        byte[] buff = System.Text.Encoding.UTF8.GetBytes(ln);
+                        fs.Write(buff, 0, buff.Length);
+                        fsize = fs.Position;
+                        
+                        fs.Close();
+                        
+                        if (fsize > 1024*1024*5) {
+                                try { 
+                                        File.Delete(GetUserFileName("log2"));
+                                        File.Move(GetUserFileName("log1"), GetUserFileName("log2"));
+                                } catch {}
+                                try { 
+                                        File.Delete(GetUserFileName("log1"));
+                                        File.Move(fname, GetUserFileName("log1"));
+                                } catch {}
                         }
                 }
-                
-                Dictionary<string, string> translateDict = new Dictionary<string, string>();
-                public string Translate(string format, params object[] args) {                  
-                        string formato;
-                        if (translateDict.TryGetValue(format, out formato))
-                                format = formato;
-                        return String.Format(format, args).Replace("\\n", "\n").Replace("\\t", "\t");
+        }
+        
+        public string Language {
+                get { return "en English"; }
+                set { }
+        }
+        
+        public string[] Languages {
+                get { return new string[]{"en English"}; }
+        }
+        
+        void LoadDictionary(string locName) {
+                translateDict.Clear();
+                try {
+                        DirectoryInfo alocDir= new DirectoryInfo(GetAppFileName("loc"));
+                        searchLocInDir(alocDir, locName);
+                } catch {}
+                try {
+                        DirectoryInfo ulocDir= new DirectoryInfo(GetUserFileName("loc"));
+                        searchLocInDir(ulocDir, locName);
+                } catch {}
+        }
+        
+        void searchLocInDir(DirectoryInfo locDir, string locName) {
+                foreach (FileInfo f in locDir.GetFiles(String.Format("*.{0}", locName))) {
+                        FileStream fs = new FileStream(f.FullName, FileMode.Open);
+                        try {
+                                StreamReader sr = new StreamReader(fs);
+                                string[] lines = sr.ReadToEnd().Split('\n');
+                                foreach(string ln in lines) {
+                                        string[] args=ln.Split(new char[]{'='}, 2);
+                                        if (args.Length==2) {                                                   
+                                                translateDict[args[0]] = args[1];       
+                                        }
+                                }
+                        } finally {
+                                fs.Close();
+                        }
                 }
-                
-                public void ShowNotify(string title, string message, bool errorIcon) {
-                        switch (Environment.OSVersion.Platform) {                                                               
-                                case PlatformID.Win32Windows:
-                                case PlatformID.Win32NT:                                
-                                        /* todo
-                                        TrayIcon.BalloonTipTitle = title;
-                                        TrayIcon.BalloonTipText = message;
-                                        TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
-                                        TrayIcon.ShowBalloonTip(1000*15);
-                                        */
-                                        break;
-                                case PlatformID.Unix:   
-                                default:
-                                        /*todo!
-                                        (new System.Threading.Thread((System.Threading.ThreadStart)delegate {
-                                                MessageBox.Show(
-                                                message,
-                                                String.Format("{0} - DeMixer", title),
-                                                MessageBoxButtons.OK,
-                                                errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
-                                        })).Start();                                    
-                                        */
-                                        break;
-                        }       
-                }
+        }
+        
+        Dictionary<string, string> translateDict = new Dictionary<string, string>();
+        public string Translate(string format, params object[] args) {                  
+                string formato;
+                if (translateDict.TryGetValue(format, out formato))
+                        format = formato;
+                return String.Format(format, args).Replace("\\n", "\n").Replace("\\t", "\t");
+        }
+        
+        public void ShowNotify(string title, string message, bool errorIcon) {
+        	switch (Environment.OSVersion.Platform) {                                                               
+        	case PlatformID.Win32Windows:
+            case PlatformID.Win32NT:                                
+                /* todo
+                TrayIcon.BalloonTipTitle = title;
+                TrayIcon.BalloonTipText = message;
+                TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
+                TrayIcon.ShowBalloonTip(1000*15);
+                */
+                break;		
+            case PlatformID.Unix:   
+            default:
+                /*todo!
+                (new System.Threading.Thread((System.Threading.ThreadStart)delegate {
+                        MessageBox.Show(
+                        message,
+                        String.Format("{0} - DeMixer", title),
+                        MessageBoxButtons.OK,
+                        errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
+                })).Start();                                    
+                */
+				Console.WriteLine("=== {0} ===\n{1}", title, message);
+                break;
+			}       
+        }		
         #endregion
         }
 }

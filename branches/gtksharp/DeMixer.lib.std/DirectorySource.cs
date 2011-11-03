@@ -69,6 +69,7 @@ namespace DeMixer.lib.std {
 		private Random rnd = new Random();
 		public override System.Drawing.Image GetNextImage() {
 			try {
+				Console.WriteLine("GetNextImage enter");
 				List<string> files = new List<string>();
 				foreach (string d in FSeekPath) {
 					DirectoryInfo di = new DirectoryInfo(d);
@@ -79,6 +80,7 @@ namespace DeMixer.lib.std {
 				return System.Drawing.Image.FromFile(files[rnd.Next(0, files.Count)]);
 			} catch(Exception exc) {
 				Console.WriteLine(exc);
+				//todo: Kernel.log(exc);
 				Bitmap bmp = new Bitmap(320, 200);
 				Graphics g = Graphics.FromImage(bmp);
 				g.Clear(System.Drawing.Color.Black);
