@@ -35,34 +35,9 @@ namespace DeMixer {
 				HandlePopupMenu();	
 			};
 				
-            /*
-            Application.ThreadException += delegate(object sender, System.Threading.ThreadExceptionEventArgs e) {
-                    //AbortThread();
-                    //WriteLog(e.Exception);                        
-            };            
-            */
             UpdatePlugins();                        
             ReadSettings();
             LoadDictionary("ru");
-            /*      
-            UpdateDialog udlg = new UpdateDialog(this);
-            udlg.Width *= 2;
-            udlg.StartPosition = FormStartPosition.CenterParent;
-            udlg.ShowDialog();
-            Application.Exit();
-            return;
-            
-            /*
-            
-            if (UserRegistry.GetValue("firt", "true").ToString() == "true") {
-                    ConfigMasterDlg dlg = new ConfigMasterDlg(this);                                
-                    dlg.Icon = GetrayIcon("icon.ico");
-                    dlg.ShowDialog();
-                    UserRegistry.SetValue("firt", "false");
-                    RefreshMemory();
-            }
-            */
-            
             
             switch (UpdateIntervalMode) {
             case 0:
@@ -563,21 +538,27 @@ namespace DeMixer {
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem("Next wallpaper");			
 			miNext.Activated += (o, e) => {
-				LastUpdateTick = DateTime.Now;	
+				LastUpdateTick = DateTime.Now;
+				DoNext();
 			};
 			
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem("Enable");
 			
 			#region menu Previous
-			Gdk.Pixbuf[] prev = getPreviousImages();
+			LastMenuItemInfo[] prev = getPreviousImages();
 			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem("Previous");
 			if (prev.Length==0) {
 				miLast.Sensitive = false;
 			} else {
-				miEnable.Submenu = new Gtk.Menu();
-				foreach (Gdk.Pixbuf img in prev) {
-					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem("");					
-					((Gtk.Menu)miEnable.Submenu).Append(pmi);
+				miLast.Submenu = new Gtk.Menu();
+				foreach (LastMenuItemInfo linfo in prev) {
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(
+					                                              String.Format("{0}\n{1}",
+					                                                            linfo.Title,
+					                                                            linfo.Date)
+					                                              );
+					pmi.Image = linfo.Image;					
+					((Gtk.Menu)miLast.Submenu).Append(pmi);
 				}
 			}
 			#endregion			
@@ -627,8 +608,42 @@ namespace DeMixer {
 			trayMenu.Popup();
     	}
 		
-		Gdk.Pixbuf[] getPreviousImages() {
-			return new Gdk.Pixbuf[0];
+		internal class LastMenuItemInfo {
+			public LastMenuItemInfo(string fname) {
+				Gdk.Pixbuf pbuf = new Gdk.Pixbuf(fname, 128, 128);
+				title = (new FileInfo(fname)).Name;
+				fileName = fname;
+				image = new Gtk.Image(pbuf);
+				date = File.GetCreationTime(fname);
+			}
+			
+			string title;
+			public string Title {
+				get { return title; }
+			}
+			string fileName;
+			public string FileName {
+				get { return fileName; }
+			}
+			Gtk.Image image;
+			public Gtk.Image Image {
+				get { return image; }	
+			}
+			DateTime date;
+			public DateTime Date {
+				get { return date;}	
+			}
+		}
+		
+		LastMenuItemInfo[] getPreviousImages() {			
+			List<LastMenuItemInfo> list = new List<LastMenuItemInfo>();
+			for (int i=1; i<8; i++) {				
+				string fname = GetUserFileName("last", String.Format("{0}.png", i));				
+				if (File.Exists(fname)) {					
+					list.Add(new LastMenuItemInfo(fname));
+				}
+			}
+			return list.ToArray();
 		}
 		
 #region клик по изображению             
@@ -849,21 +864,20 @@ void MenuUseImageClick(object sender, EventArgs e) {
         
         public string UserDir {
                 get { 
-                        return "~/.config/demixer";
-                        /*todo
+                        //return "~/.config/demixer/";
+                        //todo
                         string appDir = 
                         String.Format("{1}{0}{2}{0}{3}{0}",
                                       Path.DirectorySeparatorChar,
                                       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                                      Application.CompanyName,
-                                          Application.ProductName);
+                                      "ZeDevel",
+                                      "DeMixer");
                         System.IO.Directory.CreateDirectory(appDir);
                         return appDir;
-                        */
-                }
+			}
         }
         
-        public string GetUserFileName(params string[] args) {           
+        public string GetUserFileName(params string[] args) {
                 string res = UserDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
                 FileInfo fi = new FileInfo(res);
                 Directory.CreateDirectory(fi.Directory.FullName);
@@ -873,13 +887,13 @@ void MenuUseImageClick(object sender, EventArgs e) {
         
         public RegistryKey UserRegistry {
                 get {
-                        return null;
-                        /*
+                        //return null;                       
                         return
                                 Registry.CurrentUser.
                                         CreateSubKey("Software").
-                                        CreateSubKey(Application.CompanyName);
-                                        CreateSubKey(Application.ProductName);*/}
+                                        CreateSubKey("ZeDeve").
+                                        CreateSubKey("DeMixer");
+					}
         }
         
         
