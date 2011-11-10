@@ -557,7 +557,11 @@ namespace DeMixer {
 					                                                            linfo.Title,
 					                                                            linfo.Date)
 					                                              );
-					pmi.Image = linfo.Image;					
+					pmi.Image = linfo.Image;
+					char[] imageFileName = linfo.FileName.ToCharArray();
+					pmi.Activated += (o, e) => {						
+						MenuUseImageSelect(new String(imageFileName));
+					};
 					((Gtk.Menu)miLast.Submenu).Append(pmi);
 				}
 			}
@@ -570,7 +574,7 @@ namespace DeMixer {
 			} else {
 				miProfiles.Submenu = new Gtk.Menu();
 				foreach (string pname in GetProfileList()) {
-					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);					
 					((Gtk.Menu)miProfiles.Submenu).Append(pmi);
 				}
 			}
@@ -646,42 +650,40 @@ namespace DeMixer {
 			return list.ToArray();
 		}
 		
-#region клик по изображению             
-/*todo
-void MenuUseImageClick(object sender, EventArgs e) {
-        //todo: MenuItem mi = (MenuItem)sender;
-        string iName = (String)mi.Tag;
-        string cName = GetUserFileName("courient.png");                                                 
-        //заменяем текущее изображение новым
-        if (!File.Exists(iName)) {
-                TrayIcon.ShowBalloonTip(15*1000,
-                                        Translate("core.error"),
-                                        Translate("core.error file not fountd {0}", iName),
-                                        ToolTipIcon.Error);
-                TrayIcon.ContextMenu = GetMenu();                                                               
-                return;                                                         
-        }
-        File.Delete(cName);
-        File.Move(iName, cName);
-        //перемещаем оставшиеся
-        string di = GetUserFileName("last", "");
-        for (int fi=7; fi>=1; fi--) {
-                string fn = String.Format("{0}{1}.png",di, fi);
-                string fnl = String.Format("{0}{1}.png",di, fi+1);
-                if (File.Exists(fn)) {
-                        if (!File.Exists(fnl)) {
-                            File.Move(fn, fnl);
-                        }
-                }
-        }
-        string fnfirst = String.Format("{0}{1}.png",di, 1);                                                     
-        File.Copy(cName, fnfirst);
-        
-        UpdateEffectForLastWallpaper();
-        LastUpdateTick = DateTime.Now;
-        TrayIcon.ContextMenu = GetMenu();
-}
-*/
+#region клик по изображению
+	void MenuUseImageSelect(string iName) {	    
+	    string cName = GetUserFileName("courient.png");                                                 
+	    //заменяем текущее изображение новым
+	    if (!File.Exists(iName)) {
+				/*todo:
+	            TrayIcon.ShowBalloonTip(15*1000,
+	                                    Translate("core.error"),
+	                                    Translate("core.error file not fountd {0}", iName),
+	                                    ToolTipIcon.Error);
+	            TrayIcon.ContextMenu = GetMenu();
+	            */
+	            return;                                                         
+	    }
+	    File.Delete(cName);
+	    File.Move(iName, cName);
+	    //перемещаем оставшиеся
+	    string di = GetUserFileName("last", "");
+	    for (int fi=7; fi>=1; fi--) {
+	            string fn = String.Format("{0}{1}.png",di, fi);
+	            string fnl = String.Format("{0}{1}.png",di, fi+1);
+	            if (File.Exists(fn)) {
+	                    if (!File.Exists(fnl)) {
+	                        File.Move(fn, fnl);
+	                    }
+	            }
+	    }
+	    string fnfirst = String.Format("{0}{1}.png",di, 1);                                                     
+	    File.Copy(cName, fnfirst);
+	    
+	    UpdateEffectForLastWallpaper();
+	    LastUpdateTick = DateTime.Now;			
+	    //todo: TrayIcon.ContextMenu = GetMenu();	    
+	}
 #endregion
         
 #region события на меню
@@ -801,16 +803,16 @@ void MenuUseImageClick(object sender, EventArgs e) {
 	            }
 	        } catch { }			
 		}
-#endregion
+	#endregion
                 
-                public static void RefreshMemory() { 
-            try { 
-                         Process curProc = Process.GetCurrentProcess(); 
-                    curProc.MaxWorkingSet = curProc.MaxWorkingSet; 
+		public static void RefreshMemory() { 
+			try { 
+				Process curProc = Process.GetCurrentProcess(); 
+				curProc.MaxWorkingSet = curProc.MaxWorkingSet; 
             } catch { 
                 // Handle the exception 
-            } 
-        } 
+			} 
+	   	}
                 
 		#region IDeMixerKernel
         public ImagesSource[] SourceList {
