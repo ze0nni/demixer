@@ -13,23 +13,23 @@ using System.Diagnostics;
 using System.Threading;
 
 namespace DeMixer {
-        public class DeMixerMainClass : IDeMixerKernel {		
-                [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-         public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
-                
-                public const int SPI_SETDESKWALLPAPER = 20;
-        public const int SPIF_UPDATEINIFILE = 0x1;
-        public const int SPIF_SENDWININICHANGE = 0x2;
-                
-    [STAThread]
-    private static void Main(string[] args) {
-            Gtk.Application.Init("demixer", ref args);
-            DeMixerMainClass mainClass = new DeMixerMainClass();
-            Gtk.Application.Run();
-    }
-    
-    private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();    
-    public DeMixerMainClass() {            
+		public class DeMixerMainClass : IDeMixerKernel {		
+		        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+		 public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
+		        
+		        public const int SPI_SETDESKWALLPAPER = 20;
+		public const int SPIF_UPDATEINIFILE = 0x1;
+		public const int SPIF_SENDWININICHANGE = 0x2;
+		        
+		[STAThread]
+		private static void Main(string[] args) {
+		        Gtk.Application.Init("demixer", ref args);
+		        DeMixerMainClass mainClass = new DeMixerMainClass();
+		        Gtk.Application.Run();
+		}
+		
+		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();					
+	    public DeMixerMainClass() {			
             TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += (o, e) => {
 				HandlePopupMenu();	
@@ -50,15 +50,14 @@ namespace DeMixer {
                     break;
             }
             
-            //Application.ApplicationExit += HandleApplicationExit;
-            
+            //Application.ApplicationExit += HandleApplicationExit;			
+            GLib.Timeout.Add(100, HandleTick);
+			
             TrayIcon.File = @"/usr/share/demixer/icon";            
             TrayIcon.Visible = true;                    					
-            
             RefreshMemory();			
-        }
-
-
+        }		
+		
 	    void HandleActivate(object sender, EventArgs e) {
 			
 		}		
@@ -79,21 +78,20 @@ namespace DeMixer {
                 }
         }
         
-        private DateTime LastUpdateTick = DateTime.Now;
-		
-        private void HandleTick(object state) {			
+        private DateTime LastUpdateTick = DateTime.Now;		
+        bool HandleTick() {				
 	        try {  				
-				return;
 	            lock (NextProcessThreadSync) {					
-	                if (IsGenerateNewPhoto) return;					
-	                if (LastUpdateTick.AddMilliseconds(UpdateInterval) <= DateTime.Now) {
-	                	//todo: Application.DoEvents();						
-	                    StartThread();			
-					}					
+	                if (IsGenerateNewPhoto) return true;					
+	                if (LastUpdateTick.AddMilliseconds(UpdateInterval) <= DateTime.Now) {	                	
+	                    StartThread();
+					}	
 	            }
 	        } catch(Exception exc) {					
-	                WriteLog(exc);
+	            WriteLog(exc);
+				return true;
 	        }
+			return true;
         }
         
         private System.Threading.Thread NextProcessThread;
@@ -539,7 +537,7 @@ namespace DeMixer {
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem("Next wallpaper");			
 			miNext.Activated += (o, e) => {
 				LastUpdateTick = DateTime.Now;
-				DoNext();
+				//DoNext();
 			};
 			
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem("Enable");
