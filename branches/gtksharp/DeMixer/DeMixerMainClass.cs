@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Resources;
 using System.Diagnostics;
 using System.Threading;
+//todo: user-agent
 
 namespace DeMixer {
 		public class DeMixerMainClass : IDeMixerKernel {		
@@ -53,7 +54,7 @@ namespace DeMixer {
             //Application.ApplicationExit += HandleApplicationExit;			
             GLib.Timeout.Add(100, HandleTick);
 			
-            TrayIcon.File = @"/usr/share/demixer/icon";            
+            TrayIcon.File = @"./icon.png";            
             TrayIcon.Visible = true;                    					
             RefreshMemory();			
         }		
@@ -649,7 +650,7 @@ namespace DeMixer {
 		}
 		
 #region клик по изображению
-	void MenuUseImageSelect(string iName) {	    
+	void MenuUseImageSelect(string iName) {
 	    string cName = GetUserFileName("courient.png");                                                 
 	    //заменяем текущее изображение новым
 	    if (!File.Exists(iName)) {
@@ -661,7 +662,7 @@ namespace DeMixer {
 	            TrayIcon.ContextMenu = GetMenu();
 	            */
 	            return;                                                         
-	    }
+	    }		
 	    File.Delete(cName);
 	    File.Move(iName, cName);
 	    //перемещаем оставшиеся
@@ -671,10 +672,10 @@ namespace DeMixer {
 	            string fnl = String.Format("{0}{1}.png",di, fi+1);
 	            if (File.Exists(fn)) {
 	                    if (!File.Exists(fnl)) {
-	                        File.Move(fn, fnl);
+	                        File.Move(fn, fnl);							
 	                    }
 	            }
-	    }
+	    }		
 	    string fnfirst = String.Format("{0}{1}.png",di, 1);                                                     
 	    File.Copy(cName, fnfirst);
 	    
