@@ -59,7 +59,7 @@ namespace DeMixer.lib.std {
 		public override System.Drawing.Image GetNextImage() {			
 			WebClient wc = new WebClient();	
 		 //todo: user-agent
-			wc.Headers.Add("user-agent", "DeMixer/1.0 (http://code.google.com/p/demixer)");
+			wc.Headers.Add("user-agent", "DeMixer (http://code.google.com/p/demixer)/1.0");
 			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
 			XmlDocument doc = new XmlDocument();
 			doc.Load(new MemoryStream(data));
