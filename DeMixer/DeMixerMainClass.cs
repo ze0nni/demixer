@@ -54,7 +54,7 @@ namespace DeMixer {
             //Application.ApplicationExit += HandleApplicationExit;			
             GLib.Timeout.Add(100, HandleTick);
 			
-            TrayIcon.File = @"./icon.png";            
+            UpdateTrayIcon();
             TrayIcon.Visible = true;                    					
             RefreshMemory();			
         }		
@@ -72,20 +72,31 @@ namespace DeMixer {
 	        get { return FIsGenerateNewPhoto; }
 	        set {
 				FIsGenerateNewPhoto = value;
-				Gtk.Application.Invoke(delegate {
-	            	if (value) 
-	                        TrayIcon.File = @"/usr/share/demixer/iconu";
-	                else
-	                        TrayIcon.File = @"/usr/share/demixer/icon";
-				});
+				UpdateTrayIcon();
 	        }
         }
         
+		int TraiIconAnimationTick = 0;
+		void UpdateTrayIcon() {			
+			Gtk.Application.Invoke(delegate {
+            	if (IsGenerateNewPhoto) {
+                    TrayIcon.File = String.Format(@"/usr/share/demixer/iconu{0}.png", TraiIconAnimationTick+1);
+					TraiIconAnimationTick++;
+					if (TraiIconAnimationTick>7) TraiIconAnimationTick=0;	
+				} else {
+                        TrayIcon.File = @"/usr/share/demixer/icon";
+				}
+			});	
+		}
+		
         private DateTime LastUpdateTick = DateTime.Now;		
         bool HandleTick() {				
 	        try {  				
 	            lock (NextProcessThreadSync) {					
-	                if (IsGenerateNewPhoto) return true;					
+	                if (IsGenerateNewPhoto) {
+						UpdateTrayIcon();
+						return true;					
+					}
 	                if (LastUpdateTick.AddMilliseconds(UpdateInterval) <= DateTime.Now) {	                	
 	                    StartThread();
 					}	
@@ -539,8 +550,7 @@ namespace DeMixer {
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
 			miNext.Activated += (o, e) => {
-				LastUpdateTick = DateTime.Now;
-				//DoNext();
+				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
 			};
 			
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
