@@ -69,14 +69,16 @@ namespace DeMixer {
 
         private bool FIsGenerateNewPhoto = false;
         protected bool IsGenerateNewPhoto {
-                get { return FIsGenerateNewPhoto; }
-                set {                           
-                        FIsGenerateNewPhoto = value;
-                        if (value) 
-                                TrayIcon.File = @"/usr/share/demixer/iconu";
-                        else
-                                TrayIcon.File = @"/usr/share/demixer/icon";
-                }
+	        get { return FIsGenerateNewPhoto; }
+	        set {
+				FIsGenerateNewPhoto = value;
+				Gtk.Application.Invoke(delegate {
+	            	if (value) 
+	                        TrayIcon.File = @"/usr/share/demixer/iconu";
+	                else
+	                        TrayIcon.File = @"/usr/share/demixer/icon";
+				});
+	        }
         }
         
         private DateTime LastUpdateTick = DateTime.Now;		
