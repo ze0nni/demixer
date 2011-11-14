@@ -537,17 +537,17 @@ namespace DeMixer {
 		void HandlePopupMenu() {
     		Gtk.Menu trayMenu = new Gtk.Menu();
 			
-			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem("Next wallpaper");			
+			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
 			miNext.Activated += (o, e) => {
 				LastUpdateTick = DateTime.Now;
 				//DoNext();
 			};
 			
-			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem("Enable");
+			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
 			
 			#region menu Previous
 			LastMenuItemInfo[] prev = getPreviousImages();
-			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem("Previous");
+			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));
 			if (prev.Length==0) {
 				miLast.Sensitive = false;
 			} else {
@@ -569,7 +569,7 @@ namespace DeMixer {
 			#endregion			
 			#region menu profiles
 			string[] profiles = GetProfileList();			
-			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem("Profiles");
+			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem(Translate("Profiles"));
 			if (profiles.Length == 0) {
 				miProfiles.Sensitive = false;
 			} else {
@@ -581,21 +581,21 @@ namespace DeMixer {
 			}
 			#endregion
 			
-			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem("Configuration");
+			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem(Translate("Configuration"));
 			miConfig.Activated += (o, e) => {
 				ConfigDlg dlg = new ConfigDlg(this);
 				dlg.Modal = true;
 				dlg.ShowAll();
 			};
 			
-			Gtk.ImageMenuItem miAbout = new Gtk.ImageMenuItem("About");
+			Gtk.ImageMenuItem miAbout = new Gtk.ImageMenuItem(Translate("About"));
 			miAbout.Activated  += (o, e) => {
 				AboutDialog dlg = new AboutDialog();
 				dlg.Modal = true;
 				dlg.ShowAll();
 			};
 			
-			Gtk.MenuItem miExit = new Gtk.ImageMenuItem("Exit");
+			Gtk.MenuItem miExit = new Gtk.ImageMenuItem(Translate("Exit"));
 			miExit.Activated += (o, e) => {
 				Gtk.Application.Quit();	
 			};
