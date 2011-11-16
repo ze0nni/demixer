@@ -91,8 +91,7 @@ namespace DeMixer {
 		}
 		
         private DateTime LastUpdateTick = DateTime.Now;		
-        bool HandleTick() {				
-			return true;
+        bool HandleTick() {							
 	        try {  				
 	            lock (NextProcessThreadSync) {					
 	                if (IsGenerateNewPhoto) {
