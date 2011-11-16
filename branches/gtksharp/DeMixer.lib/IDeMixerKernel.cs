@@ -1,5 +1,6 @@
 
 using System;
+using System.Net;
 
 namespace DeMixer.lib {
 	public interface IDeMixerKernel {
@@ -75,5 +76,7 @@ namespace DeMixer.lib {
 		string Translate(string format, params object[] args);
 		
 		void ShowNotify(string title, string message, bool errorIcon);
+		
+		WebClient GetWebClient();
 	}
 }

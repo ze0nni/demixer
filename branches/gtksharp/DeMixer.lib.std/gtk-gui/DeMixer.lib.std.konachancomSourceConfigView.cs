@@ -19,7 +19,7 @@ namespace DeMixer.lib.std {
         
         private Gtk.Label tagsLabel;
         
-        private Gtk.Entry entry1;
+        private Gtk.Entry tagsEdit;
         
         protected virtual void Build() {
             Stetic.Gui.Initialize(this);
@@ -44,13 +44,13 @@ namespace DeMixer.lib.std {
             w1.Expand = false;
             w1.Fill = false;
             // Container child hbox6.Gtk.Box+BoxChild
-            this.entry1 = new Gtk.Entry();
-            this.entry1.CanFocus = true;
-            this.entry1.Name = "entry1";
-            this.entry1.IsEditable = true;
-            this.entry1.InvisibleChar = '●';
-            this.hbox6.Add(this.entry1);
-            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox6[this.entry1]));
+            this.tagsEdit = new Gtk.Entry();
+            this.tagsEdit.CanFocus = true;
+            this.tagsEdit.Name = "tagsEdit";
+            this.tagsEdit.IsEditable = true;
+            this.tagsEdit.InvisibleChar = '●';
+            this.hbox6.Add(this.tagsEdit);
+            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox6[this.tagsEdit]));
             w2.Position = 1;
             this.vbox4.Add(this.hbox6);
             Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox4[this.hbox6]));
@@ -62,6 +62,7 @@ namespace DeMixer.lib.std {
                 this.Child.ShowAll();
             }
             this.Hide();
+            this.tagsEdit.Changed += new System.EventHandler(this.OnTagsEditChanged);
         }
     }
 }

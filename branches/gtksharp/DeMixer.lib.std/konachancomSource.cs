@@ -57,9 +57,8 @@ namespace DeMixer.lib.std {
 		
 		private Random rnd = new Random();
 		public override System.Drawing.Image GetNextImage() {			
-			WebClient wc = new WebClient();	
-		 //todo: user-agent
-			wc.Headers.Add("user-agent", "DeMixer (http://code.google.com/p/demixer)/1.0");
+			WebClient wc = Kernel.GetWebClient();
+		 //todo: user-agent			
 			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
 			XmlDocument doc = new XmlDocument();
 			doc.Load(new MemoryStream(data));

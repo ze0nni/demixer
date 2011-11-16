@@ -145,11 +145,12 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry1">
+              <widget class="Gtk.Entry" id="tagsEdit">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
+                <signal name="Changed" handler="OnTagsEditChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -197,11 +198,12 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry2">
+              <widget class="Gtk.Entry" id="tagsEdit">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
+                <signal name="Changed" handler="OnTagsEditChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -248,7 +250,7 @@ add "Desktop wallpaper"</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.ComboBox" id="combobox2">
+              <widget class="Gtk.ComboBox" id="imageSizeCombo">
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes">Large
@@ -277,7 +279,7 @@ Hude</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.ComboBox" id="combobox3">
+              <widget class="Gtk.ComboBox" id="imageColorCombo">
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes">All

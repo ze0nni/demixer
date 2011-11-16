@@ -39,9 +39,9 @@ namespace DeMixer.lib.std
 			}
 		}
 		
-		string imgSize = "Large";
-		string imgColor = "All";
-		bool saveToHistory = false;
+		public string imgSize = "Large";
+		public string imgColor = "All";
+		public bool saveToHistory = false;
 		
 		public override bool AllowTags {
 				get { return true; }

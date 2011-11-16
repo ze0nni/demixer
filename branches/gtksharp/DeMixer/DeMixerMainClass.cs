@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Resources;
 using System.Diagnostics;
 using System.Threading;
+using System.Net;
 //todo: user-agent
 
 namespace DeMixer {
@@ -91,6 +92,7 @@ namespace DeMixer {
 		
         private DateTime LastUpdateTick = DateTime.Now;		
         bool HandleTick() {				
+			return true;
 	        try {  				
 	            lock (NextProcessThreadSync) {					
 	                if (IsGenerateNewPhoto) {
@@ -545,6 +547,7 @@ namespace DeMixer {
         }
         */
         
+		Gtk.Widget LastConfigDialog = null;
 		void HandlePopupMenu() {
     		Gtk.Menu trayMenu = new Gtk.Menu();
 			
@@ -593,9 +596,17 @@ namespace DeMixer {
 			
 			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem(Translate("Configuration"));
 			miConfig.Activated += (o, e) => {
-				ConfigDlg dlg = new ConfigDlg(this);
+				if (LastConfigDialog != null) {
+					LastConfigDialog.ShowAll();
+					return;
+				}
+				ConfigDlg dlg = new ConfigDlg(this);				
+				LastConfigDialog = dlg;
 				dlg.Modal = true;
-				dlg.ShowAll();
+				dlg.Hidden += delegate {
+					LastConfigDialog = null;
+				};
+				dlg.ShowAll();				
 			};
 			
 			Gtk.ImageMenuItem miAbout = new Gtk.ImageMenuItem(Translate("About"));
@@ -1177,6 +1188,12 @@ namespace DeMixer {
                 break;
 			}       
         }		
+		
+		public WebClient GetWebClient() {
+			System.Net.WebClient wc = new System.Net.WebClient();
+			wc.Headers.Add("user-agent", "DeMixer (http://code.google.com/p/demixer)/1.0");
+			return wc;
+		}
         #endregion
         }
 }
