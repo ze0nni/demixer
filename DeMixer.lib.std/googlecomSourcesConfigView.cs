@@ -1,4 +1,3 @@
-
 using System;
 
 namespace DeMixer.lib.std
@@ -9,10 +8,15 @@ namespace DeMixer.lib.std
 	public partial class googlecomSourcesConfigView : Gtk.Bin
 	{
 		googlecomSources Source;
-		public googlecomSourcesConfigView(googlecomSources source)
-		{
+
+		protected virtual void OnTagsEditChanged (object sender, System.EventArgs e) {
+			Source.Tags = tagsEdit.Text;
+		}
+		
+		public googlecomSourcesConfigView(googlecomSources source) {
 			this.Build();
 			Source = source;
+			tagsEdit.Text = Source.Tags;						
 		}
 	}
 }

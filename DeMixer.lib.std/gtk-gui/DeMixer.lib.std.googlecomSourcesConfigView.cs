@@ -19,7 +19,7 @@ namespace DeMixer.lib.std {
         
         private Gtk.Label label5;
         
-        private Gtk.Entry entry2;
+        private Gtk.Entry tagsEdit;
         
         private Gtk.ComboBox combobox1;
         
@@ -56,13 +56,13 @@ namespace DeMixer.lib.std {
             w1.Expand = false;
             w1.Fill = false;
             // Container child hbox7.Gtk.Box+BoxChild
-            this.entry2 = new Gtk.Entry();
-            this.entry2.CanFocus = true;
-            this.entry2.Name = "entry2";
-            this.entry2.IsEditable = true;
-            this.entry2.InvisibleChar = '●';
-            this.hbox7.Add(this.entry2);
-            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox7[this.entry2]));
+            this.tagsEdit = new Gtk.Entry();
+            this.tagsEdit.CanFocus = true;
+            this.tagsEdit.Name = "tagsEdit";
+            this.tagsEdit.IsEditable = true;
+            this.tagsEdit.InvisibleChar = '●';
+            this.hbox7.Add(this.tagsEdit);
+            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox7[this.tagsEdit]));
             w2.Position = 1;
             // Container child hbox7.Gtk.Box+BoxChild
             this.combobox1 = Gtk.ComboBox.NewText();
@@ -147,6 +147,7 @@ namespace DeMixer.lib.std {
                 this.Child.ShowAll();
             }
             this.Hide();
+            this.tagsEdit.Changed += new System.EventHandler(this.OnTagsEditChanged);
         }
     }
 }
