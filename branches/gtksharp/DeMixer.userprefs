@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/googlecomSourcesConfigView.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="594" Column="5" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="94" Column="32" />
       <File FileName="DeMixer.lib.std/googlecomSourcesConfigView.cs" Line="19" Column="35" />
       <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="44" Column="10" />
     </Files>
@@ -22,4 +22,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
