@@ -19,7 +19,7 @@ namespace DeMixer {
 		        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
 		 public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
 		        
-		        public const int SPI_SETDESKWALLPAPER = 20;
+		public const int SPI_SETDESKWALLPAPER = 20;
 		public const int SPIF_UPDATEINIFILE = 0x1;
 		public const int SPIF_SENDWININICHANGE = 0x2;
 		        
@@ -33,9 +33,7 @@ namespace DeMixer {
 		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();					
 	    public DeMixerMainClass() {			
             TrayIcon.Activate += HandleActivate;
-			TrayIcon.PopupMenu += (o, e) => {
-				HandlePopupMenu();	
-			};
+			TrayIcon.PopupMenu += HandlePopupMenu;
 				
             UpdatePlugins();                        
             ReadSettings();
@@ -201,7 +199,7 @@ namespace DeMixer {
                             } catch(Exception exc) {
                                     
                             }
-                    }                                       
+                    }					
                     fName = String.Format("{0}{1}.png", fDir, 1);
                     File.Delete(fName);                                     
                     img.Save(fName, ImageFormat.Png);
@@ -245,31 +243,36 @@ namespace DeMixer {
         }
         
         private void ApplyEffectsAndSetAsWallpaper(System.Drawing.Image img) {
-                foreach (ImagePostEffect ef in ActiveEffects) {
-                        img = ef.Execute(img);  
-                }
-                /*
-                string fDir = String.Format("{1}{0}{2}",
-                            Path.DirectorySeparatorChar,
-                            Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                            Application.ProductName);
-    
-                */
-                string fDir = GetUserFileName("");
-                // BMP  
-                Directory.CreateDirectory(fDir);                                
-                string fName = String.Format("{1}{0}courient.bmp",
-                                            Path.DirectorySeparatorChar,
-                                            fDir);
-                img.Save(fName, ImageFormat.Bmp);                                                               
-                
-                switch (Environment.OSVersion.Platform) {
-                case PlatformID.Win32NT:
-                case PlatformID.Win32S:
-                case PlatformID.Win32Windows:                           
-                        SystemParametersInfo(SPI_SETDESKWALLPAPER, 1, Marshal.StringToBSTR(fName), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
-                        break;
-                }       
+            foreach (ImagePostEffect ef in ActiveEffects) {
+                    img = ef.Execute(img);  
+            }			
+            bool isWindow = Environment.OSVersion.Platform == PlatformID.Win32Windows;
+			
+			string fDir = GetImageFileName("");
+            // BMP  
+            Directory.CreateDirectory(fDir);	
+            string fName = String.Format("{0}demixer-wallpaper.{1}",                                        
+                                        fDir,
+			                            isWindow ? "bmp" : "png");
+            img.Save(fName, isWindow ? ImageFormat.Bmp : ImageFormat.Png);
+            Console.WriteLine(fName);
+			
+            switch (Environment.OSVersion.Platform) {
+            case PlatformID.Win32NT:
+            case PlatformID.Win32S:
+            case PlatformID.Win32Windows:                           
+                SystemParametersInfo(SPI_SETDESKWALLPAPER, 1, Marshal.StringToBSTR(fName), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+                break;
+			case PlatformID.Unix:
+				//gsettings set org.gnome.desktop.background picture-uri 'file://'
+				string program = "gsettings";
+				string args = String.Format("set org.gnome.desktop.background picture-uri 'file://{0}'", fName);				
+				ProcessStartInfo psi = new ProcessStartInfo(program, args);
+		        Process p = new Process();
+		        p.StartInfo = psi;
+		        p.Start();
+				break;
+            }       
         }
         
         public void UpdateEffectForLastWallpaper() {
@@ -547,7 +550,7 @@ namespace DeMixer {
         */
         
 		Gtk.Widget LastConfigDialog = null;
-		void HandlePopupMenu() {
+		void HandlePopupMenu(object sender, Gtk.PopupMenuArgs args) {
     		Gtk.Menu trayMenu = new Gtk.Menu();
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
@@ -558,7 +561,8 @@ namespace DeMixer {
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
 			
 			#region menu Previous
-			LastMenuItemInfo[] prev = getPreviousImages();
+			//LastMenuItemInfo[] prev = getPreviousImages();
+			LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
 			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));
 			if (prev.Length==0) {
 				miLast.Sensitive = false;
@@ -628,9 +632,9 @@ namespace DeMixer {
 			trayMenu.Append(miConfig);
 			trayMenu.Append(miAbout);
 			trayMenu.Append(miExit);
-			
+								
 			trayMenu.ShowAll();
-			trayMenu.Popup();
+			TrayIcon.PresentMenu(trayMenu, (uint)args.Args[0], (uint)args.Args[1]);
     	}
 		
 		internal class LastMenuItemInfo {
@@ -900,11 +904,19 @@ namespace DeMixer {
 			}
         }
         
+		public string GetImageFileName(params string[] args) {
+			string imgdir = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+	        string res = imgdir + Path.DirectorySeparatorChar.ToString() + string.Join(Path.DirectorySeparatorChar.ToString(), args);
+	        FileInfo fi = new FileInfo(res);
+	        Directory.CreateDirectory(fi.Directory.FullName);
+	        return res;
+		}
+		
         public string GetUserFileName(params string[] args) {
-                string res = UserDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
-                FileInfo fi = new FileInfo(res);
-                Directory.CreateDirectory(fi.Directory.FullName);
-                return res;
+	        string res = UserDir + string.Join(Path.DirectorySeparatorChar.ToString(), args);
+	        FileInfo fi = new FileInfo(res);
+	        Directory.CreateDirectory(fi.Directory.FullName);
+	        return res;
         }
         
         
