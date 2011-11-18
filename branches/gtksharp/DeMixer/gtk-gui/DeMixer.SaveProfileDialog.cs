@@ -76,7 +76,7 @@ namespace DeMixer
 			this.checkbutton4 = new global::Gtk.CheckButton ();
 			this.checkbutton4.CanFocus = true;
 			this.checkbutton4.Name = "checkbutton4";
-			this.checkbutton4.Label = global::Mono.Unix.Catalog.GetString ("Save Effects");
+			this.checkbutton4.Label = global::Mono.Unix.Catalog.GetString ("Save effects");
 			this.checkbutton4.DrawIndicator = true;
 			this.checkbutton4.UseUnderline = true;
 			this.hbox4.Add (this.checkbutton4);
@@ -126,8 +126,8 @@ namespace DeMixer
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 304;
-			this.DefaultHeight = 100;
+			this.DefaultWidth = 325;
+			this.DefaultHeight = 143;
 			this.Show ();
 		}
 	}

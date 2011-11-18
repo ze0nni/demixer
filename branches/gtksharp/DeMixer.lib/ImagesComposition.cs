@@ -43,6 +43,11 @@ namespace DeMixer.lib {
 			return true;
 		}
 		
+		public virtual Gtk.Widget ExpandControl {
+			get { return null; }		
+		}
+				
+		
 		public virtual void ReadSettings(IDeMixerKernel k) {
 			string fileName = k.GetUserFileName("plugins",
 			                                    "settings",

@@ -30,7 +30,7 @@ namespace DeMixer
 
 		private global::Gtk.Label CompositionInformationLabel;
 
-		private global::Gtk.HBox hbox11;
+		private global::Gtk.HBox CompositionVBox1;
 
 		private global::Gtk.Image image776;
 
@@ -133,6 +133,7 @@ namespace DeMixer
 			global::Stetic.Gui.Initialize (this);
 			// Widget DeMixer.ConfigDlg
 			this.Name = "DeMixer.ConfigDlg";
+			this.Title = global::Mono.Unix.Catalog.GetString ("Demixer config dialog");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			this.Modal = true;
 			this.BorderWidth = ((uint)(6));
@@ -148,7 +149,7 @@ namespace DeMixer
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 3;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.SourceVBox = new global::Gtk.VBox ();
 			this.SourceVBox.Name = "SourceVBox";
@@ -240,17 +241,17 @@ namespace DeMixer
 			w10.Expand = false;
 			w10.Fill = false;
 			// Container child CompositionVBox.Gtk.Box+BoxChild
-			this.hbox11 = new global::Gtk.HBox ();
-			this.hbox11.Name = "hbox11";
-			this.hbox11.Spacing = 6;
-			// Container child hbox11.Gtk.Box+BoxChild
+			this.CompositionVBox1 = new global::Gtk.HBox ();
+			this.CompositionVBox1.Name = "CompositionVBox1";
+			this.CompositionVBox1.Spacing = 6;
+			// Container child CompositionVBox1.Gtk.Box+BoxChild
 			this.image776 = new global::Gtk.Image ();
 			this.image776.Name = "image776";
-			this.hbox11.Add (this.image776);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.image776]));
+			this.CompositionVBox1.Add (this.image776);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1[this.image776]));
 			w11.Position = 1;
-			this.CompositionVBox.Add (this.hbox11);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox[this.hbox11]));
+			this.CompositionVBox.Add (this.CompositionVBox1);
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox[this.CompositionVBox1]));
 			w12.Position = 1;
 			w12.Expand = false;
 			w12.Fill = false;
@@ -749,7 +750,6 @@ namespace DeMixer
 			w106.Fill = false;
 			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
 			this.saveProfileBtn = new global::Gtk.Button ();
-			this.saveProfileBtn.Sensitive = false;
 			this.saveProfileBtn.CanFocus = true;
 			this.saveProfileBtn.Name = "saveProfileBtn";
 			this.saveProfileBtn.UseUnderline = true;
@@ -857,7 +857,7 @@ namespace DeMixer
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 506;
-			this.DefaultHeight = 397;
+			this.DefaultHeight = 401;
 			this.Show ();
 			this.SourceComboBox.Changed += new global::System.EventHandler (this.OnSourceComboBoxChanged);
 			this.CompositionComboBox.Changed += new global::System.EventHandler (this.OnCompositionComboBoxChanged);
@@ -866,6 +866,7 @@ namespace DeMixer
 			this.saveHistoryChBox.Clicked += new global::System.EventHandler (this.OnSaveHistoryChBoxClicked);
 			this.historyLimitSizeChBox.Clicked += new global::System.EventHandler (this.OnHistoryLimitSizeChBoxClicked);
 			this.saveProfileBtn.Clicked += new global::System.EventHandler (this.OnsaveProfileBtnClicked);
+			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
 }

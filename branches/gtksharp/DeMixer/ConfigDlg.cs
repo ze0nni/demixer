@@ -11,16 +11,18 @@ namespace DeMixer
 	{
 
 		protected virtual void OnsaveProfileBtnClicked (object sender, System.EventArgs e) {
-			SaveProfileDialog dlg = new SaveProfileDialog();
-			dlg.Modal = true;
-			dlg.ShowAll();
+			SaveProfileDialog dlg =
+				new SaveProfileDialog("Save profeile dialog", this);
+			Kernel.TranslateWidget(dlg);			
+			dlg.Run();
+			dlg.Destroy();
 		}	
 		
 		IDeMixerKernel Kernel;
 		public ConfigDlg(IDeMixerKernel k) {			
 			this.Build();
 			Kernel = k;
-			init();			
+			init();
 		}
 		
 		//Список активных эффектов
@@ -69,28 +71,44 @@ namespace DeMixer
 			}
 		}
 
-		Gtk.Widget lastView = null;
+		Gtk.Widget lastSourceView = null;
 		protected virtual void OnSourceComboBoxChanged (object sender, System.EventArgs e) {
 			Kernel.ActiveSourceIndex = SourceComboBox.Active;
 			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
 			Gtk.Widget view = Kernel.ActiveSource.ExpandTagsControl;
 			
-			if (lastView != null) {
-				SourceVBox.Remove(lastView);	
+			if (lastSourceView != null) {
+				SourceVBox.Remove(lastSourceView);	
+				lastSourceView.Destroy();
 			}
 			
 			if (view==null) {
-				view = new Gtk.Label(Kernel.Translate("no options"));	
+				view = new Gtk.Label("no options");	
 			}
-				
-			lastView = view;
+			Kernel.TranslateWidget(view);
+			lastSourceView = view;
 			SourceVBox.Add(view);
 			view.ShowAll();			
 		}
-
+		
+		Gtk.Widget lastCompositionView = null;
 		protected virtual void OnCompositionComboBoxChanged (object sender, System.EventArgs e) {
 			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
 			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
+			
+			Gtk.Widget view = Kernel.ActiveComposition.ExpandControl;
+			
+			if (lastCompositionView != null) {
+				CompositionVBox.Remove(lastCompositionView);	
+				lastCompositionView.Destroy();
+			}			
+			if (view==null) {
+				view = new Gtk.Label("no options");	
+			}
+			Kernel.TranslateWidget(view);
+			lastCompositionView = view;
+			CompositionVBox.Add(view);						
+			view.ShowAll();			
 		}
 
 		protected virtual void OnEffectsComboBoxChanged (object sender, System.EventArgs e) {
@@ -111,5 +129,12 @@ namespace DeMixer
 		protected virtual void OnHistoryLimitSizeChBoxClicked (object sender, System.EventArgs e){
 			historyMaxSizeSpin.Sensitive = historyLimitSizeChBox.Active;
 		}
+		protected virtual void OnButtonOkClicked (object sender, System.EventArgs e) {
+			//todo: save
+			this.Hide();
+			this.HideAll();
+		}
+		
+		
 	}
 }
