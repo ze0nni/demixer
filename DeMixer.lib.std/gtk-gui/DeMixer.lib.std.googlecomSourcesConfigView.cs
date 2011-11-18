@@ -41,7 +41,7 @@ namespace DeMixer.lib.std
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.label5 = new global::Gtk.Label ();
 			this.label5.Name = "label5";
-			this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("responce");
+			this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("Responce");
 			this.hbox7.Add (this.label5);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.label5]));
 			w1.Position = 0;
@@ -79,7 +79,7 @@ namespace DeMixer.lib.std
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.size = new global::Gtk.Label ();
 			this.size.Name = "size";
-			this.size.LabelProp = global::Mono.Unix.Catalog.GetString ("size");
+			this.size.LabelProp = global::Mono.Unix.Catalog.GetString ("Images size");
 			this.hbox8.Add (this.size);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.size]));
 			w5.Position = 0;
@@ -101,7 +101,7 @@ namespace DeMixer.lib.std
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
-			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("color");
+			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("Color");
 			this.hbox8.Add (this.label7);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.label7]));
 			w7.Position = 2;

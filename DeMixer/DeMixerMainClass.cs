@@ -562,8 +562,8 @@ namespace DeMixer {
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
 			
 			#region menu Previous
-			//LastMenuItemInfo[] prev = getPreviousImages();
-			LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
+			LastMenuItemInfo[] prev = getPreviousImages();
+			//LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
 			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));
 			if (prev.Length==0) {
 				miLast.Sensitive = false;
