@@ -90,6 +90,7 @@ namespace DeMixer {
 		
         private DateTime LastUpdateTick = DateTime.Now;		
         bool HandleTick() {							
+			return true; 
 	        try {  				
 	            lock (NextProcessThreadSync) {					
 	                if (IsGenerateNewPhoto) {
@@ -135,7 +136,7 @@ namespace DeMixer {
                 }
         }
         
-        private void DoNext() {         			
+        private void DoNext() {         						
             try {
                 ActiveComposition.Source = ActiveSource;                                
                 System.Drawing.Image img = null;
@@ -600,16 +601,18 @@ namespace DeMixer {
 			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem(Translate("Configuration"));
 			miConfig.Activated += (o, e) => {
 				if (LastConfigDialog != null) {
-					LastConfigDialog.ShowAll();
-					return;
+						LastConfigDialog.ShowAll();
+						return;
 				}
-				ConfigDlg dlg = new ConfigDlg(this);				
-				LastConfigDialog = dlg;
-				dlg.Modal = true;
-				dlg.Hidden += delegate {
-					LastConfigDialog = null;
-				};
-				dlg.ShowAll();				
+				try {					
+					ConfigDlg dlg = new ConfigDlg(this);
+					LastConfigDialog = dlg;
+					TranslateWidget(dlg);
+					dlg.Run();
+					dlg.Destroy();
+				} finally {
+					LastConfigDialog = null;			
+				}
 			};
 			
 			Gtk.ImageMenuItem miAbout = new Gtk.ImageMenuItem(Translate("About"));
@@ -1172,6 +1175,28 @@ namespace DeMixer {
                         format = formato;
                 return String.Format(format, args).Replace("\\n", "\n").Replace("\\t", "\t");
         }
+						
+		public void TranslateWidget(Gtk.Widget w) {
+			Type t = w.GetType();
+			//TextPropertys 
+			string[] textPropertys = {"Title", "Text", "123"};
+			foreach (string propName in textPropertys) {
+				PropertyInfo piTextProp = t.GetProperty(propName);
+				if (piTextProp != null) {
+					string piTitleVal = piTextProp.GetValue(w, new object[0]).ToString();
+					piTextProp.SetValue(w, Translate(piTitleVal.Replace("_", "")), new object[0]);	
+				}
+			}
+			//Childs
+			PropertyInfo piChildren = t.GetProperty("Children");
+			if (piChildren != null) {
+				Gtk.Widget[] children = (Gtk.Widget[])piChildren.GetValue(w, new object[0]);
+				foreach (Gtk.Widget cw in children) {
+					//Console.WriteLine(cw.Name);	
+					TranslateWidget(cw);
+				}
+			}
+		}
         
         public void ShowNotify(string title, string message, bool errorIcon) {
         	switch (Environment.OSVersion.Platform) {                                                               
@@ -1182,7 +1207,7 @@ namespace DeMixer {
                 TrayIcon.BalloonTipText = message;
                 TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
                 TrayIcon.ShowBalloonTip(1000*15);
-                */
+              */
                 break;		
             case PlatformID.Unix:   
             default:

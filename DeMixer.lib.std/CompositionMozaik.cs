@@ -105,6 +105,11 @@ namespace DeMixer.lib.std {
 			return true;
 		}
 		
+		public override Gtk.Widget ExpandControl {
+			get {
+				return new CompositionMozaikConfigView(this);				
+			}
+		}
 		
 		public override void ShowDialog (){
 			//CompositionMozaikDlg dlg = new CompositionMozaikDlg(this);

@@ -74,6 +74,7 @@ namespace DeMixer.lib {
 		}
 		
 		string Translate(string format, params object[] args);
+		void TranslateWidget(Gtk.Widget w);
 		
 		void ShowNotify(string title, string message, bool errorIcon);
 		

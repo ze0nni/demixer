@@ -5,9 +5,8 @@
   </MonoDevelop.Ide.DebuggingService>
   <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="94" Column="32" />
-      <File FileName="DeMixer.lib.std/googlecomSourcesConfigView.cs" Line="19" Column="35" />
-      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="44" Column="10" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="567" Column="30" />
+      <File FileName="DeMixer.lib/ImagesSource.cs" Line="44" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

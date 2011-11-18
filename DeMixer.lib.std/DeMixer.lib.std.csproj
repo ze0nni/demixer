@@ -67,6 +67,10 @@
     <Compile Include="gtk-gui\DeMixer.lib.std.konachancomSourceConfigView.cs" />
     <Compile Include="googlecomSourcesConfigView.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.googlecomSourcesConfigView.cs" />
+    <Compile Include="CompositionMozaikConfigView.cs" />
+    <Compile Include="gtk-gui\DeMixer.lib.std.CompositionMozaikConfigView.cs" />
+    <Compile Include="CompositionSeasonsConfigView.cs" />
+    <Compile Include="gtk-gui\DeMixer.lib.std.CompositionSeasonsConfigView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

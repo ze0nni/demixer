@@ -113,6 +113,12 @@ namespace DeMixer.lib.std {
 			return true;
 		}
 		
+		public override Gtk.Widget ExpandControl {
+			get {
+				return new CompositionSeasonsConfigView(this);
+			}
+		}
+		
 		public override void ShowDialog () {
 			//CompositionSeasonsDlg dlg = new CompositionSeasonsDlg(this);
 			//dlg.ShowDialog();

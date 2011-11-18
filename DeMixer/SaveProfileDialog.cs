@@ -8,7 +8,9 @@ namespace DeMixer
 	public partial class SaveProfileDialog : Gtk.Dialog
 	{
 		
-		public SaveProfileDialog()
+		public SaveProfileDialog(string title, Gtk.Window parent) : base(title,
+		                                  parent,
+		                                  Gtk.DialogFlags.Modal)
 		{
 			this.Build();
 		}
