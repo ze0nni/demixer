@@ -188,7 +188,7 @@
             <child>
               <widget class="Gtk.Label" id="label5">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">responce</property>
+                <property name="LabelProp" translatable="yes">Responce</property>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -240,7 +240,7 @@ add "Desktop wallpaper"</property>
             <child>
               <widget class="Gtk.Label" id="size">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">size</property>
+                <property name="LabelProp" translatable="yes">Images size</property>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -269,7 +269,7 @@ Hude</property>
             <child>
               <widget class="Gtk.Label" id="label7">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">color</property>
+                <property name="LabelProp" translatable="yes">Color</property>
               </widget>
               <packing>
                 <property name="Position">2</property>
