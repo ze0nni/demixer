@@ -1,12 +1,41 @@
-core.menu next=Дальше
-core.menu abort=Оборвать
-core.menu start=Запустить
-core.menu stop=Остановить
-core.menu profiles=Профили
-core.menu last=Предыдущие
-core.menu config=Конфигурация
-core.menu about=О программе
-core.menu exit=Выйти
+Next wallpaper=Получить следующие обои
+Abort=Оборвать
+Enable=Работает
+Disable=Приостановлено
+Profiles=Профили
+Previous=Предыдущие
+Configuration=Конфигурация
+About=О программе
+Exit=Выйти
+Demixer config dialog=Окно настроек DeMixer
+Source=Источник
+Composition=Расположение
+Effects=Эффекты
+Program=Система
+tags=Тэги
+
+Save history=Сохранять историю
+Max size=размер
+Update interval:=Интервал обновления
+Update Mode=Способ обновления
+Language=Язык
+Autorun=Автозапуск
+
+Close=Закрыть
+Save=Сохранить
+Edit=Изменить
+Add=Добавить
+Delete=Удалить
+Up=Вверх
+Down=Вниз
+Apply=Применить
+
+no options=Нет настроек
+
+Save source=Сохранять источник
+Save composition=Сохранять расположение
+Save effects=Сохранять эффекты
+
 core.error=Ошибка
 core.error file not fountd {0}=Файл "{0}" не существует.
 core.error profile not found=Профиль с таким именем не найден.
