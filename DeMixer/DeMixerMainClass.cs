@@ -65,7 +65,7 @@ namespace DeMixer {
 				break;
 			case 2:
 				break;
-			}
+			}			
 			
 			Application.ApplicationExit += HandleApplicationExit;
 			
@@ -79,7 +79,7 @@ namespace DeMixer {
 			UpdateTimer.Tick += HandleTick;
 			UpdateTimer.Start();
 			
-			RefreshMemory();
+			RefreshMemory();			
 		}
 		
 		private Icon GetrayIcon(string filename) {
@@ -177,7 +177,7 @@ namespace DeMixer {
 						string historyfName = String.Format("{1}{0}{2}.png",
 						                                    Path.DirectorySeparatorChar,
 						                                    SaveHistoryPath,
-						                                    DateTime.Now.ToString());
+						                                    DateTime.Now.ToString("dd MMM yyyy HH.mm.ss"));
 						try { 
 							img.Save(historyfName, ImageFormat.Png); 
 						} catch (Exception exc) {
