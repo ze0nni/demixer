@@ -35,18 +35,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="RowDialog, Version=1.0.4300.21561, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RowDialog\bin\Release\RowDialog.dll</HintPath>
-    </Reference>
-    <Reference Include="DeMixer.lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DeMixer.lib\bin\Release\DeMixer.lib.dll</HintPath>
-    </Reference>
-    <Reference Include="DeMixer.lib.std, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DeMixer.lib.std\bin\Release\DeMixer.lib.std.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeMixerMainClass.cs" />
@@ -55,5 +43,19 @@
     <Compile Include="ConfigMasterDlg.cs" />
     <Compile Include="AboutDlg.cs" />
     <Compile Include="UpdateDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeMixer.lib.std\DeMixer.lib.std.csproj">
+      <Project>{54FA25D0-53F4-4C27-A049-3C66E5B182A6}</Project>
+      <Name>DeMixer.lib.std</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeMixer.lib\DeMixer.lib.csproj">
+      <Project>{72F931A6-F049-4379-94E5-FAB51993EAB4}</Project>
+      <Name>DeMixer.lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RowDialog\RowDialog.csproj">
+      <Project>{0404E941-FAB3-4C1E-98A5-5D7217D74F44}</Project>
+      <Name>RowDialog</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
