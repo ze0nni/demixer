@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Net;
 
-//todo: user-agent
+//todo: using Mono.Unix;
 
 namespace DeMixer {
 	public class DeMixerMainClass : IDeMixerKernel {		
@@ -23,20 +23,21 @@ namespace DeMixer {
 		public const int SPI_SETDESKWALLPAPER = 20;
 		public const int SPIF_UPDATEINIFILE = 0x1;
 		public const int SPIF_SENDWININICHANGE = 0x2;
-		        
+
 		[STAThread]
-		private static void Main(string[] args) {
+		private static void Main(string[] args) {			
+//			Catalog.Init("demixer", "./local");			
 			Gtk.Application.Init("demixer", ref args);
 			DeMixerMainClass mainClass = new DeMixerMainClass();
 			Gtk.Application.Run();
 		}
-		
+
 		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
 
 		public DeMixerMainClass() {			
 			TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += HandlePopupMenu;
-				
+
 			UpdatePlugins();                        
 			ReadSettings();
 			LoadDictionary("ru");
@@ -95,8 +96,8 @@ namespace DeMixer {
 		
 		private DateTime LastUpdateTick = DateTime.Now;
 
-		bool HandleTick() {							
-			return true; 
+		bool HandleTick() {										
+//			return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
 					if (IsGenerateNewPhoto) {
@@ -120,10 +121,8 @@ namespace DeMixer {
 		private void StartThread() {                    
 			lock (NextProcessThreadSync) {
 				//if (NextProcessThread != null) throw new Exception("DoNext() Thread already exists");                         
-				IsGenerateNewPhoto = true;
-	            
-				NextProcessThread = new System.Threading.Thread(DoNext);
-				//NextProcessThread.Priority = ThreadPriority.BelowNormal;
+				IsGenerateNewPhoto = true;	            
+				NextProcessThread = new System.Threading.Thread(DoNext);				
 				NextProcessThread.Start();                        
 			}
 		}
@@ -138,8 +137,8 @@ namespace DeMixer {
 				NextProcessThread = null;
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
 				//todo: TrayIcon.BalloonTipIcon = ToolTipIcon.Info;
-                        
 				//todo: NextMenuItem.Text = Translate("core.menu next");                                
+                        
 				LastUpdateTick = LastUpdateTick.AddMinutes(5);
 			}
 		}
@@ -147,23 +146,12 @@ namespace DeMixer {
 		private void DoNext() {         						
 			try {
 				ActiveComposition.Source = ActiveSource;                                
-				System.Drawing.Image img = null;
-				switch (Environment.OSVersion.Platform) {
-				case PlatformID.Unix:
-                        //todo:
-                        //img = ActiveComposition.GetCompostion(1280, 1024);
-                        //break;
-				case PlatformID.Win32Windows:
-				case PlatformID.Win32NT:
-				default:
-					img = ActiveComposition.GetCompostion(1280, 1024);
-                        /*todo:
-                        img = ActiveComposition.GetCompostion(
-                                                              SystemInformation.PrimaryMonitorSize.Width,
-                                                              SystemInformation.PrimaryMonitorSize.Height);
-                                                              */
-					break;					
-				}                               
+				System.Drawing.Image img = null;				
+				
+				int scrw = Gdk.Display.Default.DefaultScreen.Width;
+				int scrh = Gdk.Display.Default.DefaultScreen.Height;
+				Console.WriteLine("{0}x{1}", scrw, scrh);
+				img = ActiveComposition.GetCompostion(scrw, scrh);                       
                 
                 #region сохраняем в png без эффектов
 				{       
@@ -189,7 +177,7 @@ namespace DeMixer {
 							WriteLog(exc);
 						}
 					}
-                    #region сохраняем десять последних
+                    #region сохраняем восемь последних
 					/*
                     string fDir = String.Format("{1}{0}{2}{0}",
                                                 Path.DirectorySeparatorChar,
@@ -232,8 +220,7 @@ namespace DeMixer {
                 
 				lock (NextProcessThreadSync) {
 					IsGenerateNewPhoto = false;
-					NextProcessThread = null;                                       
-					//todo: NextMenuItem.Text = Translate("core.menu next");
+					NextProcessThread = null;                                       					
 				}
 			} catch (Exception exc) {
 				WriteLog(exc);
@@ -244,10 +231,8 @@ namespace DeMixer {
                         exc.Message,
                         5),
                                true);                                       
-				IsGenerateNewPhoto = false;
-				//todo: NextMenuItem.Text = Translate("core.menu next");
-				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);
-				//todo: TrayIcon.ContextMenu = GetMenu();
+				IsGenerateNewPhoto = false;				
+				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);				
 				AbortThread();
 			} finally {
 				RefreshMemory();
@@ -266,9 +251,8 @@ namespace DeMixer {
 			string fName = String.Format("{0}demixer-wallpaper.{1}", 
                                         fDir,
 			                            isWindow ? "bmp" : "png");
-			img.Save(fName, isWindow ? ImageFormat.Bmp : ImageFormat.Png);
-			Console.WriteLine(fName);
-			
+			img.Save(fName, isWindow ? ImageFormat.Bmp : ImageFormat.Png);			
+			//устанавливаем обои в качестве фона
 			switch (Environment.OSVersion.Platform) {
 			case PlatformID.Win32NT:
 			case PlatformID.Win32S:
@@ -276,6 +260,7 @@ namespace DeMixer {
 				SystemParametersInfo(SPI_SETDESKWALLPAPER, 1, Marshal.StringToBSTR(fName), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 				break;
 			case PlatformID.Unix:
+				#region для gnome
 				//gsettings set org.gnome.desktop.background picture-uri 'file://'
 				string program = "gsettings";
 				string args = String.Format("set org.gnome.desktop.background picture-uri 'file://{0}'", fName);				
@@ -283,6 +268,7 @@ namespace DeMixer {
 				Process p = new Process();
 				p.StartInfo = psi;
 				p.Start();
+				#endregion
 				break;
 			}       
 		}
@@ -467,110 +453,6 @@ namespace DeMixer {
         
 		private bool FIsRunning = true;
 		private DateTime FStopTime;
-        
-		//private MenuItem NextMenuItem;
-		//private List<Image> FMenuImage = new List<Image>();
-		/*private  ContextMenu GetMenu() {                      
-                ContextMenu menu = new ContextMenu();
-                NextMenuItem = new MenuItem();
-                NextMenuItem.Text = Translate("core.menu next");
-                NextMenuItem.Click += MenuNextClick;
-                menu.MenuItems.Add(NextMenuItem);
-                
-                string startStopTitle = FIsRunning ? Translate("core.menu stop") : Translate("core.menu start");
-                menu.MenuItems.Add(startStopTitle, MenuStartStopClick);
-                #region profile menu
-                MenuItem cbox = new MenuItem();
-                cbox.Text = Translate("core.menu profiles");
-                foreach (string s in GetProfileList()) {
-                        MenuItem nmi = new MenuItem(s);
-                        nmi.Click += delegate(object sender, EventArgs e) {
-                                        try {
-                                                MenuItem _mi = (MenuItem)sender;
-                                                LoadConfig(_mi.Text);
-                                        } catch {
-                                        }
-                                };
-                        object aprofileo = UserRegistry.GetValue("SelectionProfile");
-                        string aprofile = aprofileo == null ? "" : aprofileo.ToString();
-                        nmi.Checked =  nmi.Text == aprofile;
-                        cbox.MenuItems.Add(nmi);
-                }
-                
-                #region предыдущие
-                MenuItem cPreveous = new MenuItem();
-                cPreveous.Text = Translate("core.menu last");
-                {
-                        string di = GetUserFileName("last", "");                     
-                        int count = 0;
-                        FMenuImage.Clear();
-                        for (int i = 1; i<=8; i++) {
-                                try {
-                                        string fileName = String.Format("{0}{1}.png", di, i);
-                                        FileStream fs = new FileStream(fileName, FileMode.Open);
-                                        Image img;                                        
-                                        try {
-                                                img = Image.FromStream(fs);
-                                        } finally {
-                                                fs.Close();
-                                        }
-                                        int imgh = 100;
-                                        int imgw = (int)((float)img.Width/img.Height*imgh);
-                                        Image sImage = new Bitmap(imgw, imgh);
-                                        Graphics g = Graphics.FromImage(sImage);
-                                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                                        g.DrawImage(img, new Rectangle(0, 0, imgw, imgh));
-                                        FMenuImage.Add(sImage);
-                                        
-                                        MenuItem newm = new MenuItem(fileName);
-                                        newm.OwnerDraw = true;
-                                        newm.MeasureItem += delegate(object sender, MeasureItemEventArgs e) {
-                                                e.ItemWidth = imgw + 4;
-                                                e.ItemHeight = imgh + 4;
-                                        };
-                                        newm.DrawItem += delegate(object sender, DrawItemEventArgs e) {
-                                                Image simg = FMenuImage[e.Index];
-                                                e.DrawBackground();
-                                                e.DrawFocusRectangle();
-                                                
-                                                int topInc = 0;
-                                                if (e.State  == DrawItemState.Selected) {
-                                                        e.Graphics.FillRectangle(
-                                                                                 SystemBrushes.ControlDarkDark,
-                                                                                 e.Bounds.Left+3,
-                                                                                 e.Bounds.Top+3,
-                                                                                 simg.Width, simg.Height);
-                                                        topInc = -1;
-                                                }
-                                                e.Graphics.DrawImage(simg,
-                                                                     e.Bounds.Left+3,
-                                                                     e.Bounds.Top+3 + topInc);
-                                        };                                              
-                                        #region пункты меню для изобрежения
-                                        newm.Tag = fileName;
-                                        newm.Click += MenuUseImageClick;
-                                                                                        
-                                        #endregion                                              
-                                        cPreveous.MenuItems.Add(newm);
-                                        count++;
-                                if (count>=10) break;
-                                } catch {
-                                        
-                                }
-                        }
-                }
-                menu.MenuItems.Add(cPreveous);
-                #endregion
-                
-                menu.MenuItems.Add(cbox);
-                #endregion                      
-                menu.MenuItems.Add(Translate("core.menu config"), MenuConfigClick);
-                menu.MenuItems.Add(Translate("core.menu about"), MenuAboutClick);
-                menu.MenuItems.Add(Translate("core.menu exit"), MenuExitClick);
-                return menu;
-        }
-        */
-        
 		Gtk.Widget LastConfigDialog = null;
 
 		void HandlePopupMenu(object sender, Gtk.PopupMenuArgs args) {
@@ -633,6 +515,7 @@ namespace DeMixer {
 					dlg.Run();
 					dlg.Destroy();
 				} finally {
+					SaveSettings();
 					LastConfigDialog = null;			
 				}
 			};
@@ -698,7 +581,7 @@ namespace DeMixer {
 		
 		LastMenuItemInfo[] getPreviousImages() {			
 			List<LastMenuItemInfo> list = new List<LastMenuItemInfo>();
-			for (int i=1; i<8; i++) {				
+			for (int i=1; i<=8; i++) {				
 				string fname = GetUserFileName("last", String.Format("{0}.png", i));				
 				if (File.Exists(fname)) {					
 					list.Add(new LastMenuItemInfo(fname));
@@ -1221,7 +1104,8 @@ namespace DeMixer {
         
 		Dictionary<string, string> translateDict = new Dictionary<string, string>();
 
-		public string Translate(string format, params object[] args) {                  
+		public string Translate(string format, params object[] args) {
+			//format = Catalog.GetString(format);
 			string formato;
 			if (translateDict.TryGetValue(format, out formato))
 				format = formato;
@@ -1244,7 +1128,7 @@ namespace DeMixer {
 			if (piChildren != null) {
 				Gtk.Widget[] children = (Gtk.Widget[])piChildren.GetValue(w, new object[0]);
 				foreach (Gtk.Widget cw in children) {
-					//Console.WriteLine(cw.Name);	
+					
 					TranslateWidget(cw);
 				}
 			}

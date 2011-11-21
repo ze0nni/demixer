@@ -5,23 +5,15 @@ namespace DeMixer.lib.std
 	public partial class DirectorySourceConfigView
 	{
 		private global::Gtk.HBox hbox1;
-
 		private global::Gtk.VBox vbox2;
-
 		private global::Gtk.FileChooserButton folderNavBox;
-
 		private global::Gtk.ScrolledWindow Scrolled;
-
 		private global::Gtk.TreeView FoldersList;
-
 		private global::Gtk.VButtonBox vbuttonbox1;
-
 		private global::Gtk.Button folderAddBtn;
-
 		private global::Gtk.Button folderApplyBtn;
-
 		private global::Gtk.Button folderDeleteBtn;
-
+		
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -40,7 +32,7 @@ namespace DeMixer.lib.std
 			this.folderNavBox = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("browse folder"), ((global::Gtk.FileChooserAction)(2)));
 			this.folderNavBox.Name = "folderNavBox";
 			this.vbox2.Add (this.folderNavBox);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.folderNavBox]));
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.folderNavBox]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -54,10 +46,10 @@ namespace DeMixer.lib.std
 			this.FoldersList.Name = "FoldersList";
 			this.Scrolled.Add (this.FoldersList);
 			this.vbox2.Add (this.Scrolled);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.Scrolled]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.Scrolled]));
 			w3.Position = 1;
 			this.hbox1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox2]));
 			w4.Position = 0;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbuttonbox1 = new global::Gtk.VButtonBox ();
@@ -70,7 +62,7 @@ namespace DeMixer.lib.std
 			this.folderAddBtn.Name = "folderAddBtn";
 			this.folderAddBtn.UseUnderline = true;
 			// Container child folderAddBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w5 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
+			global::Gtk.Alignment w5 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w6 = new global::Gtk.HBox ();
 			w6.Spacing = 2;
@@ -86,7 +78,7 @@ namespace DeMixer.lib.std
 			w5.Add (w6);
 			this.folderAddBtn.Add (w5);
 			this.vbuttonbox1.Add (this.folderAddBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w13 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderAddBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w13 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.folderAddBtn]));
 			w13.Expand = false;
 			w13.Fill = false;
 			// Container child vbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
@@ -95,7 +87,7 @@ namespace DeMixer.lib.std
 			this.folderApplyBtn.Name = "folderApplyBtn";
 			this.folderApplyBtn.UseUnderline = true;
 			// Container child folderApplyBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w14 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
+			global::Gtk.Alignment w14 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w15 = new global::Gtk.HBox ();
 			w15.Spacing = 2;
@@ -111,7 +103,7 @@ namespace DeMixer.lib.std
 			w14.Add (w15);
 			this.folderApplyBtn.Add (w14);
 			this.vbuttonbox1.Add (this.folderApplyBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w22 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderApplyBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w22 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.folderApplyBtn]));
 			w22.Position = 1;
 			w22.Expand = false;
 			w22.Fill = false;
@@ -121,7 +113,7 @@ namespace DeMixer.lib.std
 			this.folderDeleteBtn.Name = "folderDeleteBtn";
 			this.folderDeleteBtn.UseUnderline = true;
 			// Container child folderDeleteBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w23 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
+			global::Gtk.Alignment w23 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w24 = new global::Gtk.HBox ();
 			w24.Spacing = 2;
@@ -137,12 +129,12 @@ namespace DeMixer.lib.std
 			w23.Add (w24);
 			this.folderDeleteBtn.Add (w23);
 			this.vbuttonbox1.Add (this.folderDeleteBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.folderDeleteBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.folderDeleteBtn]));
 			w31.Position = 2;
 			w31.Expand = false;
 			w31.Fill = false;
 			this.hbox1.Add (this.vbuttonbox1);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbuttonbox1]));
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbuttonbox1]));
 			w32.Position = 1;
 			w32.Expand = false;
 			w32.Fill = false;

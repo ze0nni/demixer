@@ -5,21 +5,14 @@ namespace DeMixer
 	public partial class SaveProfileDialog
 	{
 		private global::Gtk.VBox vbox4;
-
 		private global::Gtk.Entry entry1;
-
 		private global::Gtk.HBox hbox4;
-
 		private global::Gtk.CheckButton checkbutton2;
-
 		private global::Gtk.CheckButton checkbutton3;
-
 		private global::Gtk.CheckButton checkbutton4;
-
 		private global::Gtk.Button buttonCancel;
-
 		private global::Gtk.Button buttonOk;
-
+		
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -43,7 +36,7 @@ namespace DeMixer
 			this.entry1.IsEditable = true;
 			this.entry1.InvisibleChar = '●';
 			this.vbox4.Add (this.entry1);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.entry1]));
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.entry1]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
@@ -60,7 +53,7 @@ namespace DeMixer
 			this.checkbutton2.DrawIndicator = true;
 			this.checkbutton2.UseUnderline = true;
 			this.hbox4.Add (this.checkbutton2);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.checkbutton2]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton2]));
 			w3.Position = 0;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.checkbutton3 = new global::Gtk.CheckButton ();
@@ -70,7 +63,7 @@ namespace DeMixer
 			this.checkbutton3.DrawIndicator = true;
 			this.checkbutton3.UseUnderline = true;
 			this.hbox4.Add (this.checkbutton3);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.checkbutton3]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton3]));
 			w4.Position = 1;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.checkbutton4 = new global::Gtk.CheckButton ();
@@ -80,15 +73,15 @@ namespace DeMixer
 			this.checkbutton4.DrawIndicator = true;
 			this.checkbutton4.UseUnderline = true;
 			this.hbox4.Add (this.checkbutton4);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.checkbutton4]));
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton4]));
 			w5.Position = 2;
 			this.vbox4.Add (this.hbox4);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox4]));
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox4]));
 			w6.Position = 1;
 			w6.Expand = false;
 			w6.Fill = false;
 			w1.Add (this.vbox4);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(w1[this.vbox4]));
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox4]));
 			w7.Position = 0;
 			w7.Expand = false;
 			w7.Fill = false;
@@ -107,7 +100,7 @@ namespace DeMixer
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w9 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w8[this.buttonCancel]));
+			global::Gtk.ButtonBox.ButtonBoxChild w9 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w8 [this.buttonCancel]));
 			w9.Expand = false;
 			w9.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
@@ -119,7 +112,7 @@ namespace DeMixer
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w10 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w8[this.buttonOk]));
+			global::Gtk.ButtonBox.ButtonBoxChild w10 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w8 [this.buttonOk]));
 			w10.Position = 1;
 			w10.Expand = false;
 			w10.Fill = false;

@@ -5,33 +5,20 @@ namespace DeMixer.lib.std
 	public partial class CompositionSeasonsConfigView
 	{
 		private global::Gtk.VBox vbox3;
-
 		private global::Gtk.HBox hbox3;
-
 		private global::Gtk.Label label3;
-
 		private global::Gtk.HScale hscale2;
-
 		private global::Gtk.HBox hbox4;
-
 		private global::Gtk.Label label4;
-
 		private global::Gtk.HScale hscale1;
-
 		private global::Gtk.HBox hbox5;
-
 		private global::Gtk.Label label5;
-
 		private global::Gtk.ComboBox combobox2;
-
 		private global::Gtk.HBox hbox6;
-
 		private global::Gtk.Label label6;
-
 		private global::Gtk.ColorButton colorbutton1;
-
 		private global::Gtk.ColorButton colorbutton2;
-
+		
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -51,7 +38,7 @@ namespace DeMixer.lib.std
 			this.label3.Name = "label3";
 			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Images count");
 			this.hbox3.Add (this.label3);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.label3]));
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label3]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -68,10 +55,10 @@ namespace DeMixer.lib.std
 			this.hscale2.Digits = 0;
 			this.hscale2.ValuePos = ((global::Gtk.PositionType)(2));
 			this.hbox3.Add (this.hscale2);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.hscale2]));
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hscale2]));
 			w2.Position = 1;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.hbox3]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
@@ -84,7 +71,7 @@ namespace DeMixer.lib.std
 			this.label4.Name = "label4";
 			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("Separator size");
 			this.hbox4.Add (this.label4);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.label4]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label4]));
 			w4.Position = 0;
 			w4.Expand = false;
 			w4.Fill = false;
@@ -99,10 +86,10 @@ namespace DeMixer.lib.std
 			this.hscale1.Digits = 0;
 			this.hscale1.ValuePos = ((global::Gtk.PositionType)(2));
 			this.hbox4.Add (this.hscale1);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.hscale1]));
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.hscale1]));
 			w5.Position = 1;
 			this.vbox3.Add (this.hbox4);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.hbox4]));
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox4]));
 			w6.Position = 1;
 			w6.Expand = false;
 			w6.Fill = false;
@@ -115,7 +102,7 @@ namespace DeMixer.lib.std
 			this.label5.Name = "label5";
 			this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("Separator type");
 			this.hbox5.Add (this.label5);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label5]));
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.label5]));
 			w7.Position = 0;
 			w7.Expand = false;
 			w7.Fill = false;
@@ -125,10 +112,10 @@ namespace DeMixer.lib.std
 			this.combobox2.Name = "combobox2";
 			this.combobox2.Active = 0;
 			this.hbox5.Add (this.combobox2);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.combobox2]));
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.combobox2]));
 			w8.Position = 1;
 			this.vbox3.Add (this.hbox5);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.hbox5]));
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox5]));
 			w9.Position = 2;
 			w9.Expand = false;
 			w9.Fill = false;
@@ -141,7 +128,7 @@ namespace DeMixer.lib.std
 			this.label6.Name = "label6";
 			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("Gradient");
 			this.hbox6.Add (this.label6);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.label6]));
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.label6]));
 			w10.Position = 0;
 			w10.Expand = false;
 			w10.Fill = false;
@@ -151,7 +138,7 @@ namespace DeMixer.lib.std
 			this.colorbutton1.Events = ((global::Gdk.EventMask)(784));
 			this.colorbutton1.Name = "colorbutton1";
 			this.hbox6.Add (this.colorbutton1);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.colorbutton1]));
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.colorbutton1]));
 			w11.Position = 1;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.colorbutton2 = new global::Gtk.ColorButton ();
@@ -159,10 +146,10 @@ namespace DeMixer.lib.std
 			this.colorbutton2.Events = ((global::Gdk.EventMask)(784));
 			this.colorbutton2.Name = "colorbutton2";
 			this.hbox6.Add (this.colorbutton2);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.colorbutton2]));
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.colorbutton2]));
 			w12.Position = 2;
 			this.vbox3.Add (this.hbox6);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.hbox6]));
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox6]));
 			w13.Position = 3;
 			w13.Expand = false;
 			w13.Fill = false;
