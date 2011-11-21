@@ -1,17 +1,15 @@
-
 using System;
 using System.Drawing;
 using System.IO;
 
 namespace DeMixer.lib.std {
-	
-	
 	public class CompositionSeasons : ImagesComposition {
 		
 		public CompositionSeasons() {
 		}
 		
 		int imagesCount = 4;
+
 		public int ImagesCount {
 			get { return imagesCount; }
 			set {
@@ -22,6 +20,7 @@ namespace DeMixer.lib.std {
 		}
 		
 		int separatorSize = 4;
+
 		public int SeparatorSize {
 			get { return separatorSize; }
 			set {
@@ -31,6 +30,7 @@ namespace DeMixer.lib.std {
 		}
 		
 		Color separatorColor1 = Color.White;
+
 		public Color SeparatorColor1 {
 			get { return separatorColor1; }
 			set {
@@ -39,6 +39,7 @@ namespace DeMixer.lib.std {
 		}
 		
 		Color separatorColor2 = Color.White;
+
 		public Color SeparatorColor2 {
 			get { return separatorColor2; }
 			set {
@@ -46,33 +47,33 @@ namespace DeMixer.lib.std {
 			}
 		}
 		
-		public override Image GetCompostion (int width, int height) {
+		public override Image GetCompostion(int width, int height) {
 			Image[] imgs = new Image[imagesCount];
 			Source.GetNextImages(imgs, 5);
 			
 			Image des = new Bitmap(width, height);
 			Graphics g = Graphics.FromImage(des);
-			g.SetClip(new Rectangle(0, 0, width/ImagesCount, height));
-			for (int i=0;i<ImagesCount;i++) {
+			g.SetClip(new Rectangle(0, 0, width / ImagesCount, height));
+			for (int i=0; i<ImagesCount; i++) {
 				Image img = imgs[i];
 				
-				float news = Math.Max((float)width/img.Width,
-				                      (float)height/img.Height);
+				float news = Math.Max((float)width / img.Width,
+				                      (float)height / img.Height);
 				                      
 				                 				
 				float neww = img.Width * news;
 				float newh = img.Height * news;
 				
 				float l = 0;
-				l = (i*width/ImagesCount) +
-					(width/ImagesCount - neww)/2;
+				l = (i * width / ImagesCount) +
+					(width / ImagesCount - neww) / 2;
 				
 				g.DrawImage(img,
 				            l,
-				            (height - newh)/2,
+				            (height - newh) / 2,
 				            (int)neww,
 				            (int)newh);
-				g.TranslateClip(width/ImagesCount, 0);
+				g.TranslateClip(width / ImagesCount, 0);
 			}
 			
 			g.SetClip(new Rectangle(0, 0, width, height));
@@ -84,27 +85,31 @@ namespace DeMixer.lib.std {
 					SeparatorColor2);
 				Pen p = new Pen(gradBrush, SeparatorSize);
 				
-				for (int i=1;i<ImagesCount;i++) {										
+				for (int i=1; i<ImagesCount; i++) {										
 					g.DrawLine(p,
-					           i*width/ImagesCount-SeparatorSize/2,
+					           i * width / ImagesCount - SeparatorSize / 2,
 					           0,
-					           i*width/ImagesCount-SeparatorSize/2,
+					           i * width / ImagesCount - SeparatorSize / 2,
 					           height);
 				}
 			}
 			return des;
 		}
 		
-		public override bool LoadConfig (System.IO.Stream stream) {
+		public override bool LoadConfig(System.IO.Stream stream) {
 			BinaryReader br = new BinaryReader(stream);
-			if (stream.CanRead) ImagesCount = br.ReadInt32();
-			if (stream.CanRead) SeparatorSize = br.ReadInt32();
-			if (stream.CanRead) SeparatorColor1 = Color.FromArgb(br.ReadInt32());
-			if (stream.CanRead) SeparatorColor2 = Color.FromArgb(br.ReadInt32());
+			if (stream.CanRead)
+				ImagesCount = br.ReadInt32();
+			if (stream.CanRead)
+				SeparatorSize = br.ReadInt32();
+			if (stream.CanRead)
+				SeparatorColor1 = Color.FromArgb(br.ReadInt32());
+			if (stream.CanRead)
+				SeparatorColor2 = Color.FromArgb(br.ReadInt32());
 			return true;
 		}
 		
-		public override bool SaveConfig (System.IO.Stream stream) {			
+		public override bool SaveConfig(System.IO.Stream stream) {			
 			BinaryWriter bw = new BinaryWriter(stream);
 			bw.Write((Int32)imagesCount);
 			bw.Write((Int32)SeparatorSize);
@@ -119,7 +124,7 @@ namespace DeMixer.lib.std {
 			}
 		}
 		
-		public override void ShowDialog () {
+		public override void ShowDialog() {
 			//CompositionSeasonsDlg dlg = new CompositionSeasonsDlg(this);
 			//dlg.ShowDialog();
 		}
