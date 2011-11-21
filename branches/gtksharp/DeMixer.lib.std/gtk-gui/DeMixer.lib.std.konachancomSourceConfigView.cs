@@ -5,13 +5,10 @@ namespace DeMixer.lib.std
 	public partial class konachancomSourceConfigView
 	{
 		private global::Gtk.VBox vbox4;
-
 		private global::Gtk.HBox hbox6;
-
 		private global::Gtk.Label tagsLabel;
-
 		private global::Gtk.Entry tagsEdit;
-
+		
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -31,7 +28,7 @@ namespace DeMixer.lib.std
 			this.tagsLabel.Name = "tagsLabel";
 			this.tagsLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("tags");
 			this.hbox6.Add (this.tagsLabel);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.tagsLabel]));
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.tagsLabel]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -42,10 +39,10 @@ namespace DeMixer.lib.std
 			this.tagsEdit.IsEditable = true;
 			this.tagsEdit.InvisibleChar = '●';
 			this.hbox6.Add (this.tagsEdit);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.tagsEdit]));
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.tagsEdit]));
 			w2.Position = 1;
 			this.vbox4.Add (this.hbox6);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox6]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox6]));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
