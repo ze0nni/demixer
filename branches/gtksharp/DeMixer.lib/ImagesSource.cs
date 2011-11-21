@@ -1,4 +1,3 @@
-
 using System;
 using System.IO;
 using System.Drawing;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using Gtk;
 
 namespace DeMixer.lib {
-		
 	public abstract class ImagesSource {
 		
 		public ImagesSource() {
@@ -19,6 +17,7 @@ namespace DeMixer.lib {
 		}
 		
 		IDeMixerKernel kernel;
+
 		protected IDeMixerKernel Kernel {
 			get { return kernel; }	
 		}
@@ -38,20 +37,20 @@ namespace DeMixer.lib {
 		public virtual string PluginDescription {
 			get { return Kernel.Translate(string.Format("{0}.description", GetType().FullName)); }
 		}
-			
 		
 		public virtual void UrlClick() {
 			ProcessStartInfo psi = new ProcessStartInfo(Url);
-            Process p = new Process();
-            p.StartInfo = psi;
-            p.Start();  
+			Process p = new Process();
+			p.StartInfo = psi;
+			p.Start();  
 		}
 		
 		public virtual bool AllowTags {
-				get { return true; }
+			get { return true; }
 		}
 		
 		private string FTags;
+
 		public virtual string Tags {
 			get { return FTags; }
 			set { FTags = value; }
@@ -78,6 +77,7 @@ namespace DeMixer.lib {
 		}
 
 		public abstract System.Drawing.Image GetNextImage();
+
 		public abstract System.Drawing.Image GetImageFromSource(string source);
 		
 		public virtual void ReadSettings(IDeMixerKernel k) {
@@ -113,20 +113,22 @@ namespace DeMixer.lib {
 						}					
 					}
 					lock (endChek) {
-						if (exc==null) {
+						if (exc == null) {
 							images.Add(img);	
 						} else {
 							lastExc = exc;
 							images.Add(null);
 						}			
-						if (buffer.Length == images.Count) endChek.Set();
+						if (buffer.Length == images.Count)
+							endChek.Set();
 					}
 				});				
 				t.Start();
 			}
 			
 			endChek.WaitOne();			
-			if (lastExc != null) throw lastExc;
+			if (lastExc != null)
+				throw lastExc;
 			for (int i=0; i<buffer.Length; i++) {
 				buffer[i] = images[i];
 			}			
@@ -145,7 +147,7 @@ namespace DeMixer.lib {
 			}
 		}
 		
-		public override string ToString () {
+		public override string ToString() {
 			return PluginTitle;
 		}
 

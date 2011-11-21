@@ -5,8 +5,12 @@
   </MonoDevelop.Ide.DebuggingService>
   <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="567" Column="30" />
-      <File FileName="DeMixer.lib/ImagesSource.cs" Line="44" Column="4" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="566" Column="6" />
+      <File FileName="DeMixer.lib/ImagesSource.cs" Line="60" Column="3" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="108" Column="33" />
+      <File FileName="DeMixer.lib.std/CompositionSeasonsConfigView.cs" Line="8" Column="38" />
+      <File FileName="DeMixer.lib.std/CompositionSeasons.cs" Line="118" Column="51" />
+      <File FileName="DeMixer.lib.std/googlecomSourcesConfigView.cs" Line="23" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

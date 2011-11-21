@@ -1,24 +1,20 @@
-
 using System;
 using DeMixer.lib;
 using Gdk;
 
-namespace DeMixer
-{
-	
-	
-	public partial class ConfigDlg : Gtk.Dialog
-	{
+namespace DeMixer {
+	public partial class ConfigDlg : Gtk.Dialog {
 
-		protected virtual void OnsaveProfileBtnClicked (object sender, System.EventArgs e) {
+		protected virtual void OnsaveProfileBtnClicked(object sender, System.EventArgs e) {
 			SaveProfileDialog dlg =
 				new SaveProfileDialog("Save profeile dialog", this);
 			Kernel.TranslateWidget(dlg);			
 			dlg.Run();
 			dlg.Destroy();
-		}	
+		}
 		
 		IDeMixerKernel Kernel;
+
 		public ConfigDlg(IDeMixerKernel k) {			
 			this.Build();
 			Kernel = k;
@@ -46,23 +42,23 @@ namespace DeMixer
 			EffectsComboBox.ShowAll();
 			
 			//Создание столбцов в списке эффектов
-			Gtk.TreeViewColumn effectNameColumn = new Gtk.TreeViewColumn ();
+			Gtk.TreeViewColumn effectNameColumn = new Gtk.TreeViewColumn();
 			effectNameColumn.Title = "type";			
 			Gtk.CellRendererText effectNameCell = new Gtk.CellRendererText();
 			effectNameColumn.PackStart(effectNameCell, true);
 			effectNameColumn.AddAttribute(effectNameCell, "text", 0);
 			
-			Gtk.TreeViewColumn effectStateColumn = new Gtk.TreeViewColumn ();
+			Gtk.TreeViewColumn effectStateColumn = new Gtk.TreeViewColumn();
 			effectStateColumn.Title = "state";
 			Gtk.CellRendererText effectStateCell = new Gtk.CellRendererText();
 			effectStateColumn.PackStart(effectStateCell, true);
 			effectStateColumn.AddAttribute(effectStateCell, "text", 1);
 			
 			EffectsList.AppendColumn(effectNameColumn);
-			EffectsList.AppendColumn (effectStateColumn);
+			EffectsList.AppendColumn(effectStateColumn);
 			Gtk.CellRendererText FoldersListCell = new Gtk.CellRendererText();
 			
-			EffectsListStore = new Gtk.ListStore (typeof (string), typeof (string));			
+			EffectsListStore = new Gtk.ListStore(typeof(string), typeof(string));			
 			EffectsList.Model = EffectsListStore;
 			
 			//добавляем эффекты в список
@@ -72,7 +68,8 @@ namespace DeMixer
 		}
 
 		Gtk.Widget lastSourceView = null;
-		protected virtual void OnSourceComboBoxChanged (object sender, System.EventArgs e) {
+
+		protected virtual void OnSourceComboBoxChanged(object sender, System.EventArgs e) {
 			Kernel.ActiveSourceIndex = SourceComboBox.Active;
 			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
 			Gtk.Widget view = Kernel.ActiveSource.ExpandTagsControl;
@@ -82,7 +79,7 @@ namespace DeMixer
 				lastSourceView.Destroy();
 			}
 			
-			if (view==null) {
+			if (view == null) {
 				view = new Gtk.Label("no options");	
 			}
 			Kernel.TranslateWidget(view);
@@ -92,7 +89,8 @@ namespace DeMixer
 		}
 		
 		Gtk.Widget lastCompositionView = null;
-		protected virtual void OnCompositionComboBoxChanged (object sender, System.EventArgs e) {
+
+		protected virtual void OnCompositionComboBoxChanged(object sender, System.EventArgs e) {
 			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
 			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
 			
@@ -102,7 +100,7 @@ namespace DeMixer
 				CompositionVBox.Remove(lastCompositionView);	
 				lastCompositionView.Destroy();
 			}			
-			if (view==null) {
+			if (view == null) {
 				view = new Gtk.Label("no options");	
 			}
 			Kernel.TranslateWidget(view);
@@ -111,25 +109,26 @@ namespace DeMixer
 			view.ShowAll();			
 		}
 
-		protected virtual void OnEffectsComboBoxChanged (object sender, System.EventArgs e) {
+		protected virtual void OnEffectsComboBoxChanged(object sender, System.EventArgs e) {
 			EffectInformationLabel.Markup = 
 				Kernel.PostEffectsList[EffectsComboBox.Active].PluginDescription;
 		}
 
-		protected virtual void OnEffectsListCursorChanged (object sender, System.EventArgs e) {
+		protected virtual void OnEffectsListCursorChanged(object sender, System.EventArgs e) {
 			editEffectBtn.Sensitive = EffectsList.Selection != null;
 		}
 
-		protected virtual void OnSaveHistoryChBoxClicked (object sender, System.EventArgs e) {
+		protected virtual void OnSaveHistoryChBoxClicked(object sender, System.EventArgs e) {
 			selectSaveHostoryFolderBox.Sensitive = saveHistoryChBox.Active;
 			historyLimitSizeChBox.Sensitive = saveHistoryChBox.Active;
 			historyMaxSizeSpin.Sensitive = saveHistoryChBox.Active && historyLimitSizeChBox.Active;
 		}
 
-		protected virtual void OnHistoryLimitSizeChBoxClicked (object sender, System.EventArgs e){
+		protected virtual void OnHistoryLimitSizeChBoxClicked(object sender, System.EventArgs e) {
 			historyMaxSizeSpin.Sensitive = historyLimitSizeChBox.Active;
 		}
-		protected virtual void OnButtonOkClicked (object sender, System.EventArgs e) {
+
+		protected virtual void OnButtonOkClicked(object sender, System.EventArgs e) {
 			//todo: save
 			this.Hide();
 			this.HideAll();
