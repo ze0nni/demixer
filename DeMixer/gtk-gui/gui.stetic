@@ -115,7 +115,7 @@
               <widget class="Gtk.Notebook" id="notebook1">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="CurrentPage">1</property>
+                <property name="CurrentPage">2</property>
                 <child>
                   <widget class="Gtk.VBox" id="SourceVBox">
                     <property name="MemberName" />
@@ -326,6 +326,7 @@
                                     <property name="Icon">stock:gtk-add Menu</property>
                                     <property name="Label" translatable="yes">Add</property>
                                     <property name="UseUnderline">True</property>
+                                    <signal name="Clicked" handler="OnEffectAddBtnClicked" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
@@ -411,6 +412,7 @@
                                 <property name="Icon">stock:gtk-edit Menu</property>
                                 <property name="Label" translatable="yes">_Edit</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnEditEffectBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Expand">False</property>
@@ -426,6 +428,7 @@
                                 <property name="Icon">stock:gtk-go-up Menu</property>
                                 <property name="Label" translatable="yes">_Up</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnUpEffectBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -474,6 +477,7 @@
                                 <property name="Icon">stock:gtk-delete Menu</property>
                                 <property name="Label" translatable="yes">_Delete</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnDeleteEffectBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">4</property>

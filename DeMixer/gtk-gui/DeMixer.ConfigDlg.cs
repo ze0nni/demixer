@@ -88,7 +88,7 @@ namespace DeMixer
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 1;
+			this.notebook1.CurrentPage = 2;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.SourceVBox = new global::Gtk.VBox ();
 			this.SourceVBox.Name = "SourceVBox";
@@ -801,7 +801,10 @@ namespace DeMixer
 			this.SourceComboBox.Changed += new global::System.EventHandler (this.OnSourceComboBoxChanged);
 			this.CompositionComboBox.Changed += new global::System.EventHandler (this.OnCompositionComboBoxChanged);
 			this.EffectsComboBox.Changed += new global::System.EventHandler (this.OnEffectsComboBoxChanged);
+			this.effectAddBtn.Clicked += new global::System.EventHandler (this.OnEffectAddBtnClicked);
 			this.EffectsList.CursorChanged += new global::System.EventHandler (this.OnEffectsListCursorChanged);
+			this.editEffectBtn.Clicked += new global::System.EventHandler (this.OnEditEffectBtnClicked);
+			this.deleteEffectBtn.Clicked += new global::System.EventHandler (this.OnDeleteEffectBtnClicked);
 			this.saveHistoryChBox.Clicked += new global::System.EventHandler (this.OnSaveHistoryChBoxClicked);
 			this.historyLimitSizeChBox.Clicked += new global::System.EventHandler (this.OnHistoryLimitSizeChBoxClicked);
 			this.saveProfileBtn.Clicked += new global::System.EventHandler (this.OnsaveProfileBtnClicked);

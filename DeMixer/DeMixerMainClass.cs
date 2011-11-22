@@ -97,7 +97,7 @@ namespace DeMixer {
 		private DateTime LastUpdateTick = DateTime.Now;
 
 		bool HandleTick() {										
-//			return true;
+			return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
 					if (IsGenerateNewPhoto) {
@@ -466,8 +466,8 @@ namespace DeMixer {
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
 			
 			#region menu Previous
-			LastMenuItemInfo[] prev = getPreviousImages();
-			//LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
+			//LastMenuItemInfo[] prev = getPreviousImages();
+			LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
 			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));
 			if (prev.Length == 0) {
 				miLast.Sensitive = false;
@@ -682,7 +682,7 @@ namespace DeMixer {
 		private ImagePostEffect PostEffectByName(string name) {
 			foreach (ImagePostEffect pe in PostEffectsList) {
 				if (name == pe.GetType().FullName)
-					return pe.GetClone();        
+					return pe.GetClone();
 			}
 			return null;
 		}
@@ -1113,23 +1113,29 @@ namespace DeMixer {
 		}
 						
 		public void TranslateWidget(Gtk.Widget w) {
+			if (w == null) return;
 			Type t = w.GetType();
 			//TextPropertys 
 			string[] textPropertys = {"Title", "Text", "123"};
 			foreach (string propName in textPropertys) {
-				PropertyInfo piTextProp = t.GetProperty(propName);
-				if (piTextProp != null) {
-					string piTitleVal = piTextProp.GetValue(w, new object[0]).ToString();
-					piTextProp.SetValue(w, Translate(piTitleVal.Replace("_", "")), new object[0]);	
+				try {
+					PropertyInfo piTextProp = t.GetProperty(propName);
+					if (piTextProp != null) {
+						string piTitleVal = piTextProp.GetValue(w, new object[0]).ToString();
+						piTextProp.SetValue(w, Translate(piTitleVal.Replace("_", "")), new object[0]);	
+					}
+				} catch {
 				}
 			}
 			//Childs
 			PropertyInfo piChildren = t.GetProperty("Children");
 			if (piChildren != null) {
 				Gtk.Widget[] children = (Gtk.Widget[])piChildren.GetValue(w, new object[0]);
-				foreach (Gtk.Widget cw in children) {
-					
-					TranslateWidget(cw);
+				foreach (Gtk.Widget cw in children) {					
+					try {
+						TranslateWidget(cw);
+					} catch {
+					}
 				}
 			}
 		}
