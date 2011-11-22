@@ -29,7 +29,10 @@ namespace DeMixer.lib.std {
 				Effect.ColorEnd.B);
 			hscaleTransparentStart.Value = (Effect.ColorStartAlpha / 255f) * 100f;
 			hscaleTransparentEnd.Value = (Effect.ColorEndAlpha / 255f) * 100f;
-			checkbSyncColor.Active = colorbuttonStart.Color.Pixel == colorbuttonEnd.Color.Pixel;
+			checkbSyncColor.Active =
+				colorbuttonStart.Color.Red == colorbuttonEnd.Color.Red &&
+				colorbuttonStart.Color.Green == colorbuttonEnd.Color.Green &&
+				colorbuttonStart.Color.Blue == colorbuttonEnd.Color.Blue;
 		}
 
 		protected void OnColorbuttonStartColorSet(object sender, System.EventArgs e) {
