@@ -41,6 +41,7 @@ namespace DeMixer.lib.std {
 		public override void ShowDialog (Gtk.Window parent) {
 			EffectShadowDialog dlg = new EffectShadowDialog(this, parent);
 			try {
+				Kernel.TranslateWidget(dlg);
 				dlg.Run();
 			} finally {
 				dlg.Destroy();	

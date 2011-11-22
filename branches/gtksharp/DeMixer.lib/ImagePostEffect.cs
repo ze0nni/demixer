@@ -32,7 +32,7 @@ namespace DeMixer.lib {
 		/// <summary>
 		/// Вызов диалога настроек
 		/// </summary>
-		public virtual void ShowDialog() {			
+		public virtual void ShowDialog(Gtk.Window parent) {			
 		}
 		
 		/// <summary>
@@ -76,7 +76,9 @@ namespace DeMixer.lib {
 		public virtual  ImagePostEffect GetClone() {
 			Type t = this.GetType();
 			ConstructorInfo constr = t.GetConstructor(new Type[0]);
-			return (ImagePostEffect)constr.Invoke(new object[0]);
+			ImagePostEffect pe = (ImagePostEffect)constr.Invoke(new object[0]);
+			pe.Init(kernel);
+			return pe;
 		}
 				
 		public override string ToString () {
