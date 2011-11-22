@@ -41,7 +41,9 @@ namespace DeMixer {
 			UpdatePlugins();                        
 			ReadSettings();
 			LoadDictionary("ru");
-            
+			
+			//
+			InitMenu();            
 			switch (UpdateIntervalMode) {
 			case 0:
 				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
@@ -97,7 +99,7 @@ namespace DeMixer {
 		private DateTime LastUpdateTick = DateTime.Now;
 
 		bool HandleTick() {										
-			return true;
+			//return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
 					if (IsGenerateNewPhoto) {
@@ -216,8 +218,8 @@ namespace DeMixer {
 				UserRegistry.SetValue("LastTick", LastUpdateTick);
 				IsGenerateNewPhoto = false;
                 
-				//todo: TrayIcon.ContextMenu = GetMenu();
-                
+				//Обновляем список меню
+				updateLastMenu();
 				lock (NextProcessThreadSync) {
 					IsGenerateNewPhoto = false;
 					NextProcessThread = null;                                       					
@@ -454,54 +456,22 @@ namespace DeMixer {
 		private bool FIsRunning = true;
 		private DateTime FStopTime;
 		Gtk.Widget LastConfigDialog = null;
-
-		void HandlePopupMenu(object sender, Gtk.PopupMenuArgs args) {
-			Gtk.Menu trayMenu = new Gtk.Menu();
+		
+		Gtk.Menu TrayPopUpMenu;
+		Gtk.MenuItem TrayMenuItemNext;
+		Gtk.MenuItem TrayMenuItemEnable;
+		Gtk.MenuItem TrayMenuItemLast;
+		Gtk.MenuItem TrayMenuItemProfiles;
+		void InitMenu() {
+			TrayPopUpMenu = new Gtk.Menu();
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
 			miNext.Activated += (o, e) => {
 				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
 			};
-			
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
-			
-			#region menu Previous
-			//LastMenuItemInfo[] prev = getPreviousImages();
-			LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
-			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));
-			if (prev.Length == 0) {
-				miLast.Sensitive = false;
-			} else {
-				miLast.Submenu = new Gtk.Menu();
-				foreach (LastMenuItemInfo linfo in prev) {
-					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(
-					                                              String.Format("{0}\n{1}",
-					                                                            linfo.Title,
-					                                                            linfo.Date)
-					                                              );
-					pmi.Image = linfo.Image;
-					char[] imageFileName = linfo.FileName.ToCharArray();
-					pmi.Activated += (o, e) => {						
-						MenuUseImageSelect(new String(imageFileName));
-					};
-					((Gtk.Menu)miLast.Submenu).Append(pmi);
-				}
-			}
-			#endregion			
-			#region menu profiles
-			string[] profiles = GetProfileList();			
-			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem(Translate("Profiles"));
-			if (profiles.Length == 0) {
-				miProfiles.Sensitive = false;
-			} else {
-				miProfiles.Submenu = new Gtk.Menu();
-				foreach (string pname in GetProfileList()) {
-					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);					
-					((Gtk.Menu)miProfiles.Submenu).Append(pmi);
-				}
-			}
-			#endregion
-			
+			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));						
+			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem(Translate("Profiles"));					
 			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem(Translate("Configuration"));
 			miConfig.Activated += (o, e) => {
 				if (LastConfigDialog != null) {
@@ -532,17 +502,89 @@ namespace DeMixer {
 				Gtk.Application.Quit();	
 			};
 			
+			TrayMenuItemNext = miNext;
+			TrayMenuItemEnable = miEnable;
+			TrayMenuItemLast = miLast;
+			TrayMenuItemProfiles = miProfiles;
 			
-			trayMenu.Append(miNext);
-			trayMenu.Append(miEnable);
-			trayMenu.Append(miLast);
-			trayMenu.Append(miProfiles);
-			trayMenu.Append(miConfig);
-			trayMenu.Append(miAbout);
-			trayMenu.Append(miExit);
-								
-			trayMenu.ShowAll();
-			TrayIcon.PresentMenu(trayMenu, (uint)args.Args[0], (uint)args.Args[1]);
+			TrayPopUpMenu.Append(miNext);
+			TrayPopUpMenu.Append(miEnable);
+			TrayPopUpMenu.Append(miLast);
+			TrayPopUpMenu.Append(miProfiles);
+			TrayPopUpMenu.Append(miConfig);
+			TrayPopUpMenu.Append(miAbout);
+			TrayPopUpMenu.Append(miExit);
+			
+			updateLastMenu();
+			updateProfilesMenu();
+		}
+		
+		#region
+		void updateLastMenu() {
+			//обновляем в отдельном потоке
+			new Thread((ThreadStart) delegate {				
+				Gtk.Application.Invoke(delegate {							
+					Gtk.Menu m = (Gtk.Menu)TrayMenuItemLast.Submenu;
+					if (m != null) {
+						foreach (Gtk.Widget w in m.AllChildren) {
+							w.Destroy();
+						}
+					}
+				});
+				LastMenuItemInfo[] prev = getPreviousImages();
+				//LastMenuItemInfo[] prev = new LastMenuItemInfo[0];
+				if (prev.Length == 0) {
+					Gtk.Application.Invoke(delegate {
+						TrayMenuItemLast.Sensitive = false;
+						TrayMenuItemLast.Submenu = null;						
+					});				
+				} else {										
+					foreach (LastMenuItemInfo linfo in prev) {
+						Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(
+						                                              String.Format("{0}\n{1}",
+						                                                            linfo.Title,
+						                                                            linfo.Date)
+						                                              );
+						pmi.Image = linfo.Image;
+						char[] imageFileName = linfo.FileName.ToCharArray();
+						pmi.Activated += (o, e) => {
+							MenuUseImageSelect(new String(imageFileName));
+							updateLastMenu();
+						};
+						Gtk.Application.Invoke(delegate {							
+							if (TrayMenuItemLast.Submenu == null)
+								TrayMenuItemLast.Submenu = new Gtk.Menu();
+							((Gtk.Menu)TrayMenuItemLast.Submenu).Append(pmi);
+							pmi.ShowAll();
+						});
+					}
+					Gtk.Application.Invoke(delegate {
+						TrayMenuItemLast.Sensitive = true;						
+						TrayMenuItemLast.ShowAll();
+					});
+				}	
+			}).Start();
+		}
+		#endregion
+		
+		#region
+		void updateProfilesMenu() {
+			string[] profiles = GetProfileList();			
+			if (profiles.Length == 0) {
+				TrayMenuItemProfiles.Sensitive = false;
+			} else {				
+				TrayMenuItemProfiles.Submenu = new Gtk.Menu();
+				foreach (string pname in GetProfileList()) {
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);					
+					((Gtk.Menu)TrayMenuItemProfiles.Submenu).Append(pmi);
+				}
+			}	
+		}
+		#endregion
+		
+		void HandlePopupMenu(object sender, Gtk.PopupMenuArgs args) {
+			TrayPopUpMenu.ShowAll();
+			TrayIcon.PresentMenu(TrayPopUpMenu, (uint)args.Args[0], (uint)args.Args[1]);
 		}
 		
 		internal class LastMenuItemInfo {

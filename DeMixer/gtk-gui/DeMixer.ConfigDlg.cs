@@ -804,6 +804,7 @@ namespace DeMixer
 			this.effectAddBtn.Clicked += new global::System.EventHandler (this.OnEffectAddBtnClicked);
 			this.EffectsList.CursorChanged += new global::System.EventHandler (this.OnEffectsListCursorChanged);
 			this.editEffectBtn.Clicked += new global::System.EventHandler (this.OnEditEffectBtnClicked);
+			this.upEffectBtn.Clicked += new global::System.EventHandler (this.OnUpEffectBtnClicked);
 			this.deleteEffectBtn.Clicked += new global::System.EventHandler (this.OnDeleteEffectBtnClicked);
 			this.saveHistoryChBox.Clicked += new global::System.EventHandler (this.OnSaveHistoryChBoxClicked);
 			this.historyLimitSizeChBox.Clicked += new global::System.EventHandler (this.OnHistoryLimitSizeChBoxClicked);
