@@ -18,7 +18,7 @@ namespace DeMixer.lib.std
 			get { return  "Выводит надпись"; }
 		}
 		
-		public override void ShowDialog () {
+		public override void ShowDialog (Gtk.Window parent) {
 			//EffectTextDlg dlg = new EffectTextDlg(this);
 			//dlg.ShowDialog();
 		}
