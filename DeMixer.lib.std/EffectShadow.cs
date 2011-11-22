@@ -38,9 +38,13 @@ namespace DeMixer.lib.std {
 
 		}
 
-		public override void ShowDialog () {			
-			//EffectShadowDlg dlg = new EffectShadowDlg(this);
-			//dlg.ShowDialog();			
+		public override void ShowDialog (Gtk.Window parent) {
+			EffectShadowDialog dlg = new EffectShadowDialog(this, parent);
+			try {
+				dlg.Run();
+			} finally {
+				dlg.Destroy();	
+			}
 		}
 
 		
