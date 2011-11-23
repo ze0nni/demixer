@@ -59,6 +59,7 @@ namespace DeMixer.lib.std
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.combobox1.Changed += new global::System.EventHandler (this.OnCombobox1Changed);
 		}
 	}
 }

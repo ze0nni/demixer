@@ -354,6 +354,7 @@ Brown</property>
 7
 8</property>
                 <property name="Active">0</property>
+                <signal name="Changed" handler="OnCombobox1Changed" />
               </widget>
               <packing>
                 <property name="Position">1</property>
