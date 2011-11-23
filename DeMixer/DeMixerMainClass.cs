@@ -32,7 +32,7 @@ namespace DeMixer {
 			Gtk.Application.Run();
 		}
 
-		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
+		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();		
 
 		public DeMixerMainClass() {			
 			TrayIcon.Activate += HandleActivate;
@@ -75,9 +75,13 @@ namespace DeMixer {
 
 		protected bool IsGenerateNewPhoto {
 			get { return FIsGenerateNewPhoto; }
-			set {
+			set {				
 				FIsGenerateNewPhoto = value;
 				UpdateTrayIcon();
+				Gtk.Application.Invoke(delegate {
+					TrayMenuItemNextLabel.Text = Translate(
+						FIsGenerateNewPhoto ? "Abort" : "Next wallpaper");
+				});
 			}
 		}
         
@@ -85,21 +89,36 @@ namespace DeMixer {
 
 		void UpdateTrayIcon() {			
 			Gtk.Application.Invoke(delegate {
-				if (IsGenerateNewPhoto) {
-					TrayIcon.File = String.Format(@"/usr/share/demixer/iconu{0}.png", TraiIconAnimationTick + 1);
-					TraiIconAnimationTick++;
-					if (TraiIconAnimationTick > 7)
-						TraiIconAnimationTick = 0;	
+				if (TimerStopped) {
+					TrayIcon.File = @"/usr/share/demixer/icond.png";
 				} else {
-					TrayIcon.File = @"/usr/share/demixer/icon";
+					if (IsGenerateNewPhoto) {
+						TrayIcon.File = String.Format(@"/usr/share/demixer/iconu{0}.png", TraiIconAnimationTick + 1);
+						TraiIconAnimationTick++;
+						if (TraiIconAnimationTick > 7)
+							TraiIconAnimationTick = 0;	
+					} else {
+						TrayIcon.File = @"/usr/share/demixer/icon.png";
+					}
 				}
 			});	
 		}
 		
 		private DateTime LastUpdateTick = DateTime.Now;
-
+		
+		bool timerStopped = false;
+		bool TimerStopped {
+			get { return timerStopped; }
+			set {
+				timerStopped = value;
+				UpdateTrayIcon();
+			}
+		}
+		
+		
 		bool HandleTick() {										
-			//return true;
+			//return true;			
+			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
 					if (IsGenerateNewPhoto) {
@@ -149,10 +168,9 @@ namespace DeMixer {
 			try {
 				ActiveComposition.Source = ActiveSource;                                
 				System.Drawing.Image img = null;				
-				
+				//Получаем новые обои
 				int scrw = Gdk.Display.Default.DefaultScreen.Width;
-				int scrh = Gdk.Display.Default.DefaultScreen.Height;
-				Console.WriteLine("{0}x{1}", scrw, scrh);
+				int scrh = Gdk.Display.Default.DefaultScreen.Height;				
 				img = ActiveComposition.GetCompostion(scrw, scrh);                       
                 
                 #region сохраняем в png без эффектов
@@ -452,14 +470,13 @@ namespace DeMixer {
 			} catch {
 			}
 		}
-        
-		private bool FIsRunning = true;
+        		
 		private DateTime FStopTime;
 		Gtk.Widget LastConfigDialog = null;
 		
 		Gtk.Menu TrayPopUpMenu;
 		Gtk.MenuItem TrayMenuItemNext;
-		Gtk.MenuItem TrayMenuItemEnable;
+		Gtk.Label TrayMenuItemNextLabel;
 		Gtk.MenuItem TrayMenuItemLast;
 		Gtk.MenuItem TrayMenuItemProfiles;
 		void InitMenu() {
@@ -467,9 +484,24 @@ namespace DeMixer {
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
 			miNext.Activated += (o, e) => {
-				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
+				lock (NextProcessThreadSync) {
+				if (FIsGenerateNewPhoto) 
+					AbortThread();
+				else
+					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
+				}				
 			};
-			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));			
+			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));
+			miEnable.Active = true;
+			miEnable.Activated += (o, e) => {
+				TimerStopped = !miEnable.Active;
+				if (TimerStopped) {					
+					FStopTime = DateTime.Now;
+				} else {					
+					LastUpdateTick = LastUpdateTick.Add(DateTime.Now - FStopTime);
+				}
+			};
+			
 			Gtk.ImageMenuItem miLast = new Gtk.ImageMenuItem(Translate("Previous"));						
 			Gtk.ImageMenuItem miProfiles = new Gtk.ImageMenuItem(Translate("Profiles"));					
 			Gtk.ImageMenuItem miConfig = new Gtk.ImageMenuItem(Translate("Configuration"));
@@ -499,11 +531,13 @@ namespace DeMixer {
 			
 			Gtk.MenuItem miExit = new Gtk.ImageMenuItem(Translate("Exit"));
 			miExit.Activated += (o, e) => {
+				AbortThread();
 				Gtk.Application.Quit();	
 			};
 			
 			TrayMenuItemNext = miNext;
-			TrayMenuItemEnable = miEnable;
+			TrayMenuItemNextLabel = (Gtk.Label)TrayMenuItemNext.Child;
+			
 			TrayMenuItemLast = miLast;
 			TrayMenuItemProfiles = miProfiles;
 			
@@ -668,32 +702,7 @@ namespace DeMixer {
 		}
 #endregion
         
-#region события на меню
-		private void MenuNextClick(object sender, EventArgs e) {
-			lock (NextProcessThreadSync) {
-				if (FIsGenerateNewPhoto) 
-					AbortThread();
-				else
-					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
-			}
-		}
-        
-		private void MenuStartStopClick(object sender, EventArgs e) {
-			FIsRunning = !FIsRunning;
-			//todo: TrayIcon.ContextMenu = GetMenu();
-			if (FIsRunning) {
-				//Запущено
-				LastUpdateTick = LastUpdateTick.Add(DateTime.Now - FStopTime);
-				TrayIcon.File = @"./icon.png";
-				//todo: UpdateTimer.Start();
-                        
-			} else {
-				//Остановлено
-				FStopTime = DateTime.Now;
-				//todo: UpdateTimer.Stop();
-				TrayIcon.File = @"./icond.ico";
-			}
-		}
+#region события на меню		
         
 		private void MenuConfigClick(object sender, EventArgs e) {
 			/*todo
@@ -1059,7 +1068,7 @@ namespace DeMixer {
         
 		public TimeSpan TimeLeft {
 			get {
-				if (FIsRunning)
+				if (!TimerStopped)
 					return 
                                         LastUpdateTick.AddMilliseconds(UpdateInterval) - DateTime.Now;
 				else
@@ -1191,20 +1200,18 @@ namespace DeMixer {
                 TrayIcon.BalloonTipText = message;
                 TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
                 TrayIcon.ShowBalloonTip(1000*15);
-              */
-				break;		
+              */				
 			case PlatformID.Unix:   
-			default:
-                /*todo!
-                (new System.Threading.Thread((System.Threading.ThreadStart)delegate {
-                        MessageBox.Show(
-                        message,
-                        String.Format("{0} - DeMixer", title),
-                        MessageBoxButtons.OK,
-                        errorIcon ? MessageBoxIcon.Error : MessageBoxIcon.Information);
-                })).Start();                                    
-                */
-				Console.WriteLine("=== {0} ===\n{1}", title, message);
+			default:					
+				Notifications.Notification notify =  new  Notifications.Notification();
+				notify.Summary = title;
+				notify.Body = message;				
+				notify.AddAction("retry", Translate("Repeat now"), delegate {
+					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
+				});								
+				
+				notify.Urgency = Notifications.Urgency.Low;
+				notify.Show();								
 				break;
 			}       
 		}

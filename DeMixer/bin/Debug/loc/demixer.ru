@@ -14,6 +14,8 @@ Effects=Эффекты
 Program=Система
 tags=Тэги
 
+Repeat now=Повторить сейчас
+
 Save history=Сохранять историю
 Max size=размер
 Update interval:=Интервал обновления
