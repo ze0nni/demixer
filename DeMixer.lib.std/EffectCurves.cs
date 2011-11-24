@@ -12,14 +12,6 @@ namespace DeMixer.lib.std {
 		public EffectCurves() {
 		}
 		
-		public override	string PluginName {
-			get { return "Коррекция цвета"; }
-		}
-		
-		public override string PluginTitle {
-			get { return  "Коррекция цвета"; }
-		}
-		
 		public override Image Execute(Image img) {
 			Bitmap bmp = new Bitmap(img, img.Width, img.Height);
 			Rectangle lockRect = new Rectangle(0, 0, bmp.Width, bmp.Height);

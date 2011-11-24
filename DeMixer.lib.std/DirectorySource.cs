@@ -12,25 +12,10 @@ namespace DeMixer.lib.std {
 		public DirectorySource() {			
 		}
 		
-		public override string PluginName {
-			get { return "Папка"; }
-		}
-		
-		public override string PluginTitle {
-			get { return "Поиск в папках"; }
-		}
-		
 		public List<string> FSeekPath = new List<string>();		
 		public override string Url {
 			get { return FSeekPath.Count == 0 ? "" : FSeekPath[0]; }	
 		}	
-		
-		
-		public string GetPluginDescription() {
-			return 	"\tПлагин предназначен для поиска уже сохраненных на жестком диске, " + 
-					"или каком либо другом носителе,изображенний.\r\n" +
-					"\tВам следует просто указать одну или несколько папок с изображениями.";
-		}
 		
 		public override bool AllowTags {
 				get { return false; }

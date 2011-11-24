@@ -3,21 +3,18 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/CompositionMozaikConfigView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="1223" Column="4" />
-      <File FileName="DeMixer.lib.std/EffectShadowDialog.cs" Line="1" Column="1" />
-      <File FileName="DeMixer/ConfigDlg.cs" Line="1" Column="1" />
-      <File FileName="DeMixer.lib.std/CompositionMozaikConfigView.cs" Line="10" Column="51" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="113" Column="14" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="171" Column="28" />
+      <File FileName="DeMixer.lib.std/CompositionSeasonsConfigView.cs" Line="12" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="DeMixer" expanded="True" />
           <Node name="DeMixer.lib" expanded="True" />
-          <Node name="DeMixer.lib.std" expanded="True">
-            <Node name="CompositionMozaikConfigView.cs" selected="True" />
-          </Node>
+          <Node name="DeMixer.lib.std" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

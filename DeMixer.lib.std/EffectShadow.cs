@@ -5,14 +5,6 @@ using System.Drawing.Drawing2D;
 
 namespace DeMixer.lib.std {	
 	public class EffectShadow : ImagePostEffect {
-		
-		public override	string PluginName {
-			get { return "Тень"; }
-		}
-		
-		public override string PluginTitle {
-			get { return  "Эффект тени"; }
-		}
 				
 		public override void Save (System.IO.BinaryWriter stream) {
 			stream.Write(DrawTop);	
