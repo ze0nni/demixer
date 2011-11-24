@@ -40,7 +40,7 @@ namespace DeMixer {
 
 			UpdatePlugins();                        
 			ReadSettings();
-			LoadDictionary("ru");
+			LoadDictionary("en");
 			
 			//
 			InitMenu();            
@@ -117,7 +117,6 @@ namespace DeMixer {
 		
 		
 		bool HandleTick() {										
-			//return true;			
 			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					

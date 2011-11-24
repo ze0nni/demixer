@@ -1,0 +1,55 @@
+Responce=Responce
+Images size=Images size
+Сolor=Сolor
+Images count=Images count
+Separator size=Separator size
+Separator type=Separator type
+Gradient=Gradient
+From above=From above
+From below=From below
+From left=From left
+From right=From right
+Size=Size
+Start=Start
+End=End
+Sync colors=Sync colors
+
+DeMixer.lib.std.DirectorySource name=Search on hard disk
+DeMixer.lib.std.DirectorySource title=Search on hard disk
+DeMixer.lib.std.DirectorySource description=Search on hard disk <b>description</b>.
+
+DeMixer.lib.std.konachancomSource name=Konachan.com
+DeMixer.lib.std.konachancomSource title=Search on Konachan.com
+DeMixer.lib.std.konachancomSource description=Visit <a href="http://konachan.com">KonaChan.com</a> to view all tags.\nFro example:\n\t<i>2girls dress -nude</i>
+
+DeMixer.ConfigDlg+ColorSource name=Random color
+DeMixer.ConfigDlg+ColorSource title=Random color
+DeMixer.ConfigDlg+ColorSource description=Return rectangle with filling random color.
+
+DeMixer.lib.std.googlecomSources name=Google.com
+DeMixer.lib.std.googlecomSources title=Search with Google.
+DeMixer.lib.std.googlecomSources description=Search with <a href="http://Images.Google.com">Images.Google.com</a>.\nYou can select quality and color for searched images.\nFor example:\n\t<i>own desktop wallpapers</i>
+
+DeMixer.lib.std.CompositionAutoSize name=Optimal size
+DeMixer.lib.std.CompositionAutoSize title=Optimal size
+DeMixer.lib.std.CompositionAutoSize description=description
+
+DeMixer.lib.std.CompositionMozaik name=photoChaos
+DeMixer.lib.std.CompositionMozaik title=photoChaos
+DeMixer.lib.std.CompositionMozaik description=description
+
+DeMixer.lib.std.CompositionSeasons name=Seasons
+DeMixer.lib.std.CompositionSeasons title=Seasons
+DeMixer.lib.std.CompositionSeasons description=description
+
+DeMixer.lib.std.EffectShadow name=Shadow
+DeMixer.lib.std.EffectShadow title=Shadow
+DeMixer.lib.std.EffectShadow description=description
+
+DeMixer.lib.std.EffectText name=Text
+DeMixer.lib.std.EffectText title=Text
+DeMixer.lib.std.EffectText description=description
+
+DeMixer.lib.std.EffectCurves name=Curves
+DeMixer.lib.std.EffectCurves title=Curves
+DeMixer.lib.std.EffectCurves description=description
