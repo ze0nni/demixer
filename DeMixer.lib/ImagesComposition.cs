@@ -92,5 +92,12 @@ namespace DeMixer.lib {
 			}
 			return res;	
 		}
+		
+		public event EventHandler<EventArgs> UpdatePreview;
+		public void doUpdatePreview() {
+			if (UpdatePreview != null) {
+				UpdatePreview(this, new EventArgs());	
+			}
+		}
 	}
 }
