@@ -11,8 +11,8 @@ namespace DeMixer.lib.std
 		}
 
 		protected void OnCombobox1Changed (object sender, System.EventArgs e) {
-			Composition.ImagesCount = 2 +
-				combobox1.Active;
+			Composition.ImagesCount = 2 + combobox1.Active;
+			Composition.doUpdatePreview();
 		}
 	}
 }

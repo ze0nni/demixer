@@ -377,7 +377,7 @@ Brown</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="DeMixer.lib.std.CompositionSeasonsConfigView" design-size="300 300">
+  <widget class="Gtk.Bin" id="DeMixer.lib.std.CompositionSeasonsConfigView" design-size="245 300">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -401,7 +401,7 @@ Brown</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.HScale" id="hscale2">
+              <widget class="Gtk.HScale" id="hscaleCount">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Lower">2</property>
@@ -412,6 +412,7 @@ Brown</property>
                 <property name="DrawValue">True</property>
                 <property name="Digits">0</property>
                 <property name="ValuePos">Top</property>
+                <signal name="ChangeValue" handler="OnHscaleCountChangeValue" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -443,7 +444,7 @@ Brown</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.HScale" id="hscale1">
+              <widget class="Gtk.HScale" id="hscaleSize">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Upper">64</property>
@@ -452,6 +453,7 @@ Brown</property>
                 <property name="DrawValue">True</property>
                 <property name="Digits">0</property>
                 <property name="ValuePos">Top</property>
+                <signal name="ChangeValue" handler="OnHscaleSizeChangeValue" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -503,43 +505,143 @@ Brown</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HBox" id="hbox6">
+          <widget class="Gtk.Frame" id="frame1">
             <property name="MemberName" />
-            <property name="Spacing">6</property>
+            <property name="ShadowType">None</property>
             <child>
-              <widget class="Gtk.Label" id="label6">
+              <widget class="Gtk.Alignment" id="GtkAlignment">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Gradient</property>
+                <property name="Xalign">0</property>
+                <property name="Yalign">0</property>
+                <property name="LeftPadding">12</property>
+                <child>
+                  <widget class="Gtk.Table" id="table1">
+                    <property name="MemberName" />
+                    <property name="NRows">3</property>
+                    <property name="NColumns">2</property>
+                    <property name="RowSpacing">6</property>
+                    <property name="ColumnSpacing">6</property>
+                    <child>
+                      <placeholder />
+                    </child>
+                    <child>
+                      <widget class="Gtk.CheckButton" id="checkbSyncColor">
+                        <property name="MemberName" />
+                        <property name="Sensitive">False</property>
+                        <property name="CanFocus">True</property>
+                        <property name="Label" translatable="yes">Sycn colors</property>
+                        <property name="DrawIndicator">True</property>
+                        <property name="HasLabel">True</property>
+                        <property name="UseUnderline">True</property>
+                      </widget>
+                      <packing>
+                        <property name="TopAttach">2</property>
+                        <property name="BottomAttach">3</property>
+                        <property name="LeftAttach">1</property>
+                        <property name="RightAttach">2</property>
+                        <property name="AutoSize">False</property>
+                        <property name="YOptions">Fill</property>
+                        <property name="XExpand">True</property>
+                        <property name="XFill">True</property>
+                        <property name="XShrink">False</property>
+                        <property name="YExpand">False</property>
+                        <property name="YFill">True</property>
+                        <property name="YShrink">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.ColorButton" id="colorbEnd">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Events">ButtonMotionMask, ButtonPressMask, ButtonReleaseMask</property>
+                        <property name="Alpha">-1</property>
+                        <signal name="ColorSet" handler="OnColorbEndColorSet" />
+                      </widget>
+                      <packing>
+                        <property name="TopAttach">1</property>
+                        <property name="BottomAttach">2</property>
+                        <property name="LeftAttach">1</property>
+                        <property name="RightAttach">2</property>
+                        <property name="AutoSize">False</property>
+                        <property name="YOptions">Fill</property>
+                        <property name="XExpand">True</property>
+                        <property name="XFill">True</property>
+                        <property name="XShrink">False</property>
+                        <property name="YExpand">False</property>
+                        <property name="YFill">True</property>
+                        <property name="YShrink">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.ColorButton" id="colorbStart">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Events">ButtonMotionMask, ButtonPressMask, ButtonReleaseMask</property>
+                        <property name="Alpha">-1</property>
+                        <signal name="ColorSet" handler="OnColorbStartColorSet" />
+                      </widget>
+                      <packing>
+                        <property name="LeftAttach">1</property>
+                        <property name="RightAttach">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="XOptions">Fill</property>
+                        <property name="YOptions">Fill</property>
+                        <property name="XExpand">False</property>
+                        <property name="XFill">True</property>
+                        <property name="XShrink">False</property>
+                        <property name="YExpand">False</property>
+                        <property name="YFill">True</property>
+                        <property name="YShrink">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="label1">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">Start</property>
+                      </widget>
+                      <packing>
+                        <property name="AutoSize">True</property>
+                        <property name="XOptions">Fill</property>
+                        <property name="YOptions">Fill</property>
+                        <property name="XExpand">False</property>
+                        <property name="XFill">True</property>
+                        <property name="XShrink">False</property>
+                        <property name="YExpand">False</property>
+                        <property name="YFill">True</property>
+                        <property name="YShrink">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="label2">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">End</property>
+                      </widget>
+                      <packing>
+                        <property name="TopAttach">1</property>
+                        <property name="BottomAttach">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="XOptions">Fill</property>
+                        <property name="YOptions">Fill</property>
+                        <property name="XExpand">False</property>
+                        <property name="XFill">True</property>
+                        <property name="XShrink">False</property>
+                        <property name="YExpand">False</property>
+                        <property name="YFill">True</property>
+                        <property name="YShrink">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                </child>
               </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
             </child>
             <child>
-              <widget class="Gtk.ColorButton" id="colorbutton1">
+              <widget class="Gtk.Label" id="GtkLabel1">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Events">ButtonMotionMask, ButtonPressMask, ButtonReleaseMask</property>
-                <property name="Alpha">-1</property>
+                <property name="LabelProp" translatable="yes">&lt;b&gt;Gradient&lt;/b&gt;</property>
+                <property name="UseMarkup">True</property>
               </widget>
               <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.ColorButton" id="colorbutton2">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Events">ButtonMotionMask, ButtonPressMask, ButtonReleaseMask</property>
-                <property name="Alpha">-1</property>
-              </widget>
-              <packing>
-                <property name="Position">2</property>
-                <property name="AutoSize">False</property>
+                <property name="type">label_item</property>
               </packing>
             </child>
           </widget>

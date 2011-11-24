@@ -2,6 +2,7 @@ using System;
 using DeMixer.lib;
 using Gdk;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DeMixer {
 	public partial class ConfigDlg : Gtk.Dialog {
@@ -76,7 +77,7 @@ namespace DeMixer {
 			Gtk.Widget view = Kernel.ActiveSource.ExpandTagsControl;
 			
 			if (lastSourceView != null) {
-				SourceVBox.Remove(lastSourceView);	
+				SourceSettingsPlace.Remove(lastSourceView);	
 				lastSourceView.Destroy();
 			}
 			
@@ -85,7 +86,7 @@ namespace DeMixer {
 			}
 			Kernel.TranslateWidget(view);
 			lastSourceView = view;
-			SourceVBox.Add(view);
+			SourceSettingsPlace.Add(view);
 			view.ShowAll();			
 		}
 		
@@ -93,12 +94,15 @@ namespace DeMixer {
 
 		protected virtual void OnCompositionComboBoxChanged(object sender, System.EventArgs e) {
 			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
+			Kernel.ActiveComposition.UpdatePreview += delegate {
+				updatePreview();
+			};
 			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
 			
 			Gtk.Widget view = Kernel.ActiveComposition.ExpandControl;
 			
 			if (lastCompositionView != null) {
-				CompositionVBox.Remove(lastCompositionView);	
+				CompositionSettingsPlace.Remove(lastCompositionView);	
 				lastCompositionView.Destroy();
 			}			
 			if (view == null) {
@@ -106,8 +110,9 @@ namespace DeMixer {
 			}
 			Kernel.TranslateWidget(view);
 			lastCompositionView = view;
-			CompositionVBox.Add(view);						
-			view.ShowAll();			
+			CompositionSettingsPlace.Add(view);						
+			view.ShowAll();
+			updatePreview();
 		}
 
 		protected virtual void OnEffectsComboBoxChanged(object sender, System.EventArgs e) {
@@ -144,6 +149,62 @@ namespace DeMixer {
 			this.HideAll();
 		}
 		
+		#region updatePreview
+		
+		internal class ColorSource : ImagesSource {			
+			Random rndCol;
+			public ColorSource() {
+				rndCol = new Random();
+			}
+			
+			public ColorSource(int s) {
+				rndCol = new Random(s);
+			}
+			
+            public override System.Drawing.Image GetNextImage () {
+				System.Drawing.Image img = new System.Drawing.Bitmap(320, 200);
+                System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(img);                   
+                g.Clear(System.Drawing.Color.FromArgb(255,
+                                       (byte)rndCol.Next(),
+                                       (byte)rndCol.Next(),
+                                       (byte)rndCol.Next()));
+                return img;
+            }
+                
+            public override System.Drawing.Image GetImageFromSource (string source) {
+				return null;
+            }
+        
+        }
+		
+		static Gdk.Pixbuf image2Pixbuf(System.Drawing.Image image ) {
+			using ( MemoryStream stream = new MemoryStream() ) {
+				image.Save( stream, System.Drawing.Imaging.ImageFormat.Png );
+				stream.Position = 0;
+				return new Gdk.Pixbuf( stream );
+			}
+	    } 
+		
+		int updatePreviewLastTick = 0;
+		void updatePreview() {
+			updatePreviewLastTick = Environment.TickCount;
+			int t = updatePreviewLastTick;
+			new System.Threading.Thread((System.Threading.ThreadStart)delegate {
+				System.Threading.Thread.Sleep(150);
+				if (updatePreviewLastTick != t) return;
+				ColorSource src = new ColorSource(0);
+				src.Init(Kernel);
+				System.Drawing.Image img = Kernel.ActiveComposition.GetCompostion(src, 800, 600);
+				img = new System.Drawing.Bitmap(img, new System.Drawing.Size(800/3, 600/3));
+				//Gdk.Pixbuf gtkimg = new Gdk.Pixbuf(@"/home/onni/Изображения/demixer-wallpaper.png", 320, 200);
+				Gdk.Pixbuf gtkimg = image2Pixbuf(img);
+				Gtk.Application.Invoke(delegate {
+					imagePreview.Pixbuf = gtkimg;
+				});
+			}).Start();
+		}
+		#endregion
+		
 		#region updateDesktop			
 		int updateDesktopLastTick = 0;
 		void updateDesktop() {
@@ -152,9 +213,8 @@ namespace DeMixer {
 			int t = updateDesktopLastTick;
 			new System.Threading.Thread((System.Threading.ThreadStart)delegate {
 				System.Threading.Thread.Sleep(2500);
-				if (updateDesktopLastTick == t) {					
-					Kernel.UpdateEffectForLastWallpaper();
-				}
+				if (updateDesktopLastTick != t) return;
+				Kernel.UpdateEffectForLastWallpaper();				
 			}).Start();
 			
 		}			

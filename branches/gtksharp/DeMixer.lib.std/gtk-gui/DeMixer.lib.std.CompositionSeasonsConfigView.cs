@@ -7,17 +7,22 @@ namespace DeMixer.lib.std
 		private global::Gtk.VBox vbox3;
 		private global::Gtk.HBox hbox3;
 		private global::Gtk.Label label3;
-		private global::Gtk.HScale hscale2;
+		private global::Gtk.HScale hscaleCount;
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.Label label4;
-		private global::Gtk.HScale hscale1;
+		private global::Gtk.HScale hscaleSize;
 		private global::Gtk.HBox hbox5;
 		private global::Gtk.Label label5;
 		private global::Gtk.ComboBox combobox2;
-		private global::Gtk.HBox hbox6;
-		private global::Gtk.Label label6;
-		private global::Gtk.ColorButton colorbutton1;
-		private global::Gtk.ColorButton colorbutton2;
+		private global::Gtk.Frame frame1;
+		private global::Gtk.Alignment GtkAlignment;
+		private global::Gtk.Table table1;
+		private global::Gtk.CheckButton checkbSyncColor;
+		private global::Gtk.ColorButton colorbEnd;
+		private global::Gtk.ColorButton colorbStart;
+		private global::Gtk.Label label1;
+		private global::Gtk.Label label2;
+		private global::Gtk.Label GtkLabel1;
 		
 		protected virtual void Build ()
 		{
@@ -43,19 +48,19 @@ namespace DeMixer.lib.std
 			w1.Expand = false;
 			w1.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.hscale2 = new global::Gtk.HScale (null);
-			this.hscale2.CanFocus = true;
-			this.hscale2.Name = "hscale2";
-			this.hscale2.Adjustment.Lower = 2;
-			this.hscale2.Adjustment.Upper = 7;
-			this.hscale2.Adjustment.PageIncrement = 10;
-			this.hscale2.Adjustment.StepIncrement = 1;
-			this.hscale2.Adjustment.Value = 2;
-			this.hscale2.DrawValue = true;
-			this.hscale2.Digits = 0;
-			this.hscale2.ValuePos = ((global::Gtk.PositionType)(2));
-			this.hbox3.Add (this.hscale2);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hscale2]));
+			this.hscaleCount = new global::Gtk.HScale (null);
+			this.hscaleCount.CanFocus = true;
+			this.hscaleCount.Name = "hscaleCount";
+			this.hscaleCount.Adjustment.Lower = 2;
+			this.hscaleCount.Adjustment.Upper = 7;
+			this.hscaleCount.Adjustment.PageIncrement = 10;
+			this.hscaleCount.Adjustment.StepIncrement = 1;
+			this.hscaleCount.Adjustment.Value = 2;
+			this.hscaleCount.DrawValue = true;
+			this.hscaleCount.Digits = 0;
+			this.hscaleCount.ValuePos = ((global::Gtk.PositionType)(2));
+			this.hbox3.Add (this.hscaleCount);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hscaleCount]));
 			w2.Position = 1;
 			this.vbox3.Add (this.hbox3);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
@@ -76,17 +81,17 @@ namespace DeMixer.lib.std
 			w4.Expand = false;
 			w4.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.hscale1 = new global::Gtk.HScale (null);
-			this.hscale1.CanFocus = true;
-			this.hscale1.Name = "hscale1";
-			this.hscale1.Adjustment.Upper = 64;
-			this.hscale1.Adjustment.PageIncrement = 10;
-			this.hscale1.Adjustment.StepIncrement = 1;
-			this.hscale1.DrawValue = true;
-			this.hscale1.Digits = 0;
-			this.hscale1.ValuePos = ((global::Gtk.PositionType)(2));
-			this.hbox4.Add (this.hscale1);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.hscale1]));
+			this.hscaleSize = new global::Gtk.HScale (null);
+			this.hscaleSize.CanFocus = true;
+			this.hscaleSize.Name = "hscaleSize";
+			this.hscaleSize.Adjustment.Upper = 64;
+			this.hscaleSize.Adjustment.PageIncrement = 10;
+			this.hscaleSize.Adjustment.StepIncrement = 1;
+			this.hscaleSize.DrawValue = true;
+			this.hscaleSize.Digits = 0;
+			this.hscaleSize.ValuePos = ((global::Gtk.PositionType)(2));
+			this.hbox4.Add (this.hscaleSize);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.hscaleSize]));
 			w5.Position = 1;
 			this.vbox3.Add (this.hbox4);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox4]));
@@ -120,44 +125,95 @@ namespace DeMixer.lib.std
 			w9.Expand = false;
 			w9.Fill = false;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.hbox6 = new global::Gtk.HBox ();
-			this.hbox6.Name = "hbox6";
-			this.hbox6.Spacing = 6;
-			// Container child hbox6.Gtk.Box+BoxChild
-			this.label6 = new global::Gtk.Label ();
-			this.label6.Name = "label6";
-			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("Gradient");
-			this.hbox6.Add (this.label6);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.label6]));
-			w10.Position = 0;
-			w10.Expand = false;
-			w10.Fill = false;
-			// Container child hbox6.Gtk.Box+BoxChild
-			this.colorbutton1 = new global::Gtk.ColorButton ();
-			this.colorbutton1.CanFocus = true;
-			this.colorbutton1.Events = ((global::Gdk.EventMask)(784));
-			this.colorbutton1.Name = "colorbutton1";
-			this.hbox6.Add (this.colorbutton1);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.colorbutton1]));
-			w11.Position = 1;
-			// Container child hbox6.Gtk.Box+BoxChild
-			this.colorbutton2 = new global::Gtk.ColorButton ();
-			this.colorbutton2.CanFocus = true;
-			this.colorbutton2.Events = ((global::Gdk.EventMask)(784));
-			this.colorbutton2.Name = "colorbutton2";
-			this.hbox6.Add (this.colorbutton2);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.colorbutton2]));
-			w12.Position = 2;
-			this.vbox3.Add (this.hbox6);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox6]));
-			w13.Position = 3;
-			w13.Expand = false;
-			w13.Fill = false;
+			this.frame1 = new global::Gtk.Frame ();
+			this.frame1.Name = "frame1";
+			this.frame1.ShadowType = ((global::Gtk.ShadowType)(0));
+			// Container child frame1.Gtk.Container+ContainerChild
+			this.GtkAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment.Name = "GtkAlignment";
+			this.GtkAlignment.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			this.table1 = new global::Gtk.Table (((uint)(3)), ((uint)(2)), false);
+			this.table1.Name = "table1";
+			this.table1.RowSpacing = ((uint)(6));
+			this.table1.ColumnSpacing = ((uint)(6));
+			// Container child table1.Gtk.Table+TableChild
+			this.checkbSyncColor = new global::Gtk.CheckButton ();
+			this.checkbSyncColor.Sensitive = false;
+			this.checkbSyncColor.CanFocus = true;
+			this.checkbSyncColor.Name = "checkbSyncColor";
+			this.checkbSyncColor.Label = global::Mono.Unix.Catalog.GetString ("Sycn colors");
+			this.checkbSyncColor.DrawIndicator = true;
+			this.checkbSyncColor.UseUnderline = true;
+			this.table1.Add (this.checkbSyncColor);
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table1 [this.checkbSyncColor]));
+			w10.TopAttach = ((uint)(2));
+			w10.BottomAttach = ((uint)(3));
+			w10.LeftAttach = ((uint)(1));
+			w10.RightAttach = ((uint)(2));
+			w10.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
+			this.colorbEnd = new global::Gtk.ColorButton ();
+			this.colorbEnd.CanFocus = true;
+			this.colorbEnd.Events = ((global::Gdk.EventMask)(784));
+			this.colorbEnd.Name = "colorbEnd";
+			this.table1.Add (this.colorbEnd);
+			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.table1 [this.colorbEnd]));
+			w11.TopAttach = ((uint)(1));
+			w11.BottomAttach = ((uint)(2));
+			w11.LeftAttach = ((uint)(1));
+			w11.RightAttach = ((uint)(2));
+			w11.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
+			this.colorbStart = new global::Gtk.ColorButton ();
+			this.colorbStart.CanFocus = true;
+			this.colorbStart.Events = ((global::Gdk.EventMask)(784));
+			this.colorbStart.Name = "colorbStart";
+			this.table1.Add (this.colorbStart);
+			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.table1 [this.colorbStart]));
+			w12.LeftAttach = ((uint)(1));
+			w12.RightAttach = ((uint)(2));
+			w12.XOptions = ((global::Gtk.AttachOptions)(4));
+			w12.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
+			this.label1 = new global::Gtk.Label ();
+			this.label1.Name = "label1";
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Start");
+			this.table1.Add (this.label1);
+			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table1 [this.label1]));
+			w13.XOptions = ((global::Gtk.AttachOptions)(4));
+			w13.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("End");
+			this.table1.Add (this.label2);
+			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.table1 [this.label2]));
+			w14.TopAttach = ((uint)(1));
+			w14.BottomAttach = ((uint)(2));
+			w14.XOptions = ((global::Gtk.AttachOptions)(4));
+			w14.YOptions = ((global::Gtk.AttachOptions)(4));
+			this.GtkAlignment.Add (this.table1);
+			this.frame1.Add (this.GtkAlignment);
+			this.GtkLabel1 = new global::Gtk.Label ();
+			this.GtkLabel1.Name = "GtkLabel1";
+			this.GtkLabel1.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Gradient</b>");
+			this.GtkLabel1.UseMarkup = true;
+			this.frame1.LabelWidget = this.GtkLabel1;
+			this.vbox3.Add (this.frame1);
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.frame1]));
+			w17.Position = 3;
+			w17.Expand = false;
+			w17.Fill = false;
 			this.Add (this.vbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.hscaleCount.ChangeValue += new global::Gtk.ChangeValueHandler (this.OnHscaleCountChangeValue);
+			this.hscaleSize.ChangeValue += new global::Gtk.ChangeValueHandler (this.OnHscaleSizeChangeValue);
+			this.colorbStart.ColorSet += new global::System.EventHandler (this.OnColorbStartColorSet);
+			this.colorbEnd.ColorSet += new global::System.EventHandler (this.OnColorbEndColorSet);
 		}
 	}
 }

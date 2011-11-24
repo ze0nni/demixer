@@ -87,9 +87,9 @@ namespace DeMixer.lib.std {
 				
 				for (int i=1; i<ImagesCount; i++) {										
 					g.DrawLine(p,
-					           i * width / ImagesCount - SeparatorSize / 2,
+					           i * width / ImagesCount + SeparatorSize / 4,
 					           0,
-					           i * width / ImagesCount - SeparatorSize / 2,
+					           i * width / ImagesCount + SeparatorSize / 4,
 					           height);
 				}
 			}
