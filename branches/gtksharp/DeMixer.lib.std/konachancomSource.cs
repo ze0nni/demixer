@@ -15,27 +15,9 @@ namespace DeMixer.lib.std {
 		public konachancomSource() : base() {
 		}
 			
-		public override string PluginName {
-			get { return "KonaChan.com"; }
-		}
-		
-		public override string PluginTitle {
-			get { return "Поиск на KonaChan.com"; }
-		}
-		
 		public override string Url {
 			get { return "http://KonaChan.com"; }	
 		}		
-		
-		public string GetPluginDescription() {
-			return 	"\tЭто плагин предназначен для поиска изображений на сайте KonaChan.com. "+
-					"Этот сайт, по сути огромных, структуризированны и постоянно пополняемый архив " +
-					"обоев для рабочего стола на тему аниме.\r\n" +
-					"\tДля каждлого изображения существует набор тегов, например комбинация тегов " +
-					"\"dark scenic\" соответствует темным обоям с изображением сцен (улицы, дома, пейзажи...), " +
-					"а комбинация \"-blood\" соответствует всем картинкам, которых нет крови.\r\n" + 
-					"\tПосмотреть список возможных тегов вы можете насамом сайте или через встроенный редактор.";
-		}
 		
 		public override bool AllowTags {
 				get { return true; }

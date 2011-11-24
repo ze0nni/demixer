@@ -13,31 +13,10 @@ namespace DeMixer.lib.std
 	public class googlecomSources : ImagesSource {
 		public googlecomSources () : base() {
 		}
-			
-		public override string PluginName {
-			get { return "Google.com"; }
-		}
-		
-		public override string PluginTitle {
-			get { return "Поиск на Google.com"; }
-		}
 		
 		public override string Url {
 			get { return "http://Images.Google.com"; }	
-		}		
-		
-		public string PluginDescription {
-			get {
-				return 	"\tЭто плагин предназначен для поиска изображений через сервис " +
-						"поиска изображений, всемирно известного поискового гиганта Google.\r\n" +
-						"\tДля поиска вы можете вписать в качестве ключевых слов, например: " + 
-						"\"Солнце и песок\".\r\n" + 
-						"\tЕсли вы хотите исключить какие-то ключевые слова, то ставьте перед ними минус. " + 
-						"Например \"Солнце и песок -чайки\".\r\n" + 
-						"\tТак же вы можете воспользоваться расширенными настройками что бы задать " + 
-						"особые параетры поиска, такие как размер изображений или преобладающие цвета.";
-			}
-		}
+		}				
 		
 		public string imgSize = "Large";
 		public string imgColor = "All";
