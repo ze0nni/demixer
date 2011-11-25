@@ -27,7 +27,7 @@ namespace DeMixer
 		private global::Gtk.Frame frame2;
 		private global::Gtk.Alignment GtkAlignment11;
 		private global::Gtk.Image imagePreview;
-		private global::Gtk.Label GtkLabel15;
+		private global::Gtk.Label GtkLabel18;
 		private global::Gtk.Label label3;
 		private global::Gtk.VBox vbox5;
 		private global::Gtk.HBox hbox2;
@@ -73,7 +73,7 @@ namespace DeMixer
 		private global::Gtk.Button applyProfileBtn;
 		private global::Gtk.Button saveProfileBtn;
 		private global::Gtk.Button deleteProfileBtn;
-		private global::Gtk.Label GtkLabel13;
+		private global::Gtk.Label GtkLabel14;
 		private global::Gtk.Button buttonOk;
 		
 		protected virtual void Build ()
@@ -97,7 +97,7 @@ namespace DeMixer
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 1;
+			this.notebook1.CurrentPage = 3;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.SourceVBox = new global::Gtk.VBox ();
 			this.SourceVBox.Name = "SourceVBox";
@@ -158,6 +158,8 @@ namespace DeMixer
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.SourceVBox [this.frame4]));
 			w7.Position = 1;
 			this.notebook1.Add (this.SourceVBox);
+			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.SourceVBox]));
+			w8.MenuLabel = "";
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
@@ -239,11 +241,11 @@ namespace DeMixer
 			this.imagePreview.Name = "imagePreview";
 			this.GtkAlignment11.Add (this.imagePreview);
 			this.frame2.Add (this.GtkAlignment11);
-			this.GtkLabel15 = new global::Gtk.Label ();
-			this.GtkLabel15.Name = "GtkLabel15";
-			this.GtkLabel15.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Preview</b>");
-			this.GtkLabel15.UseMarkup = true;
-			this.frame2.LabelWidget = this.GtkLabel15;
+			this.GtkLabel18 = new global::Gtk.Label ();
+			this.GtkLabel18.Name = "GtkLabel18";
+			this.GtkLabel18.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Preview</b>");
+			this.GtkLabel18.UseMarkup = true;
+			this.frame2.LabelWidget = this.GtkLabel18;
 			this.CompositionVBox1.Add (this.frame2);
 			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1 [this.frame2]));
 			w17.Position = 1;
@@ -255,6 +257,7 @@ namespace DeMixer
 			this.notebook1.Add (this.VBoxcom);
 			global::Gtk.Notebook.NotebookChild w19 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.VBoxcom]));
 			w19.Position = 1;
+			w19.MenuLabel = "";
 			// Notebook tab
 			this.label3 = new global::Gtk.Label ();
 			this.label3.Name = "label3";
@@ -503,6 +506,7 @@ namespace DeMixer
 			this.notebook1.Add (this.vbox5);
 			global::Gtk.Notebook.NotebookChild w83 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox5]));
 			w83.Position = 2;
+			w83.MenuLabel = "";
 			// Notebook tab
 			this.label5 = new global::Gtk.Label ();
 			this.label5.Name = "label5";
@@ -679,6 +683,7 @@ namespace DeMixer
 			this.notebook1.Add (this.vbox6);
 			global::Gtk.Notebook.NotebookChild w100 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox6]));
 			w100.Position = 3;
+			w100.MenuLabel = "";
 			// Notebook tab
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
@@ -747,6 +752,7 @@ namespace DeMixer
 			w112.Fill = false;
 			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
 			this.saveProfileBtn = new global::Gtk.Button ();
+			this.saveProfileBtn.Sensitive = false;
 			this.saveProfileBtn.CanFocus = true;
 			this.saveProfileBtn.Name = "saveProfileBtn";
 			this.saveProfileBtn.UseUnderline = true;
@@ -805,11 +811,11 @@ namespace DeMixer
 			w131.Fill = false;
 			this.GtkAlignment6.Add (this.hbox1);
 			this.frame1.Add (this.GtkAlignment6);
-			this.GtkLabel13 = new global::Gtk.Label ();
-			this.GtkLabel13.Name = "GtkLabel13";
-			this.GtkLabel13.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Profiles</b>");
-			this.GtkLabel13.UseMarkup = true;
-			this.frame1.LabelWidget = this.GtkLabel13;
+			this.GtkLabel14 = new global::Gtk.Label ();
+			this.GtkLabel14.Name = "GtkLabel14";
+			this.GtkLabel14.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Profiles</b>");
+			this.GtkLabel14.UseMarkup = true;
+			this.frame1.LabelWidget = this.GtkLabel14;
 			this.vbox2.Add (this.frame1);
 			global::Gtk.Box.BoxChild w134 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
 			w134.Position = 2;
@@ -854,7 +860,7 @@ namespace DeMixer
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 506;
-			this.DefaultHeight = 401;
+			this.DefaultHeight = 517;
 			this.Show ();
 			this.SourceComboBox.Changed += new global::System.EventHandler (this.OnSourceComboBoxChanged);
 			this.CompositionComboBox.Changed += new global::System.EventHandler (this.OnCompositionComboBoxChanged);

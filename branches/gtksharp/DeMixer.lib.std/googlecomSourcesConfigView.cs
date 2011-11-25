@@ -12,7 +12,20 @@ namespace DeMixer.lib.std {
 		public googlecomSourcesConfigView(googlecomSources source) {
 			this.Build();
 			Source = source;
-			tagsEdit.Text = Source.Tags;						
+			tagsEdit.Text = Source.Tags;			
+			//todo: init params
+		}
+		
+		int comboboxIndexof(Gtk.ComboBox cb, string item) {
+			//todo :return -1;
+		}
+		
+		protected void OnImageSizeComboChanged (object sender, System.EventArgs e) {
+			Source.imgSize = imageSizeCombo.ActiveText;
+		}
+
+		protected void OnImageColorComboChanged (object sender, System.EventArgs e) {
+			Source.imgColor = imageColorCombo.ActiveText;
 		}
 	}
 }

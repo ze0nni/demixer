@@ -67,6 +67,8 @@ namespace DeMixer {
 			foreach (ImagePostEffect e in Kernel.ActiveEffects) {
 				EffectsListStore.AppendValues(new object[]{e.PluginName, e.ToString()});				
 			}
+			
+			//notebook1.GetTabLabel(
 		}
 
 		Gtk.Widget lastSourceView = null;
