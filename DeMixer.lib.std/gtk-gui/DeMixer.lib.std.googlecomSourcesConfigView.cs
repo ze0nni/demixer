@@ -131,6 +131,8 @@ namespace DeMixer.lib.std
 			}
 			this.Hide ();
 			this.tagsEdit.Changed += new global::System.EventHandler (this.OnTagsEditChanged);
+			this.imageSizeCombo.Changed += new global::System.EventHandler (this.OnImageSizeComboChanged);
+			this.imageColorCombo.Changed += new global::System.EventHandler (this.OnImageColorComboChanged);
 		}
 	}
 }

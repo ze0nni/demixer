@@ -117,7 +117,7 @@ namespace DeMixer {
 		
 		
 		bool HandleTick() {			
-			//return true;
+			return true;
 			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
@@ -1168,7 +1168,7 @@ namespace DeMixer {
 			Type t = w.GetType();
 			PropertyInfo piMarkupProp = t.GetProperty("Markup");			
 			//TextPropertys 
-			string[] textPropertys = {"Title", "Text"};
+			string[] textPropertys = {"Title", "Text", "MenuLabel"};
 			foreach (string propName in textPropertys) {
 				try {
 					PropertyInfo piTextProp = t.GetProperty(propName);
@@ -1185,6 +1185,7 @@ namespace DeMixer {
 				}
 			}
 			//Childs
+			MethodInfo getTabLabel = t.GetMethod("GetTabLabel");
 			PropertyInfo piChildren = t.GetProperty("Children");
 			if (piChildren != null) {
 				Gtk.Widget[] children = (Gtk.Widget[])piChildren.GetValue(w, new object[0]);
@@ -1192,6 +1193,14 @@ namespace DeMixer {
 					try {
 						TranslateWidget(cw);
 					} catch {
+					}
+					//переводим надписи на notebook
+					if (getTabLabel != null) {	
+						try {
+							Gtk.Widget l = (Gtk.Widget)getTabLabel.Invoke(w, new object[]{cw});
+							TranslateWidget(l);
+						} catch {
+						}
 					}
 				}
 			}

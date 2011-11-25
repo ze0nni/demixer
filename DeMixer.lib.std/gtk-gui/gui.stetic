@@ -218,6 +218,7 @@ XLarge
 XXLarge
 Hude</property>
                 <property name="Active">0</property>
+                <signal name="Changed" handler="OnImageSizeComboChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -256,6 +257,7 @@ Gray
 Black
 Brown</property>
                 <property name="Active">0</property>
+                <signal name="Changed" handler="OnImageColorComboChanged" />
               </widget>
               <packing>
                 <property name="Position">3</property>
