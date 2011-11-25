@@ -30,7 +30,7 @@ namespace DeMixer.lib.std
 			
 			folderColumt.PackStart(folderCell, true);
 			folderColumt.AddAttribute(folderCell, "text", 1);
-			
+						
 			FoldersList.AppendColumn(forcedSearchColumt);
 			FoldersList.AppendColumn (folderColumt);
 			Gtk.CellRendererText FoldersListCell = new Gtk.CellRendererText();
@@ -40,15 +40,9 @@ namespace DeMixer.lib.std
 			FoldersList.Model = FoldersListStore;
 									
 			FoldersList.ShowAll();
-						
-			FoldersListStore.AppendValues(new object[]{true, "/home/onni/images"});
-		}			
-
-		protected virtual void OnFoldersListCursorChanged (object sender, System.EventArgs e) {
-			Gtk.TreeIter itr;
-			if (FoldersList.Selection.GetSelected(out itr)) {
-				folderNavBox.SetCurrentFolder(FoldersListStore.GetValue(itr, 1).ToString());
-				updateSeekPath();
+			
+			foreach (string l in Source.FSeekPath) {				
+				FoldersListStore.AppendValues(new object[]{false, l});
 			}
 		}
 
@@ -77,18 +71,23 @@ namespace DeMixer.lib.std
 			}
 		}
 
-		protected virtual void OnFolderApplyBtnClicked (object sender, System.EventArgs e) {
-			Gtk.TreeIter itr;
-			if (FoldersList.Selection.GetSelected(out itr)) {
-				FoldersListStore.SetValue(itr, 1, folderNavBox.Filename);
-				updateSeekPath();
-			}	
-		}
-
 		protected virtual void OnFolderAddBtnClicked (object sender, System.EventArgs e) {
-			Gtk.TreeIter itr = FoldersListStore.AppendValues(new object[]{true, folderNavBox.Filename});
-			FoldersList.Selection.SelectIter(itr);
-			updateSeekPath();
+			Gtk.FileChooserDialog dlg = new Gtk.FileChooserDialog(
+				"",
+				null,
+				Gtk.FileChooserAction.SelectFolder,
+				"Cancel", Gtk.ResponseType.Cancel,
+				"Open", Gtk.ResponseType.Accept);
+			try {
+				if ((Gtk.ResponseType)dlg.Run() == Gtk.ResponseType.Accept) {
+					string newFolder = dlg.Filename;
+					Gtk.TreeIter itr = FoldersListStore.AppendValues(new object[]{false, newFolder});			
+					FoldersList.Selection.SelectIter(itr);			
+					updateSeekPath();
+				}
+			} finally {
+				dlg.Destroy();	
+			}
 		}
 	}
 }

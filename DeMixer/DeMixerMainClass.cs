@@ -116,7 +116,8 @@ namespace DeMixer {
 		}
 		
 		
-		bool HandleTick() {										
+		bool HandleTick() {			
+			//return true;
 			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
@@ -1165,14 +1166,20 @@ namespace DeMixer {
 		public void TranslateWidget(Gtk.Widget w) {
 			if (w == null) return;
 			Type t = w.GetType();
+			PropertyInfo piMarkupProp = t.GetProperty("Markup");			
 			//TextPropertys 
-			string[] textPropertys = {"Title", "Text", "123"};
+			string[] textPropertys = {"Title", "Text"};
 			foreach (string propName in textPropertys) {
 				try {
 					PropertyInfo piTextProp = t.GetProperty(propName);
 					if (piTextProp != null) {
-						string piTitleVal = piTextProp.GetValue(w, new object[0]).ToString();
-						piTextProp.SetValue(w, Translate(piTitleVal.Replace("_", "")), new object[0]);	
+						string piTitleVal = piTextProp.GetValue(w, new object[0]).ToString();						
+						string txt = Translate(piTitleVal.Replace("_", ""));					
+						if (piMarkupProp != null) {
+							piMarkupProp.SetValue(w, txt, new object[0]);
+						} else {
+							piTextProp.SetValue(w, txt, new object[0]);	
+						}
 					}
 				} catch {
 				}
