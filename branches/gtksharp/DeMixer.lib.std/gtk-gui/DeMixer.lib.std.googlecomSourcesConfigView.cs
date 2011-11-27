@@ -78,12 +78,7 @@ namespace DeMixer.lib.std
 			w5.Fill = false;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.imageSizeCombo = global::Gtk.ComboBox.NewText ();
-			this.imageSizeCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Large"));
-			this.imageSizeCombo.AppendText (global::Mono.Unix.Catalog.GetString ("XLarge"));
-			this.imageSizeCombo.AppendText (global::Mono.Unix.Catalog.GetString ("XXLarge"));
-			this.imageSizeCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Hude"));
 			this.imageSizeCombo.Name = "imageSizeCombo";
-			this.imageSizeCombo.Active = 0;
 			this.hbox8.Add (this.imageSizeCombo);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.imageSizeCombo]));
 			w6.Position = 1;
@@ -100,21 +95,7 @@ namespace DeMixer.lib.std
 			w7.Fill = false;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.imageColorCombo = global::Gtk.ComboBox.NewText ();
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("All"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Red"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Orange"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Yellow"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Green"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Aqua"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Blue"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Purple"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Pink"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("White"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Gray"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Black"));
-			this.imageColorCombo.AppendText (global::Mono.Unix.Catalog.GetString ("Brown"));
 			this.imageColorCombo.Name = "imageColorCombo";
-			this.imageColorCombo.Active = 0;
 			this.hbox8.Add (this.imageColorCombo);
 			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.imageColorCombo]));
 			w8.Position = 3;

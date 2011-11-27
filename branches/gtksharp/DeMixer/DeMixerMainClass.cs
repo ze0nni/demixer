@@ -14,6 +14,7 @@ using System.Threading;
 using System.Net;
 
 //todo: using Mono.Unix;
+//todo: Добавить локализацию через православный Mono.Unix.Catalog
 
 namespace DeMixer {
 	public class DeMixerMainClass : IDeMixerKernel {		
@@ -40,7 +41,7 @@ namespace DeMixer {
 
 			UpdatePlugins();                        
 			ReadSettings();
-			LoadDictionary("en");
+			LoadDictionary("ru");
 			
 			//
 			InitMenu();            
@@ -117,7 +118,7 @@ namespace DeMixer {
 		
 		
 		bool HandleTick() {			
-			return true;
+			//return true;
 			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					

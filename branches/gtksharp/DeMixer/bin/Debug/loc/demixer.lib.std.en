@@ -33,6 +33,23 @@ DeMixer.lib.std.googlecomSources description=Search with <a href="http://Images.
 DeMixer.lib.std.CompositionAutoSize name=Optimal size
 DeMixer.lib.std.CompositionAutoSize title=Optimal size
 DeMixer.lib.std.CompositionAutoSize description=description
+Large=Маленькие
+XLarge=Средние
+XXLarge=Большие
+Hude=Огромные
+All=Любой
+Red=Красный
+Orange=Оранжевый
+Yellow=Желтый
+Green=Зеленый
+Aqua=Голубой
+Blue=Синий
+Purple=Розовый
+Pink=Фиолетовый
+White=Белый
+Gray=Серый
+Black=Черный
+Brown=Каричневый
 
 DeMixer.lib.std.CompositionMozaik name=photoChaos
 DeMixer.lib.std.CompositionMozaik title=photoChaos
