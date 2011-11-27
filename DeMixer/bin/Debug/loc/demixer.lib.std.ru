@@ -29,6 +29,23 @@ DeMixer.ConfigDlg+ColorSource description=Возвращает в качеств
 DeMixer.lib.std.googlecomSources name=Google.com
 DeMixer.lib.std.googlecomSources title=Поиск изображений через Google.
 DeMixer.lib.std.googlecomSources description=Плагин для поиска на <a href="http://Images.Google.com">Images.Google.com</a>.\nДля улучнения результатов поиска рекомендуется дописывать в конце запроса <i>"Обои для рабочего стола"</i>. Например:\n\t-Дикая природа обои для рабочего стола\n\t-Открытый космос обои для рабочего стола
+Large=Маленькие
+XLarge=Средние
+XXLarge=Большие
+Hude=Огромные
+All=Любой
+Red=Красный
+Orange=Оранжевый
+Yellow=Желтый
+Green=Зеленый
+Aqua=Голубой
+Blue=Синий
+Purple=Розовый
+Pink=Фиолетовый
+White=Белый
+Gray=Серый
+Black=Черный
+Brown=Каричневый
 
 DeMixer.lib.std.CompositionAutoSize name=Оптимально
 DeMixer.lib.std.CompositionAutoSize title=Оптимально
