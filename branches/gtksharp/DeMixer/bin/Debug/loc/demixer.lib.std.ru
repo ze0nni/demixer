@@ -70,3 +70,7 @@ DeMixer.lib.std.EffectText description=Добавляет надпись в пр
 DeMixer.lib.std.EffectCurves name=Улучшение цвета
 DeMixer.lib.std.EffectCurves title=Улучшение цвета
 DeMixer.lib.std.EffectCurves description=Небольшая коррекция гаммы. Рекомендуется применять для фотографий.
+
+DeMixer.lib.std.FlickrSource name=Flickr.com
+DeMixer.lib.std.FlickrSource title=Поиск через Flickr.com
+DeMixer.lib.std.FlickrSource description=Поиск изображений на крупнейшем фотохостинге <a href="http://Flickr.com">Flickr.com</a>

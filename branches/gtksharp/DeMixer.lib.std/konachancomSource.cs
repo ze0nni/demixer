@@ -18,23 +18,12 @@ namespace DeMixer.lib.std {
 		public override string Url {
 			get { return "http://KonaChan.com"; }	
 		}		
-		
-		public override bool AllowTags {
-				get { return true; }
-		}
+				
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
 				return new konachancomSourceConfigView(this);
 			}
-		}
-		
-		public override bool SaveConfig(Stream stream) {
-			return  base.SaveConfig(stream);
-		}
-		
-		public override bool LoadConfig(Stream stream) {			
-			return base.LoadConfig(stream);
 		}
 		
 		private Random rnd = new Random();
@@ -75,6 +64,10 @@ namespace DeMixer.lib.std {
 		
 		public override System.Drawing.Image GetImageFromSource(string source) {
 			return null;
+		}
+		
+		protected override void Write(System.Xml.XmlWriter cfg) {
+			cfg.WriteElementString("q", Tags);
 		}
 	}
 }

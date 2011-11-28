@@ -4,30 +4,11 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Xml;
 
 namespace DeMixer.lib {	
-	public abstract class ImagePostEffect {
+	public abstract class ImagePostEffect : DeMixerPlugin {
 		
-		public virtual string PluginName {
-			get { return Kernel.Translate(string.Format("{0} name", GetType().FullName)); }
-		}
-		
-		public virtual string PluginTitle {
-			get { return Kernel.Translate(string.Format("{0} title", GetType().FullName)); }
-		}
-		
-		public virtual string PluginDescription {
-			get { return Kernel.Translate(string.Format("{0} description", GetType().FullName)); }
-		}
-		
-		public void Init(IDeMixerKernel k) {
-			kernel = k;
-		}
-		
-		IDeMixerKernel kernel;
-		protected IDeMixerKernel Kernel {
-			get { return kernel; }	
-		}
 		
 		/// <summary>
 		/// Вызов диалога настроек
@@ -46,26 +27,7 @@ namespace DeMixer.lib {
 		/// </returns>
 		public virtual Image Execute(Image img) {
 			return img;	
-		}		
-		/// <summary>
-		/// Сохранение фильтра в поток
-		/// </summary>
-		/// <param name="stream">
-		/// Поток для записи <see cref="BinaryWriter"/>
-		/// </param>
-		public virtual void Save(BinaryWriter stream) {
-			
-		}
-		
-		/// <summary>
-		/// Чтение фильтра из потока
-		/// </summary>
-		/// <param name="stream">
-		/// Поток для чтения <see cref="BinaryReader"/>
-		/// </param>
-		public virtual void Load(BinaryReader stream) {
-			
-		}	
+		}			
 		
 		/// <summary>
 		/// Создает копию текущего эффекта
@@ -77,7 +39,7 @@ namespace DeMixer.lib {
 			Type t = this.GetType();
 			ConstructorInfo constr = t.GetConstructor(new Type[0]);
 			ImagePostEffect pe = (ImagePostEffect)constr.Invoke(new object[0]);
-			pe.Init(kernel);
+			pe.Init(Kernel);
 			return pe;
 		}
 				

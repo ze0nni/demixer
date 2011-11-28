@@ -22,30 +22,6 @@ namespace DeMixer.lib.std
 		public string imgColor = "All";
 		public bool saveToHistory = false;
 		
-		public override bool AllowTags {
-				get { return true; }
-		}
-		
-		public override bool SaveConfig(Stream stream) {			
-			//return  base.SaveConfig(stream);
-			BinaryWriter bw = new BinaryWriter(stream, System.Text.Encoding.UTF8);
-			bw.Write(
-				String.Join("\n", new string[]{Tags, imgSize, imgColor}));
-			bw.Write(saveToHistory);
-			return true;
-		}
-		
-		public override bool LoadConfig(Stream stream) {			
-			//return base.LoadConfig(stream);
-			BinaryReader br = new BinaryReader(stream, System.Text.Encoding.UTF8);
-			string[] args = br.ReadString().Split('\n');
-			if (args.Length>=1) Tags = args[0];
-			if (args.Length>=2) imgSize = args[1];
-			if (args.Length>=3) imgColor = args[2];
-			if (br.BaseStream.CanRead) saveToHistory = br.ReadBoolean();
-			return true;
-		}
-		
 		Random rnd = new Random();
 		public override System.Drawing.Image GetNextImage() {
 			GimageSearchClient gs = new GimageSearchClient(Guid.NewGuid().ToString());
@@ -119,6 +95,13 @@ namespace DeMixer.lib.std
 					"Brown"
 				};
 			}
+		}
+		
+		protected override void Write(System.Xml.XmlWriter cfg) {			
+			cfg.WriteElementString("q", Tags);
+			cfg.WriteElementString("size", imgSize);
+			cfg.WriteElementString("color", imgColor);
+			cfg.WriteElementString("append", "");
 		}
 	}
 }

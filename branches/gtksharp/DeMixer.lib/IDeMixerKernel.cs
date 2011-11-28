@@ -3,6 +3,18 @@ using System;
 using System.Net;
 
 namespace DeMixer.lib {
+	
+	public class DeMixerException : Exception {
+		public DeMixerException(string message) : base(message) {
+		}
+	}
+	
+	public enum UpdateMode {
+		UpdateOnStart,
+		WaitFromStart,
+		WaitFromLastUpdate
+	}
+	
 	public interface IDeMixerKernel {
 		ImagesSource[] SourceList {
 			get;
@@ -65,7 +77,7 @@ namespace DeMixer.lib {
 			get; set;
 		}
 		
-		int UpdateIntervalMode {
+		UpdateMode UpdateIntervalMode {
 			get; set;
 		}
 		

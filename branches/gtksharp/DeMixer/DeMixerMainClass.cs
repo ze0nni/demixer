@@ -12,11 +12,12 @@ using System.Resources;
 using System.Diagnostics;
 using System.Threading;
 using System.Net;
+using System.Xml;
 
 //todo: using Mono.Unix;
 //todo: Добавить локализацию через православный Mono.Unix.Catalog
 
-namespace DeMixer {
+namespace DeMixer {		
 	public class DeMixerMainClass : IDeMixerKernel {		
 		[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
 		public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
@@ -30,33 +31,36 @@ namespace DeMixer {
 //			Catalog.Init("demixer", "./local");			
 			Gtk.Application.Init("demixer", ref args);
 			DeMixerMainClass mainClass = new DeMixerMainClass();
+//			mainClass.SaveSettings();
+//			return;
 			Gtk.Application.Run();
 		}
 
 		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();		
 
-		public DeMixerMainClass() {			
+		public DeMixerMainClass() {
 			TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += HandlePopupMenu;
 
 			UpdatePlugins();                        
 			ReadSettings();
+
 			LoadDictionary("ru");
 			
 			//
 			InitMenu();            
 			switch (UpdateIntervalMode) {
-			case 0:
+			case UpdateMode.UpdateOnStart:
 				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
 				break;                          
-			case 1:
+			case UpdateMode.WaitFromStart:
 				LastUpdateTick = DateTime.Now;
 				break;
-			case 2:
+			case UpdateMode.WaitFromLastUpdate:
 				break;
 			}
             
-			//Application.ApplicationExit += HandleApplicationExit;			
+			Application.ApplicationExit += HandleApplicationExit;
 			GLib.Timeout.Add(100, HandleTick);
 			
 			UpdateTrayIcon();
@@ -118,7 +122,7 @@ namespace DeMixer {
 		
 		
 		bool HandleTick() {			
-			//return true;
+			return true;
 			if (timerStopped) return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
@@ -301,43 +305,51 @@ namespace DeMixer {
 			} catch {
 			}
 		}
-        
-		private void SaveSettings() {
+		
+		private void SaveSettings() {			
+			XmlTextWriter cfg = new XmlTextWriter(GetUserFileName("config.xml"), Encoding.UTF8);
 			try {
-				string fileName = GetUserFileName("config");
-				FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate);
-				try {
-					BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-					//SIGN
-
-					bw.Write(System.Text.Encoding.ASCII.GetBytes("dmcf"));
-					//VERSION                                       
-					byte[] ver = {1, 0};
-					bw.Write(ver);
-					//ActiveSource
-					bw.Write(ActiveSource.GetType().FullName);
-					//Active composition
-					bw.Write(ActiveComposition.GetType().FullName);                         
-					//Interval
-					bw.Write((Int32)UpdateInterval);                                                                                
-					bw.Write((Int32)UpdateIntervalMode);
-					//history
-                                
-					bw.Write(SaveHistory);
-                                
-					bw.Write((Int32)SaveHistorySize);
-                                
-					bw.Write(SaveHistoryPath);
+				cfg.WriteStartDocument();
+				//ROOT
+				cfg.WriteStartElement("demixer");
+				try {	
+					//SYSTEM
+					cfg.WriteStartElement("program");
+					try {						
+						cfg.WriteStartElement("update"); {
+							cfg.WriteElementString("interval", UpdateInterval.ToString());
+							cfg.WriteElementString("mode", UpdateIntervalMode.ToString());
+						} cfg.WriteEndElement();
+						cfg.WriteStartElement("history"); {
+							cfg.WriteElementString("enable", SaveHistory.ToString());
+							cfg.WriteElementString("path", SaveHistoryPath);
+							cfg.WriteElementString("size", SaveHistorySize.ToString());
+						}cfg.WriteEndElement();
+						cfg.WriteElementString("source", ActiveSource.GetType().FullName);
+						cfg.WriteElementString("composition", ActiveComposition.GetType().FullName);
+					} catch (Exception exc) {
+						//todo: show exception
+						cfg.WriteComment(exc.ToString());
+						WriteLog(exc);
+					} finally {
+						cfg.WriteFullEndElement();
+					}					
 				} catch (Exception exc) {
+					//todo: show exception
+					cfg.WriteComment(exc.ToString());
 					WriteLog(exc);
 				} finally {
-					fs.Close();     
+					cfg.WriteEndElement();
 				}
+			} finally {
+				cfg.Close();
+			}				
+			try {							
                         
 				//Состояния источников
 				foreach (ImagesSource i in FSources) {
 					try {
-						i.WriteSettings(this);
+						i.WriteConfigToFile(this);
 					} catch (Exception exc) {
 						WriteLog(exc);
 					}
@@ -346,28 +358,28 @@ namespace DeMixer {
 				//Состояния композиций
 				foreach (ImagesComposition c in FCompositions) {
 					try {
-						c.WriteSettings(this);
+						c.WriteConfigToFile(this);
 					} catch (Exception exc) {
 						WriteLog(exc);
 					}
 				}       
                         
                         #region effects
-				//Effects
-				fileName = GetUserFileName("effects");
-				fs = new FileStream(fileName, FileMode.OpenOrCreate);
-				try {
-					BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-					bw.Write((Int32)ActiveEffects.Length);
-					foreach (ImagePostEffect pe in FActiveEffects) {
-						bw.Write(pe.GetType().FullName);
-						pe.Save(bw);
-					}
-				} catch (Exception exc) {
-					WriteLog(exc);
-				} finally {
-					fs.Close();
-				}                               
+//				//Effects
+//				fileName = GetUserFileName("effects");
+//				fs = new FileStream(fileName, FileMode.OpenOrCreate);
+//				try {
+//					BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
+//					bw.Write((Int32)ActiveEffects.Length);
+//					foreach (ImagePostEffect pe in FActiveEffects) {
+//						bw.Write(pe.GetType().FullName);
+//						pe.Save(bw);
+//					}
+//				} catch (Exception exc) {
+//					WriteLog(exc);
+//				} finally {
+//					fs.Close();
+//				}                               
                         #endregion
                                                 
 			} catch (Exception exc) {
@@ -390,70 +402,70 @@ namespace DeMixer {
                         #endregion
 
                         #region config
-				try {
-					string fileName = GetUserFileName("config");
-					FileStream fs = new FileStream(fileName, FileMode.Open);
-					try {
-						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-						String sign = System.Text.Encoding.ASCII.GetString(br.ReadBytes(4));
-						//SIGN
-						if (sign != "dmcf")
-							throw new Exception("bad config file");
-						//VER
-						byte[] ver = br.ReadBytes(2);
-						//ActiveSource
-						string activeSourceName = br.ReadString();
-						int sIndex = GetSourceIndex(activeSourceName);
-						//ActiveIndex
-						string activeCompositionName = br.ReadString();
-						int cIndex = GetCompositionIndex(activeCompositionName);                                                                                
-                                        
-						//Interval
-						UpdateInterval = br.ReadInt32();
-						UpdateIntervalMode = br.ReadInt32();
-                                        
-						ActiveSourceIndex = sIndex == -1 ? 0 : sIndex;
-						ActiveCompositionIndex = cIndex == -1 ? 0 : cIndex;                                    
-						//History
-						if (br.BaseStream.CanRead)
-							SaveHistory = br.ReadBoolean();
-						if (br.BaseStream.CanRead)
-							SaveHistorySize = br.ReadInt32();
-						if (br.BaseStream.CanRead)
-							SaveHistoryPath = br.ReadString();
-					} finally {
-						fs.Close();     
-					}
-				} catch (Exception exc) {
-					WriteLog(exc);  
-				}
+//				try {
+//					string fileName = GetUserFileName("config");
+//					FileStream fs = new FileStream(fileName, FileMode.Open);
+//					try {
+//						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
+//						String sign = System.Text.Encoding.ASCII.GetString(br.ReadBytes(4));
+//						//SIGN
+//						if (sign != "dmcf")
+//							throw new Exception("bad config file");
+//						//VER
+//						byte[] ver = br.ReadBytes(2);
+//						//ActiveSource
+//						string activeSourceName = br.ReadString();
+//						int sIndex = GetSourceIndex(activeSourceName);
+//						//ActiveIndex
+//						string activeCompositionName = br.ReadString();
+//						int cIndex = GetCompositionIndex(activeCompositionName);                                                                                
+//                                        
+//						//Interval
+//						UpdateInterval = br.ReadInt32();
+//						//UpdateIntervalMode = br.ReadInt32();
+//                                        
+//						ActiveSourceIndex = sIndex == -1 ? 0 : sIndex;
+//						ActiveCompositionIndex = cIndex == -1 ? 0 : cIndex;                                    
+//						//History
+//						if (br.BaseStream.CanRead)
+//							SaveHistory = br.ReadBoolean();
+//						if (br.BaseStream.CanRead)
+//							SaveHistorySize = br.ReadInt32();
+//						if (br.BaseStream.CanRead)
+//							SaveHistoryPath = br.ReadString();
+//					} finally {
+//						fs.Close();     
+//					}
+//				} catch (Exception exc) {
+//					WriteLog(exc);  
+//				}
                         #endregion                              
                         #region effects
-				//Effects
-				try {
-					string fileName = GetUserFileName("effects");
-					FileStream fs = new FileStream(fileName, FileMode.Open);
-					try {
-						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-						int effCount = br.ReadInt32();
-						List<ImagePostEffect> effList = new List<ImagePostEffect>();
-						for (int i=0; i<effCount; i++) {
-							string peName = br.ReadString();
-							ImagePostEffect pe = PostEffectByName(peName);
-							if (pe == null) {
-								//todo: MessageBox.Show(Translate("core.error effect not found {0}", peName));
-								throw new Exception();
-							}                                               
-							pe.Load(br);
-							effList.Add(pe);
-						}
-						ActiveEffects = effList.ToArray();
-					} finally {
-						fs.Close();
-					}                               
-				} catch (Exception exc) {
-					WriteLog(exc);  
-				}
+//				//Effects
+//				try {
+//					string fileName = GetUserFileName("effects");
+//					FileStream fs = new FileStream(fileName, FileMode.Open);
+//					try {
+//						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
+//						int effCount = br.ReadInt32();
+//						List<ImagePostEffect> effList = new List<ImagePostEffect>();
+//						for (int i=0; i<effCount; i++) {
+//							string peName = br.ReadString();
+//							ImagePostEffect pe = PostEffectByName(peName);
+//							if (pe == null) {
+//								//todo: MessageBox.Show(Translate("core.error effect not found {0}", peName));
+//								throw new Exception();
+//							}                                               
+//							pe.Load(br);
+//							effList.Add(pe);
+//						}
+//						ActiveEffects = effList.ToArray();
+//					} finally {
+//						fs.Close();
+//					}                               
+//				} catch (Exception exc) {
+//					WriteLog(exc);  
+//				}
                         #endregion
 			} catch (Exception exc) {
 				WriteLog(exc);
@@ -465,7 +477,7 @@ namespace DeMixer {
 				TrayIcon.Visible = false;
 			} catch {
 			}
-			SaveSettings();                 
+			SaveSettings();              
 			try {
 				TrayIcon.Visible = false;       
 			} catch {
@@ -779,14 +791,14 @@ namespace DeMixer {
 							ImagesSource newSource = (ImagesSource)(constr.Invoke(null));
 							newSource.Init(this);
 							FSources.Add(newSource);
-							newSource.ReadSettings(this);
+							newSource.ReadConfigFromFile(this);
 						}
 						if (t.IsSubclassOf(typeof(ImagesComposition))) {
 							ConstructorInfo constr = t.GetConstructor(new Type[0]);
 							ImagesComposition newComp = (ImagesComposition)(constr.Invoke(null));
 							newComp.Init(this);
 							FCompositions.Add(newComp);                                                     
-							newComp.ReadSettings(this);
+							newComp.ReadConfigFromFile(this);
 						}
 						if (t.IsSubclassOf(typeof(ImagePostEffect))) {
 							ConstructorInfo constr = t.GetConstructor(new Type[0]);
@@ -899,7 +911,7 @@ namespace DeMixer {
 				return
                                 Registry.CurrentUser.
                                         CreateSubKey("Software").
-                                        CreateSubKey("ZeDeve").
+                                        CreateSubKey("ZeDevel").
                                         CreateSubKey("DeMixer");
 			}
 		}
@@ -921,10 +933,10 @@ namespace DeMixer {
 			string filename = GetUserFileName("profiles", configName);              
 			FileInfo fi = new FileInfo(filename);
 			if (!fi.Exists) {
-				//todo! MessageBox.Show(Translate("core.error profile not found"), Translate("core.error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 			try {
+				/*
 				FileStream fs = new FileStream(filename, FileMode.Open);
 				BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
 				//SIGN
@@ -950,6 +962,7 @@ namespace DeMixer {
 				} finally {
 					fs.Close();
 				}
+				*/
 			} catch (Exception exc) {
 				WriteLog(exc);
 				/*todo
@@ -967,45 +980,45 @@ namespace DeMixer {
 		}
         
 		public bool SaveConfig(string configName) {
-			if (configName == "") {
-				//todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return false;
-			}
-			try {
-				string filename = GetUserFileName("profiles", configName);
-				if (File.Exists(filename)) {
-					/*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
-                                                   "Замена профиля",
-                                                   MessageBoxButtons.YesNo,
-                                                   MessageBoxIcon.Question) != DialogResult.Yes) return false;
-                                                   */
-				}
-				FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-				try {
-					try {                                           
-						BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-						//SIGN
-						bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
-						//имя класса
-						ImagesSource aSource = ActiveSource;
-						bw.Write(aSource.GetType().FullName);
-						//имя сборки
-						bw.Write(aSource.GetType().Assembly.FullName);
-						if (!aSource.SaveConfig(fs))
-							throw new Exception();
-					} finally {
-						fs.Close();
-					}
-				} catch (Exception exc) {
-					WriteLog(exc);
-					File.Delete(filename);
-					throw;  
-				}
-			} catch (Exception exc) {
-				WriteLog(exc);
-				//todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);                               
-			}
-			//todo TrayIcon.ContextMenu = GetMenu();
+//			if (configName == "") {
+//				//todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+//				return false;
+//			}
+//			try {
+//				string filename = GetUserFileName("profiles", configName);
+//				if (File.Exists(filename)) {
+//					/*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
+//                                                   "Замена профиля",
+//                                                   MessageBoxButtons.YesNo,
+//                                                   MessageBoxIcon.Question) != DialogResult.Yes) return false;
+//                                                   */
+//				}
+//				FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+//				try {
+//					try {                                           
+//						BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
+//						//SIGN
+//						bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
+//						//имя класса
+//						ImagesSource aSource = ActiveSource;
+//						bw.Write(aSource.GetType().FullName);
+//						//имя сборки
+//						bw.Write(aSource.GetType().Assembly.FullName);
+//						if (!aSource.SaveConfig(fs))
+//							throw new Exception();
+//					} finally {
+//						fs.Close();
+//					}
+//				} catch (Exception exc) {
+//					WriteLog(exc);
+//					File.Delete(filename);
+//					throw;  
+//				}
+//			} catch (Exception exc) {
+//				WriteLog(exc);
+//				//todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);                               
+//			}
+//			//todo TrayIcon.ContextMenu = GetMenu();
 			return true;
 		}
         #endregion
@@ -1060,9 +1073,9 @@ namespace DeMixer {
 			set { FUpdateInterval = value; }
 		}
         
-		private int FUpdateIntervalMode = 0;
+		private UpdateMode FUpdateIntervalMode = UpdateMode.UpdateOnStart;
 
-		public int UpdateIntervalMode {
+		public UpdateMode UpdateIntervalMode {
 			get { return FUpdateIntervalMode; }
 			set { FUpdateIntervalMode = value; }
 		}
