@@ -8,16 +8,7 @@ namespace DeMixer.lib.std
 {
 	
 	
-	public class EffectText : ImagePostEffect {
-		
-		public override	string PluginName {
-			get { return "Надпись"; }
-		}
-		
-		public override string PluginTitle {
-			get { return  "Выводит надпись"; }
-		}
-		
+	public class EffectText : ImagePostEffect {		
 		public override void ShowDialog (Gtk.Window parent) {
 			//EffectTextDlg dlg = new EffectTextDlg(this);
 			//dlg.ShowDialog();
@@ -84,37 +75,37 @@ namespace DeMixer.lib.std
 			                     Text);
 		}
 
-		public override void Save (System.IO.BinaryWriter stream) {
-			stream.Write(Text);
-			stream.Write((Int32)Position);
-			stream.Write((Int32)XOffset);
-			stream.Write((Int32)YOffset);
-			stream.Write(UseWorkArea);
-			stream.Write(TextFont.Name);
-			stream.Write((Int32)TextFont.Size);
-			stream.Write(TextFont.Bold);
-			stream.Write(TextFont.Italic);
-			stream.Write((Int32)FontColor.ToArgb());
-			stream.Write((Int32)FrameColor.ToArgb());
-		}
-		
-		public override void Load (System.IO.BinaryReader stream) {
-			Text = stream.ReadString();
-			Position = stream.ReadInt32();
-			XOffset = stream.ReadInt32();
-			YOffset = stream.ReadInt32();
-			UseWorkArea = stream.ReadBoolean();
-			string fontName = stream.ReadString();
-			int fontSize = stream.ReadInt32();
-			bool fontBold = stream.ReadBoolean();
-			bool fontItalic = stream.ReadBoolean();
-			TextFont = new Font(fontName,
-			                    fontSize,
-			                    FontStyle.Regular);
-			
-			FontColor = Color.FromArgb(stream.ReadInt32());
-			FrameColor = Color.FromArgb(stream.ReadInt32());
-		}
+//		public override void Save (System.IO.BinaryWriter stream) {
+//			stream.Write(Text);
+//			stream.Write((Int32)Position);
+//			stream.Write((Int32)XOffset);
+//			stream.Write((Int32)YOffset);
+//			stream.Write(UseWorkArea);
+//			stream.Write(TextFont.Name);
+//			stream.Write((Int32)TextFont.Size);
+//			stream.Write(TextFont.Bold);
+//			stream.Write(TextFont.Italic);
+//			stream.Write((Int32)FontColor.ToArgb());
+//			stream.Write((Int32)FrameColor.ToArgb());
+//		}
+//		
+//		public override void Load (System.IO.BinaryReader stream) {
+//			Text = stream.ReadString();
+//			Position = stream.ReadInt32();
+//			XOffset = stream.ReadInt32();
+//			YOffset = stream.ReadInt32();
+//			UseWorkArea = stream.ReadBoolean();
+//			string fontName = stream.ReadString();
+//			int fontSize = stream.ReadInt32();
+//			bool fontBold = stream.ReadBoolean();
+//			bool fontItalic = stream.ReadBoolean();
+//			TextFont = new Font(fontName,
+//			                    fontSize,
+//			                    FontStyle.Regular);
+//			
+//			FontColor = Color.FromArgb(stream.ReadInt32());
+//			FrameColor = Color.FromArgb(stream.ReadInt32());
+//		}
 
 		public string Text = "Привет мир!";		
 		public int Position = 0;

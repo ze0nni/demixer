@@ -5,29 +5,37 @@ using System.Drawing.Drawing2D;
 
 namespace DeMixer.lib.std {	
 	public class EffectShadow : ImagePostEffect {
-				
-		public override void Save (System.IO.BinaryWriter stream) {
-			stream.Write(DrawTop);	
-			stream.Write(DrawBottom);
-			stream.Write(DrawLeft);
-			stream.Write(DrawRight);
-			stream.Write((Int32)DrawBorderSize);
-			stream.Write(ColorStart.ToArgb());
-			stream.Write(ColorStartAlpha);
-			stream.Write(ColorEnd.ToArgb());
-			stream.Write(ColorEndAlpha);
+		
+		protected override void Write(System.Xml.XmlWriter cfg) {
+			cfg.WriteStartElement("borders");
+			try {
+				cfg.WriteElementString("top", DrawTop.ToString());
+				cfg.WriteElementString("bottom", DrawBottom.ToString());
+				cfg.WriteElementString("left", DrawLeft.ToString());
+				cfg.WriteElementString("right", DrawRight.ToString());				
+			} finally {
+				cfg.WriteEndElement();
+			}
+			cfg.WriteElementString("size", DrawBorderSize.ToString());
+			cfg.WriteElementString("color1", ColorStart.Name);
+			cfg.WriteElementString("color1a", ColorStartAlpha.ToString());
+			cfg.WriteElementString("color2", ColorEnd.Name);
+			cfg.WriteElementString("color2a", ColorEndAlpha.ToString());
 		}
-		public override void Load (System.IO.BinaryReader stream) {
-			DrawTop = stream.ReadBoolean();
-			DrawBottom = stream.ReadBoolean();
-			DrawLeft = stream.ReadBoolean();
-			DrawRight = stream.ReadBoolean();
-			DrawBorderSize = stream.ReadInt32();
-			ColorStart = Color.FromArgb(stream.ReadInt32());
-			ColorStartAlpha = stream.ReadByte();
-			ColorEnd = Color.FromArgb(stream.ReadInt32());
-			ColorEndAlpha = stream.ReadByte();
-
+		
+		protected override void Read(System.Xml.XmlNode r) {
+			{
+				System.Xml.XmlNode b = r.SelectSingleNode("borders"); 
+				DrawTop = Boolean.Parse(b.SelectSingleNode("top").InnerXml);
+				DrawBottom = Boolean.Parse(b.SelectSingleNode("bottom").InnerXml);
+				DrawLeft = Boolean.Parse(b.SelectSingleNode("left").InnerXml);
+				DrawRight = Boolean.Parse(b.SelectSingleNode("right").InnerXml);
+			}
+			DrawBorderSize = int.Parse(r.SelectSingleNode("size").InnerXml);
+			ColorStart = Color.FromName(r.SelectSingleNode("color1").InnerXml);
+			ColorStartAlpha = byte.Parse(r.SelectSingleNode("color1a").InnerXml);
+			ColorEnd = Color.FromName(r.SelectSingleNode("color2").InnerXml);
+			ColorEndAlpha = byte.Parse(r.SelectSingleNode("color2a").InnerXml);
 		}
 
 		public override void ShowDialog (Gtk.Window parent) {

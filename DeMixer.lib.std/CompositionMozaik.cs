@@ -91,30 +91,22 @@ namespace DeMixer.lib.std {
 			return des;
 		}
 		
-		public override bool SaveConfig(Stream stream) {			
-			//return  base.SaveConfig(stream);
-			BinaryWriter bw = new BinaryWriter(stream, System.Text.Encoding.UTF8);
-			bw.Write((Int32)ImagesCount);
-			return true;
+		protected override void Read(System.Xml.XmlNode r) {
+			ImagesCount = int.Parse(
+					r.SelectSingleNode("count").InnerXml
+				);
 		}
 		
-		public override bool LoadConfig(Stream stream) {			
-			//return base.LoadConfig(stream);
-			BinaryReader br = new BinaryReader(stream, System.Text.Encoding.UTF8);
-			if (br.BaseStream.CanRead) ImagesCount = br.ReadInt32();
-			return true;
-		}
-		
+		protected override void Write(System.Xml.XmlWriter cfg) {
+			cfg.WriteElementString("count", ImagesCount.ToString());
+		}		
+				
 		public override Gtk.Widget ExpandControl {
 			get {
 				return new CompositionMozaikConfigView(this);				
 			}
 		}
-		
-		public override void ShowDialog (){
-			//CompositionMozaikDlg dlg = new CompositionMozaikDlg(this);
-			//dlg.ShowDialog();
-		}
+
 
 	}
 	/*

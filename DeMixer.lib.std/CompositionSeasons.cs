@@ -96,37 +96,36 @@ namespace DeMixer.lib.std {
 			return des;
 		}
 		
-		public override bool LoadConfig(System.IO.Stream stream) {
-			BinaryReader br = new BinaryReader(stream);
-			if (stream.CanRead)
-				ImagesCount = br.ReadInt32();
-			if (stream.CanRead)
-				SeparatorSize = br.ReadInt32();
-			if (stream.CanRead)
-				SeparatorColor1 = Color.FromArgb(br.ReadInt32());
-			if (stream.CanRead)
-				SeparatorColor2 = Color.FromArgb(br.ReadInt32());
-			return true;
+		protected override void Write(System.Xml.XmlWriter cfg) {
+			cfg.WriteElementString("count", ImagesCount.ToString());
+			cfg.WriteStartElement("separator");
+			try {
+				cfg.WriteElementString("size", SeparatorSize.ToString());
+				cfg.WriteElementString("color1", SeparatorColor1.Name);
+				cfg.WriteElementString("color2", SeparatorColor2.Name);
+			} finally {
+				cfg.WriteEndElement();
+			}
 		}
 		
-		public override bool SaveConfig(System.IO.Stream stream) {			
-			BinaryWriter bw = new BinaryWriter(stream);
-			bw.Write((Int32)imagesCount);
-			bw.Write((Int32)SeparatorSize);
-			bw.Write((Int32)SeparatorColor1.ToArgb());
-			bw.Write((Int32)SeparatorColor2.ToArgb());
-			return true;
+		protected override void Read(System.Xml.XmlNode r) {
+			ImagesCount = int.Parse(
+					r.SelectSingleNode("count").InnerXml);
+			System.Xml.XmlNode sep = r.SelectSingleNode("separator");
+			if (sep != null) {
+				SeparatorSize = int.Parse(
+					sep.SelectSingleNode("size").InnerXml);
+				SeparatorColor1 = Color.FromName(
+					sep.SelectSingleNode("color1").InnerXml);
+				SeparatorColor1 = Color.FromName(
+					sep.SelectSingleNode("color2").InnerXml);
+			}
 		}
-		
+
 		public override Gtk.Widget ExpandControl {
 			get {
 				return new CompositionSeasonsConfigView(this);
 			}
-		}
-		
-		public override void ShowDialog() {
-			//CompositionSeasonsDlg dlg = new CompositionSeasonsDlg(this);
-			//dlg.ShowDialog();
 		}
 	}
 	

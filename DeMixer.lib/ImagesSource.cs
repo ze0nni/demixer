@@ -4,30 +4,13 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Threading;
 using System.Collections.Generic;
+using System.Xml;
 using Gtk;
 
 namespace DeMixer.lib {
-	public abstract class ImagesSource {
+	public abstract class ImagesSource : DeMixerPlugin {
 		
 		public ImagesSource() {
-		}
-		
-		public void Init(IDeMixerKernel k) {
-			kernel = k;
-		}
-		
-		IDeMixerKernel kernel;
-
-		protected IDeMixerKernel Kernel {
-			get { return kernel; }	
-		}
-		
-		public virtual string PluginName {
-			get { return Kernel.Translate(string.Format("{0} name", GetType().FullName)); }
-		}
-		
-		public virtual string PluginTitle {
-			get { return Kernel.Translate(string.Format("{0} title", GetType().FullName)); }
 		}
 		
 		public virtual string Url {
@@ -36,19 +19,8 @@ namespace DeMixer.lib {
 		
 		public virtual string PluginDescription {
 			get { return Kernel.Translate(string.Format("{0} description", GetType().FullName)); }
-		}
-		
-		public virtual void UrlClick() {
-			ProcessStartInfo psi = new ProcessStartInfo(Url);
-			Process p = new Process();
-			p.StartInfo = psi;
-			p.Start();  
-		}
-		
-		public virtual bool AllowTags {
-			get { return true; }
-		}
-		
+		}		
+
 		private string FTags;
 
 		public virtual string Tags {
@@ -59,39 +31,10 @@ namespace DeMixer.lib {
 		public virtual Gtk.Widget ExpandTagsControl {
 			get { return null; }		
 		}
-		
-		public virtual bool AllowConfig {
-			get { return true; }
-		}
-		
-		public virtual bool SaveConfig(Stream stream) {
-			BinaryWriter bw = new BinaryWriter(stream, System.Text.Encoding.UTF8);
-			bw.Write(Tags);
-			return true;
-		}
-		
-		public virtual bool LoadConfig(Stream stream) {
-			BinaryReader br = new BinaryReader(stream, System.Text.Encoding.UTF8);
-			Tags = br.ReadString();
-			return true;
-		}
 
 		public abstract System.Drawing.Image GetNextImage();
 
-		public abstract System.Drawing.Image GetImageFromSource(string source);
-		
-		public virtual void ReadSettings(IDeMixerKernel k) {
-			string fileName = k.GetUserFileName("plugins",
-			                                    "settings",
-			                                    GetType().FullName);
-			FileStream fs = new FileStream(fileName, FileMode.Open);
-			try { 
-				LoadConfig(fs);
-			} catch {				
-			} finally {
-				fs.Close();
-			}
-		}
+		public abstract System.Drawing.Image GetImageFromSource(string source);	
 		
 		public void GetNextImages(System.Drawing.Image[] buffer, uint tryCount) {
 			ManualResetEvent endChek = new ManualResetEvent(false);
@@ -132,20 +75,7 @@ namespace DeMixer.lib {
 			for (int i=0; i<buffer.Length; i++) {
 				buffer[i] = images[i];
 			}			
-		}
-		
-		public virtual void WriteSettings(IDeMixerKernel k) {
-			string fileName = k.GetUserFileName("plugins",
-			                                    "settings",
-			                                    GetType().FullName);
-			FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate);
-			try { 
-				SaveConfig(fs);
-			} catch {				
-			} finally {
-				fs.Close();
-			}
-		}
+		}	
 		
 		public override string ToString() {
 			return PluginTitle;

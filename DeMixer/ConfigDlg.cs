@@ -34,12 +34,12 @@ namespace DeMixer {
 			SourceComboBox.ShowAll();
 			
 			foreach (ImagesComposition c in Kernel.CompositionList) {
-				CompositionComboBox.AppendText(c.PluginTitle);	
+				CompositionComboBox.AppendText(c.PluginTitle);
 			}
 			CompositionComboBox.Active = Kernel.ActiveCompositionIndex;
 			CompositionComboBox.ShowAll();
 			foreach (ImagePostEffect e in Kernel.PostEffectsList) {
-				EffectsComboBox.AppendText(e.PluginTitle);	
+				EffectsComboBox.AppendText(e.PluginTitle);				
 			}
 			EffectsComboBox.ShowAll();
 			
