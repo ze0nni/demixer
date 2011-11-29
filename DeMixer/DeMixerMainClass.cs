@@ -31,12 +31,10 @@ namespace DeMixer {
 //			Catalog.Init("demixer", "./local");			
 			Gtk.Application.Init("demixer", ref args);
 			DeMixerMainClass mainClass = new DeMixerMainClass();
-//			mainClass.SaveSettings();
-//			return;
 			Gtk.Application.Run();
 		}
 
-		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();		
+		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
 
 		public DeMixerMainClass() {
 			TrayIcon.Activate += HandleActivate;
@@ -60,7 +58,7 @@ namespace DeMixer {
 				break;
 			}
             
-			Application.ApplicationExit += HandleApplicationExit;
+			//Application.ApplicationExit += HandleApplicationExit;
 			GLib.Timeout.Add(100, HandleTick);
 			
 			UpdateTrayIcon();
@@ -110,8 +108,8 @@ namespace DeMixer {
 		}
 		
 		private DateTime LastUpdateTick = DateTime.Now;
-		
 		bool timerStopped = false;
+
 		bool TimerStopped {
 			get { return timerStopped; }
 			set {
@@ -120,10 +118,10 @@ namespace DeMixer {
 			}
 		}
 		
-		
 		bool HandleTick() {			
 			return true;
-			if (timerStopped) return true;
+			if (timerStopped)
+				return true;
 			try {  				
 				lock (NextProcessThreadSync) {					
 					if (IsGenerateNewPhoto) {
@@ -178,7 +176,7 @@ namespace DeMixer {
 				int scrh = Gdk.Display.Default.DefaultScreen.Height;				
 				img = ActiveComposition.GetCompostion(scrw, scrh);                       
                 
-                #region сохраняем в png без эффектов
+                		#region сохраняем в png без эффектов
 				{       
 					string fName = GetUserFileName("courient.png");
 					img.Save(fName, ImageFormat.Png);
@@ -202,14 +200,7 @@ namespace DeMixer {
 							WriteLog(exc);
 						}
 					}
-                    #region сохраняем восемь последних
-					/*
-                    string fDir = String.Format("{1}{0}{2}{0}",
-                                                Path.DirectorySeparatorChar,
-                                                Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                                                Application.ProductName);                                   
-                    Directory.CreateDirectory(fDir);
-                    */                                      
+                    			#region сохраняем восемь последних                                    
 					string fDir = GetUserFileName("last") + Path.DirectorySeparatorChar;
 					Directory.CreateDirectory(fDir);
 					for (int i=7; i>0; i--) {
@@ -229,9 +220,9 @@ namespace DeMixer {
 					File.Delete(fName);                                     
 					img.Save(fName, ImageFormat.Png);
                     
-                    #endregion					                        
+                    			#endregion					                        
 				}
-                #endregion   				
+                		#endregion   				
 				ApplyEffectsAndSetAsWallpaper(img);                                                             
                 
 				if (UpdateInterval < 60 * 1000)
@@ -252,9 +243,9 @@ namespace DeMixer {
 				ShowNotify(
                                Translate("core.error get_image"),
                                             Translate("core.error get_image from {0} error {1} repeat {2}",
-                        ActiveSource.PluginTitle,
-                        exc.Message,
-                        5),
+			                        ActiveSource.PluginTitle,
+			                        exc.Message,
+			                        5),
                                true);                                       
 				IsGenerateNewPhoto = false;				
 				LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval).AddMinutes(5);				
@@ -285,7 +276,7 @@ namespace DeMixer {
 				SystemParametersInfo(SPI_SETDESKWALLPAPER, 1, Marshal.StringToBSTR(fName), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 				break;
 			case PlatformID.Unix:
-				#region для gnome
+				#region for gnome
 				//gsettings set org.gnome.desktop.background picture-uri 'file://'
 				string program = "gsettings";
 				string args = String.Format("set org.gnome.desktop.background picture-uri 'file://{0}'", fName);				
@@ -306,7 +297,8 @@ namespace DeMixer {
 			}
 		}
 		
-		private void SaveSettings() {			
+		private void SaveSettings() {
+			#region write confgi.xml
 			XmlTextWriter cfg = new XmlTextWriter(GetUserFileName("config.xml"), Encoding.UTF8);
 			try {
 				cfg.WriteStartDocument();
@@ -315,81 +307,80 @@ namespace DeMixer {
 				try {	
 					//SYSTEM
 					cfg.WriteStartElement("program");
-					try {						
+					try {	
+						//write source name
+						cfg.WriteElementString("source", ActiveSource.GetType().FullName);
+						//write composition name
+						cfg.WriteElementString("composition", ActiveComposition.GetType().FullName);
+						#region write update options
 						cfg.WriteStartElement("update"); {
 							cfg.WriteElementString("interval", UpdateInterval.ToString());
 							cfg.WriteElementString("mode", UpdateIntervalMode.ToString());
-						} cfg.WriteEndElement();
+						}
+						cfg.WriteEndElement();
+						#endregion
+						#region write history options
 						cfg.WriteStartElement("history"); {
 							cfg.WriteElementString("enable", SaveHistory.ToString());
 							cfg.WriteElementString("path", SaveHistoryPath);
 							cfg.WriteElementString("size", SaveHistorySize.ToString());
-						}cfg.WriteEndElement();
-						cfg.WriteElementString("source", ActiveSource.GetType().FullName);
-						cfg.WriteElementString("composition", ActiveComposition.GetType().FullName);
+						}
+						cfg.WriteEndElement();	
+						#endregion
+						#region write effects list
+						cfg.WriteStartElement("effects");
+						try {
+							foreach (ImagePostEffect pe in FActiveEffects) {
+								//todo: cfg.WriteRaw(pe.GetRawConfig());
+								pe.WriteConfig(cfg);
+							}
+						} finally {
+							cfg.WriteEndElement();
+						}
+						#endregion
 					} catch (Exception exc) {
 						//todo: show exception
 						cfg.WriteComment(exc.ToString());
 						WriteLog(exc);
 					} finally {
-						cfg.WriteFullEndElement();
+						cfg.WriteEndElement();
 					}					
+					
 				} catch (Exception exc) {
 					//todo: show exception
 					cfg.WriteComment(exc.ToString());
 					WriteLog(exc);
 				} finally {
 					cfg.WriteEndElement();
-				}
+				}				
 			} finally {
 				cfg.Close();
-			}				
-			try {							
-                        
-				//Состояния источников
-				foreach (ImagesSource i in FSources) {
-					try {
-						i.WriteConfigToFile(this);
-					} catch (Exception exc) {
-						WriteLog(exc);
-					}
-				}
-                        
-				//Состояния композиций
-				foreach (ImagesComposition c in FCompositions) {
-					try {
-						c.WriteConfigToFile(this);
-					} catch (Exception exc) {
-						WriteLog(exc);
-					}
-				}       
-                        
-                        #region effects
-//				//Effects
-//				fileName = GetUserFileName("effects");
-//				fs = new FileStream(fileName, FileMode.OpenOrCreate);
-//				try {
-//					BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-//					bw.Write((Int32)ActiveEffects.Length);
-//					foreach (ImagePostEffect pe in FActiveEffects) {
-//						bw.Write(pe.GetType().FullName);
-//						pe.Save(bw);
-//					}
-//				} catch (Exception exc) {
-//					WriteLog(exc);
-//				} finally {
-//					fs.Close();
-//				}                               
-                        #endregion
-                                                
-			} catch (Exception exc) {
-				WriteLog(exc);
 			}
+			#endregion
+			//write plugins (source and composition) options in plugins/settings/<pluginname>.xml
+			#region write sources options
+			foreach (ImagesSource i in FSources) {
+				try {
+					i.WriteConfigToFile(this);
+				} catch (Exception exc) {
+					WriteLog(exc);
+				}
+			}
+			#endregion
+			#region write compositions options
+			foreach (ImagesComposition c in FCompositions) {
+				try {
+					c.WriteConfigToFile(this);
+				} catch (Exception exc) {
+					WriteLog(exc);
+				}
+			}                                                                                
+			#endregion
 		}
         
 		private void ReadSettings() {                   
 			try {                                   
-                        #region registry 
+                        #region read registry 
 				try {
 					object nTime = UserRegistry.GetValue("LastTick");                               
 					LastUpdateTick =
@@ -400,73 +391,91 @@ namespace DeMixer {
 					WriteLog(exc);
 				}
                         #endregion
-
-                        #region config
-//				try {
-//					string fileName = GetUserFileName("config");
-//					FileStream fs = new FileStream(fileName, FileMode.Open);
-//					try {
-//						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-//						String sign = System.Text.Encoding.ASCII.GetString(br.ReadBytes(4));
-//						//SIGN
-//						if (sign != "dmcf")
-//							throw new Exception("bad config file");
-//						//VER
-//						byte[] ver = br.ReadBytes(2);
-//						//ActiveSource
-//						string activeSourceName = br.ReadString();
-//						int sIndex = GetSourceIndex(activeSourceName);
-//						//ActiveIndex
-//						string activeCompositionName = br.ReadString();
-//						int cIndex = GetCompositionIndex(activeCompositionName);                                                                                
-//                                        
-//						//Interval
-//						UpdateInterval = br.ReadInt32();
-//						//UpdateIntervalMode = br.ReadInt32();
-//                                        
-//						ActiveSourceIndex = sIndex == -1 ? 0 : sIndex;
-//						ActiveCompositionIndex = cIndex == -1 ? 0 : cIndex;                                    
-//						//History
-//						if (br.BaseStream.CanRead)
-//							SaveHistory = br.ReadBoolean();
-//						if (br.BaseStream.CanRead)
-//							SaveHistorySize = br.ReadInt32();
-//						if (br.BaseStream.CanRead)
-//							SaveHistoryPath = br.ReadString();
-//					} finally {
-//						fs.Close();     
-//					}
-//				} catch (Exception exc) {
-//					WriteLog(exc);  
-//				}
-                        #endregion                              
-                        #region effects
-//				//Effects
-//				try {
-//					string fileName = GetUserFileName("effects");
-//					FileStream fs = new FileStream(fileName, FileMode.Open);
-//					try {
-//						BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-//						int effCount = br.ReadInt32();
-//						List<ImagePostEffect> effList = new List<ImagePostEffect>();
-//						for (int i=0; i<effCount; i++) {
-//							string peName = br.ReadString();
-//							ImagePostEffect pe = PostEffectByName(peName);
-//							if (pe == null) {
-//								//todo: MessageBox.Show(Translate("core.error effect not found {0}", peName));
-//								throw new Exception();
-//							}                                               
-//							pe.Load(br);
-//							effList.Add(pe);
-//						}
-//						ActiveEffects = effList.ToArray();
-//					} finally {
-//						fs.Close();
-//					}                               
-//				} catch (Exception exc) {
-//					WriteLog(exc);  
-//				}
-                        #endregion
+                        #region read config.xml 
+				string fileName = GetUserFileName("config.xml");
+				if (File.Exists(fileName)) {
+					XmlDocument doc = new XmlDocument();
+					try {
+						doc.Load(fileName);
+						XmlNode cfg = doc.SelectSingleNode("demixer").SelectSingleNode("program");
+						#region read source name
+						try {
+							string sname = cfg.SelectSingleNode("source").InnerXml;
+							int index = GetSourceIndex(sname);
+							if (index == -1) {
+								index = 0;
+								ShowNotify(Translate("Error"),
+									Translate("Plugin {0} not in list", sname),
+									false);
+							}
+							ActiveSourceIndex = index;												
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						#endregion
+						#region read composition name
+						try {
+							string cname = cfg.SelectSingleNode("composition").InnerXml;
+							int index = GetCompositionIndex(cname);
+							if (index == -1) {
+								index = 0;
+								ShowNotify(Translate("Error"),
+									Translate("Plugin {0} not in list", cname),
+									false);
+							}
+							ActiveCompositionIndex = index;	
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						#endregion
+						#region read update options
+						try { 
+							XmlNode updt = cfg.SelectSingleNode("update");
+							UpdateInterval = int.Parse(updt.SelectSingleNode("interval").InnerXml);							
+							UpdateIntervalMode = 
+								(UpdateMode)(Enum.Parse(
+									typeof(UpdateMode),
+									updt.SelectSingleNode("mode").InnerXml));
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						#endregion
+						#region read history options						
+						try {
+							XmlNode histr = cfg.SelectSingleNode("history");
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						#endregion
+						#region read effects list
+						try {
+							List<ImagePostEffect> eList = new List<ImagePostEffect>();							
+							XmlNodeList effects = cfg.SelectSingleNode("effects").
+								SelectNodes("plugin");							
+							foreach (XmlNode n in effects) {
+								string ename = n.Attributes["class"].Value;
+								ImagePostEffect neweff = PostEffectByName(ename);
+								if (neweff == null) {
+									ShowNotify(Translate("Error"),
+										Translate("Plugin {0} not in list", ename),
+										false);	
+									continue;
+								}
+								eList.Add(neweff);
+							}
+							//set active list
+							ActiveEffects = eList.ToArray();
+						} catch (Exception exc) {
+							WriteLog(exc);	
+						}
+						#endregion
+					} catch (Exception exc) {
+						WriteLog(exc);
+					} finally {
+						
+					}
+				}
+                        #endregion                                                      
 			} catch (Exception exc) {
 				WriteLog(exc);
 			}
@@ -486,22 +495,22 @@ namespace DeMixer {
         		
 		private DateTime FStopTime;
 		Gtk.Widget LastConfigDialog = null;
-		
 		Gtk.Menu TrayPopUpMenu;
 		Gtk.MenuItem TrayMenuItemNext;
 		Gtk.Label TrayMenuItemNextLabel;
 		Gtk.MenuItem TrayMenuItemLast;
 		Gtk.MenuItem TrayMenuItemProfiles;
+
 		void InitMenu() {
 			TrayPopUpMenu = new Gtk.Menu();
 			
 			Gtk.ImageMenuItem miNext = new Gtk.ImageMenuItem(Translate("Next wallpaper"));
 			miNext.Activated += (o, e) => {
 				lock (NextProcessThreadSync) {
-				if (FIsGenerateNewPhoto) 
-					AbortThread();
-				else
-					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
+					if (FIsGenerateNewPhoto) 
+						AbortThread();
+					else
+						LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);
 				}				
 			};
 			Gtk.CheckMenuItem miEnable = new Gtk.CheckMenuItem(Translate("Enable"));
@@ -569,7 +578,7 @@ namespace DeMixer {
 		#region
 		void updateLastMenu() {
 			//обновляем в отдельном потоке
-			new Thread((ThreadStart) delegate {				
+			new Thread((ThreadStart)delegate {				
 				Gtk.Application.Invoke(delegate {							
 					Gtk.Menu m = (Gtk.Menu)TrayMenuItemLast.Submenu;
 					if (m != null) {
@@ -1132,7 +1141,7 @@ namespace DeMixer {
 		}
         
 		public string[] Languages {
-			get { return new string[]{"en English"}; }
+			get { return new string[]{"en", "ru"}; }
 		}
         
 		void LoadDictionary(string locName) {
@@ -1178,7 +1187,8 @@ namespace DeMixer {
 		}
 						
 		public void TranslateWidget(Gtk.Widget w) {
-			if (w == null) return;
+			if (w == null)
+				return;
 			Type t = w.GetType();
 			PropertyInfo piMarkupProp = t.GetProperty("Markup");			
 			//TextPropertys 
@@ -1219,7 +1229,7 @@ namespace DeMixer {
 				}
 			}
 		}
-        
+		
 		public void ShowNotify(string title, string message, bool errorIcon) {
 			switch (Environment.OSVersion.Platform) {                                                               
 			case PlatformID.Win32Windows:
@@ -1232,12 +1242,12 @@ namespace DeMixer {
               */				
 			case PlatformID.Unix:   
 			default:					
-				Notifications.Notification notify =  new  Notifications.Notification();
+				Notifications.Notification notify = new  Notifications.Notification();
 				notify.Summary = title;
 				notify.Body = message;				
-				notify.AddAction("retry", Translate("Repeat now"), delegate {
-					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
-				});								
+//				notify.AddAction("retry", Translate("Repeat now"), delegate {
+//					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
+//				});	
 				
 				notify.Urgency = Notifications.Urgency.Low;
 				notify.Show();								

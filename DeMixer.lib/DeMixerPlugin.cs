@@ -25,7 +25,23 @@ namespace DeMixer.lib {
 			get { return Kernel.Translate(string.Format("{0} description", GetType().FullName)); }
 		}
 		
-		protected virtual void Write(System.Xml.XmlWriter cfg) {
+		/// <summary>
+		/// Return XML config as text. XML check to validate before
+		/// </summary>
+		/// <returns>
+		/// The raw config.
+		/// </returns>
+		public string GetRawConfig() {
+			System.IO.MemoryStream ms = new System.IO.MemoryStream();
+			System.Xml.XmlTextWriter cfg = new System.Xml.XmlTextWriter(ms, System.Text.Encoding.UTF8);
+			WriteConfig(cfg);
+			cfg.Close();
+			//todo: check xml to validate
+			//todo: remove zero chars
+			return System.Text.Encoding.UTF8.GetString(ms.GetBuffer());
+		}
+		
+		protected virtual void Write(System.Xml.XmlWriter cfg) {			
 			cfg.WriteComment("not options");	
 		}
 		

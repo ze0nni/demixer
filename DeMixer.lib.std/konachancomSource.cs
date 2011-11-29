@@ -69,5 +69,9 @@ namespace DeMixer.lib.std {
 		protected override void Write(System.Xml.XmlWriter cfg) {
 			cfg.WriteElementString("q", Tags);
 		}
+		
+		protected override void Read(XmlNode r) {
+			Tags = r.SelectSingleNode("q").InnerXml;
+		}
 	}
 }

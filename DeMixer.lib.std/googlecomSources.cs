@@ -103,6 +103,12 @@ namespace DeMixer.lib.std
 			cfg.WriteElementString("color", imgColor);
 			cfg.WriteElementString("append", "");
 		}
+		
+		protected override void Read(System.Xml.XmlNode r) {
+			Tags = r.SelectSingleNode("q").InnerXml;
+			imgSize = r.SelectSingleNode("size").InnerXml;
+			imgColor = r.SelectSingleNode("color").InnerXml;
+		}
 	}
 }
 
