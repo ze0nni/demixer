@@ -14,7 +14,6 @@ namespace DeMixer.lib.std
 		private global::Gtk.HBox tagsButtonsBox1;
 		private global::Gtk.HBox tagsButtonsBox2;
 		private global::Gtk.HBox tagsButtonsBox3;
-		private global::Gtk.Label tagsCount;
 		
 		protected virtual void Build ()
 		{
@@ -75,34 +74,32 @@ namespace DeMixer.lib.std
 			this.vbox2.Add (this.tagsButtonsBox1);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.tagsButtonsBox1]));
 			w5.Position = 0;
+			w5.Expand = false;
+			w5.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.tagsButtonsBox2 = new global::Gtk.HBox ();
 			this.tagsButtonsBox2.Name = "tagsButtonsBox2";
 			this.vbox2.Add (this.tagsButtonsBox2);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.tagsButtonsBox2]));
 			w6.Position = 1;
+			w6.Expand = false;
+			w6.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.tagsButtonsBox3 = new global::Gtk.HBox ();
 			this.tagsButtonsBox3.Name = "tagsButtonsBox3";
 			this.vbox2.Add (this.tagsButtonsBox3);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.tagsButtonsBox3]));
 			w7.Position = 2;
-			// Container child vbox2.Gtk.Box+BoxChild
-			this.tagsCount = new global::Gtk.Label ();
-			this.tagsCount.Name = "tagsCount";
-			this.vbox2.Add (this.tagsCount);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.tagsCount]));
-			w8.Position = 3;
-			w8.Expand = false;
-			w8.Fill = false;
+			w7.Expand = false;
+			w7.Fill = false;
 			this.hbox3.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vbox2]));
-			w9.Position = 1;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vbox2]));
+			w8.Position = 1;
 			this.vbox4.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox3]));
-			w10.Position = 1;
-			w10.Expand = false;
-			w10.Fill = false;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox3]));
+			w9.Position = 1;
+			w9.Expand = false;
+			w9.Fill = false;
 			this.Add (this.vbox4);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

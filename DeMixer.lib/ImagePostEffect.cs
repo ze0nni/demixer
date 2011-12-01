@@ -7,8 +7,7 @@ using System.Reflection;
 using System.Xml;
 
 namespace DeMixer.lib {	
-	public abstract class ImagePostEffect : DeMixerPlugin {
-		
+	public abstract class ImagePostEffect : DeMixerPlugin {		
 		public override sealed string PluginType {
 			get {
 				return "effect";

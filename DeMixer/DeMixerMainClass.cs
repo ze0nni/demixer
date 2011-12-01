@@ -1235,29 +1235,19 @@ namespace DeMixer {
 			}
 		}
 		
-		public void ShowNotify(string title, string message, bool errorIcon) {
-			switch (Environment.OSVersion.Platform) {                                                               
-			case PlatformID.Win32Windows:
-			case PlatformID.Win32NT:                                
-                /* todo
-                TrayIcon.BalloonTipTitle = title;
-                TrayIcon.BalloonTipText = message;
-                TrayIcon.BalloonTipIcon = errorIcon ? ToolTipIcon.Error : ToolTipIcon.Info;
-                TrayIcon.ShowBalloonTip(1000*15);
-              */				
-			case PlatformID.Unix:   
-			default:					
+		public void ShowNotify(string title, string message, bool errorIcon) {			
+			Gtk.Application.Invoke(delegate {
 				Notifications.Notification notify = new  Notifications.Notification();
 				notify.Summary = title;
-				notify.Body = message;				
-//				notify.AddAction("retry", Translate("Repeat now"), delegate {
-//					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
-//				});	
+				notify.Body = message;								
+				notify.Icon = new Gdk.Pixbuf(@"/usr/share/demixer/icon.png");
+		//				notify.AddAction("retry", Translate("Repeat now"), delegate {
+		//					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
+		//				});	
 				
 				notify.Urgency = Notifications.Urgency.Low;
-				notify.Show();								
-				break;
-			}       
+				notify.Show();		
+			});
 		}
 		
 		public WebClient GetWebClient() {

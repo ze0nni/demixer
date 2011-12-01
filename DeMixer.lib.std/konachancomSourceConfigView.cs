@@ -22,7 +22,11 @@ namespace DeMixer.lib.std
 			this.Build();
 			Kernel = kernel;
 			Source = source;
-			tagsEdit.Text = Source.Tags;			
+			tagsEdit.Text = Source.Tags;
+			
+//			Gtk.IconSource i = new Gtk.IconSource();			
+//			i.IconName = "demixer-character";
+//			i.Pixbuf = new Gdk.Pixbuf("/usr/share/demixer/icond.png");			
 		}
 		
 		int spaceFromLeft(string str, int p) {
@@ -59,14 +63,14 @@ namespace DeMixer.lib.std
 				t = updateHelpButtonsTick;
 			}
 			new System.Threading.Thread((System.Threading.ThreadStart) delegate {
-				System.Threading.Thread.Sleep(50);
+				System.Threading.Thread.Sleep(300);
 				//
 				if (updateHelpButtonsTick != t) return;				
 				string tagatpos = wordFromPos(Source.Tags,
 					tagsEdit.CursorPosition);
 				if (tagatpos.Length > 0 && tagatpos[0] == '-')
 					tagatpos = tagatpos.Remove(0, 1);
-				Uri rstr = new Uri(String.Format("http://konachan.com/tag/index.xml?name={0}&order=count",
+				Uri rstr = new Uri(String.Format("http://konachan.com/tag/index.xml?name={0}&order=count&limit=12",
 					Uri.EscapeDataString(tagatpos)));
 				
 				WebClient wc = Kernel.GetWebClient();
@@ -96,10 +100,44 @@ namespace DeMixer.lib.std
 						string labelText = String.Format("{0} ({1})",
 							btntag.Replace("_", "__"),
 							tag.Attributes["count"].Value);
+						//type						
+						Gtk.Image btnimage = new Gtk.Image();						
+						switch (tag.Attributes["type"].Value) {
+						case "1":
+							//artist
+							//btnimage.IconName = "demixer-artist";
+							break;
+						case "2":
+							//copyright							
+							//btnimage.IconName = "demixer-copyright";
+							break;
+						case "3":
+							//character
+							//btnimage.IconName = "demixer-character";
+							btnimage.IconName = "avatar-default";
+							break;
+						default:
+							break;
+								
+						}
+						//label
 						Gtk.Label btnlabel = new Gtk.Label(labelText);
 						btnlabel.Ellipsize = ((global::Pango.EllipsizeMode)(3));						
-						Gtk.Button tagw = new Gtk.Button();
-						tagw.Add(btnlabel);
+						
+						
+						Gtk.Button tagw = new Gtk.Button();						
+						tagw.TooltipMarkup = string.Format("Tag: <b>{0}</b>\nType: {1}\nCount: {2}",
+							btntag,
+							tag.Attributes["type"].Value,
+							tag.Attributes["count"].Value);
+						Gtk.HBox bthhp = new Gtk.HBox();
+						
+						bthhp.Add(btnimage);
+						bthhp.Add(btnlabel);						
+						((Gtk.Box.BoxChild)bthhp[btnimage]).Expand = false;
+						((Gtk.Box.BoxChild)bthhp[btnimage]).Fill = false;
+						
+						tagw.Add(bthhp);
 						
 						tagw.Data["tag"] = btntag;
 						//tagw.SetPadding(0, 2);	
@@ -111,8 +149,7 @@ namespace DeMixer.lib.std
 						else
 							tagsButtonsBox3.Add(tagw);
 						if (++i>11) break;						
-					}
-					tagsCount.Text =  Kernel.Translate("Tags found {0}", tags.Count);
+					}					
 					tagsButtonsBox1.ShowAll();
 					tagsButtonsBox2.ShowAll();
 					tagsButtonsBox3.ShowAll();
