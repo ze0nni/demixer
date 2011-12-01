@@ -119,7 +119,7 @@ namespace DeMixer {
 		}
 		
 		bool HandleTick() {			
-			return true;
+			//return true;
 			if (timerStopped)
 				return true;
 			try {  				
@@ -331,8 +331,12 @@ namespace DeMixer {
 						cfg.WriteStartElement("effects");
 						try {
 							foreach (ImagePostEffect pe in FActiveEffects) {
-								//todo: cfg.WriteRaw(pe.GetRawConfig());
-								pe.WriteConfig(cfg);
+								try {
+									cfg.WriteRaw(pe.GetRawConfig());
+								} catch (Exception exc) {
+									//writelog()
+									cfg.WriteComment(exc.ToString());
+								}
 							}
 						} finally {
 							cfg.WriteEndElement();
@@ -455,6 +459,7 @@ namespace DeMixer {
 							foreach (XmlNode n in effects) {
 								string ename = n.Attributes["class"].Value;
 								ImagePostEffect neweff = PostEffectByName(ename);
+								neweff.ReadConfig(n);
 								if (neweff == null) {
 									ShowNotify(Translate("Error"),
 										Translate("Plugin {0} not in list", ename),

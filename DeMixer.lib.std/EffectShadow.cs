@@ -17,9 +17,9 @@ namespace DeMixer.lib.std {
 				cfg.WriteEndElement();
 			}
 			cfg.WriteElementString("size", DrawBorderSize.ToString());
-			cfg.WriteElementString("color1", ColorStart.Name);
+			cfg.WriteElementString("color1", ColorStart.ToArgb().ToString("X"));
 			cfg.WriteElementString("color1a", ColorStartAlpha.ToString());
-			cfg.WriteElementString("color2", ColorEnd.Name);
+			cfg.WriteElementString("color2", ColorEnd.ToArgb().ToString("X"));
 			cfg.WriteElementString("color2a", ColorEndAlpha.ToString());
 		}
 		
@@ -32,9 +32,17 @@ namespace DeMixer.lib.std {
 				DrawRight = Boolean.Parse(b.SelectSingleNode("right").InnerXml);
 			}
 			DrawBorderSize = int.Parse(r.SelectSingleNode("size").InnerXml);
-			ColorStart = Color.FromName(r.SelectSingleNode("color1").InnerXml);
+			ColorStart = Color.FromArgb(
+				int.Parse(
+					r.SelectSingleNode("color1").InnerXml,
+					System.Globalization.NumberStyles.HexNumber)
+				);
 			ColorStartAlpha = byte.Parse(r.SelectSingleNode("color1a").InnerXml);
-			ColorEnd = Color.FromName(r.SelectSingleNode("color2").InnerXml);
+			ColorEnd = Color.FromArgb(
+				int.Parse(
+					r.SelectSingleNode("color2").InnerXml,
+					System.Globalization.NumberStyles.HexNumber)
+				);
 			ColorEndAlpha = byte.Parse(r.SelectSingleNode("color2a").InnerXml);
 		}
 
