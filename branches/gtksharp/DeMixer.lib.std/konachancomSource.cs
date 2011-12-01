@@ -56,13 +56,39 @@ namespace DeMixer.lib.std {
 		
 		private Random rnd = new Random();
 		public override System.Drawing.Image GetNextImage() {			
-			WebClient wc = Kernel.GetWebClient();
-		 //todo: user-agent			
+			WebClient wc = Kernel.GetWebClient();		 
 			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
 			XmlDocument doc = new XmlDocument();
 			doc.Load(new MemoryStream(data));
-			int pageCount = GetPagesCount(doc);
-			//выбираем случайно
+			
+			//check for error responce
+			{
+				XmlNode responce = doc.SelectSingleNode("response");
+				if (responce != null) {
+					if (responce.Attributes["success"].Value.ToLower() == "false") {
+						throw new DeMixerException(Kernel.Translate(responce.Attributes["reason"].Value));	
+					} else {
+						Kernel.ShowNotify(
+							Kernel.Translate("Message"),
+							Kernel.Translate(responce.Attributes["reason"].Value),
+							false);
+					}
+				}
+			}
+			
+			
+			int pageCount = GetPagesCount(doc);			
+			if (pageCount == 0) {
+				throw
+					new DeMixerException(Kernel.Translate("No images for this tags"));
+			}
+			if (pageCount <= 8) {
+				Kernel.ShowNotify(
+					Kernel.Translate("Message"),
+					Kernel.Translate("Only {0} images found", pageCount),
+					false);
+			}
+			//select random image
 			data = wc.DownloadData(new Uri(GetUrl(rnd.Next(1, pageCount+1))));
 			doc.Load(new MemoryStream(data));
 			return GetImage(doc);				
