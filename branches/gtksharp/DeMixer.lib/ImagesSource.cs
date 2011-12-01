@@ -13,6 +13,12 @@ namespace DeMixer.lib {
 		public ImagesSource() {
 		}
 		
+		public override sealed string PluginType {
+			get {
+				return "source";
+			}
+		}
+		
 		public virtual string Url {
 			get { return ""; }	
 		}

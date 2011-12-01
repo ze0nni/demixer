@@ -8,7 +8,11 @@ namespace DeMixer.lib {
 		}
 		
 		IDeMixerKernel kernel;
-
+		
+		public abstract string PluginType {
+			get;
+		}
+		
 		protected IDeMixerKernel Kernel {
 			get { return kernel; }	
 		}
@@ -32,13 +36,20 @@ namespace DeMixer.lib {
 		/// The raw config.
 		/// </returns>
 		public string GetRawConfig() {
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Xml.XmlTextWriter cfg = new System.Xml.XmlTextWriter(ms, System.Text.Encoding.UTF8);
-			WriteConfig(cfg);
-			cfg.Close();
-			//todo: check xml to validate
-			//todo: remove zero chars
-			return System.Text.Encoding.UTF8.GetString(ms.GetBuffer());
+			try {
+				System.IO.MemoryStream ms = new System.IO.MemoryStream();
+				System.Xml.XmlTextWriter cfg = new System.Xml.XmlTextWriter(ms, System.Text.Encoding.UTF8);
+				WriteConfig(cfg);			
+				cfg.Flush();
+				//Check to valid			
+				System.Xml.XmlDocument tr = new System.Xml.XmlDocument();			
+				ms.Position = 0;
+				tr.Load(ms);
+				return tr.FirstChild.OuterXml;
+			} catch (System.Xml.XmlException exc) {
+				throw new DeMixerException(String.Format("Bad xml config form {0}",
+					this.GetType().FullName));
+			}
 		}
 		
 		protected virtual void Write(System.Xml.XmlWriter cfg) {			
@@ -60,7 +71,8 @@ namespace DeMixer.lib {
 		
 		public void WriteConfig(System.Xml.XmlWriter cfg) {			
 			cfg.WriteStartElement("plugin");
-			cfg.WriteAttributeString("class", this.GetType().FullName);
+			cfg.WriteAttributeString("type", this.PluginType);
+			cfg.WriteAttributeString("class", this.GetType().FullName);			
 			try {
 				Write(cfg);	
 			} catch (Exception exc) {

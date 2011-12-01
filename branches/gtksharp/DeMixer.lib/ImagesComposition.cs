@@ -8,12 +8,18 @@ namespace DeMixer.lib {
 	
 	
 	public abstract class ImagesComposition : DeMixerPlugin {				
+				
 		
 		IDeMixerKernel kernel;
 		protected IDeMixerKernel Kernel {
 			get { return kernel; }	
 		}
 		
+		public override sealed string PluginType {
+			get {
+				return "composition";
+			}
+		}
 		
 		public virtual Gtk.Widget ExpandControl {
 			get { return null; }		
