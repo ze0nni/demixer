@@ -3,19 +3,22 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.lib.std/konachancomSourceConfigView.cs">
     <Files>
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="122" Column="6" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="122" Column="4" />
       <File FileName="DeMixer.lib/ImagePostEffect.cs" Line="1" Column="1" />
       <File FileName="DeMixer.lib/DeMixerPlugin.cs" Line="1" Column="1" />
+      <File FileName="DeMixer.lib.std/konachancomSourceConfigView.cs" Line="41" Column="35" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="DeMixer" expanded="True">
-            <Node name="DeMixerMainClass.cs" selected="True" />
-          </Node>
+          <Node name="DeMixer" expanded="True" />
           <Node name="DeMixer.lib" expanded="True" />
+          <Node name="DeMixer.lib.std" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="konachancomSourceConfigView.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

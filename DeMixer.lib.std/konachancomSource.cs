@@ -12,9 +12,37 @@ namespace DeMixer.lib.std {
 	
 	public class konachancomSource : ImagesSource {
 		
-		public konachancomSource() : base() {
+//		public enum SizeEnum {
+//			All,
+//			Bigger,
+//			Exact,
+//			Smaller
+//		}
+		
+//		public enum OrderEnum {
+//			All,
+//			Score,
+//			Favorited,
+//			WidescreenFirst,
+//			WidescreenLast
+//		}
+		
+//		public enum RatingEnum {
+//			All,
+//			SafeOnly,
+//			QuestionableOnly,
+//			ExplicitOnly,
+//			QuestionableAndExplicit,
+//			QuestionableAndSafe 
+//		}
+		
+		public konachancomSource() : base() {			
 		}
-			
+		
+//		public SizeEnum ImageSize = SizeEnum.All;
+//		public int ImageWidth = 0;
+//		public int ImageHeight = 0;
+		
 		public override string Url {
 			get { return "http://KonaChan.com"; }	
 		}		
@@ -22,7 +50,7 @@ namespace DeMixer.lib.std {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return new konachancomSourceConfigView(this);
+				return new konachancomSourceConfigView(this, Kernel);
 			}
 		}
 		
@@ -44,8 +72,8 @@ namespace DeMixer.lib.std {
 			return 
 				string.Format(
 					"http://konachan.com/post/index.xml?tags={0}&limit=1&page={1}",
-					Tags,
-					page);
+					Uri.EscapeDataString(Tags),
+					Uri.EscapeDataString(page.ToString()));
 		}
 		
 		private int GetPagesCount(XmlDocument doc) {
@@ -68,10 +96,19 @@ namespace DeMixer.lib.std {
 		
 		protected override void Write(System.Xml.XmlWriter cfg) {
 			cfg.WriteElementString("q", Tags);
+//			cfg.WriteElementString("size", ImageSize.ToString());
+//			cfg.WriteElementString("width", ImageWidth.ToString());
+//			cfg.WriteElementString("height", ImageHeight.ToString());
 		}
 		
 		protected override void Read(XmlNode r) {
 			Tags = r.SelectSingleNode("q").InnerXml;
+//			ImageSize = Enum.Parse(typeof(konachancomSource.SizeEnum),
+//				r.SelectSingleNode("size").InnerXml);
+//			ImageWidth = int.Parse(
+//				r.SelectSingleNode("width").InnerXml);
+//			ImageHeight = int.Parse(
+//				r.SelectSingleNode("height").InnerXml);
 		}
 	}
 }
