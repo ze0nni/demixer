@@ -1,5 +1,23 @@
-Совсем скоро интерфейс будет переписан для GTK#
-----
-Very soon, the interface will be re-written for GTK #
+= DeMixer for GTK =
 
-http://demixer.googlecode.com/svn/wiki/gtk.png
+== Sources ==
+
+=== Random color ===
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/ds_randomcolor.png">
+
+=== File system ===
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/ds_foders.png">
+
+=== Konachan.com ===
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/dr_konachan.png">
+
+== Composition ==
+
+=== Simple ===
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/dc_simple.png">
+
+=== Chaos ===
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/dc_chaos.png">
+
+=== Seasons ====
+<img src="http://demixer.googlecode.com/svn/wiki/gtkui/ds_seasons.png">
