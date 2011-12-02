@@ -1295,16 +1295,20 @@ namespace DeMixer {
 		
 		public void ShowNotify(string title, string message, bool errorIcon) {			
 			//Gtk.Application.Invoke(delegate {
-				Notifications.Notification notify = new  Notifications.Notification();
-				notify.Summary = title;
-				notify.Body = message;								
-				notify.Icon = new Gdk.Pixbuf(@"/usr/share/demixer/icon.png");
-		//				notify.AddAction("retry", Translate("Repeat now"), delegate {
-		//					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
-		//				});	
-				
-				notify.Urgency = Notifications.Urgency.Low;
-				notify.Show();		
+			Notifications.Notification notify = new  Notifications.Notification();
+			notify.Summary = title;
+			notify.Body = message;							
+			notify.Icon = new Gdk.Pixbuf(
+				errorIcon ?
+				@"/usr/share/demixer/icone.png" :				
+				@"/usr/share/demixer/iconi.png"
+			);
+	//				notify.AddAction("retry", Translate("Repeat now"), delegate {
+	//					LastUpdateTick = DateTime.Now.AddMilliseconds(-UpdateInterval);	
+	//				});	
+			
+			notify.Urgency = Notifications.Urgency.Low;
+			notify.Show();		
 			//});
 		}
 		
