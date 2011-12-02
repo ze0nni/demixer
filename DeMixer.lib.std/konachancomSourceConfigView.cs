@@ -22,12 +22,14 @@ namespace DeMixer.lib.std
 			this.Build();
 			Kernel = kernel;
 			Source = source;
+			kernel.TranslateWidget(this);
 			tagsEdit.Text = Source.Tags;
-			
+			//tagsEdit.Text = Source.Tags;
 //			Gtk.IconSource i = new Gtk.IconSource();			
 //			i.IconName = "demixer-character";
 //			i.Pixbuf = new Gdk.Pixbuf("/usr/share/demixer/icond.png");			
 		}
+				
 		
 		int spaceFromLeft(string str, int p) {
 			if (p == 0) return 0;
@@ -163,7 +165,7 @@ namespace DeMixer.lib.std
 			int l = spaceFromLeft(str, pos);
 			int r = spaceFromRight(str, pos);			
 			string tag = ((Gtk.Button)sender).Data["tag"].ToString() + " ";
-			tagsEdit.Text = str.Remove(l, r-l).Insert(l, tag);
+			tagsEdit.Text = (str.Remove(l, r-l).Insert(l, tag));
 			tagsEdit.SelectRegion(l+tag.Length, l+tag.Length);
 			this.FocusChild = tagsEdit;
 		}

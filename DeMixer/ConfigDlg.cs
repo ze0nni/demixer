@@ -10,7 +10,7 @@ namespace DeMixer {
 		protected virtual void OnsaveProfileBtnClicked(object sender, System.EventArgs e) {
 			SaveProfileDialog dlg =
 				new SaveProfileDialog("Save profeile dialog", this);
-			Kernel.TranslateWidget(dlg);			
+			//Kernel.TranslateWidget(dlg);			
 			dlg.Run();
 			dlg.Destroy();
 		}
@@ -20,7 +20,8 @@ namespace DeMixer {
 		public ConfigDlg(IDeMixerKernel k) {			
 			this.Build();
 			Kernel = k;
-			init();
+			Kernel.TranslateWidget(this);
+			init();			
 		}
 		
 		//Список активных эффектов
@@ -86,7 +87,8 @@ namespace DeMixer {
 			if (view == null) {
 				view = new Gtk.Label("no options");	
 			}
-			Kernel.TranslateWidget(view);
+			//fix: Stranget effect — with mark-up
+			//Kernel.TranslateWidget(view);
 			lastSourceView = view;
 			SourceSettingsPlace.Add(view);
 			view.ShowAll();			
