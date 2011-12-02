@@ -116,7 +116,7 @@
               <widget class="Gtk.Notebook" id="notebook1">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="CurrentPage">3</property>
+                <property name="CurrentPage">1</property>
                 <child>
                   <widget class="Gtk.VBox" id="SourceVBox">
                     <property name="MemberName" />
@@ -131,12 +131,12 @@
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBox" id="SourceComboBox">
+                              <widget class="Gtk.ComboBox" id="SourceCb">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes" />
-                                <signal name="Changed" handler="OnSourceComboBoxChanged" />
+                                <signal name="Changed" handler="OnSourceCbChanged" />
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
@@ -710,30 +710,43 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Label" id="label10">
+                          <widget class="Gtk.VBox" id="vbox8">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">1 min</property>
+                            <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.Label" id="IntervalLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">0 m</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.HScale" id="intervalScale">
+                                <property name="MemberName" />
+                                <property name="CanFocus">True</property>
+                                <property name="Lower">1</property>
+                                <property name="Upper">56</property>
+                                <property name="PageIncrement">10</property>
+                                <property name="StepIncrement">1</property>
+                                <property name="Value">1</property>
+                                <property name="DrawValue">False</property>
+                                <property name="Digits">0</property>
+                                <property name="ValuePos">Top</property>
+                                <signal name="ChangeValue" handler="OnIntervalScaleChangeValue" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">False</property>
+                              </packing>
+                            </child>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
-                            <property name="AutoSize">True</property>
-                            <property name="Expand">False</property>
-                            <property name="Fill">False</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="Gtk.HScale" id="hscale2">
-                            <property name="MemberName" />
-                            <property name="CanFocus">True</property>
-                            <property name="Upper">100</property>
-                            <property name="PageIncrement">10</property>
-                            <property name="StepIncrement">1</property>
-                            <property name="DrawValue">False</property>
-                            <property name="Digits">0</property>
-                            <property name="ValuePos">Top</property>
-                          </widget>
-                          <packing>
-                            <property name="Position">2</property>
                             <property name="AutoSize">False</property>
                           </packing>
                         </child>
@@ -743,23 +756,24 @@
                             <property name="LabelProp" translatable="yes">Update Mode</property>
                           </widget>
                           <packing>
-                            <property name="Position">3</property>
+                            <property name="Position">2</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
                             <property name="Fill">False</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.ComboBox" id="combobox5">
+                          <widget class="Gtk.ComboBox" id="UpdateIntervalModeCb">
                             <property name="MemberName" />
                             <property name="IsTextCombo">True</property>
                             <property name="Items" translatable="yes">Updata on start
 Wait after start
 Wait from last update</property>
                             <property name="Active">1</property>
+                            <signal name="Changed" handler="OnUpdateIntervalModeCbChanged" />
                           </widget>
                           <packing>
-                            <property name="Position">4</property>
+                            <property name="Position">3</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
                             <property name="Fill">False</property>
@@ -872,10 +886,12 @@ Wait from last update</property>
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.ComboBox" id="combobox4">
+                          <widget class="Gtk.ComboBox" id="ProfilesCb">
                             <property name="MemberName" />
+                            <property name="CanFocus">True</property>
                             <property name="IsTextCombo">True</property>
                             <property name="Items" translatable="yes" />
+                            <signal name="Changed" handler="OnProfilesCbChanged" />
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -897,6 +913,7 @@ Wait from last update</property>
                                 <property name="Icon">stock:gtk-apply Menu</property>
                                 <property name="Label" translatable="yes">_Apply</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnApplyProfileBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Expand">False</property>
@@ -906,7 +923,6 @@ Wait from last update</property>
                             <child>
                               <widget class="Gtk.Button" id="saveProfileBtn">
                                 <property name="MemberName" />
-                                <property name="Sensitive">False</property>
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-save Menu</property>
@@ -929,6 +945,7 @@ Wait from last update</property>
                                 <property name="Icon">stock:gtk-delete Menu</property>
                                 <property name="Label" translatable="yes">_Delete</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnDeleteProfileBtnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">2</property>
@@ -1017,7 +1034,7 @@ Wait from last update</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Entry" id="entry1">
+              <widget class="Gtk.Entry" id="ProfileNameEdit">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
@@ -1036,7 +1053,7 @@ Wait from last update</property>
                 <property name="Spacing">6</property>
                 <property name="BorderWidth">3</property>
                 <child>
-                  <widget class="Gtk.CheckButton" id="checkbutton2">
+                  <widget class="Gtk.CheckButton" id="SaveSourceCb">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Save source</property>
@@ -1050,7 +1067,7 @@ Wait from last update</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.CheckButton" id="checkbutton3">
+                  <widget class="Gtk.CheckButton" id="SaveCompositionCb">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Save composition</property>
@@ -1064,7 +1081,7 @@ Wait from last update</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.CheckButton" id="checkbutton4">
+                  <widget class="Gtk.CheckButton" id="SaveEffectsCb">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Save effects</property>

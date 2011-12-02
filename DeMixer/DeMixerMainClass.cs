@@ -452,24 +452,10 @@ namespace DeMixer {
 						}
 						#endregion
 						#region read effects list
-						try {
-							List<ImagePostEffect> eList = new List<ImagePostEffect>();							
+						try {							
 							XmlNodeList effects = cfg.SelectSingleNode("effects").
 								SelectNodes("plugin");							
-							foreach (XmlNode n in effects) {
-								string ename = n.Attributes["class"].Value;
-								ImagePostEffect neweff = PostEffectByName(ename);
-								neweff.ReadConfig(n);
-								if (neweff == null) {
-									ShowNotify(Translate("Error"),
-										Translate("Plugin {0} not in list", ename),
-										false);	
-									continue;
-								}
-								eList.Add(neweff);
-							}
-							//set active list
-							ActiveEffects = eList.ToArray();
+							ActiveEffects = loadEffectsList(effects);
 						} catch (Exception exc) {
 							WriteLog(exc);	
 						}
@@ -485,7 +471,22 @@ namespace DeMixer {
 				WriteLog(exc);
 			}
 		}
-
+		
+		ImagePostEffect[] loadEffectsList(XmlNodeList nodes) {
+			List<ImagePostEffect> eList = new List<ImagePostEffect>();
+			foreach (XmlNode n in nodes) {
+				string ename = n.Attributes["class"].Value;
+				ImagePostEffect neweff = PostEffectByName(ename);
+				neweff.ReadConfig(n);
+				if (neweff == null) {
+					throw new DeMixerException(
+						Translate("Effect {0} not found", ename));
+				}
+				eList.Add(neweff);
+			}
+			return eList.ToArray();
+		}
+				
 		void HandleApplicationExit(object sender, EventArgs e) {
 			try {
 				TrayIcon.Visible = false;
@@ -632,10 +633,16 @@ namespace DeMixer {
 			string[] profiles = GetProfileList();			
 			if (profiles.Length == 0) {
 				TrayMenuItemProfiles.Sensitive = false;
-			} else {				
+			} else {
+				TrayMenuItemProfiles.Sensitive = true;
 				TrayMenuItemProfiles.Submenu = new Gtk.Menu();
 				foreach (string pname in GetProfileList()) {
-					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);					
+					Gtk.ImageMenuItem pmi = new Gtk.ImageMenuItem(pname);										
+					string menuname = pname;
+					pmi.Activated += (sender, e) => {
+						LoadProfile(menuname, true, true, true);
+						updateProfilesMenu();		
+					};
 					((Gtk.Menu)TrayMenuItemProfiles.Submenu).Append(pmi);
 				}
 			}	
@@ -928,11 +935,9 @@ namespace DeMixer {
                                         CreateSubKey("DeMixer");
 			}
 		}
+        	#endregion
         
-        
-        #endregion
-        
-        #region Profile
+        	#region Profile
 		public string[] GetProfileList() {
 			string dname = GetUserFileName("profiles", "");
 			List<string> ls = new List<string>();
@@ -942,97 +947,151 @@ namespace DeMixer {
 			return ls.ToArray();
 		}
 
-		public bool LoadConfig(string configName) {
-			string filename = GetUserFileName("profiles", configName);              
-			FileInfo fi = new FileInfo(filename);
-			if (!fi.Exists) {
-				return false;
-			}
+		public bool LoadProfile(string configName, bool s, bool c, bool e) {
+			string filename = GetUserFileName("profiles", configName);
+			XmlDocument cfg = new XmlDocument();
 			try {
-				/*
-				FileStream fs = new FileStream(filename, FileMode.Open);
-				BinaryReader br = new BinaryReader(fs, System.Text.Encoding.UTF8);
-				//SIGN
-				byte[] sign = br.ReadBytes(4);
-				if (System.Text.Encoding.ASCII.GetString(sign) != "dmxc")
-					throw new Exception();                                
-				//имя плагина
-				string pluginClass = br.ReadString();
-				//имя сборки
-				string assemblyName = br.ReadString();
-				//загружаем сборку                              
-				int sourceIndex = GetSourceIndex(pluginClass);                          
-				if (sourceIndex == -1)
-					throw new Exception();                           
-				ActiveSourceIndex = sourceIndex;                                
-				if (! ActiveSource.LoadConfig(fs))
-					throw new Exception();
-                        
-				UserRegistry.SetValue("SelectionProfile", configName);
-				//todo TrayIcon.ContextMenu = GetMenu();
-				try {
-                                
-				} finally {
-					fs.Close();
+				cfg.Load(filename);
+				XmlNode profile = cfg.SelectSingleNode("profile");
+				if (profile == null) throw new DeMixerException(Translate("Bad file format"));
+				#region read source
+				if (s) {
+					XmlNode source = profile.SelectSingleNode("source");
+					if (source != null) {
+						XmlNode p = source.SelectSingleNode("plugin");
+						if (p != null) {		
+							string sname = p.Attributes["class"].Value;
+							int index = GetSourceIndex(sname);
+							if (index == -1) {
+								throw new DeMixerException(
+									Translate("Source {0} not found", sname));
+							}
+							ActiveSourceIndex = index;
+							ActiveSource.ReadConfig(p);
+						}
+					}
 				}
-				*/
-			} catch (Exception exc) {
+				#endregion
+				#region read composition
+				if (e) {
+					XmlNode composition = profile.SelectSingleNode("composition");
+					if (composition != null) {
+						XmlNode p = composition.SelectSingleNode("plugin");
+						if (p != null) {		
+							string cname = p.Attributes["class"].Value;
+							int index = GetCompositionIndex(cname);
+							if (index == -1) {
+								throw new DeMixerException(
+									Translate("Composition {0} not found", cname));
+							}
+							ActiveCompositionIndex = index;
+							ActiveComposition.ReadConfig(p);
+						}
+					}
+				}
+				#endregion
+				#region read effects
+				if (c) {
+					XmlNode effects = profile.SelectSingleNode("effects");
+					if (effects != null) {
+						XmlNodeList p = effects.SelectNodes("plugin");
+						if (p != null) {
+							ActiveEffects = loadEffectsList(p);
+						}
+					}
+				}
+				#endregion
+			} catch(Exception exc) {
 				WriteLog(exc);
-				/*todo
-                        if (MessageBox.Show(
-                                            Translate("core.error profile read error delete"),
-                                            Translate("core.error"),
-                                            MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)                                                         
-                        {
-                                fi.Delete();
-                        }
-                        */
-				RefreshMemory();
-			}
+				ShowNotify(
+					Translate("Error"),
+					Translate(exc.Message),
+					true);
+				return false;
+			}			
 			return true;
 		}
         
-		public bool SaveConfig(string configName) {
-//			if (configName == "") {
-//				//todo MessageBox.Show("Вы должны указать имя профиля", "Сохрание профиля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-//				return false;
-//			}
-//			try {
-//				string filename = GetUserFileName("profiles", configName);
-//				if (File.Exists(filename)) {
-//					/*todo if (MessageBox.Show("Профиль уже существует, хотите заменить?",
-//                                                   "Замена профиля",
-//                                                   MessageBoxButtons.YesNo,
-//                                                   MessageBoxIcon.Question) != DialogResult.Yes) return false;
-//                                                   */
-//				}
-//				FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-//				try {
-//					try {                                           
-//						BinaryWriter bw = new BinaryWriter(fs, System.Text.Encoding.UTF8);
-//						//SIGN
-//						bw.Write(System.Text.Encoding.ASCII.GetBytes("dmxc"));
-//						//имя класса
-//						ImagesSource aSource = ActiveSource;
-//						bw.Write(aSource.GetType().FullName);
-//						//имя сборки
-//						bw.Write(aSource.GetType().Assembly.FullName);
-//						if (!aSource.SaveConfig(fs))
-//							throw new Exception();
-//					} finally {
-//						fs.Close();
-//					}
-//				} catch (Exception exc) {
-//					WriteLog(exc);
-//					File.Delete(filename);
-//					throw;  
-//				}
-//			} catch (Exception exc) {
-//				WriteLog(exc);
-//				//todo MessageBox.Show("Не удалсь сохранить профиль", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);                               
-//			}
-//			//todo TrayIcon.ContextMenu = GetMenu();
+		public bool SaveProfile(string configName, bool s, bool c, bool e) {
+			string filename = GetUserFileName("profiles", configName);             
+			FileInfo fi = new FileInfo(filename);
+			if (!fi.Exists) {
+				//todo: dlg
+				//return false;
+			}
+			try {
+				XmlTextWriter cfg = new XmlTextWriter(filename, System.Text.Encoding.UTF8);
+				cfg.WriteStartDocument();
+				cfg.WriteStartElement("profile");				
+				try {
+					#region write source
+					if (s) {
+						cfg.WriteStartElement("source");
+						try {
+							cfg.WriteRaw(ActiveSource.GetRawConfig());
+						} catch(Exception exc) {							
+							WriteLog(exc);
+							cfg.WriteComment(exc.ToString());
+						} finally {
+							cfg.WriteEndElement();	
+						}
+					}
+					#endregion
+					#region write composition
+					if (c) {
+						cfg.WriteStartElement("composition");
+						try {
+							cfg.WriteRaw(ActiveComposition.GetRawConfig());
+						} catch(Exception exc) {							
+							WriteLog(exc);
+							cfg.WriteComment(exc.ToString());	
+						} finally {
+							cfg.WriteEndElement();	
+						}
+					}
+					#endregion
+					#region write effects
+					if (e) {
+						cfg.WriteStartElement("effects");
+						try {
+							foreach (ImagePostEffect eff in ActiveEffects) {
+								cfg.WriteRaw(eff.GetRawConfig());
+							}
+						} catch(Exception exc) {							
+							WriteLog(exc);
+							cfg.WriteComment(exc.ToString());
+						} finally {
+							cfg.WriteEndElement();	
+						}
+					}
+					#endregion
+				} finally {
+					cfg.WriteEndElement();
+					cfg.WriteEndDocument();	
+				}
+				cfg.Close();	
+			} catch (Exception exc) {
+				WriteLog(exc);
+				//todo: show message
+				RefreshMemory();
+			} finally {
+				updateProfilesMenu();
+			}			
 			return true;
+		}
+		
+		public bool DeleteProfile(string configName) {
+			string filename = GetUserFileName("profiles", configName);             
+			FileInfo fi = new FileInfo(filename);
+			try {
+				fi.Delete();
+			} catch (Exception exc) {
+				WriteLog(exc);
+				//todo: show message				
+			} finally {
+				updateProfilesMenu();			
+			}			
+			return	true;
 		}
         #endregion
         
@@ -1235,7 +1294,7 @@ namespace DeMixer {
 		}
 		
 		public void ShowNotify(string title, string message, bool errorIcon) {			
-			Gtk.Application.Invoke(delegate {
+			//Gtk.Application.Invoke(delegate {
 				Notifications.Notification notify = new  Notifications.Notification();
 				notify.Summary = title;
 				notify.Body = message;								
@@ -1246,7 +1305,7 @@ namespace DeMixer {
 				
 				notify.Urgency = Notifications.Urgency.Low;
 				notify.Show();		
-			});
+			//});
 		}
 		
 		public WebClient GetWebClient() {

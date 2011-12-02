@@ -4,8 +4,8 @@ namespace DeMixer.lib.std
 	[System.ComponentModel.ToolboxItem(true)]
 	public partial class CompositionMozaikConfigView : Gtk.Bin {
 		CompositionMozaik Composition;		
-		public CompositionMozaikConfigView (CompositionMozaik composition) {
-			this.Build ();
+		public CompositionMozaikConfigView (CompositionMozaik composition, IDeMixerKernel kernel) {
+			this.Build ();			
 			Composition = composition;			
 			combobox1.Active = Composition.ImagesCount - 2;
 		}

@@ -103,7 +103,7 @@ namespace DeMixer.lib.std {
 				
 		public override Gtk.Widget ExpandControl {
 			get {
-				return new CompositionMozaikConfigView(this);				
+				return new CompositionMozaikConfigView(this, Kernel);				
 			}
 		}
 

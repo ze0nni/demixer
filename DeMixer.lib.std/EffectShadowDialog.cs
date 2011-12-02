@@ -3,13 +3,14 @@ using System;
 namespace DeMixer.lib.std {
 	public partial class EffectShadowDialog : Gtk.Dialog {
 		EffectShadow Effect;
-		public EffectShadowDialog(EffectShadow effect, Gtk.Window parent)
+		public EffectShadowDialog(EffectShadow effect, Gtk.Window parent, IDeMixerKernel kernel)
 			: base("Shadow effect dialog",
 				parent,
 				Gtk.DialogFlags.Modal, new object[0])				
 								
 		{
 			this.Build();
+			kernel.TranslateWidget(this);
 			Effect = effect;
 			
 			checkbAbove.Active = Effect.DrawTop;

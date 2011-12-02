@@ -5,8 +5,8 @@ namespace DeMixer.lib.std {
 	public partial class CompositionSeasonsConfigView : Gtk.Bin {
 		CompositionSeasons Compositon;
 
-		public CompositionSeasonsConfigView(CompositionSeasons compositon) {
-			this.Build();
+		public CompositionSeasonsConfigView(CompositionSeasons compositon, IDeMixerKernel kernel) {
+			this.Build();			
 			Compositon = compositon;
 			hscaleCount.Value = Compositon.ImagesCount;
 			hscaleSize.Value = Compositon.SeparatorSize;

@@ -124,7 +124,7 @@ namespace DeMixer.lib.std {
 
 		public override Gtk.Widget ExpandControl {
 			get {
-				return new CompositionSeasonsConfigView(this);
+				return new CompositionSeasonsConfigView(this, Kernel);
 			}
 		}
 	}

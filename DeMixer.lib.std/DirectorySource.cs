@@ -20,7 +20,7 @@ namespace DeMixer.lib.std {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return new DirectorySourceConfigView(this);
+				return new DirectorySourceConfigView(this, Kernel);
 			}
 		}
 
