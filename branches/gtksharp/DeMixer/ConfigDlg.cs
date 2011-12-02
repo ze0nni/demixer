@@ -5,15 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace DeMixer {
-	public partial class ConfigDlg : Gtk.Dialog {
-
-		protected virtual void OnsaveProfileBtnClicked(object sender, System.EventArgs e) {
-			SaveProfileDialog dlg =
-				new SaveProfileDialog("Save profeile dialog", this);
-			//Kernel.TranslateWidget(dlg);			
-			dlg.Run();
-			dlg.Destroy();
-		}
+	public partial class ConfigDlg : Gtk.Dialog {	
 		
 		IDeMixerKernel Kernel;
 
@@ -29,10 +21,10 @@ namespace DeMixer {
 		
 		void init() {									
 			foreach (ImagesSource s in Kernel.SourceList) {
-				SourceComboBox.AppendText(s.PluginTitle);
+				SourceCb.AppendText(s.PluginTitle);
 			}			
-			SourceComboBox.Active = Kernel.ActiveSourceIndex;
-			SourceComboBox.ShowAll();
+			SourceCb.Active = Kernel.ActiveSourceIndex;
+			SourceCb.ShowAll();
 			
 			foreach (ImagesComposition c in Kernel.CompositionList) {
 				CompositionComboBox.AppendText(c.PluginTitle);
@@ -59,23 +51,41 @@ namespace DeMixer {
 			
 			EffectsList.AppendColumn(effectNameColumn);
 			EffectsList.AppendColumn(effectStateColumn);
-			Gtk.CellRendererText FoldersListCell = new Gtk.CellRendererText();
-			
+			Gtk.CellRendererText FoldersListCell = new Gtk.CellRendererText();			
 			EffectsListStore = new Gtk.ListStore(typeof(string), typeof(string));			
 			EffectsList.Model = EffectsListStore;
 			
 			//добавляем эффекты в список
-			foreach (ImagePostEffect e in Kernel.ActiveEffects) {
-				EffectsListStore.AppendValues(new object[]{e.PluginName, e.ToString()});				
-			}
+			reloadEffectList();
 			
-			//notebook1.GetTabLabel(
+			#region system page
+			try {
+				intervalScale.Value = timeToInterval(Kernel.UpdateInterval);
+				OnIntervalScaleChangeValue(intervalScale, new Gtk.ChangeValueArgs());
+			} catch {
+			}
+			switch (Kernel.UpdateIntervalMode) {
+			case UpdateMode.UpdateOnStart:
+				UpdateIntervalModeCb.Active = 0;
+				break;
+			case UpdateMode.WaitFromStart:
+				UpdateIntervalModeCb.Active = 1;
+				break;
+			case UpdateMode.WaitFromLastUpdate:
+				UpdateIntervalModeCb.Active = 2;
+				break;
+			}
+			#endregion
+			
+			#region profiles
+			updateProfilesList();
+			#endregion
 		}
 
 		Gtk.Widget lastSourceView = null;
 
-		protected virtual void OnSourceComboBoxChanged(object sender, System.EventArgs e) {
-			Kernel.ActiveSourceIndex = SourceComboBox.Active;
+		protected virtual void OnSourceCbChanged(object sender, System.EventArgs e) {
+			Kernel.ActiveSourceIndex = SourceCb.Active;
 			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
 			Gtk.Widget view = Kernel.ActiveSource.ExpandTagsControl;
 			
@@ -97,26 +107,30 @@ namespace DeMixer {
 		Gtk.Widget lastCompositionView = null;
 
 		protected virtual void OnCompositionComboBoxChanged(object sender, System.EventArgs e) {
-			Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
-			Kernel.ActiveComposition.UpdatePreview += delegate {
+			try {
+				Kernel.ActiveCompositionIndex = CompositionComboBox.Active;
+				Kernel.ActiveComposition.UpdatePreview += delegate {
+					updatePreview();
+				};
+				CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
+				
+				Gtk.Widget view = Kernel.ActiveComposition.ExpandControl;
+				
+				if (lastCompositionView != null) {
+					CompositionSettingsPlace.Remove(lastCompositionView);	
+					lastCompositionView.Destroy();
+				}			
+				if (view == null) {
+					view = new Gtk.Label("no options");	
+				}
+				//Kernel.TranslateWidget(view);
+				lastCompositionView = view;
+				CompositionSettingsPlace.Add(view);						
+				view.ShowAll();
 				updatePreview();
-			};
-			CompositionInformationLabel.Markup = Kernel.ActiveComposition.PluginDescription;
-			
-			Gtk.Widget view = Kernel.ActiveComposition.ExpandControl;
-			
-			if (lastCompositionView != null) {
-				CompositionSettingsPlace.Remove(lastCompositionView);	
-				lastCompositionView.Destroy();
-			}			
-			if (view == null) {
-				view = new Gtk.Label("no options");	
+			} catch (Exception exc) {
+				Console.WriteLine(exc);	
 			}
-			Kernel.TranslateWidget(view);
-			lastCompositionView = view;
-			CompositionSettingsPlace.Add(view);						
-			view.ShowAll();
-			updatePreview();
 		}
 
 		protected virtual void OnEffectsComboBoxChanged(object sender, System.EventArgs e) {
@@ -233,6 +247,15 @@ namespace DeMixer {
 					if (!EffectsListStore.IterNext(ref itr)) break;
 				} while (true);
 			}
+			EffectsList.ShowAll();
+		}
+		
+		void reloadEffectList() {
+			EffectsListStore.Clear();
+			foreach (ImagePostEffect e in Kernel.ActiveEffects) {
+				EffectsListStore.AppendValues(new object[]{e.PluginName, e.ToString()});				
+			}
+			EffectsList.ShowAll();
 		}
 		
 		protected void OnEditEffectBtnClicked(object sender, System.EventArgs e) {			
@@ -289,5 +312,110 @@ namespace DeMixer {
 				OnEffectsListCursorChanged(this, new EventArgs());
 			}
 		}
+		
+		#region interval 
+		
+		 public static int intervalToTime(int v) {
+                        int res = v;
+                        if (res <= 10) {
+                                return res;
+                        } else if (res <= 20) {
+                                return (res - 10) * 5 + 10;
+                        } else if (res <= 24) {
+                                return (res - 20) * 15 + 60;
+                        } else if (res <= 44) {
+                                return (res - 24) * 30 + 60 * 2;
+                        } else {
+                                return (res - 44) * 60 + 60 * 12;       
+                        }
+                }
+                
+                public static int timeToInterval(int v) {
+                        v = v / 60 / 1000;
+                        if (v<=10) return v; //1..10
+                        else if (v<=60) return (v - 10) / 5 + 10; //11..20
+                        else if (v<=120) return (v - 60) / 15 + 20; //21..24
+                        else if (v<=720) return (v - 120) / 30 + 24; //25..44
+                        else if (v<=1440) return (v - 720) / 60 + 44; //45..56
+                        else return 56;
+                }
+
+		
+		protected void OnIntervalScaleChangeValue(object o, Gtk.ChangeValueArgs args) {
+			int i = intervalToTime((int)intervalScale.Value);
+			IntervalLabel.Text = "123";
+                        if (i<60) {
+                                IntervalLabel.Text = Kernel.Translate("{0} m", i);
+                        } else {
+                                int h = i / 60;
+                                int m = i % 60;
+                                IntervalLabel.Text = m == 0 ?
+                                        Kernel.Translate("{0} h", h) :
+                                        Kernel.Translate("{0} h {1} m", h, m);
+                        }
+                        Kernel.UpdateInterval = i * 60 * 1000;
+		}
+		
+		#endregion
+		protected void OnUpdateIntervalModeCbChanged(object sender, System.EventArgs e) {
+			switch (UpdateIntervalModeCb.Active) {
+			case 0:
+				Kernel.UpdateIntervalMode = UpdateMode.UpdateOnStart;
+				break;
+			case 1:
+				Kernel.UpdateIntervalMode = UpdateMode.WaitFromStart;
+				break;
+			case 2:
+				Kernel.UpdateIntervalMode = UpdateMode.WaitFromLastUpdate;
+				break;
+			}
+		}
+		
+		#region profiles
+		
+		void updateProfilesList() {			
+			((Gtk.ListStore)ProfilesCb.Model).Clear();
+			foreach (string p in Kernel.GetProfileList()) {
+				ProfilesCb.AppendText(p);				
+			}
+			ProfilesCb.ShowAll();
+		}
+				
+		
+		protected virtual void OnsaveProfileBtnClicked(object sender, System.EventArgs e) {
+			SaveProfileDialog dlg =
+				new SaveProfileDialog("Save profeile dialog", this);
+			//Kernel.TranslateWidget(dlg);			
+			if ((Gtk.ResponseType)dlg.Run() == Gtk.ResponseType.Ok) {
+				Kernel.SaveProfile(dlg.ProfileName,
+					dlg.SaveSource,
+					dlg.SaveCompostion,
+					dlg.SaveEffects);
+				updateProfilesList();
+			}
+			dlg.Destroy();			
+		}
+		
+
+		protected void OnApplyProfileBtnClicked(object sender, System.EventArgs e) {
+			Kernel.LoadProfile(ProfilesCb.ActiveText, true, true, true);
+			
+			SourceCb.Active = Kernel.ActiveSourceIndex;
+			OnSourceCbChanged(SourceCb, new EventArgs());
+			CompositionComboBox.Active = Kernel.ActiveCompositionIndex;
+			OnCompositionComboBoxChanged(CompositionComboBox, new EventArgs());
+			reloadEffectList();			
+		}
+
+		protected void OnProfilesCbChanged(object sender, System.EventArgs e) {
+			applyProfileBtn.Sensitive = ProfilesCb.Active != -1;
+			deleteProfileBtn.Sensitive = ProfilesCb.Active != -1;
+		}
+
+		protected void OnDeleteProfileBtnClicked(object sender, System.EventArgs e) {
+			Kernel.DeleteProfile(ProfilesCb.ActiveText);
+			updateProfilesList();
+		}
+		#endregion
 	}
 }

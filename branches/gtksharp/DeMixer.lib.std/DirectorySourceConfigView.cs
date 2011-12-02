@@ -14,9 +14,9 @@ namespace DeMixer.lib.std
 		DirectorySource Source;
 		Gtk.ListStore FoldersListStore = null;
 		
-		public DirectorySourceConfigView(DirectorySource source) {
+		public DirectorySourceConfigView(DirectorySource source, IDeMixerKernel kernel) {
 			this.Build();						
-			Source = source;
+			Source = source;			
 			//Добавляем колонки к списку
 			Gtk.TreeViewColumn forcedSearchColumt = new Gtk.TreeViewColumn ();
 			forcedSearchColumt.Title = "forced";			

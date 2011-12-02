@@ -60,8 +60,9 @@ namespace DeMixer.lib {
 		}		
 				
 		string[] GetProfileList();		
-		bool LoadConfig(string configName);
-		bool SaveConfig(string configName);
+		bool LoadProfile(string configName, bool s, bool c, bool e);
+		bool SaveProfile(string configName, bool s, bool c, bool e);
+		bool DeleteProfile(string configName);
 		
 		string GetUserFileName(params string[] args);
 		int GetSourceIndex(string name);

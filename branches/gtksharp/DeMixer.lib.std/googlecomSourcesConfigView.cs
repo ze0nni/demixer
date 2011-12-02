@@ -5,13 +5,16 @@ namespace DeMixer.lib.std {
 	public partial class googlecomSourcesConfigView : Gtk.Bin {
 		googlecomSources Source;
 
-		protected virtual void OnTagsEditChanged(object sender, System.EventArgs e) {
+		protected virtual void OnTagsEditChanged(object sender, System.EventArgs e) {			
 			Source.Tags = tagsEdit.Text;			
 		}
 		
+		IDeMixerKernel Kernel;
 		public googlecomSourcesConfigView(googlecomSources source, IDeMixerKernel k ) {
 			this.Build();
 			Source = source;
+			Kernel = k;
+			Kernel.TranslateWidget(this);
 			tagsEdit.Text = Source.Tags;						
 			foreach (string s in Source.SizeEnum) {
 				imageSizeCombo.AppendText(k.Translate(s));

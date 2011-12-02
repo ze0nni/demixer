@@ -5,11 +5,11 @@ namespace DeMixer
 	public partial class SaveProfileDialog
 	{
 		private global::Gtk.VBox vbox4;
-		private global::Gtk.Entry entry1;
+		private global::Gtk.Entry ProfileNameEdit;
 		private global::Gtk.HBox hbox4;
-		private global::Gtk.CheckButton checkbutton2;
-		private global::Gtk.CheckButton checkbutton3;
-		private global::Gtk.CheckButton checkbutton4;
+		private global::Gtk.CheckButton SaveSourceCb;
+		private global::Gtk.CheckButton SaveCompositionCb;
+		private global::Gtk.CheckButton SaveEffectsCb;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
 		
@@ -30,13 +30,13 @@ namespace DeMixer
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.entry1 = new global::Gtk.Entry ();
-			this.entry1.CanFocus = true;
-			this.entry1.Name = "entry1";
-			this.entry1.IsEditable = true;
-			this.entry1.InvisibleChar = '●';
-			this.vbox4.Add (this.entry1);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.entry1]));
+			this.ProfileNameEdit = new global::Gtk.Entry ();
+			this.ProfileNameEdit.CanFocus = true;
+			this.ProfileNameEdit.Name = "ProfileNameEdit";
+			this.ProfileNameEdit.IsEditable = true;
+			this.ProfileNameEdit.InvisibleChar = '●';
+			this.vbox4.Add (this.ProfileNameEdit);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.ProfileNameEdit]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
@@ -46,34 +46,34 @@ namespace DeMixer
 			this.hbox4.Spacing = 6;
 			this.hbox4.BorderWidth = ((uint)(3));
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.checkbutton2 = new global::Gtk.CheckButton ();
-			this.checkbutton2.CanFocus = true;
-			this.checkbutton2.Name = "checkbutton2";
-			this.checkbutton2.Label = global::Mono.Unix.Catalog.GetString ("Save source");
-			this.checkbutton2.DrawIndicator = true;
-			this.checkbutton2.UseUnderline = true;
-			this.hbox4.Add (this.checkbutton2);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton2]));
+			this.SaveSourceCb = new global::Gtk.CheckButton ();
+			this.SaveSourceCb.CanFocus = true;
+			this.SaveSourceCb.Name = "SaveSourceCb";
+			this.SaveSourceCb.Label = global::Mono.Unix.Catalog.GetString ("Save source");
+			this.SaveSourceCb.DrawIndicator = true;
+			this.SaveSourceCb.UseUnderline = true;
+			this.hbox4.Add (this.SaveSourceCb);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.SaveSourceCb]));
 			w3.Position = 0;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.checkbutton3 = new global::Gtk.CheckButton ();
-			this.checkbutton3.CanFocus = true;
-			this.checkbutton3.Name = "checkbutton3";
-			this.checkbutton3.Label = global::Mono.Unix.Catalog.GetString ("Save composition");
-			this.checkbutton3.DrawIndicator = true;
-			this.checkbutton3.UseUnderline = true;
-			this.hbox4.Add (this.checkbutton3);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton3]));
+			this.SaveCompositionCb = new global::Gtk.CheckButton ();
+			this.SaveCompositionCb.CanFocus = true;
+			this.SaveCompositionCb.Name = "SaveCompositionCb";
+			this.SaveCompositionCb.Label = global::Mono.Unix.Catalog.GetString ("Save composition");
+			this.SaveCompositionCb.DrawIndicator = true;
+			this.SaveCompositionCb.UseUnderline = true;
+			this.hbox4.Add (this.SaveCompositionCb);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.SaveCompositionCb]));
 			w4.Position = 1;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.checkbutton4 = new global::Gtk.CheckButton ();
-			this.checkbutton4.CanFocus = true;
-			this.checkbutton4.Name = "checkbutton4";
-			this.checkbutton4.Label = global::Mono.Unix.Catalog.GetString ("Save effects");
-			this.checkbutton4.DrawIndicator = true;
-			this.checkbutton4.UseUnderline = true;
-			this.hbox4.Add (this.checkbutton4);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.checkbutton4]));
+			this.SaveEffectsCb = new global::Gtk.CheckButton ();
+			this.SaveEffectsCb.CanFocus = true;
+			this.SaveEffectsCb.Name = "SaveEffectsCb";
+			this.SaveEffectsCb.Label = global::Mono.Unix.Catalog.GetString ("Save effects");
+			this.SaveEffectsCb.DrawIndicator = true;
+			this.SaveEffectsCb.UseUnderline = true;
+			this.hbox4.Add (this.SaveEffectsCb);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.SaveEffectsCb]));
 			w5.Position = 2;
 			this.vbox4.Add (this.hbox4);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox4]));
