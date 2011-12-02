@@ -54,13 +54,7 @@ namespace DeMixer.lib.std {
 			}
 		}
 		
-		private Random rnd = new Random();
-		public override System.Drawing.Image GetNextImage() {			
-			WebClient wc = Kernel.GetWebClient();		 
-			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
-			XmlDocument doc = new XmlDocument();
-			doc.Load(new MemoryStream(data));
-			
+		private void CheckErrorResponce(XmlDocument doc) {
 			//check for error responce
 			{
 				XmlNode responce = doc.SelectSingleNode("response");
@@ -74,8 +68,16 @@ namespace DeMixer.lib.std {
 							false);
 					}
 				}
-			}
-			
+			}	
+		}
+		
+		private Random rnd = new Random();
+		public override System.Drawing.Image GetNextImage() {			
+			WebClient wc = Kernel.GetWebClient();		 
+			byte[] data = wc.DownloadData(new Uri(GetUrl(1)));
+			XmlDocument doc = new XmlDocument();
+			doc.Load(new MemoryStream(data));			
+			CheckErrorResponce(doc);
 			
 			int pageCount = GetPagesCount(doc);			
 			if (pageCount == 0) {
@@ -94,12 +96,32 @@ namespace DeMixer.lib.std {
 			return GetImage(doc);				
 		}
 		
-		private string GetUrl(int page) {
+		private string GetUrl(string t, int page) {			
 			return 
 				string.Format(
 					"http://konachan.com/post/index.xml?tags={0}&limit=1&page={1}",
-					Uri.EscapeDataString(Tags),
+					Uri.EscapeDataString(t),
 					Uri.EscapeDataString(page.ToString()));
+		}
+		
+		private string GetUrl(int page) {
+			return
+				GetUrl(Tags, page);
+//			return 
+//				string.Format(
+//					"http://konachan.com/post/index.xml?tags={0}&limit=1&page={1}",
+//					Uri.EscapeDataString(Tags),
+//					Uri.EscapeDataString(page.ToString()));
+		}
+		
+		public int GetPagesCount(string t) {
+			WebClient wc = Kernel.GetWebClient();		 
+			byte[] data = wc.DownloadData(new Uri(GetUrl(t, 1)));
+			XmlDocument doc = new XmlDocument();
+			doc.Load(new MemoryStream(data));
+			CheckErrorResponce(doc);
+			
+			return 	GetPagesCount(doc);
 		}
 		
 		private int GetPagesCount(XmlDocument doc) {

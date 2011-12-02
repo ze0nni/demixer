@@ -119,7 +119,15 @@
               </packing>
             </child>
             <child>
-              <placeholder />
+              <widget class="Gtk.Label" id="ResultsCountLabel">
+                <property name="MemberName" />
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
             </child>
           </widget>
           <packing>
@@ -136,7 +144,7 @@
             <child>
               <widget class="Gtk.Label" id="label6">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Search</property>
+                <property name="LabelProp" translatable="yes">Similar tags</property>
               </widget>
               <packing>
                 <property name="Position">0</property>
