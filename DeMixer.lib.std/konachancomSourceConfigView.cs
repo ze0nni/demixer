@@ -91,6 +91,7 @@ namespace DeMixer.lib.std
 						w.Destroy();
 					int i = 0;
 					XmlNodeList tags = xml.SelectSingleNode("tags").SelectNodes("tag");
+					
 					foreach (XmlNode tag in tags) {			
 						/*type:
 							General: 0
@@ -98,8 +99,11 @@ namespace DeMixer.lib.std
 							copyright: 3
 							character: 4
 						*/
-						string btntag = tag.Attributes["name"].Value;
-						string labelText = String.Format("{0} ({1})",
+						string btntag = tag.Attributes["name"].Value;						
+						string labelText = String.Format(
+								 btntag == tagatpos ?
+									"<b>{0}</b> ({1})" :
+									"{0} ({1})",
 							btntag.Replace("_", "__"),
 							tag.Attributes["count"].Value);
 						//type						
@@ -123,7 +127,8 @@ namespace DeMixer.lib.std
 								
 						}
 						//label
-						Gtk.Label btnlabel = new Gtk.Label(labelText);
+						Gtk.Label btnlabel = new Gtk.Label();					
+						btnlabel.Markup = labelText;
 						btnlabel.Ellipsize = ((global::Pango.EllipsizeMode)(3));						
 						
 						
@@ -155,6 +160,13 @@ namespace DeMixer.lib.std
 					tagsButtonsBox1.ShowAll();
 					tagsButtonsBox2.ShowAll();
 					tagsButtonsBox3.ShowAll();
+					try {
+						ResultsCountLabel.Text = Source.GetPagesCount(Source.Tags).ToString();
+					} catch (DeMixerException exc) {
+						ResultsCountLabel.Text = Kernel.Translate(exc.Message);
+					} catch (Exception exc) {
+						ResultsCountLabel.Text = Kernel.Translate("Error");
+					}
 				});
 			}).Start();
 		}
