@@ -43,7 +43,7 @@ namespace DeMixer {
 			UpdatePlugins();                        
 			ReadSettings();
 
-			LoadDictionary("ru");
+			LoadDictionary("en");
 			
 			//
 			InitMenu();            
@@ -119,7 +119,7 @@ namespace DeMixer {
 		}
 		
 		bool HandleTick() {			
-			//return true;
+//			return true;
 			if (timerStopped)
 				return true;
 			try {  				
@@ -539,8 +539,7 @@ namespace DeMixer {
 				}
 				try {					
 					ConfigDlg dlg = new ConfigDlg(this);
-					LastConfigDialog = dlg;
-					TranslateWidget(dlg);
+					LastConfigDialog = dlg;					
 					dlg.Run();
 					dlg.Destroy();
 				} finally {
