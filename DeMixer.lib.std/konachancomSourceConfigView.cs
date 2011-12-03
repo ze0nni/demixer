@@ -64,110 +64,120 @@ namespace DeMixer.lib.std
 				updateHelpButtonsTick = Environment.TickCount;
 				t = updateHelpButtonsTick;
 			}
-			new System.Threading.Thread((System.Threading.ThreadStart) delegate {
+			new System.Threading.Thread((System.Threading.ThreadStart) delegate {					
 				System.Threading.Thread.Sleep(300);
 				//
 				if (updateHelpButtonsTick != t) return;				
-				string tagatpos = wordFromPos(Source.Tags,
-					tagsEdit.CursorPosition);
-				if (tagatpos.Length > 0 && tagatpos[0] == '-')
-					tagatpos = tagatpos.Remove(0, 1);
-				Uri rstr = new Uri(String.Format("http://konachan.com/tag/index.xml?name={0}&order=count&limit=12",
-					Uri.EscapeDataString(tagatpos)));
-				
-				WebClient wc = Kernel.GetWebClient();
-				string responce = wc.DownloadString(rstr);
-				//
-				if (updateHelpButtonsTick != t) return;
-				XmlDocument xml = new XmlDocument();
-				xml.LoadXml(responce);
-				Gtk.Application.Invoke(delegate {
-					//Clear buttons
-					foreach (Gtk.Widget w in tagsButtonsBox1.AllChildren)
-						w.Destroy();
-					foreach (Gtk.Widget w in tagsButtonsBox2.AllChildren)
-						w.Destroy();
-					foreach (Gtk.Widget w in tagsButtonsBox3.AllChildren)
-						w.Destroy();
-					int i = 0;
-					XmlNodeList tags = xml.SelectSingleNode("tags").SelectNodes("tag");
+				try {
+					string tagatpos = wordFromPos(Source.Tags,
+						tagsEdit.CursorPosition);
+					if (tagatpos.Length > 0 && tagatpos[0] == '-')
+						tagatpos = tagatpos.Remove(0, 1);
+					Uri rstr = new Uri(String.Format("http://konachan.com/tag/index.xml?name={0}&order=count&limit=12",
+						Uri.EscapeDataString(tagatpos)));
 					
-					foreach (XmlNode tag in tags) {			
-						/*type:
-							General: 0
-							artist: 1
-							copyright: 3
-							character: 4
-						*/
-						string btntag = tag.Attributes["name"].Value;						
-						string labelText = String.Format(
-								 btntag == tagatpos ?
-									"<b>{0}</b> ({1})" :
-									"{0} ({1})",
-							btntag.Replace("_", "__"),
-							tag.Attributes["count"].Value);
-						//type						
-						Gtk.Image btnimage = new Gtk.Image();						
-						switch (tag.Attributes["type"].Value) {
-						case "1":
-							//artist
-							//btnimage.IconName = "demixer-artist";
-							break;
-						case "2":
-							//copyright							
-							//btnimage.IconName = "demixer-copyright";
-							break;
-						case "3":
-							//character
-							//btnimage.IconName = "demixer-character";
-							btnimage.IconName = "avatar-default";
-							break;
-						default:
-							break;
+					WebClient wc = Kernel.GetWebClient();
+					string responce = wc.DownloadString(rstr);
+					//
+					if (updateHelpButtonsTick != t) return;
+					XmlDocument xml = new XmlDocument();
+					xml.LoadXml(responce);				
+					Gtk.Application.Invoke(delegate {
+						#region invoke
+						try {
+							//Clear buttons
+							foreach (Gtk.Widget w in tagsButtonsBox1.AllChildren)
+								w.Destroy();
+							foreach (Gtk.Widget w in tagsButtonsBox2.AllChildren)
+								w.Destroy();
+							foreach (Gtk.Widget w in tagsButtonsBox3.AllChildren)
+								w.Destroy();
+							int i = 0;
+							XmlNodeList tags = xml.SelectSingleNode("tags").SelectNodes("tag");
+							
+							foreach (XmlNode tag in tags) {			
+								/*type:
+									General: 0
+									artist: 1
+									copyright: 3
+									character: 4
+								*/
+								string btntag = tag.Attributes["name"].Value;						
+								string labelText = String.Format(
+										 btntag == tagatpos ?
+											"<b>{0}</b> ({1})" :
+											"{0} ({1})",
+									btntag,
+									tag.Attributes["count"].Value);
+								//type						
+								Gtk.Image btnimage = new Gtk.Image();						
+								switch (tag.Attributes["type"].Value) {
+								case "1":
+									//artist
+									//btnimage.IconName = "demixer-artist";
+									break;
+								case "2":
+									//copyright							
+									//btnimage.IconName = "demixer-copyright";
+									break;
+								case "3":
+									//character
+									//btnimage.IconName = "demixer-character";
+									btnimage.IconName = "avatar-default";
+									break;
+								default:
+									break;
+										
+								}
+								//label
+								Gtk.Label btnlabel = new Gtk.Label();					
+								btnlabel.Markup = labelText;
+								btnlabel.Ellipsize = ((global::Pango.EllipsizeMode)(3));						
 								
+								
+								Gtk.Button tagw = new Gtk.Button();						
+								tagw.TooltipMarkup = string.Format("Tag: <b>{0}</b>\nType: {1}\nCount: {2}",
+									btntag,
+									tag.Attributes["type"].Value,
+									tag.Attributes["count"].Value);
+								Gtk.HBox bthhp = new Gtk.HBox();
+								
+								bthhp.Add(btnimage);
+								bthhp.Add(btnlabel);						
+								((Gtk.Box.BoxChild)bthhp[btnimage]).Expand = false;
+								((Gtk.Box.BoxChild)bthhp[btnimage]).Fill = false;
+								
+								tagw.Add(bthhp);
+								
+								tagw.Data["tag"] = btntag;
+								//tagw.SetPadding(0, 2);	
+								tagw.Clicked += HandleTagwClicked;
+								if (i<4)
+									tagsButtonsBox1.Add(tagw);
+								else if (i<8)
+									tagsButtonsBox2.Add(tagw);
+								else
+									tagsButtonsBox3.Add(tagw);
+								if (++i>11) break;						
+							}					
+							tagsButtonsBox1.ShowAll();
+							tagsButtonsBox2.ShowAll();
+							tagsButtonsBox3.ShowAll();
+							try {
+								ResultsCountLabel.Text = Source.GetPagesCount(Source.Tags).ToString();
+							} catch (DeMixerException exc) {
+								ResultsCountLabel.Text = Kernel.Translate(exc.Message);
+							} catch (Exception exc) {
+								ResultsCountLabel.Text = Kernel.Translate("Error");
+							}
+						} catch(Exception exc) {
+							//todo: write log
 						}
-						//label
-						Gtk.Label btnlabel = new Gtk.Label();					
-						btnlabel.Markup = labelText;
-						btnlabel.Ellipsize = ((global::Pango.EllipsizeMode)(3));						
-						
-						
-						Gtk.Button tagw = new Gtk.Button();						
-						tagw.TooltipMarkup = string.Format("Tag: <b>{0}</b>\nType: {1}\nCount: {2}",
-							btntag,
-							tag.Attributes["type"].Value,
-							tag.Attributes["count"].Value);
-						Gtk.HBox bthhp = new Gtk.HBox();
-						
-						bthhp.Add(btnimage);
-						bthhp.Add(btnlabel);						
-						((Gtk.Box.BoxChild)bthhp[btnimage]).Expand = false;
-						((Gtk.Box.BoxChild)bthhp[btnimage]).Fill = false;
-						
-						tagw.Add(bthhp);
-						
-						tagw.Data["tag"] = btntag;
-						//tagw.SetPadding(0, 2);	
-						tagw.Clicked += HandleTagwClicked;
-						if (i<4)
-							tagsButtonsBox1.Add(tagw);
-						else if (i<8)
-							tagsButtonsBox2.Add(tagw);
-						else
-							tagsButtonsBox3.Add(tagw);
-						if (++i>11) break;						
-					}					
-					tagsButtonsBox1.ShowAll();
-					tagsButtonsBox2.ShowAll();
-					tagsButtonsBox3.ShowAll();
-					try {
-						ResultsCountLabel.Text = Source.GetPagesCount(Source.Tags).ToString();
-					} catch (DeMixerException exc) {
-						ResultsCountLabel.Text = Kernel.Translate(exc.Message);
-					} catch (Exception exc) {
-						ResultsCountLabel.Text = Kernel.Translate("Error");
-					}
-				});
+						#endregion
+					});
+				} catch (Exception exc) {
+					//todo: writelog
+				}
 			}).Start();
 		}
 
