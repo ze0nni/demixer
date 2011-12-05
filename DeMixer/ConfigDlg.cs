@@ -75,6 +75,16 @@ namespace DeMixer {
 				UpdateIntervalModeCb.Active = 2;
 				break;
 			}
+			
+			saveHistoryChBox.Active = Kernel.SaveHistory;	
+			try {
+				selectSaveHostoryFolderBox.SelectFilename(Kernel.SaveHistoryPath);
+			} catch {
+					
+			}
+			historyLimitSizeChBox.Active = Kernel.HistoryLimit;
+			historyMaxSizeSpin.Value = Kernel.SaveHistorySize;
+			saveTempImagesCb.Active = Kernel.SaveTempHistory;			
 			#endregion
 			
 			#region profiles
@@ -155,10 +165,13 @@ namespace DeMixer {
 			selectSaveHostoryFolderBox.Sensitive = saveHistoryChBox.Active;
 			historyLimitSizeChBox.Sensitive = saveHistoryChBox.Active;
 			historyMaxSizeSpin.Sensitive = saveHistoryChBox.Active && historyLimitSizeChBox.Active;
+			saveTempImagesCb.Sensitive = saveHistoryChBox.Active;
+			Kernel.SaveHistory = saveHistoryChBox.Active;
 		}
 
 		protected virtual void OnHistoryLimitSizeChBoxClicked(object sender, System.EventArgs e) {
 			historyMaxSizeSpin.Sensitive = historyLimitSizeChBox.Active;
+			Kernel.HistoryLimit = historyLimitSizeChBox.Active;
 		}
 
 		protected virtual void OnButtonOkClicked(object sender, System.EventArgs e) {
@@ -415,6 +428,18 @@ namespace DeMixer {
 		protected void OnDeleteProfileBtnClicked(object sender, System.EventArgs e) {
 			Kernel.DeleteProfile(ProfilesCb.ActiveText);
 			updateProfilesList();
+		}
+
+		protected void OnSelectSaveHostoryFolderBoxSelectionChanged(object sender, System.EventArgs e) {
+			Kernel.SaveHistoryPath = selectSaveHostoryFolderBox.Filename;
+		}
+
+		protected void OnHistoryMaxSizeSpinChangeValue(object o, Gtk.ChangeValueArgs args) {
+			Kernel.SaveHistorySize = (int)historyMaxSizeSpin.Value;
+		}
+
+		protected void OnSaveTempImagesCbClicked(object sender, System.EventArgs e) {
+			Kernel.SaveTempHistory = saveTempImagesCb.Active;
 		}
 		#endregion
 	}

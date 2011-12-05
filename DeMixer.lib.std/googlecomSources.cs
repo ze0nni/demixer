@@ -18,9 +18,23 @@ namespace DeMixer.lib.std
 			get { return "http://Images.Google.com"; }	
 		}				
 		
-		public string imgSize = "Large";
-		public string imgColor = "All";
-		public bool saveToHistory = false;
+		private int imgSize = 0;
+		public int ImgSize {
+			get { return imgSize; }
+			set {
+				if (value >= 0 && value < SizeEnum.Length)
+					imgSize = value;
+			}
+		}
+		
+		private int imgColor = 0;
+		public int ImgColor {
+			get { return imgColor; }
+			set {
+				if (value >= 0 && value < ColorEnum.Length)
+					imgColor = value;
+			}
+		}
 		
 		Random rnd = new Random();
 		public override System.Drawing.Image GetNextImage() {
@@ -29,9 +43,9 @@ namespace DeMixer.lib.std
 				Tags,
 				int.MaxValue,
 				"",
-				imgSize.ToLower(),
+				SizeEnum[ImgSize].ToLower(),
 				"all",
-				imgColor.ToLower(),
+				ColorEnum[ImgColor].ToLower(),
 				"",
 				"",
 				"");
@@ -39,27 +53,15 @@ namespace DeMixer.lib.std
 			WebClient wc = new WebClient();
 			byte[] imgData = wc.DownloadData(res[rnd.Next(res.Count)].Url);			
 			System.Drawing.Image bmp = System.Drawing.Image.FromStream(new MemoryStream(imgData));
-			
-			try {
-				if (saveToHistory && Kernel.SaveHistory) {
-					string historyfName = String.Format("{1}{0}{2}_{3}{4}.png",
-						                                Path.DirectorySeparatorChar,
-					                                    Kernel.SaveHistoryPath,
-					                                    DateTime.Now.ToString(),
-				                                    	"Google.com",
-					                                    bmp.GetHashCode()
-					                                    );
-					bmp.Save(historyfName, ImageFormat.Png); 
-				}
-			} catch {
-					
-			}
-			
 			return bmp;
 		}
 		
 		public override System.Drawing.Image GetImageFromSource(string source) {
 			return null;
+		}
+		
+		public override bool SaveTempImages {
+			get { return true; }	
 		}
 		
 		public override Gtk.Widget ExpandTagsControl {
@@ -69,17 +71,19 @@ namespace DeMixer.lib.std
 		}
 		
 		public string[] SizeEnum {
-			get { return new string[] {
+			get { 	//return Enum.GetNames(typeof(ImageSize));
+				return new string[] {
 					"Large",
 					"XLarge",
 					"XXLarge",
-					"Hude"
-				};
+					"Huge"
+				};				
 			}
 		}
 		
 		public string[] ColorEnum {
-			get { return new string[] {
+			get { 	//return Enum.GetNames(typeof(ImageColor));
+				return new string[] {
 					"All",
 					"Red",
 					"Orange",
@@ -99,15 +103,17 @@ namespace DeMixer.lib.std
 		
 		protected override void Write(System.Xml.XmlWriter cfg) {			
 			cfg.WriteElementString("q", Tags);
-			cfg.WriteElementString("size", imgSize);
-			cfg.WriteElementString("color", imgColor);
+			cfg.WriteElementString("size", imgSize.ToString());
+			cfg.WriteElementString("color", imgColor.ToString());
 			cfg.WriteElementString("append", "");
 		}
 		
 		protected override void Read(System.Xml.XmlNode r) {
 			Tags = r.SelectSingleNode("q").InnerXml;
-			imgSize = r.SelectSingleNode("size").InnerXml;
-			imgColor = r.SelectSingleNode("color").InnerXml;
+			ImgSize = int.Parse(
+				r.SelectSingleNode("size").InnerXml);
+			ImgColor = int.Parse(
+				r.SelectSingleNode("color").InnerXml);
 		}
 	}
 }

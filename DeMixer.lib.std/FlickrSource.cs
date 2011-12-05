@@ -24,6 +24,10 @@ namespace DeMixer.lib.std {
 		public override System.Drawing.Image GetImageFromSource (string source) {
 			throw new NotImplementedException ();
 		}
+		
+		public override bool SaveTempImages {
+			get { return true; }	
+		}
 	}
 }
 

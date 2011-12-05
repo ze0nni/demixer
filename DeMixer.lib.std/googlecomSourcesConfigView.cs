@@ -20,17 +20,21 @@ namespace DeMixer.lib.std {
 				imageSizeCombo.AppendText(k.Translate(s));
 			}
 			imageSizeCombo.ShowAll();
+			imageSizeCombo.Active = Source.ImgSize;
+			
 			foreach (string c in Source.ColorEnum) {
 				imageColorCombo.AppendText(k.Translate(c));
 			}
+			imageColorCombo.ShowAll();
+			imageColorCombo.Active = Source.ImgColor;
 		}
 		
 		protected void OnImageSizeComboChanged (object sender, System.EventArgs e) {
-			Source.imgSize = imageSizeCombo.ActiveText;
+			Source.ImgSize = imageSizeCombo.Active;
 		}
 
 		protected void OnImageColorComboChanged (object sender, System.EventArgs e) {
-			Source.imgColor = imageColorCombo.ActiveText;
+			Source.ImgColor = imageColorCombo.Active;
 		}
 	}
 }

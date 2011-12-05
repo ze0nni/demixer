@@ -48,6 +48,10 @@ namespace DeMixer.lib.std {
 		}		
 				
 		
+		public override bool SaveTempImages {
+			get { return true; }	
+		}
+		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
 				return new konachancomSourceConfigView(this, Kernel);

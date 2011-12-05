@@ -34,6 +34,10 @@ namespace DeMixer.lib {
 			set { FTags = value; }
 		}
 		
+		public virtual bool SaveTempImages {
+			get { return false; }	
+		}
+		
 		public virtual Gtk.Widget ExpandTagsControl {
 			get { return null; }		
 		}
@@ -80,7 +84,11 @@ namespace DeMixer.lib {
 				throw lastExc;
 			for (int i=0; i<buffer.Length; i++) {
 				buffer[i] = images[i];
-			}			
+			}
+			//Save temp images to history
+			if (SaveTempImages) {
+				Kernel.SaveToHistory(buffer, this);	
+			}
 		}	
 		
 		public override string ToString() {
