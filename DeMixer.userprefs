@@ -3,15 +3,17 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
-    <Files>
-      <File FileName="DeMixer/ConfigDlg.cs" Line="40" Column="30" />
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="200" Column="64" />
-      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="74" Column="34" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="DeMixer" expanded="True" />
+          <Node name="DeMixer.lib" expanded="True" />
+          <Node name="DeMixer.lib.std" expanded="True">
+            <Node name="UserInterface" expanded="True" />
+            <Node name="FlickrSource.cs" selected="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True">
