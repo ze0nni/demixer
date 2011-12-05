@@ -3,22 +3,33 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
     <Files>
-      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="110" Column="38" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="40" Column="30" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="200" Column="64" />
+      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="74" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="DeMixer" expanded="True" />
-          <Node name="DeMixer.lib" expanded="True" />
-          <Node name="DeMixer.lib.std" expanded="True">
-            <Node name="googlecomSources.cs" selected="True" />
-          </Node>
-        </State>
+        <State expanded="True" />
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="DeMixer.lib" expanded="True">
+            <Node name="DeMixer" expanded="True">
+              <Node name="lib" expanded="True">
+                <Node name="DeMixer.lib.IDeMixerKernel" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="DeMixer.lib.std" expanded="True">
+            <Node name="DeMixer" expanded="True">
+              <Node name="lib" expanded="True">
+                <Node name="std" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
