@@ -110,7 +110,7 @@ namespace DeMixer {
 			//fix: Stranget effect — with mark-up
 			//Kernel.TranslateWidget(view);
 			lastSourceView = view;
-			SourceSettingsPlace.Add(view);
+			SourceSettingsPlace.Add(view);			
 			view.ShowAll();			
 		}
 		

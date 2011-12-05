@@ -71,8 +71,8 @@
     <Compile Include="EffectShadowDialog.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.EffectShadowDialog.cs" />
     <Compile Include="FlickrSource.cs" />
-    <Compile Include="FlickrSourceConfigView.cs" />
-    <Compile Include="gtk-gui\DeMixer.lib.std.FlickrSourceConfigView.cs" />
+    <Compile Include="FlickrSourceConfigWiget.cs" />
+    <Compile Include="gtk-gui\DeMixer.lib.std.FlickrSourceConfigWiget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

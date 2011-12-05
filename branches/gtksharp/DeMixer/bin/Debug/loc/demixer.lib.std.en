@@ -30,6 +30,10 @@ DeMixer.lib.std.googlecomSources name=Google.com
 DeMixer.lib.std.googlecomSources title=Search with Google.
 DeMixer.lib.std.googlecomSources description=Search with <a href="http://Images.Google.com">Images.Google.com</a>.\nYou can select quality and color for searched images.\nFor example:\n\t<i>own desktop wallpapers</i>
 
+DeMixer.lib.std.FlickrSource name=Flickr.com
+DeMixer.lib.std.FlickrSource title=Search with Flickr.com
+DeMixer.lib.std.FlickrSource description=Search images with <a href="http://www.flickr.com/">Flickr.com</a>.
+
 DeMixer.lib.std.CompositionAutoSize name=Optimal size
 DeMixer.lib.std.CompositionAutoSize title=Optimal size
 DeMixer.lib.std.CompositionAutoSize description=description
