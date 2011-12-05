@@ -69,8 +69,11 @@ namespace DeMixer.lib {
 		int GetCompositionIndex(string name);
 		
 		bool SaveHistory { get; set; }
+		bool SaveTempHistory { get; set; }
 		string SaveHistoryPath { get; set; }
+		bool HistoryLimit { get; set; }
 		int SaveHistorySize { get; set; }
+		void SaveToHistory(System.Drawing.Image[] imgs, ImagesSource f);
 		
 		void UpdateEffectForLastWallpaper();
 		

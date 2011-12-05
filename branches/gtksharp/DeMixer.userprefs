@@ -3,25 +3,18 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/DeMixerMainClass.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="DeMixer/SaveProfileDialog.cs" Line="21" Column="34" />
-      <File FileName="DeMixer.lib.std/DirectorySourceConfigView.cs" Line="19" Column="20" />
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="637" Column="43" />
-      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="65" Column="3" />
-      <File FileName="DeMixer.lib.std/CompositionMozaik.cs" Line="10" Column="3" />
-      <File FileName="DeMixer.lib.std/CompositionSeasonsConfigView.cs" Line="9" Column="17" />
-      <File FileName="DeMixer.lib.std/EffectShadow.cs" Line="52" Column="5" />
-      <File FileName="DeMixer.lib.std/googlecomSourcesConfigView.cs" Line="17" Column="4" />
+      <File FileName="DeMixer.lib.std/googlecomSources.cs" Line="110" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="DeMixer" expanded="True">
-            <Node name="DeMixerMainClass.cs" selected="True" />
-          </Node>
+          <Node name="DeMixer" expanded="True" />
           <Node name="DeMixer.lib" expanded="True" />
-          <Node name="DeMixer.lib.std" expanded="True" />
+          <Node name="DeMixer.lib.std" expanded="True">
+            <Node name="googlecomSources.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

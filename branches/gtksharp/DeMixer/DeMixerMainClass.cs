@@ -24,7 +24,9 @@ namespace DeMixer {
 		        
 		public const int SPI_SETDESKWALLPAPER = 20;
 		public const int SPIF_UPDATEINIFILE = 0x1;
-		public const int SPIF_SENDWININICHANGE = 0x2;
+		public const int SPIF_SENDWININICHANGE = 0x2;		
+		
+		public static string FILETIME_STRFORMAT = "dd MMM yyyy HH.mm.ss";
 
 		[STAThread]
 		private static void Main(string[] args) {			
@@ -186,7 +188,7 @@ namespace DeMixer {
 						string historyfName = String.Format("{1}{0}{2}.png",
 	                                                        Path.DirectorySeparatorChar,
 	                                                        SaveHistoryPath,
-	                                                        DateTime.Now.ToString());
+	                                                        DateTime.Now.ToString(FILETIME_STRFORMAT));
 						try { 
 							img.Save(historyfName, ImageFormat.Png); 
 						} catch (Exception exc) {
@@ -322,7 +324,9 @@ namespace DeMixer {
 						#region write history options
 						cfg.WriteStartElement("history"); {
 							cfg.WriteElementString("enable", SaveHistory.ToString());
+							cfg.WriteElementString("temp", SaveTempHistory.ToString());
 							cfg.WriteElementString("path", SaveHistoryPath);
+							cfg.WriteElementString("limit", HistoryLimit.ToString());
 							cfg.WriteElementString("size", SaveHistorySize.ToString());
 						}
 						cfg.WriteEndElement();	
@@ -447,6 +451,16 @@ namespace DeMixer {
 						#region read history options						
 						try {
 							XmlNode histr = cfg.SelectSingleNode("history");
+							SaveHistory = Boolean.Parse(
+								histr.SelectSingleNode("enable").InnerXml);
+							SaveTempHistory = Boolean.Parse(
+								histr.SelectSingleNode("temp").InnerXml);
+							SaveHistoryPath =
+								histr.SelectSingleNode("path").InnerXml;
+							HistoryLimit = Boolean.Parse(
+								histr.SelectSingleNode("limit").InnerXml);
+							SaveHistorySize = int.Parse(
+								histr.SelectSingleNode("size").InnerXml);
 						} catch (Exception exc) {
 							WriteLog(exc);
 						}
@@ -1117,11 +1131,17 @@ namespace DeMixer {
 			return -1;
 		}
         
-		bool saveHistory = false;
+		bool saveHistory = false;		
 
 		public bool SaveHistory {
 			get { return saveHistory; }
 			set { saveHistory = value; }
+		}
+		
+		bool saveTempHistory = false;
+		public bool SaveTempHistory {
+			get { return saveTempHistory; }
+			set { saveTempHistory = value; }
 		}
         
 		string saveHistoryPath = "";
@@ -1130,7 +1150,39 @@ namespace DeMixer {
 			get { return saveHistoryPath; }
 			set { saveHistoryPath = value; }
 		}
+		
+		public void SaveToHistory(System.Drawing.Image[] imgs, ImagesSource f) {
+			if (saveTempHistory) {
+				for (int i=0; i<imgs.Length; i++) {
+					string historyfName = String.Format("{1}{0}{2}_{3}.png",
+	                                                Path.DirectorySeparatorChar,
+	                                                SaveHistoryPath,
+	                                                DateTime.Now.ToString(FILETIME_STRFORMAT),
+							i);
+					try { 
+						imgs[i].Save(historyfName, ImageFormat.Png); 
+					} catch (Exception exc) {
+						/*todo:                            
+	            TrayIcon.ShowBalloonTip(
+	                                    0,
+	                                    Translate("core.error"),
+	                                    Translate("core.error save file {0} in history error {1}", historyfName, exc.Message),
+	                                    ToolTipIcon.Error);
+	                                    */
+						WriteLog(exc);
+					}
+				}
+			}
+		}
         
+		bool historyLimit;
+		public bool HistoryLimit {
+			get { return historyLimit; }
+			set {
+				historyLimit = value;
+			}
+		}
+		
 		int saveHistorySize;
 
 		public int SaveHistorySize {
