@@ -1152,7 +1152,7 @@ namespace DeMixer {
 		}
 		
 		public void SaveToHistory(System.Drawing.Image[] imgs, ImagesSource f) {
-			if (saveTempHistory) {
+			if (SaveHistory && SaveTempHistory) {
 				for (int i=0; i<imgs.Length; i++) {
 					string historyfName = String.Format("{1}{0}{2}_{3}.png",
 	                                                Path.DirectorySeparatorChar,
