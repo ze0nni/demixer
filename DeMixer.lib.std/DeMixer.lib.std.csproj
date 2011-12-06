@@ -37,19 +37,11 @@
     <Reference Include="Mono.Posix" />
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <Reference Include="GoogleSearchAPI.Net20">
-      <HintPath>..\lib\bin\DotNet20\GoogleSearchAPI.Net20.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Net20">
-      <HintPath>..\lib\bin\DotNet20\Newtonsoft.Json.Net20.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="DirectorySource.cs" />
     <Compile Include="CompositionAutoSize.cs" />
-    <Compile Include="konachancomSource.cs" />
-    <Compile Include="googlecomSources.cs" />
     <Compile Include="CompositionMozaik.cs" />
     <Compile Include="EffectShadow.cs" />
     <Compile Include="EffectText.cs" />
@@ -60,19 +52,12 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="DirectorySourceConfigView.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.DirectorySourceConfigView.cs" />
-    <Compile Include="konachancomSourceConfigView.cs" />
-    <Compile Include="gtk-gui\DeMixer.lib.std.konachancomSourceConfigView.cs" />
-    <Compile Include="googlecomSourcesConfigView.cs" />
-    <Compile Include="gtk-gui\DeMixer.lib.std.googlecomSourcesConfigView.cs" />
     <Compile Include="CompositionMozaikConfigView.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.CompositionMozaikConfigView.cs" />
     <Compile Include="CompositionSeasonsConfigView.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.CompositionSeasonsConfigView.cs" />
     <Compile Include="EffectShadowDialog.cs" />
     <Compile Include="gtk-gui\DeMixer.lib.std.EffectShadowDialog.cs" />
-    <Compile Include="FlickrSource.cs" />
-    <Compile Include="FlickrSourceConfigWiget.cs" />
-    <Compile Include="gtk-gui\DeMixer.lib.std.FlickrSourceConfigWiget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

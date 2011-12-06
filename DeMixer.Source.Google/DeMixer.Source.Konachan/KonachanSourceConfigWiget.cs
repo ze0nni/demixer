@@ -2,23 +2,19 @@
 using System;
 using System.Net;
 using System.Xml;
+using DeMixer.lib;
 
-namespace DeMixer.lib.std
-{
+namespace DeMixer.Source.Konachan {
 	
 	
 	[System.ComponentModel.ToolboxItem(true)]
-	public partial class konachancomSourceConfigView : Gtk.Bin
+	public partial class KonachanSourceConfigWiget : Gtk.Bin
 	{
-		konachancomSource Source;
+		KonachanSource Source;
 
-		protected virtual void OnTagsEditChanged (object sender, System.EventArgs e) {
-			Source.Tags = tagsEdit.Text;
-			updateHelpButtons();
-		}
 		
 		IDeMixerKernel Kernel;
-		public konachancomSourceConfigView(konachancomSource source, IDeMixerKernel kernel) {
+		public KonachanSourceConfigWiget(KonachanSource source, IDeMixerKernel kernel) {
 			this.Build();
 			Kernel = kernel;
 			Source = source;
@@ -29,7 +25,11 @@ namespace DeMixer.lib.std
 //			i.IconName = "demixer-character";
 //			i.Pixbuf = new Gdk.Pixbuf("/usr/share/demixer/icond.png");			
 		}
-				
+
+		protected virtual void OnTagsEditChanged (object sender, System.EventArgs e) {
+			Source.Tags = tagsEdit.Text;
+			updateHelpButtons();
+		}				
 		
 		int spaceFromLeft(string str, int p) {
 			if (p == 0) return 0;
