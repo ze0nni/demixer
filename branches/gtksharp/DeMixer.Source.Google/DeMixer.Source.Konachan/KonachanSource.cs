@@ -7,10 +7,10 @@ using System.Net;
 using System.Xml;
 using Gtk;
 
-namespace DeMixer.lib.std {
+namespace DeMixer.Source.Konachan {
 	
 	
-	public class konachancomSource : ImagesSource {
+	public class KonachanSource : ImagesSource {
 		
 //		public enum SizeEnum {
 //			All,
@@ -36,7 +36,7 @@ namespace DeMixer.lib.std {
 //			QuestionableAndSafe 
 //		}
 		
-		public konachancomSource() : base() {			
+		public KonachanSource() : base() {			
 		}
 		
 //		public SizeEnum ImageSize = SizeEnum.All;
@@ -54,7 +54,7 @@ namespace DeMixer.lib.std {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return new konachancomSourceConfigView(this, Kernel);
+				return new KonachanSourceConfigWiget(this, Kernel);
 			}
 		}
 		

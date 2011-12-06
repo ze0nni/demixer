@@ -4,13 +4,12 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Net;
-using Google.API.Search;
 using System.Collections.Generic;
 using Gdk;
 
 //Flickr api public key: 16cc9f828de720615e9b103bc3369411
 
-namespace DeMixer.lib.std {
+namespace DeMixer.Source.Flickr {
 	public class FlickrSource : ImagesSource {
 		
 		static string FlickrApiPublicKey {
@@ -38,7 +37,7 @@ namespace DeMixer.lib.std {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {				
-				return new FlickrSourceConfigWiget();
+				return new FlickrSourceWiget();
 				//return new Gtk.Button("Hello");
 			}
 		}

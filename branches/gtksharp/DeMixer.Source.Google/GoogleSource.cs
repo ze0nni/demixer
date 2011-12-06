@@ -8,8 +8,7 @@ using Google.API.Search;
 using System.Collections.Generic;
 using Gdk;
 
-namespace DeMixer.lib.std
-{
+namespace DeMixer.Source.Google {
 	public class googlecomSources : ImagesSource {
 		public googlecomSources () : base() {
 		}
@@ -66,7 +65,7 @@ namespace DeMixer.lib.std
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {
-				return new googlecomSourcesConfigView(this, Kernel);				
+				return new GoogleSourceConfigWiget(this, Kernel);				
 			}
 		}
 		

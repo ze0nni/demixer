@@ -1,16 +1,13 @@
 using System;
+using DeMixer.lib;
 
-namespace DeMixer.lib.std {
+namespace DeMixer.Source.Google {
 	[System.ComponentModel.ToolboxItem(true)]
-	public partial class googlecomSourcesConfigView : Gtk.Bin {
+	public partial class GoogleSourceConfigWiget : Gtk.Bin {
 		googlecomSources Source;
-
-		protected virtual void OnTagsEditChanged(object sender, System.EventArgs e) {			
-			Source.Tags = tagsEdit.Text;			
-		}
 		
 		IDeMixerKernel Kernel;
-		public googlecomSourcesConfigView(googlecomSources source, IDeMixerKernel k ) {
+		public GoogleSourceConfigWiget(googlecomSources source, IDeMixerKernel k ) {
 			this.Build();
 			Source = source;
 			Kernel = k;
@@ -28,7 +25,11 @@ namespace DeMixer.lib.std {
 			imageColorCombo.ShowAll();
 			imageColorCombo.Active = Source.ImgColor;
 		}
-		
+
+		protected virtual void OnTagsEditChanged(object sender, System.EventArgs e) {			
+			Source.Tags = tagsEdit.Text;			
+		}		
+
 		protected void OnImageSizeComboChanged (object sender, System.EventArgs e) {
 			Source.ImgSize = imageSizeCombo.Active;
 		}
