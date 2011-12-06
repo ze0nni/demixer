@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Net;
 using System.Collections.Generic;
 using Gdk;
+using FlickrNet;
 
 //Flickr api public key: 16cc9f828de720615e9b103bc3369411
 
@@ -15,16 +16,26 @@ namespace DeMixer.Source.Flickr {
 		static string FlickrApiPublicKey {
 			get { return "16cc9f828de720615e9b103bc3369411"; }
 		}
-		
-		public FlickrSource () : base() {		
+				
+		public FlickrSource () : base() {
 		}
 		
 		public override string Url {
 			get { return "http://Flickr.com"; }	
 		}
 		
-		public override System.Drawing.Image GetNextImage () {
-			throw new NotImplementedException ();
+		Random rnd = new Random();
+		
+		public override System.Drawing.Image GetNextImage () {			
+			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrApiPublicKey);
+			PhotoSearchOptions opt = new PhotoSearchOptions();
+			opt.GroupId = "43982356@N00";
+			PhotoCollection res = f.PhotosSearch(opt);			
+			
+			WebClient wc = Kernel.GetWebClient();
+			MemoryStream ms = new MemoryStream(wc.DownloadData(res[rnd.Next(res.Count)].LargeUrl));			
+			
+			return new Bitmap(ms);
 		}
 		
 		public override System.Drawing.Image GetImageFromSource (string source) {
