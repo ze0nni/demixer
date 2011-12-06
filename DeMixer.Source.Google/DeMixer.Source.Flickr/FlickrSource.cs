@@ -29,7 +29,8 @@ namespace DeMixer.Source.Flickr {
 		public override System.Drawing.Image GetNextImage () {			
 			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrApiPublicKey);
 			PhotoSearchOptions opt = new PhotoSearchOptions();
-			opt.GroupId = "43982356@N00";
+			//opt.GroupId = "43982356@N00";
+			opt.GroupId = "421232@N24";
 			PhotoCollection res = f.PhotosSearch(opt);			
 			
 			WebClient wc = Kernel.GetWebClient();
