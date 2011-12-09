@@ -175,7 +175,8 @@ namespace DeMixer {
 				System.Drawing.Image img = null;				
 				//Получаем новые обои
 				int scrw = Gdk.Display.Default.DefaultScreen.Width;
-				int scrh = Gdk.Display.Default.DefaultScreen.Height;				
+				int scrh = Gdk.Display.Default.DefaultScreen.Height;
+				//todo: timeoute abort				
 				img = ActiveComposition.GetCompostion(scrw, scrh);                       
                 
                 		#region сохраняем в png без эффектов
@@ -214,7 +215,7 @@ namespace DeMixer {
 							} catch {
 							}
 							File.Move(fName, fNewName);     
-						} catch (Exception exc) {
+						} catch {
                                     
 						}
 					}					
@@ -241,10 +242,11 @@ namespace DeMixer {
 					NextProcessThread = null;                                       					
 				}
 			} catch (Exception exc) {
+				//todo: Strange DeMixerException cathing				
 				WriteLog(exc);
 				ShowNotify(
-                               Translate("core.error get_image"),
-                                            Translate("core.error get_image from {0} error {1} repeat {2}",
+					Translate("core.error get_image"),
+					Translate("core.error get_image from {0} error {1} repeat {2}",
 			                        ActiveSource.PluginTitle,
 			                        exc.Message,
 			                        5),

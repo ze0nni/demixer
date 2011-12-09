@@ -13,7 +13,7 @@ using FlickrNet;
 namespace DeMixer.Source.Flickr {
 	public class FlickrSource : ImagesSource {
 		
-		static string FlickrApiPublicKey {
+		public static string FlickrApiPublicKey {
 			get { return "16cc9f828de720615e9b103bc3369411"; }
 		}
 				
@@ -29,13 +29,11 @@ namespace DeMixer.Source.Flickr {
 		public override System.Drawing.Image GetNextImage () {			
 			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrApiPublicKey);
 			PhotoSearchOptions opt = new PhotoSearchOptions();
-			//opt.GroupId = "43982356@N00";
-			opt.GroupId = "421232@N24";
+			opt.GroupId = GroupId;
 			PhotoCollection res = f.PhotosSearch(opt);			
 			
 			WebClient wc = Kernel.GetWebClient();
-			MemoryStream ms = new MemoryStream(wc.DownloadData(res[rnd.Next(res.Count)].LargeUrl));			
-			
+			MemoryStream ms = new MemoryStream(wc.DownloadData(res[rnd.Next(res.Count)].LargeUrl));						
 			return new Bitmap(ms);
 		}
 		
@@ -49,9 +47,15 @@ namespace DeMixer.Source.Flickr {
 		
 		public override Gtk.Widget ExpandTagsControl {
 			get {				
-				return new FlickrSourceWiget();
+				return new FlickrSourceWiget(this, Kernel);
 				//return new Gtk.Button("Hello");
 			}
+		}
+		
+		string groupId = "";
+		public string GroupId {
+			get { return groupId; }
+			set { groupId = value; }
 		}
 	}
 }

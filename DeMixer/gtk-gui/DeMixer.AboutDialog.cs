@@ -7,7 +7,6 @@ namespace DeMixer
 		private global::Gtk.VBox vbox2;
 		private global::Gtk.Image logoImage;
 		private global::Gtk.IconView iconview1;
-		private global::Gtk.Button buttonCheckUpdate;
 		private global::Gtk.Button buttonOk;
 		
 		protected virtual void Build ()
@@ -50,18 +49,6 @@ namespace DeMixer
 			w5.BorderWidth = ((uint)(5));
 			w5.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonCheckUpdate = new global::Gtk.Button ();
-			this.buttonCheckUpdate.CanDefault = true;
-			this.buttonCheckUpdate.CanFocus = true;
-			this.buttonCheckUpdate.Name = "buttonCheckUpdate";
-			this.buttonCheckUpdate.UseStock = true;
-			this.buttonCheckUpdate.UseUnderline = true;
-			this.buttonCheckUpdate.Label = "gtk-refresh";
-			w5.Add (this.buttonCheckUpdate);
-			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5 [this.buttonCheckUpdate]));
-			w6.Expand = false;
-			w6.Fill = false;
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
 			this.buttonOk.CanFocus = true;
@@ -70,10 +57,9 @@ namespace DeMixer
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w7 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5 [this.buttonOk]));
-			w7.Position = 1;
-			w7.Expand = false;
-			w7.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5 [this.buttonOk]));
+			w6.Expand = false;
+			w6.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
