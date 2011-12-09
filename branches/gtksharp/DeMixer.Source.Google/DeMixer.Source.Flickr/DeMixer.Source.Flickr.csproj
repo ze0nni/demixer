@@ -46,6 +46,8 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="FlickrSourceWiget.cs" />
     <Compile Include="gtk-gui\DeMixer.Source.Flickr.FlickrSourceWiget.cs" />
+    <Compile Include="FlickrSelectGUDialog.cs" />
+    <Compile Include="gtk-gui\DeMixer.Source.Flickr.FlickrSelectGUDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

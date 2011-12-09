@@ -11,6 +11,7 @@ namespace DeMixer.lib.std {
 		{
 			this.Build();
 			kernel.TranslateWidget(this);
+			displayImage.IconName = "display";
 			Effect = effect;
 			
 			checkbAbove.Active = Effect.DrawTop;

@@ -11,7 +11,8 @@ namespace DeMixer
 		public AboutDialog()
 		{
 			this.Build();
-			logoImage.Pixbuf = new Gdk.Pixbuf("/usr/share/demixer/logo");
+			//logoImage.Pixbuf = new Gdk.Pixbuf("/usr/share/demixer/logo");
+			logoImage.IconName = "gtk-about";
 		}
 	}
 }
