@@ -8,7 +8,7 @@ namespace DeMixer.Source.Flickr
 		private global::Gtk.Frame frame1;
 		private global::Gtk.Alignment GtkAlignment;
 		private global::Gtk.VBox vbox3;
-		private global::Gtk.Entry entry2;
+		private global::Gtk.Entry queryEd;
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.RadioButton byTextCb;
 		private global::Gtk.RadioButton byTagsCb;
@@ -49,13 +49,13 @@ namespace DeMixer.Source.Flickr
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.entry2 = new global::Gtk.Entry ();
-			this.entry2.CanFocus = true;
-			this.entry2.Name = "entry2";
-			this.entry2.IsEditable = true;
-			this.entry2.InvisibleChar = '•';
-			this.vbox3.Add (this.entry2);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.entry2]));
+			this.queryEd = new global::Gtk.Entry ();
+			this.queryEd.CanFocus = true;
+			this.queryEd.Name = "queryEd";
+			this.queryEd.IsEditable = true;
+			this.queryEd.InvisibleChar = '•';
+			this.vbox3.Add (this.queryEd);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.queryEd]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -231,7 +231,11 @@ namespace DeMixer.Source.Flickr
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.queryEd.Changed += new global::System.EventHandler (this.OnQueryEdChanged);
+			this.byTextCb.Toggled += new global::System.EventHandler (this.OnByTextCbToggled);
+			this.byTagsCb.Toggled += new global::System.EventHandler (this.OnByTextCbToggled);
 			this.byNoneCb.Toggled += new global::System.EventHandler (this.OnByNoneCbToggled);
+			this.byGroupCb.Toggled += new global::System.EventHandler (this.OnByNoneCbToggled);
 			this.SelectGU.Clicked += new global::System.EventHandler (this.OnSelectGUClicked);
 		}
 	}

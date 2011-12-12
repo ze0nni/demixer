@@ -7,11 +7,18 @@ using System.Net;
 using System.Collections.Generic;
 using Gdk;
 using FlickrNet;
+using System.Xml;
 
 //Flickr api public key: 16cc9f828de720615e9b103bc3369411
 
 namespace DeMixer.Source.Flickr {
 	public class FlickrSource : ImagesSource {
+					
+		public enum SearchMode {
+			None,
+			Group,
+			User			
+		}
 		
 		public static string FlickrApiPublicKey {
 			get { return "16cc9f828de720615e9b103bc3369411"; }
@@ -29,12 +36,25 @@ namespace DeMixer.Source.Flickr {
 		public override System.Drawing.Image GetNextImage () {			
 			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrApiPublicKey);
 			PhotoSearchOptions opt = new PhotoSearchOptions();
-			opt.GroupId = GroupId;
-			PhotoCollection res = f.PhotosSearch(opt);			
-			
-			WebClient wc = Kernel.GetWebClient();
-			MemoryStream ms = new MemoryStream(wc.DownloadData(res[rnd.Next(res.Count)].LargeUrl));						
-			return new Bitmap(ms);
+			if (SearchQuery!=null && SearchQuery.Length>0) {
+				if (ByTags)
+					opt.Tags = SearchQuery;
+				else
+					opt.Text = SearchQuery;
+			}				
+			if (GroupId.Length>0)
+				opt.GroupId = GroupId;
+			opt.Extras |= PhotoSearchExtras.OriginalUrl;
+			PhotoCollection res = f.PhotosSearch(opt);						
+						
+			if (res.Count != 0) {
+				WebClient wc = Kernel.GetWebClient();
+				int n = rnd.Next(res.Count);				
+				MemoryStream ms = new MemoryStream(wc.DownloadData(res[n].OriginalUrl));
+				return new Bitmap(ms);			
+			} else {
+				throw new DeMixerException(Kernel.Translate("No valid images for this tag"));
+			}
 		}
 		
 		public override System.Drawing.Image GetImageFromSource (string source) {
@@ -52,10 +72,46 @@ namespace DeMixer.Source.Flickr {
 			}
 		}
 		
+		protected override void Write(System.Xml.XmlWriter cfg) {
+			cfg.WriteElementString("query", SearchQuery);
+			cfg.WriteElementString("bytags", ByTags.ToString());
+			cfg.WriteElementString("mode", SearchByMode.ToString());
+			cfg.WriteElementString("groupid", GroupId);			
+		}
+				
+		protected override void Read(System.Xml.XmlNode r) {
+			SearchQuery = r.SelectSingleNode("query").InnerXml;			
+			ByTags = Boolean.Parse(
+				r.SelectSingleNode("bytags").InnerXml);
+			SearchByMode = (SearchMode)
+				Enum.Parse(typeof(SearchMode),
+				r.SelectSingleNode("mode").InnerXml);
+			groupId = r.SelectSingleNode("groupid").InnerXml;
+		}
+		
+		string searchQuery = "";
+		public string SearchQuery {
+			get { return searchQuery; }
+			set { searchQuery = value; }
+		}
+		
+		bool byTags = false;
+		public bool ByTags {
+			get { return byTags; }
+			set { byTags = value; }
+		}
+		
+			
 		string groupId = "";
 		public string GroupId {
 			get { return groupId; }
 			set { groupId = value; }
+		}
+		
+		SearchMode searchByMode = SearchMode.None;
+		public SearchMode SearchByMode {
+			get { return searchByMode; }
+			set { searchByMode = value; }
 		}
 	}
 }

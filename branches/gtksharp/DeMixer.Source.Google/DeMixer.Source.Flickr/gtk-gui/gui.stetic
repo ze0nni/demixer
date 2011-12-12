@@ -30,11 +30,12 @@
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.Entry" id="entry2">
+                      <widget class="Gtk.Entry" id="queryEd">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="InvisibleChar">•</property>
+                        <signal name="Changed" handler="OnQueryEdChanged" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>
@@ -52,10 +53,12 @@
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">By text</property>
+                            <property name="Active">True</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
                             <property name="Group">SearchBy</property>
+                            <signal name="Toggled" handler="OnByTextCbToggled" />
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -73,6 +76,7 @@
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
                             <property name="Group">SearchBy</property>
+                            <signal name="Toggled" handler="OnByTextCbToggled" />
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -134,6 +138,7 @@
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">None</property>
+                            <property name="Active">True</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
@@ -156,6 +161,7 @@
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
                             <property name="Group">SearchMode</property>
+                            <signal name="Toggled" handler="OnByNoneCbToggled" />
                           </widget>
                           <packing>
                             <property name="Position">1</property>
