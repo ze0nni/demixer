@@ -39,6 +39,7 @@
     <Reference Include="FlickrNet">
       <HintPath>..\..\lib\bin\FlickrNet-3.2.4310\FlickrNet.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />

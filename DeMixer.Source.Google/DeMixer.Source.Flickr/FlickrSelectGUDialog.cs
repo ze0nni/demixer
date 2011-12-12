@@ -8,16 +8,11 @@ namespace DeMixer.Source.Flickr {
 		
 	public partial class FlickrSelectGUDialog : Gtk.Dialog {			
 		
-		public enum SearchMode {
-			User,
-			Group
-		}
-		
 		IDeMixerKernel Kernel;
 		Gtk.ListStore FoundListStore = null;
-		SearchMode Mode = SearchMode.Group;
+		FlickrSource.SearchMode Mode = FlickrSource.SearchMode.Group;
 				
-		public FlickrSelectGUDialog(IDeMixerKernel k, string t, Gtk.Window w, SearchMode m) : base(t, w, Gtk.DialogFlags.Modal) {
+		public FlickrSelectGUDialog(IDeMixerKernel k, string t, Gtk.Window w, FlickrSource.SearchMode m) : base(t, w, Gtk.DialogFlags.Modal) {
 			this.Build();
 			Kernel = k;
 			Mode = m;
@@ -58,7 +53,7 @@ namespace DeMixer.Source.Flickr {
 				string sText = searchText.Text;
 				FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrSource.FlickrApiPublicKey);
 				switch (Mode) {
-				case SearchMode.Group:
+				case FlickrSource.SearchMode.Group:
 					GroupSearchResultCollection res = f.GroupsSearch(sText);
 					
 					startUpdateFoundListGUI = Environment.TickCount;
@@ -73,7 +68,7 @@ namespace DeMixer.Source.Flickr {
 						FoundenList.ShowAll();
 					});
 					break;
-				case SearchMode.User:					
+				case FlickrSource.SearchMode.User:					
 					break;
 				}
 			} catch {
@@ -98,6 +93,8 @@ namespace DeMixer.Source.Flickr {
 				PhotoSearchOptions op = new PhotoSearchOptions();
 				op.GroupId = ActiveGroupID;
 				op.PerPage = 5;
+				op.Extras |= PhotoSearchExtras.ThumbnailUrl;
+				op.Extras |= PhotoSearchExtras.SquareUrl;
 				int t = startUpdateImagesTick;
 				PhotoCollection res = f.PhotosSearch(op);							
 				if (t != startUpdateImagesTick) return;				
