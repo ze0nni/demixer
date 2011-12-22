@@ -34,7 +34,7 @@ namespace DeMixer.Source.Flickr {
 		Random rnd = new Random();
 		
 		public override System.Drawing.Image GetNextImage () {			
-			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrApiPublicKey);
+			FlickrNet.Flickr f = new FlickrNet.Flickr(FlickrSource.FlickrApiPublicKey);
 			PhotoSearchOptions opt = new PhotoSearchOptions();
 			if (SearchQuery!=null && SearchQuery.Length>0) {
 				if (ByTags)
@@ -42,15 +42,22 @@ namespace DeMixer.Source.Flickr {
 				else
 					opt.Text = SearchQuery;
 			}				
-			if (GroupId.Length>0)
-				opt.GroupId = GroupId;
+			if (SearchByMode == FlickrSource.SearchMode.Group && GroupId.Length>0)
+				opt.GroupId = GroupId;									
 			opt.Extras |= PhotoSearchExtras.OriginalUrl;
-			PhotoCollection res = f.PhotosSearch(opt);						
-						
+			opt.Extras |= PhotoSearchExtras.LargeUrl;			
+			PhotoCollection res = f.PhotosSearch(opt);
+
 			if (res.Count != 0) {
 				WebClient wc = Kernel.GetWebClient();
-				int n = rnd.Next(res.Count);				
-				MemoryStream ms = new MemoryStream(wc.DownloadData(res[n].OriginalUrl));
+				int n = rnd.Next(res.Count);
+				Photo p = res[n];				
+				
+				string url = p.LargeUrl;
+				if (p.OriginalUrl != null && p.OriginalUrl.Length > 0)
+					url = p.OriginalUrl;
+				
+				MemoryStream ms = new MemoryStream(wc.DownloadData(url));
 				return new Bitmap(ms);			
 			} else {
 				throw new DeMixerException(Kernel.Translate("No valid images for this tag"));
@@ -76,7 +83,8 @@ namespace DeMixer.Source.Flickr {
 			cfg.WriteElementString("query", SearchQuery);
 			cfg.WriteElementString("bytags", ByTags.ToString());
 			cfg.WriteElementString("mode", SearchByMode.ToString());
-			cfg.WriteElementString("groupid", GroupId);			
+			cfg.WriteElementString("groupid", GroupId);		
+			cfg.WriteElementString("grouptitle", GroupTitle);
 		}
 				
 		protected override void Read(System.Xml.XmlNode r) {
@@ -87,6 +95,7 @@ namespace DeMixer.Source.Flickr {
 				Enum.Parse(typeof(SearchMode),
 				r.SelectSingleNode("mode").InnerXml);
 			groupId = r.SelectSingleNode("groupid").InnerXml;
+			groupTitle = r.SelectSingleNode("grouptitle").InnerXml;
 		}
 		
 		string searchQuery = "";
@@ -106,6 +115,12 @@ namespace DeMixer.Source.Flickr {
 		public string GroupId {
 			get { return groupId; }
 			set { groupId = value; }
+		}
+		
+		string groupTitle = "";
+		public string GroupTitle {
+			get { return groupTitle; }
+			set { groupTitle = value; }
 		}
 		
 		SearchMode searchByMode = SearchMode.None;

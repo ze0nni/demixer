@@ -14,6 +14,7 @@ Effects=Эффекты
 Program=Система
 tags=Тэги
 Settings=Установки
+EffectInformationLabel=
 
 Repeat now=Повторить сейчас
 

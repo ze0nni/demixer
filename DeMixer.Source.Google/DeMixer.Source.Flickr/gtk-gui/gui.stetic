@@ -98,7 +98,7 @@
               </widget>
             </child>
             <child>
-              <widget class="Gtk.Label" id="GtkLabel1">
+              <widget class="Gtk.Label" id="GtkLabel2">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">&lt;b&gt;Search&lt;/b&gt;</property>
                 <property name="UseMarkup">True</property>
@@ -188,26 +188,25 @@
                             <property name="Fill">False</property>
                           </packing>
                         </child>
+                        <child>
+                          <widget class="Gtk.Button" id="SelectGU">
+                            <property name="MemberName" />
+                            <property name="Sensitive">False</property>
+                            <property name="CanFocus">True</property>
+                            <property name="Type">TextAndIcon</property>
+                            <property name="Label" translatable="yes">None</property>
+                            <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnSelectGUClicked" />
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">3</property>
+                            <property name="AutoSize">False</property>
+                          </packing>
+                        </child>
                       </widget>
                       <packing>
                         <property name="Position">0</property>
-                        <property name="AutoSize">True</property>
-                        <property name="Expand">False</property>
-                        <property name="Fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="Gtk.Button" id="SelectGU">
-                        <property name="MemberName" />
-                        <property name="Sensitive">False</property>
-                        <property name="CanFocus">True</property>
-                        <property name="Type">TextAndIcon</property>
-                        <property name="Label" translatable="yes">None</property>
-                        <property name="UseUnderline">True</property>
-                        <signal name="Clicked" handler="OnSelectGUClicked" />
-                      </widget>
-                      <packing>
-                        <property name="Position">1</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -218,7 +217,7 @@
               </widget>
             </child>
             <child>
-              <widget class="Gtk.Label" id="GtkLabel2">
+              <widget class="Gtk.Label" id="GtkLabel7">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">&lt;b&gt;Additionally&lt;/b&gt;</property>
                 <property name="UseMarkup">True</property>
@@ -236,41 +235,40 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HBox" id="hbox2">
+          <widget class="Gtk.Frame" id="frame3">
             <property name="MemberName" />
-            <property name="Spacing">6</property>
+            <property name="ShadowType">In</property>
             <child>
-              <widget class="Gtk.Label" id="label1">
+              <widget class="Gtk.Alignment" id="GtkAlignment3">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Preview</property>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.HBox" id="hbox3">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <property name="BorderWidth">3</property>
+                <property name="Xalign">0</property>
+                <property name="Yalign">0</property>
+                <property name="LeftPadding">12</property>
                 <child>
-                  <placeholder />
+                  <widget class="Gtk.HBox" id="previewHBox">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <placeholder />
+                    </child>
+                  </widget>
                 </child>
               </widget>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="GtkLabel8">
+                <property name="MemberName" />
+                <property name="LabelProp" translatable="yes">&lt;b&gt;Preview&lt;/b&gt;</property>
+                <property name="UseMarkup">True</property>
+              </widget>
               <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">True</property>
+                <property name="type">label_item</property>
               </packing>
             </child>
           </widget>
           <packing>
             <property name="Position">2</property>
             <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
           </packing>
         </child>
       </widget>
@@ -290,12 +288,22 @@
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Entry" id="searchText">
+              <widget class="Gtk.HBox" id="hbox1">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="IsEditable">True</property>
-                <property name="InvisibleChar">•</property>
-                <signal name="Changed" handler="OnSearchTextChanged" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Entry" id="searchText">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="IsEditable">True</property>
+                    <property name="InvisibleChar">•</property>
+                    <signal name="Changed" handler="OnSearchTextChanged" />
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -357,6 +365,7 @@
               <packing>
                 <property name="Position">2</property>
                 <property name="AutoSize">False</property>
+                <property name="Expand">False</property>
               </packing>
             </child>
           </widget>
