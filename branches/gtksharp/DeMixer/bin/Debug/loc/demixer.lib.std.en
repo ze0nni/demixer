@@ -18,42 +18,13 @@ DeMixer.lib.std.DirectorySource name=Search on hard disk
 DeMixer.lib.std.DirectorySource title=Search on hard disk
 DeMixer.lib.std.DirectorySource description=Search on hard disk <b>description</b>.
 
-DeMixer.lib.std.konachancomSource name=Konachan.com
-DeMixer.lib.std.konachancomSource title=Search on Konachan.com
-DeMixer.lib.std.konachancomSource description=Visit <a href="http://konachan.com">KonaChan.com</a> to view all tags.\nFro example:\n\t<i>2girls dress -nude</i>
-
 DeMixer.ConfigDlg+ColorSource name=Random color
 DeMixer.ConfigDlg+ColorSource title=Random color
 DeMixer.ConfigDlg+ColorSource description=Return rectangle with filling random color.
 
-DeMixer.lib.std.googlecomSources name=Google.com
-DeMixer.lib.std.googlecomSources title=Search with Google.
-DeMixer.lib.std.googlecomSources description=Search with <a href="http://Images.Google.com">Images.Google.com</a>.\nYou can select quality and color for searched images.\nFor example:\n\t<i>own desktop wallpapers</i>
-
-DeMixer.lib.std.FlickrSource name=Flickr.com
-DeMixer.lib.std.FlickrSource title=Search with Flickr.com
-DeMixer.lib.std.FlickrSource description=Search images with <a href="http://www.flickr.com/">Flickr.com</a>.
-
 DeMixer.lib.std.CompositionAutoSize name=Optimal size
 DeMixer.lib.std.CompositionAutoSize title=Optimal size
 DeMixer.lib.std.CompositionAutoSize description=description
-Large=Маленькие
-XLarge=Средние
-XXLarge=Большие
-Huge=Огромные
-All=Любой
-Red=Красный
-Orange=Оранжевый
-Yellow=Желтый
-Green=Зеленый
-Aqua=Голубой
-Blue=Синий
-Purple=Розовый
-Pink=Фиолетовый
-White=Белый
-Gray=Серый
-Black=Черный
-Brown=Каричневый
 
 DeMixer.lib.std.CompositionMozaik name=photoChaos
 DeMixer.lib.std.CompositionMozaik title=photoChaos

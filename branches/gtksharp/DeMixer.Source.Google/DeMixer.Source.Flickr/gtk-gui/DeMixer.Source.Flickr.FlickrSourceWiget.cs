@@ -12,7 +12,7 @@ namespace DeMixer.Source.Flickr
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.RadioButton byTextCb;
 		private global::Gtk.RadioButton byTagsCb;
-		private global::Gtk.Label GtkLabel1;
+		private global::Gtk.Label GtkLabel2;
 		private global::Gtk.Frame frame2;
 		private global::Gtk.Alignment GtkAlignment1;
 		private global::Gtk.VBox vbox4;
@@ -21,10 +21,11 @@ namespace DeMixer.Source.Flickr
 		private global::Gtk.RadioButton byGroupCb;
 		private global::Gtk.RadioButton byUserCb;
 		private global::Gtk.Button SelectGU;
-		private global::Gtk.Label GtkLabel2;
-		private global::Gtk.HBox hbox2;
-		private global::Gtk.Label label1;
-		private global::Gtk.HBox hbox3;
+		private global::Gtk.Label GtkLabel7;
+		private global::Gtk.Frame frame3;
+		private global::Gtk.Alignment GtkAlignment3;
+		private global::Gtk.HBox previewHBox;
+		private global::Gtk.Label GtkLabel8;
 		
 		protected virtual void Build ()
 		{
@@ -94,11 +95,11 @@ namespace DeMixer.Source.Flickr
 			w4.Fill = false;
 			this.GtkAlignment.Add (this.vbox3);
 			this.frame1.Add (this.GtkAlignment);
-			this.GtkLabel1 = new global::Gtk.Label ();
-			this.GtkLabel1.Name = "GtkLabel1";
-			this.GtkLabel1.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Search</b>");
-			this.GtkLabel1.UseMarkup = true;
-			this.frame1.LabelWidget = this.GtkLabel1;
+			this.GtkLabel2 = new global::Gtk.Label ();
+			this.GtkLabel2.Name = "GtkLabel2";
+			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Search</b>");
+			this.GtkLabel2.UseMarkup = true;
+			this.frame1.LabelWidget = this.GtkLabel2;
 			this.vbox6.Add (this.frame1);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame1]));
 			w7.Position = 0;
@@ -157,75 +158,70 @@ namespace DeMixer.Source.Flickr
 			w10.Position = 2;
 			w10.Expand = false;
 			w10.Fill = false;
-			this.vbox4.Add (this.hbox5);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox5]));
-			w11.Position = 0;
-			w11.Expand = false;
-			w11.Fill = false;
-			// Container child vbox4.Gtk.Box+BoxChild
+			// Container child hbox5.Gtk.Box+BoxChild
 			this.SelectGU = new global::Gtk.Button ();
 			this.SelectGU.Sensitive = false;
 			this.SelectGU.CanFocus = true;
 			this.SelectGU.Name = "SelectGU";
 			this.SelectGU.UseUnderline = true;
 			// Container child SelectGU.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w12 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w11 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w13 = new global::Gtk.HBox ();
-			w13.Spacing = 2;
+			global::Gtk.HBox w12 = new global::Gtk.HBox ();
+			w12.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w14 = new global::Gtk.Image ();
-			w13.Add (w14);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w16 = new global::Gtk.Label ();
-			w16.LabelProp = global::Mono.Unix.Catalog.GetString ("None");
-			w16.UseUnderline = true;
-			w13.Add (w16);
+			global::Gtk.Image w13 = new global::Gtk.Image ();
 			w12.Add (w13);
-			this.SelectGU.Add (w12);
-			this.vbox4.Add (this.SelectGU);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.SelectGU]));
-			w20.Position = 1;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w15 = new global::Gtk.Label ();
+			w15.LabelProp = global::Mono.Unix.Catalog.GetString ("None");
+			w15.UseUnderline = true;
+			w12.Add (w15);
+			w11.Add (w12);
+			this.SelectGU.Add (w11);
+			this.hbox5.Add (this.SelectGU);
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.SelectGU]));
+			w19.PackType = ((global::Gtk.PackType)(1));
+			w19.Position = 3;
+			this.vbox4.Add (this.hbox5);
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox5]));
+			w20.Position = 0;
 			w20.Expand = false;
 			w20.Fill = false;
 			this.GtkAlignment1.Add (this.vbox4);
 			this.frame2.Add (this.GtkAlignment1);
-			this.GtkLabel2 = new global::Gtk.Label ();
-			this.GtkLabel2.Name = "GtkLabel2";
-			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Additionally</b>");
-			this.GtkLabel2.UseMarkup = true;
-			this.frame2.LabelWidget = this.GtkLabel2;
+			this.GtkLabel7 = new global::Gtk.Label ();
+			this.GtkLabel7.Name = "GtkLabel7";
+			this.GtkLabel7.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Additionally</b>");
+			this.GtkLabel7.UseMarkup = true;
+			this.frame2.LabelWidget = this.GtkLabel7;
 			this.vbox6.Add (this.frame2);
 			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame2]));
 			w23.Position = 1;
 			w23.Expand = false;
 			w23.Fill = false;
 			// Container child vbox6.Gtk.Box+BoxChild
-			this.hbox2 = new global::Gtk.HBox ();
-			this.hbox2.Name = "hbox2";
-			this.hbox2.Spacing = 6;
-			// Container child hbox2.Gtk.Box+BoxChild
-			this.label1 = new global::Gtk.Label ();
-			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Preview");
-			this.hbox2.Add (this.label1);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.label1]));
-			w24.Position = 0;
-			w24.Expand = false;
-			w24.Fill = false;
-			// Container child hbox2.Gtk.Box+BoxChild
-			this.hbox3 = new global::Gtk.HBox ();
-			this.hbox3.Name = "hbox3";
-			this.hbox3.Spacing = 6;
-			this.hbox3.BorderWidth = ((uint)(3));
-			this.hbox2.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.hbox3]));
-			w25.Position = 1;
-			this.vbox6.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.hbox2]));
+			this.frame3 = new global::Gtk.Frame ();
+			this.frame3.Name = "frame3";
+			this.frame3.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child frame3.Gtk.Container+ContainerChild
+			this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment3.Name = "GtkAlignment3";
+			this.GtkAlignment3.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment3.Gtk.Container+ContainerChild
+			this.previewHBox = new global::Gtk.HBox ();
+			this.previewHBox.Name = "previewHBox";
+			this.previewHBox.Spacing = 6;
+			this.GtkAlignment3.Add (this.previewHBox);
+			this.frame3.Add (this.GtkAlignment3);
+			this.GtkLabel8 = new global::Gtk.Label ();
+			this.GtkLabel8.Name = "GtkLabel8";
+			this.GtkLabel8.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Preview</b>");
+			this.GtkLabel8.UseMarkup = true;
+			this.frame3.LabelWidget = this.GtkLabel8;
+			this.vbox6.Add (this.frame3);
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame3]));
 			w26.Position = 2;
-			w26.Expand = false;
-			w26.Fill = false;
 			this.Add (this.vbox6);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

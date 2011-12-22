@@ -5,22 +5,13 @@
   </MonoDevelop.Ide.DebuggingService>
   <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSource.cs">
     <Files>
-      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSourceWiget.cs" Line="14" Column="11" />
-      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSource.cs" Line="88" Column="18" />
-      <File FileName="DeMixer.Source.Google/GoogleSource.cs" Line="16" Column="31" />
+      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSource.cs" Line="41" Column="4" />
+      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSourceWiget.cs" Line="48" Column="47" />
+      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSelectGUDialog.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="plugins" expanded="True">
-            <Node name="DeMixer.Source.Flickr" expanded="True">
-              <Node name="FlickrSource.cs" selected="True" />
-            </Node>
-            <Node name="DeMixer.Source.Google" expanded="True" />
-          </Node>
-          <Node name="DeMixer.lib" expanded="True" />
-          <Node name="DeMixer.lib.std" expanded="True" />
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True">
