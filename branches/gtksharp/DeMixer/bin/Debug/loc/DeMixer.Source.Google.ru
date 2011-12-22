@@ -1,6 +1,6 @@
 DeMixer.Source.Google.googlecomSources name=Google.com
-DeMixer.Source.Google.googlecomSources title=Search with Google.
-DeMixer.Source.Google.googlecomSources description=Search with <a href="http://Images.Google.com">Images.Google.com</a>.\nYou can select quality and color for searched images.\nFor example:\n\t<i>own desktop wallpapers</i>
+DeMixer.Source.Google.googlecomSources title=Поиск изображений через Google.
+DeMixer.Source.Google.googlecomSources description=Плагин для поиска на <a href="http://Images.Google.com">Images.Google.com</a>.\nДля улучнения результатов поиска рекомендуется дописывать в конце запроса <i>"Обои для рабочего стола"</i>. Например:\n\t-Дикая природа обои для рабочего стола\n\t-Открытый космос обои для рабочего стола
 
 Large=Маленькие
 XLarge=Средние

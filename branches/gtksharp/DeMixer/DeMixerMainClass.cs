@@ -44,8 +44,8 @@ namespace DeMixer {
 
 			UpdatePlugins();                        
 			ReadSettings();
-
-			LoadDictionary("en");
+			
+			LoadDictionary(language);
 			
 			//
 			InitMenu();            
@@ -333,6 +333,7 @@ namespace DeMixer {
 						}
 						cfg.WriteEndElement();	
 						#endregion
+						cfg.WriteElementString("language", Language);
 						#region write effects list
 						cfg.WriteStartElement("effects");
 						try {
@@ -463,6 +464,11 @@ namespace DeMixer {
 								histr.SelectSingleNode("limit").InnerXml);
 							SaveHistorySize = int.Parse(
 								histr.SelectSingleNode("size").InnerXml);
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						try {							
+							language = cfg.SelectSingleNode("language").InnerXml;
 						} catch (Exception exc) {
 							WriteLog(exc);
 						}
@@ -657,6 +663,7 @@ namespace DeMixer {
 					string menuname = pname;
 					pmi.Activated += (sender, e) => {
 						LoadProfile(menuname, true, true, true);
+						SaveSettings();
 						updateProfilesMenu();		
 					};
 					((Gtk.Menu)TrayMenuItemProfiles.Submenu).Append(pmi);
@@ -774,8 +781,7 @@ namespace DeMixer {
                 */
 		}
         
-		private void MenuExitClick(object sender, EventArgs e) {
-			//todo
+		private void MenuExitClick(object sender, EventArgs e) {			
 			Gtk.Application.Quit();
 		}
         
@@ -1252,13 +1258,29 @@ namespace DeMixer {
 			}
 		}
         
+		string language = "en";
 		public string Language {
-			get { return "en English"; }
-			set { }
+			get { return language; }
+			set { language = value; }
 		}
         
 		public string[] Languages {
-			get { return new string[]{"en", "ru"}; }
+			get { 
+				List<string> langs = new List<string>();
+				
+				DirectoryInfo locdir = new DirectoryInfo(GetAppFileName("loc", ""));
+				foreach (FileInfo fi in locdir.GetFiles()) {
+					string lname = Path.GetExtension(fi.Name);
+					if (lname.Length == 0) continue;
+					lname = lname.Remove(0, 1);
+					if (langs.IndexOf(lname) == -1) {
+						langs.Add(lname);	
+					}
+					
+				}
+				
+				return langs.ToArray();
+			}
 		}
         
 		void LoadDictionary(string locName) {

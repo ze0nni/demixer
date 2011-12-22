@@ -87,6 +87,17 @@ namespace DeMixer {
 			saveTempImagesCb.Active = Kernel.SaveTempHistory;			
 			#endregion
 			
+			//language
+			{
+				int aindex = -1;
+				foreach (string lang in Kernel.Languages) {
+					aindex++;
+					languageCB.AppendText(lang);
+					if (lang==Kernel.Language)
+						languageCB.Active = aindex;
+				}
+			}
+			
 			#region profiles
 			updateProfilesList();
 			#endregion
@@ -428,8 +439,9 @@ namespace DeMixer {
 		protected void OnDeleteProfileBtnClicked(object sender, System.EventArgs e) {
 			Kernel.DeleteProfile(ProfilesCb.ActiveText);
 			updateProfilesList();
-		}
-
+		}		
+		#endregion
+		
 		protected void OnSelectSaveHostoryFolderBoxSelectionChanged(object sender, System.EventArgs e) {
 			Kernel.SaveHistoryPath = selectSaveHostoryFolderBox.Filename;
 		}
@@ -441,6 +453,9 @@ namespace DeMixer {
 		protected void OnSaveTempImagesCbClicked(object sender, System.EventArgs e) {
 			Kernel.SaveTempHistory = saveTempImagesCb.Active;
 		}
-		#endregion
+
+		protected void OnLanguageCBChanged(object sender, System.EventArgs e) {
+			Kernel.Language = languageCB.ActiveText;	
+		}		
 	}
 }

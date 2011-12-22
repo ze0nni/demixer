@@ -99,7 +99,7 @@
               <widget class="Gtk.Notebook" id="notebook1">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="CurrentPage">0</property>
+                <property name="CurrentPage">3</property>
                 <child>
                   <widget class="Gtk.VBox" id="SourceVBox">
                     <property name="MemberName" />
@@ -890,10 +890,11 @@ Wait from last update</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <widget class="Gtk.ComboBox" id="combobox6">
+                                      <widget class="Gtk.ComboBox" id="languageCB">
                                         <property name="MemberName" />
                                         <property name="IsTextCombo">True</property>
                                         <property name="Items" translatable="yes" />
+                                        <signal name="Changed" handler="OnLanguageCBChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
