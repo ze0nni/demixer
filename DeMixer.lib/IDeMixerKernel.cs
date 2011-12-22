@@ -89,6 +89,8 @@ namespace DeMixer.lib {
 			get;
 		}
 		
+		string[] Languages { get; }
+		string Language { get; set; }
 		string Translate(string format, params object[] args);
 		void TranslateWidget(Gtk.Widget w);
 		

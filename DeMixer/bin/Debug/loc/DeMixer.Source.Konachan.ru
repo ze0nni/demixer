@@ -1,3 +1,3 @@
 DeMixer.Source.Konachan.KonachanSource name=Konachan.com
-DeMixer.Source.Konachan.KonachanSource title=Search on Konachan.com
-DeMixer.Source.Konachan.KonachanSource description=Visit <a href="http://konachan.com">KonaChan.com</a> to view all tags.\nFro example:\n\t<i>2girls dress -nude</i>
+DeMixer.Source.Konachan.KonachanSource title=Поиск на Konachan.com
+DeMixer.Source.Konachan.KonachanSource description=Плигин для поиска обоев на сайте <a href="http://konachan.com">KonaChan.com</a>.\nЭто хорошо структурированый сайт для убобного и быстрого поиска обоев по заданным ключевым слоВам. Однако сайт тематический, и все изображения относятся так или иначе имеют отношение к <b>Аниме</b>.\nПоиск осуществляется по тегам, поэтому рекомендую пройти на сайт посмотреть как именно и какие следует задавать теги. Для примера:\n\thoro -breasts  -nude\nСледует ввести если Вам хочется полюбоваться Хоро, и по возможности не в негляже.

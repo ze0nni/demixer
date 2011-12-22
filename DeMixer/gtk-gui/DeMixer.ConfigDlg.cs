@@ -74,7 +74,7 @@ namespace DeMixer
 		private global::Gtk.VBox vbox10;
 		private global::Gtk.HBox hbox7;
 		private global::Gtk.Label label12;
-		private global::Gtk.ComboBox combobox6;
+		private global::Gtk.ComboBox languageCB;
 		private global::Gtk.CheckButton checkbutton3;
 		private global::Gtk.Label GtkLabel21;
 		private global::Gtk.Label label7;
@@ -111,7 +111,7 @@ namespace DeMixer
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 3;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.SourceVBox = new global::Gtk.VBox ();
 			this.SourceVBox.Name = "SourceVBox";
@@ -747,10 +747,10 @@ namespace DeMixer
 			w104.Expand = false;
 			w104.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
-			this.combobox6 = global::Gtk.ComboBox.NewText ();
-			this.combobox6.Name = "combobox6";
-			this.hbox7.Add (this.combobox6);
-			global::Gtk.Box.BoxChild w105 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.combobox6]));
+			this.languageCB = global::Gtk.ComboBox.NewText ();
+			this.languageCB.Name = "languageCB";
+			this.hbox7.Add (this.languageCB);
+			global::Gtk.Box.BoxChild w105 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.languageCB]));
 			w105.Position = 1;
 			w105.Expand = false;
 			this.vbox10.Add (this.hbox7);
@@ -977,6 +977,7 @@ namespace DeMixer
 			this.historyLimitSizeChBox.Clicked += new global::System.EventHandler (this.OnHistoryLimitSizeChBoxClicked);
 			this.historyMaxSizeSpin.ChangeValue += new global::Gtk.ChangeValueHandler (this.OnHistoryMaxSizeSpinChangeValue);
 			this.saveTempImagesCb.Clicked += new global::System.EventHandler (this.OnSaveTempImagesCbClicked);
+			this.languageCB.Changed += new global::System.EventHandler (this.OnLanguageCBChanged);
 			this.ProfilesCb.Changed += new global::System.EventHandler (this.OnProfilesCbChanged);
 			this.applyProfileBtn.Clicked += new global::System.EventHandler (this.OnApplyProfileBtnClicked);
 			this.saveProfileBtn.Clicked += new global::System.EventHandler (this.OnsaveProfileBtnClicked);
