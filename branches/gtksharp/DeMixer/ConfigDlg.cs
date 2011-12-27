@@ -98,13 +98,35 @@ namespace DeMixer {
 				}
 			}
 			
+			#region script
+			fillScriptCB("before", scriptBeforeCB, Kernel.ScriptBefore);
+			fillScriptCB("after", scriptAfterCB, Kernel.ScriptAfter);
+			fillScriptCB("change", scriptChangeCB, Kernel.ScriptChangeWallpaper);
+			#endregion
+			
 			#region profiles
 			updateProfilesList();
-			#endregion
+			#endregion			
 		}
-
+		
+		void fillScriptCB(string dir,
+		                  Gtk.ComboBox cb,
+		                  string selection) {
+			cb.AppendText(Kernel.Translate("noscript"));			
+			int aindex = 0;
+			int cindex = 0;
+			foreach (FileInfo fi in
+			        (new DirectoryInfo(Kernel.GetAppFileName("script", dir, ""))).GetFiles()) {
+				cindex++;
+				cb.AppendText(fi.Name);
+				if (fi.Name == selection)
+					aindex = cindex;
+			}
+			cb.Active = aindex;
+		}
+		
 		Gtk.Widget lastSourceView = null;
-
+				
 		protected virtual void OnSourceCbChanged(object sender, System.EventArgs e) {
 			Kernel.ActiveSourceIndex = SourceCb.Active;
 			SourceInformationLabel.Markup = Kernel.ActiveSource.PluginDescription;
@@ -457,5 +479,26 @@ namespace DeMixer {
 		protected void OnLanguageCBChanged(object sender, System.EventArgs e) {
 			Kernel.Language = languageCB.ActiveText;	
 		}		
+
+		protected void OnScriptBeforeCBChanged(object sender, System.EventArgs e) {
+			Kernel.ScriptBefore = 
+				scriptBeforeCB.Active == 0 ?
+					"":
+					scriptBeforeCB.ActiveText;
+		}
+
+		protected void OnScriptAfterCBChanged(object sender, System.EventArgs e) {
+			Kernel.ScriptAfter =
+				scriptAfterCB.Active == 0 ?
+					"":
+					scriptAfterCB.ActiveText;
+		}
+
+		protected void OnScriptChangeCBChanged(object sender, System.EventArgs e) {
+			Kernel.ScriptChangeWallpaper =
+				scriptChangeCB.Active == 0 ? 
+					"":
+					scriptChangeCB.ActiveText;
+		}
 	}
 }

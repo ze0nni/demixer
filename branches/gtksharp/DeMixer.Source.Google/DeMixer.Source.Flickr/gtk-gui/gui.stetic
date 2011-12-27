@@ -5,8 +5,8 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="../../../DeMixer.lib/bin/Debug/DeMixer.lib.dll" />
-    <widget-library name="../../../DeMixer/bin/Debug/DeMixer.Source.Flickr.dll" internal="true" />
+    <widget-library name="../../../DeMixer.lib/bin/Release/DeMixer.lib.dll" />
+    <widget-library name="../../../DeMixer/bin/Release/DeMixer.Source.Flickr.dll" internal="true" />
   </import>
   <widget class="Gtk.Bin" id="DeMixer.Source.Flickr.FlickrSourceWiget" design-size="383 248">
     <property name="MemberName" />

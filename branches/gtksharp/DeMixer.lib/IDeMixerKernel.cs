@@ -97,5 +97,9 @@ namespace DeMixer.lib {
 		void ShowNotify(string title, string message, bool errorIcon);
 		
 		WebClient GetWebClient();
+		
+		string ScriptBefore { get; set; }
+		string ScriptAfter { get; set; }
+		string ScriptChangeWallpaper { get; set; }
 	}
 }

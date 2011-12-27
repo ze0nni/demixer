@@ -38,7 +38,7 @@ namespace DeMixer {
 
 		private Gtk.StatusIcon TrayIcon = new Gtk.StatusIcon();
 
-		public DeMixerMainClass() {
+		public DeMixerMainClass() {						
 			TrayIcon.Activate += HandleActivate;
 			TrayIcon.PopupMenu += HandlePopupMenu;
 
@@ -282,12 +282,19 @@ namespace DeMixer {
 			case PlatformID.Unix:
 				#region for gnome
 				//gsettings set org.gnome.desktop.background picture-uri 'file://'
-				string program = "gsettings";
+				/*string program = "gsettings";
 				string args = String.Format("set org.gnome.desktop.background picture-uri 'file://{0}'", fName);				
 				ProcessStartInfo psi = new ProcessStartInfo(program, args);
 				Process p = new Process();
 				p.StartInfo = psi;
-				p.Start();
+				p.Start();*/
+				string program = GetAppFileName("script", "change", ScriptChangeWallpaper);
+				string args = String.Format("\"{0}\"", fName);		
+				ProcessStartInfo psi = new ProcessStartInfo(program, args);
+				Process p = new Process();
+				p.StartInfo = psi;
+				//todo: getstdout on error
+				p.Start();													
 				#endregion
 				break;
 			}       
@@ -334,6 +341,18 @@ namespace DeMixer {
 						cfg.WriteEndElement();	
 						#endregion
 						cfg.WriteElementString("language", Language);
+						#region scripts
+						if (Environment.OSVersion.Platform == PlatformID.Unix) {
+							cfg.WriteStartElement("scripts");
+							try {
+								cfg.WriteElementString("before", ScriptBefore);
+								cfg.WriteElementString("after", ScriptAfter);
+								cfg.WriteElementString("change", ScriptChangeWallpaper);
+							} finally {
+								cfg.WriteEndElement();
+							}
+						}
+						#endregion
 						#region write effects list
 						cfg.WriteStartElement("effects");
 						try {
@@ -466,6 +485,23 @@ namespace DeMixer {
 								histr.SelectSingleNode("size").InnerXml);
 						} catch (Exception exc) {
 							WriteLog(exc);
+						}
+						try {							
+							language = cfg.SelectSingleNode("language").InnerXml;
+						} catch (Exception exc) {
+							WriteLog(exc);
+						}
+						#endregion
+						#region read script
+						if (Environment.OSVersion.Platform == PlatformID.Unix) {
+							try {
+								XmlNode scrpts = cfg.SelectSingleNode("scripts");
+								ScriptBefore = scrpts.SelectSingleNode("before").InnerXml;
+								ScriptAfter = scrpts.SelectSingleNode("after").InnerXml;
+								ScriptChangeWallpaper = scrpts.SelectSingleNode("change").InnerXml;
+							} catch (Exception exc) {
+								WriteLog(exc);
+							}
 						}
 						try {							
 							language = cfg.SelectSingleNode("language").InnerXml;
@@ -913,7 +949,7 @@ namespace DeMixer {
 				FileInfo fi = new FileInfo(res);
 				Directory.CreateDirectory(fi.Directory.FullName);
 			} catch {
-			}                     
+			}
 			return res;
 		}
         
@@ -1283,30 +1319,31 @@ namespace DeMixer {
 			}
 		}
         
-		void LoadDictionary(string locName) {
-			translateDict.Clear();
+		void LoadDictionary(string locName) {			
+			translateDict.Clear();			
 			try {
-				DirectoryInfo alocDir = new DirectoryInfo(GetAppFileName("loc"));
+				DirectoryInfo alocDir = new DirectoryInfo(GetAppFileName("loc", ""));				
 				searchLocInDir(alocDir, locName);
 			} catch {
 			}
 			try {
-				DirectoryInfo ulocDir = new DirectoryInfo(GetUserFileName("loc"));
+				DirectoryInfo ulocDir = new DirectoryInfo(GetUserFileName("loc", ""));				
 				searchLocInDir(ulocDir, locName);
 			} catch {
 			}
 		}
         
-		void searchLocInDir(DirectoryInfo locDir, string locName) {
+		void searchLocInDir(DirectoryInfo locDir, string locName) {			
 			foreach (FileInfo f in locDir.GetFiles(String.Format("*.{0}", locName))) {
-				FileStream fs = new FileStream(f.FullName, FileMode.Open);
+				FileStream fs = f.OpenRead();
 				try {
 					StreamReader sr = new StreamReader(fs);
 					string[] lines = sr.ReadToEnd().Split('\n');
 					foreach (string ln in lines) {
 						string[] args = ln.Split(new char[]{'='}, 2);
 						if (args.Length == 2) {                                                   
-							translateDict[args[0]] = args[1];       
+							translateDict[args[0]] = args[1];
+							
 						}
 					}
 				} finally {
@@ -1393,6 +1430,11 @@ namespace DeMixer {
 			wc.Headers.Add("user-agent", "DeMixer (http://code.google.com/p/demixer)/1.0");
 			return wc;			
 		}
+		
+		public string ScriptBefore { get; set; }
+		public string ScriptAfter { get; set; }
+		public string ScriptChangeWallpaper { get; set; }
+		
         #endregion
 	}
 }
