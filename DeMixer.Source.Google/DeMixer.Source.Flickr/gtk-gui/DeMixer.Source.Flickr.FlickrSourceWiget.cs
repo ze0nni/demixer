@@ -68,6 +68,7 @@ namespace DeMixer.Source.Flickr
 			this.byTextCb = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("By text"));
 			this.byTextCb.CanFocus = true;
 			this.byTextCb.Name = "byTextCb";
+			this.byTextCb.Active = true;
 			this.byTextCb.DrawIndicator = true;
 			this.byTextCb.UseUnderline = true;
 			this.byTextCb.Group = new global::GLib.SList (global::System.IntPtr.Zero);
@@ -125,6 +126,7 @@ namespace DeMixer.Source.Flickr
 			this.byNoneCb = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("None"));
 			this.byNoneCb.CanFocus = true;
 			this.byNoneCb.Name = "byNoneCb";
+			this.byNoneCb.Active = true;
 			this.byNoneCb.DrawIndicator = true;
 			this.byNoneCb.UseUnderline = true;
 			this.byNoneCb.Group = new global::GLib.SList (global::System.IntPtr.Zero);

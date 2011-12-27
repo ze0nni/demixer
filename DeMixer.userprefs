@@ -3,27 +3,19 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/ConfigDlg.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeMixer/AboutDialog.cs">
     <Files>
-      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSource.cs" Line="63" Column="50" />
-      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSourceWiget.cs" Line="48" Column="47" />
-      <File FileName="DeMixer.Source.Google/DeMixer.Source.Flickr/FlickrSelectGUDialog.cs" Line="1" Column="1" />
-      <File FileName="DeMixer/DeMixerMainClass.cs" Line="47" Column="4" />
-      <File FileName="DeMixer/ConfigDlg.cs" Line="78" Column="4" />
-      <File FileName="DeMixer.lib/IDeMixerKernel.cs" Line="68" Column="35" />
+      <File FileName="DeMixer/DeMixerMainClass.cs" Line="296" Column="31" />
+      <File FileName="DeMixer/ConfigDlg.cs" Line="469" Column="4" />
+      <File FileName="DeMixer/AboutDialog.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="plugins" expanded="True">
-            <Node name="DeMixer.Source.Flickr" expanded="True" />
-          </Node>
+          <Node name="plugins" expanded="True" />
           <Node name="DeMixer" expanded="True">
-            <Node name="UserInterface" expanded="True">
-              <Node name="DeMixer.ConfigDlg" selected="True" />
-            </Node>
+            <Node name="AboutDialog.cs" selected="True" />
           </Node>
-          <Node name="DeMixer.lib" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

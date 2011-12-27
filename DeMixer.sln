@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{562A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMixer.Source.Google", "DeMixer.Source.Google\DeMixer.Source.Google.csproj", "{148C4F06-68E5-4EA3-81E5-9D6415448CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMixer.Source.Konachan", "DeMixer.Source.Google\DeMixer.Source.Konachan\DeMixer.Source.Konachan.csproj", "{21E28E1C-7204-4CFB-AF3E-46CAEF57BAE3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMixer.Source.Flickr", "DeMixer.Source.Google\DeMixer.Source.Flickr\DeMixer.Source.Flickr.csproj", "{27802AA9-CF13-45D9-A348-FF2F2C888BC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMixer.Source.Konachan", "DeMixer.Source.Google\DeMixer.Source.Konachan\DeMixer.Source.Konachan.csproj", "{21E28E1C-7204-4CFB-AF3E-46CAEF57BAE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,8 +50,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{148C4F06-68E5-4EA3-81E5-9D6415448CA8} = {562AAEA0-576F-47C3-8553-E1C06CCC04FC}
-		{21E28E1C-7204-4CFB-AF3E-46CAEF57BAE3} = {562AAEA0-576F-47C3-8553-E1C06CCC04FC}
 		{27802AA9-CF13-45D9-A348-FF2F2C888BC1} = {562AAEA0-576F-47C3-8553-E1C06CCC04FC}
+		{21E28E1C-7204-4CFB-AF3E-46CAEF57BAE3} = {562AAEA0-576F-47C3-8553-E1C06CCC04FC}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = DeMixer\DeMixer.csproj
