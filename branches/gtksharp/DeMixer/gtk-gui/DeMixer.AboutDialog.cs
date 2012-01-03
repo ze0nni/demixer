@@ -5,10 +5,13 @@ namespace DeMixer
 	public partial class AboutDialog
 	{
 		private global::Gtk.VBox vbox2;
+
 		private global::Gtk.Image logoImage;
+
 		private global::Gtk.IconView iconview1;
+
 		private global::Gtk.Button buttonOk;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -29,7 +32,7 @@ namespace DeMixer
 			this.logoImage = new global::Gtk.Image ();
 			this.logoImage.Name = "logoImage";
 			this.vbox2.Add (this.logoImage);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.logoImage]));
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.logoImage]));
 			w2.Position = 0;
 			w2.Expand = false;
 			// Container child vbox2.Gtk.Box+BoxChild
@@ -37,10 +40,10 @@ namespace DeMixer
 			this.iconview1.CanFocus = true;
 			this.iconview1.Name = "iconview1";
 			this.vbox2.Add (this.iconview1);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.iconview1]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.iconview1]));
 			w3.Position = 1;
 			w1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox2]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
 			w4.Position = 0;
 			// Internal child DeMixer.AboutDialog.ActionArea
 			global::Gtk.HButtonBox w5 = this.ActionArea;
@@ -57,7 +60,7 @@ namespace DeMixer
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5 [this.buttonOk]));
+			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5[this.buttonOk]));
 			w6.Expand = false;
 			w6.Fill = false;
 			if ((this.Child != null)) {

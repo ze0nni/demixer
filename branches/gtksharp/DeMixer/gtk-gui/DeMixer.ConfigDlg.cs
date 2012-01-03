@@ -5,101 +5,195 @@ namespace DeMixer
 	public partial class ConfigDlg
 	{
 		private global::Gtk.VBox vbox2;
+
 		private global::Gtk.Notebook notebook1;
+
 		private global::Gtk.VBox SourceVBox;
+
 		private global::Gtk.HBox hbox8;
+
 		private global::Gtk.VBox vbox3;
+
 		private global::Gtk.ComboBox SourceCb;
+
 		private global::Gtk.Label SourceInformationLabel;
+
 		private global::Gtk.Frame frame4;
+
 		private global::Gtk.Alignment SourceSettingsPlace;
+
 		private global::Gtk.Label GtkLabel17;
+
 		private global::Gtk.Label label1;
+
 		private global::Gtk.VBox VBoxcom;
+
 		private global::Gtk.HBox hbox9;
+
 		private global::Gtk.VBox vbox4;
+
 		private global::Gtk.ComboBox CompositionComboBox;
+
 		private global::Gtk.Label CompositionInformationLabel;
+
 		private global::Gtk.HBox CompositionVBox1;
+
 		private global::Gtk.Frame CompositionSettingsFrame;
+
 		private global::Gtk.Alignment CompositionSettingsPlace;
+
 		private global::Gtk.Label GtkLabel16;
+
 		private global::Gtk.Frame frame2;
+
 		private global::Gtk.Alignment GtkAlignment11;
+
 		private global::Gtk.Image imagePreview;
+
 		private global::Gtk.Label GtkLabel18;
+
 		private global::Gtk.Label label3;
+
 		private global::Gtk.VBox vbox5;
+
 		private global::Gtk.HBox hbox2;
+
 		private global::Gtk.VBox vbox7;
+
 		private global::Gtk.HBox hbox10;
+
 		private global::Gtk.ComboBox EffectsComboBox;
+
 		private global::Gtk.Button effectAddBtn;
+
 		private global::Gtk.Label EffectInformationLabel;
+
 		private global::Gtk.HBox hbox3;
+
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
 		private global::Gtk.TreeView EffectsList;
+
 		private global::Gtk.VButtonBox vbuttonbox1;
+
 		private global::Gtk.Button editEffectBtn;
+
 		private global::Gtk.Button upEffectBtn;
+
 		private global::Gtk.Button downEffectBtn;
+
 		private global::Gtk.Button cloneEffectBtn;
+
 		private global::Gtk.Button deleteEffectBtn;
+
 		private global::Gtk.Label label5;
+
 		private global::Gtk.VBox vbox6;
+
 		private global::Gtk.Frame frame3;
+
 		private global::Gtk.Alignment GtkAlignment12;
+
 		private global::Gtk.HBox hbox5;
+
 		private global::Gtk.Label label9;
+
 		private global::Gtk.VBox vbox8;
+
 		private global::Gtk.Label IntervalLabel;
+
 		private global::Gtk.HScale intervalScale;
+
 		private global::Gtk.Label label11;
+
 		private global::Gtk.ComboBox UpdateIntervalModeCb;
+
 		private global::Gtk.Label GtkLabel15;
+
 		private global::Gtk.Frame frame5;
+
 		private global::Gtk.Alignment GtkAlignment13;
+
 		private global::Gtk.VBox vbox9;
+
 		private global::Gtk.HBox hbox4;
+
 		private global::Gtk.CheckButton saveHistoryChBox;
+
 		private global::Gtk.FileChooserButton selectSaveHostoryFolderBox;
+
 		private global::Gtk.CheckButton historyLimitSizeChBox;
+
 		private global::Gtk.SpinButton historyMaxSizeSpin;
+
 		private global::Gtk.Label label8;
+
 		private global::Gtk.HBox hbox6;
+
 		private global::Gtk.CheckButton saveTempImagesCb;
+
 		private global::Gtk.Label GtkLabel20;
+
 		private global::Gtk.Frame frame6;
+
 		private global::Gtk.Alignment GtkAlignment14;
+
 		private global::Gtk.VBox vbox10;
+
 		private global::Gtk.HBox hbox7;
+
 		private global::Gtk.Label label12;
+
 		private global::Gtk.ComboBox languageCB;
+
 		private global::Gtk.CheckButton checkbutton3;
+
 		private global::Gtk.Label GtkLabel21;
+
 		private global::Gtk.Frame frame7;
+
 		private global::Gtk.Alignment GtkAlignment15;
+
 		private global::Gtk.Table table1;
+
 		private global::Gtk.Label label2;
+
 		private global::Gtk.Label label4;
+
 		private global::Gtk.Label label6;
+
 		private global::Gtk.ComboBox scriptAfterCB;
+
 		private global::Gtk.ComboBox scriptBeforeCB;
+
 		private global::Gtk.ComboBox scriptChangeCB;
+
 		private global::Gtk.Label GtkLabel22;
+
 		private global::Gtk.Label label7;
+
 		private global::Gtk.HSeparator hseparator2;
+
 		private global::Gtk.Frame frame1;
+
 		private global::Gtk.Alignment GtkAlignment6;
+
 		private global::Gtk.HBox hbox1;
+
 		private global::Gtk.ComboBox ProfilesCb;
+
 		private global::Gtk.HButtonBox hbuttonbox2;
+
 		private global::Gtk.Button applyProfileBtn;
+
 		private global::Gtk.Button saveProfileBtn;
+
 		private global::Gtk.Button deleteProfileBtn;
+
 		private global::Gtk.Label GtkLabel14;
+
 		private global::Gtk.Button buttonOk;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -140,12 +234,12 @@ namespace DeMixer
 			this.SourceCb.CanFocus = true;
 			this.SourceCb.Name = "SourceCb";
 			this.vbox3.Add (this.SourceCb);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.SourceCb]));
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.SourceCb]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
 			this.hbox8.Add (this.vbox3);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbox3]));
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.vbox3]));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
@@ -157,10 +251,10 @@ namespace DeMixer
 			this.SourceInformationLabel.Wrap = true;
 			this.SourceInformationLabel.Selectable = true;
 			this.hbox8.Add (this.SourceInformationLabel);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.SourceInformationLabel]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.SourceInformationLabel]));
 			w4.Position = 1;
 			this.SourceVBox.Add (this.hbox8);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.SourceVBox [this.hbox8]));
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.SourceVBox[this.hbox8]));
 			w5.Position = 0;
 			w5.Expand = false;
 			w5.Fill = false;
@@ -169,7 +263,7 @@ namespace DeMixer
 			this.frame4.Name = "frame4";
 			this.frame4.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame4.Gtk.Container+ContainerChild
-			this.SourceSettingsPlace = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.SourceSettingsPlace = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.SourceSettingsPlace.Name = "SourceSettingsPlace";
 			this.SourceSettingsPlace.LeftPadding = ((uint)(12));
 			this.frame4.Add (this.SourceSettingsPlace);
@@ -179,10 +273,10 @@ namespace DeMixer
 			this.GtkLabel17.UseMarkup = true;
 			this.frame4.LabelWidget = this.GtkLabel17;
 			this.SourceVBox.Add (this.frame4);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.SourceVBox [this.frame4]));
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.SourceVBox[this.frame4]));
 			w7.Position = 1;
 			this.notebook1.Add (this.SourceVBox);
-			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.SourceVBox]));
+			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1[this.SourceVBox]));
 			w8.MenuLabel = "";
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
@@ -207,12 +301,12 @@ namespace DeMixer
 			this.CompositionComboBox = global::Gtk.ComboBox.NewText ();
 			this.CompositionComboBox.Name = "CompositionComboBox";
 			this.vbox4.Add (this.CompositionComboBox);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.CompositionComboBox]));
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.CompositionComboBox]));
 			w9.Position = 0;
 			w9.Expand = false;
 			w9.Fill = false;
 			this.hbox9.Add (this.vbox4);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbox4]));
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.vbox4]));
 			w10.Position = 0;
 			w10.Expand = false;
 			w10.Fill = false;
@@ -224,10 +318,10 @@ namespace DeMixer
 			this.CompositionInformationLabel.Wrap = true;
 			this.CompositionInformationLabel.Selectable = true;
 			this.hbox9.Add (this.CompositionInformationLabel);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.CompositionInformationLabel]));
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.CompositionInformationLabel]));
 			w11.Position = 1;
 			this.VBoxcom.Add (this.hbox9);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.VBoxcom [this.hbox9]));
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.VBoxcom[this.hbox9]));
 			w12.Position = 0;
 			w12.Expand = false;
 			w12.Fill = false;
@@ -240,7 +334,7 @@ namespace DeMixer
 			this.CompositionSettingsFrame.Name = "CompositionSettingsFrame";
 			this.CompositionSettingsFrame.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child CompositionSettingsFrame.Gtk.Container+ContainerChild
-			this.CompositionSettingsPlace = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.CompositionSettingsPlace = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.CompositionSettingsPlace.Name = "CompositionSettingsPlace";
 			this.CompositionSettingsPlace.LeftPadding = ((uint)(12));
 			this.CompositionSettingsFrame.Add (this.CompositionSettingsPlace);
@@ -250,14 +344,14 @@ namespace DeMixer
 			this.GtkLabel16.UseMarkup = true;
 			this.CompositionSettingsFrame.LabelWidget = this.GtkLabel16;
 			this.CompositionVBox1.Add (this.CompositionSettingsFrame);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1 [this.CompositionSettingsFrame]));
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1[this.CompositionSettingsFrame]));
 			w14.Position = 0;
 			// Container child CompositionVBox1.Gtk.Box+BoxChild
 			this.frame2 = new global::Gtk.Frame ();
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(2));
 			// Container child frame2.Gtk.Container+ContainerChild
-			this.GtkAlignment11 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment11 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment11.Name = "GtkAlignment11";
 			this.GtkAlignment11.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment11.Gtk.Container+ContainerChild
@@ -271,15 +365,15 @@ namespace DeMixer
 			this.GtkLabel18.UseMarkup = true;
 			this.frame2.LabelWidget = this.GtkLabel18;
 			this.CompositionVBox1.Add (this.frame2);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1 [this.frame2]));
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.CompositionVBox1[this.frame2]));
 			w17.Position = 1;
 			w17.Expand = false;
 			w17.Fill = false;
 			this.VBoxcom.Add (this.CompositionVBox1);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.VBoxcom [this.CompositionVBox1]));
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.VBoxcom[this.CompositionVBox1]));
 			w18.Position = 1;
 			this.notebook1.Add (this.VBoxcom);
-			global::Gtk.Notebook.NotebookChild w19 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.VBoxcom]));
+			global::Gtk.Notebook.NotebookChild w19 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1[this.VBoxcom]));
 			w19.Position = 1;
 			w19.MenuLabel = "";
 			// Notebook tab
@@ -309,7 +403,7 @@ namespace DeMixer
 			this.EffectsComboBox = global::Gtk.ComboBox.NewText ();
 			this.EffectsComboBox.Name = "EffectsComboBox";
 			this.hbox10.Add (this.EffectsComboBox);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.EffectsComboBox]));
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.EffectsComboBox]));
 			w20.Position = 0;
 			w20.Expand = false;
 			w20.Fill = false;
@@ -319,7 +413,7 @@ namespace DeMixer
 			this.effectAddBtn.Name = "effectAddBtn";
 			this.effectAddBtn.UseUnderline = true;
 			// Container child effectAddBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w21 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w21 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w22 = new global::Gtk.HBox ();
 			w22.Spacing = 2;
@@ -335,17 +429,17 @@ namespace DeMixer
 			w21.Add (w22);
 			this.effectAddBtn.Add (w21);
 			this.hbox10.Add (this.effectAddBtn);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.effectAddBtn]));
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.effectAddBtn]));
 			w29.Position = 1;
 			w29.Expand = false;
 			w29.Fill = false;
 			this.vbox7.Add (this.hbox10);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.vbox7 [this.hbox10]));
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.vbox7[this.hbox10]));
 			w30.Position = 0;
 			w30.Expand = false;
 			w30.Fill = false;
 			this.hbox2.Add (this.vbox7);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.vbox7]));
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.vbox7]));
 			w31.Position = 0;
 			w31.Expand = false;
 			w31.Fill = false;
@@ -357,10 +451,10 @@ namespace DeMixer
 			this.EffectInformationLabel.Wrap = true;
 			this.EffectInformationLabel.Selectable = true;
 			this.hbox2.Add (this.EffectInformationLabel);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.EffectInformationLabel]));
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.EffectInformationLabel]));
 			w32.Position = 1;
 			this.vbox5.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.hbox2]));
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox2]));
 			w33.Position = 0;
 			w33.Expand = false;
 			w33.Fill = false;
@@ -378,7 +472,7 @@ namespace DeMixer
 			this.EffectsList.Name = "EffectsList";
 			this.GtkScrolledWindow.Add (this.EffectsList);
 			this.hbox3.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.GtkScrolledWindow]));
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.GtkScrolledWindow]));
 			w35.Position = 0;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.vbuttonbox1 = new global::Gtk.VButtonBox ();
@@ -392,7 +486,7 @@ namespace DeMixer
 			this.editEffectBtn.Name = "editEffectBtn";
 			this.editEffectBtn.UseUnderline = true;
 			// Container child editEffectBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w36 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w36 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w37 = new global::Gtk.HBox ();
 			w37.Spacing = 2;
@@ -408,7 +502,7 @@ namespace DeMixer
 			w36.Add (w37);
 			this.editEffectBtn.Add (w36);
 			this.vbuttonbox1.Add (this.editEffectBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w44 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.editEffectBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w44 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.editEffectBtn]));
 			w44.Expand = false;
 			w44.Fill = false;
 			// Container child vbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
@@ -418,7 +512,7 @@ namespace DeMixer
 			this.upEffectBtn.Name = "upEffectBtn";
 			this.upEffectBtn.UseUnderline = true;
 			// Container child upEffectBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w45 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w45 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w46 = new global::Gtk.HBox ();
 			w46.Spacing = 2;
@@ -434,7 +528,7 @@ namespace DeMixer
 			w45.Add (w46);
 			this.upEffectBtn.Add (w45);
 			this.vbuttonbox1.Add (this.upEffectBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w53 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.upEffectBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w53 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.upEffectBtn]));
 			w53.Position = 1;
 			w53.Expand = false;
 			w53.Fill = false;
@@ -445,7 +539,7 @@ namespace DeMixer
 			this.downEffectBtn.Name = "downEffectBtn";
 			this.downEffectBtn.UseUnderline = true;
 			// Container child downEffectBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w54 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w54 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w55 = new global::Gtk.HBox ();
 			w55.Spacing = 2;
@@ -461,7 +555,7 @@ namespace DeMixer
 			w54.Add (w55);
 			this.downEffectBtn.Add (w54);
 			this.vbuttonbox1.Add (this.downEffectBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w62 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.downEffectBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w62 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.downEffectBtn]));
 			w62.Position = 2;
 			w62.Expand = false;
 			w62.Fill = false;
@@ -472,7 +566,7 @@ namespace DeMixer
 			this.cloneEffectBtn.Name = "cloneEffectBtn";
 			this.cloneEffectBtn.UseUnderline = true;
 			// Container child cloneEffectBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w63 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w63 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w64 = new global::Gtk.HBox ();
 			w64.Spacing = 2;
@@ -488,7 +582,7 @@ namespace DeMixer
 			w63.Add (w64);
 			this.cloneEffectBtn.Add (w63);
 			this.vbuttonbox1.Add (this.cloneEffectBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w71 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.cloneEffectBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w71 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.cloneEffectBtn]));
 			w71.Position = 3;
 			w71.Expand = false;
 			w71.Fill = false;
@@ -499,7 +593,7 @@ namespace DeMixer
 			this.deleteEffectBtn.Name = "deleteEffectBtn";
 			this.deleteEffectBtn.UseUnderline = true;
 			// Container child deleteEffectBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w72 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w72 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w73 = new global::Gtk.HBox ();
 			w73.Spacing = 2;
@@ -515,20 +609,20 @@ namespace DeMixer
 			w72.Add (w73);
 			this.deleteEffectBtn.Add (w72);
 			this.vbuttonbox1.Add (this.deleteEffectBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w80 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.deleteEffectBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w80 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1[this.deleteEffectBtn]));
 			w80.Position = 4;
 			w80.Expand = false;
 			w80.Fill = false;
 			this.hbox3.Add (this.vbuttonbox1);
-			global::Gtk.Box.BoxChild w81 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vbuttonbox1]));
+			global::Gtk.Box.BoxChild w81 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.vbuttonbox1]));
 			w81.Position = 1;
 			w81.Expand = false;
 			w81.Fill = false;
 			this.vbox5.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w82 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.hbox3]));
+			global::Gtk.Box.BoxChild w82 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox3]));
 			w82.Position = 1;
 			this.notebook1.Add (this.vbox5);
-			global::Gtk.Notebook.NotebookChild w83 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox5]));
+			global::Gtk.Notebook.NotebookChild w83 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1[this.vbox5]));
 			w83.Position = 2;
 			w83.MenuLabel = "";
 			// Notebook tab
@@ -547,7 +641,7 @@ namespace DeMixer
 			this.frame3.Name = "frame3";
 			this.frame3.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame3.Gtk.Container+ContainerChild
-			this.GtkAlignment12 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment12 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment12.Name = "GtkAlignment12";
 			this.GtkAlignment12.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment12.Gtk.Container+ContainerChild
@@ -559,7 +653,7 @@ namespace DeMixer
 			this.label9.Name = "label9";
 			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString ("Update interval:");
 			this.hbox5.Add (this.label9);
-			global::Gtk.Box.BoxChild w84 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.label9]));
+			global::Gtk.Box.BoxChild w84 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label9]));
 			w84.Position = 0;
 			w84.Expand = false;
 			w84.Fill = false;
@@ -572,7 +666,7 @@ namespace DeMixer
 			this.IntervalLabel.Name = "IntervalLabel";
 			this.IntervalLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("0 m");
 			this.vbox8.Add (this.IntervalLabel);
-			global::Gtk.Box.BoxChild w85 = ((global::Gtk.Box.BoxChild)(this.vbox8 [this.IntervalLabel]));
+			global::Gtk.Box.BoxChild w85 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.IntervalLabel]));
 			w85.Position = 0;
 			w85.Expand = false;
 			w85.Fill = false;
@@ -589,17 +683,17 @@ namespace DeMixer
 			this.intervalScale.Digits = 0;
 			this.intervalScale.ValuePos = ((global::Gtk.PositionType)(2));
 			this.vbox8.Add (this.intervalScale);
-			global::Gtk.Box.BoxChild w86 = ((global::Gtk.Box.BoxChild)(this.vbox8 [this.intervalScale]));
+			global::Gtk.Box.BoxChild w86 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.intervalScale]));
 			w86.Position = 1;
 			this.hbox5.Add (this.vbox8);
-			global::Gtk.Box.BoxChild w87 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.vbox8]));
+			global::Gtk.Box.BoxChild w87 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.vbox8]));
 			w87.Position = 1;
 			// Container child hbox5.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label ();
 			this.label11.Name = "label11";
 			this.label11.LabelProp = global::Mono.Unix.Catalog.GetString ("Update Mode");
 			this.hbox5.Add (this.label11);
-			global::Gtk.Box.BoxChild w88 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.label11]));
+			global::Gtk.Box.BoxChild w88 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label11]));
 			w88.Position = 2;
 			w88.Expand = false;
 			w88.Fill = false;
@@ -611,7 +705,7 @@ namespace DeMixer
 			this.UpdateIntervalModeCb.Name = "UpdateIntervalModeCb";
 			this.UpdateIntervalModeCb.Active = 1;
 			this.hbox5.Add (this.UpdateIntervalModeCb);
-			global::Gtk.Box.BoxChild w89 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.UpdateIntervalModeCb]));
+			global::Gtk.Box.BoxChild w89 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.UpdateIntervalModeCb]));
 			w89.Position = 3;
 			w89.Expand = false;
 			w89.Fill = false;
@@ -623,7 +717,7 @@ namespace DeMixer
 			this.GtkLabel15.UseMarkup = true;
 			this.frame3.LabelWidget = this.GtkLabel15;
 			this.vbox6.Add (this.frame3);
-			global::Gtk.Box.BoxChild w92 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame3]));
+			global::Gtk.Box.BoxChild w92 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.frame3]));
 			w92.Position = 0;
 			w92.Expand = false;
 			w92.Fill = false;
@@ -632,7 +726,7 @@ namespace DeMixer
 			this.frame5.Name = "frame5";
 			this.frame5.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame5.Gtk.Container+ContainerChild
-			this.GtkAlignment13 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment13 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment13.Name = "GtkAlignment13";
 			this.GtkAlignment13.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment13.Gtk.Container+ContainerChild
@@ -651,7 +745,7 @@ namespace DeMixer
 			this.saveHistoryChBox.DrawIndicator = true;
 			this.saveHistoryChBox.UseUnderline = true;
 			this.hbox4.Add (this.saveHistoryChBox);
-			global::Gtk.Box.BoxChild w93 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.saveHistoryChBox]));
+			global::Gtk.Box.BoxChild w93 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.saveHistoryChBox]));
 			w93.Position = 0;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.selectSaveHostoryFolderBox = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Выберите файл"), ((global::Gtk.FileChooserAction)(2)));
@@ -659,7 +753,7 @@ namespace DeMixer
 			this.selectSaveHostoryFolderBox.Name = "selectSaveHostoryFolderBox";
 			this.selectSaveHostoryFolderBox.ShowHidden = true;
 			this.hbox4.Add (this.selectSaveHostoryFolderBox);
-			global::Gtk.Box.BoxChild w94 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.selectSaveHostoryFolderBox]));
+			global::Gtk.Box.BoxChild w94 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.selectSaveHostoryFolderBox]));
 			w94.Position = 1;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.historyLimitSizeChBox = new global::Gtk.CheckButton ();
@@ -670,7 +764,7 @@ namespace DeMixer
 			this.historyLimitSizeChBox.DrawIndicator = true;
 			this.historyLimitSizeChBox.UseUnderline = true;
 			this.hbox4.Add (this.historyLimitSizeChBox);
-			global::Gtk.Box.BoxChild w95 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.historyLimitSizeChBox]));
+			global::Gtk.Box.BoxChild w95 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.historyLimitSizeChBox]));
 			w95.Position = 2;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.historyMaxSizeSpin = new global::Gtk.SpinButton (0, 100, 1);
@@ -681,7 +775,7 @@ namespace DeMixer
 			this.historyMaxSizeSpin.ClimbRate = 1;
 			this.historyMaxSizeSpin.Numeric = true;
 			this.hbox4.Add (this.historyMaxSizeSpin);
-			global::Gtk.Box.BoxChild w96 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.historyMaxSizeSpin]));
+			global::Gtk.Box.BoxChild w96 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.historyMaxSizeSpin]));
 			w96.Position = 3;
 			w96.Expand = false;
 			w96.Fill = false;
@@ -690,12 +784,12 @@ namespace DeMixer
 			this.label8.Name = "label8";
 			this.label8.LabelProp = global::Mono.Unix.Catalog.GetString ("Mb");
 			this.hbox4.Add (this.label8);
-			global::Gtk.Box.BoxChild w97 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label8]));
+			global::Gtk.Box.BoxChild w97 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.label8]));
 			w97.Position = 4;
 			w97.Expand = false;
 			w97.Fill = false;
 			this.vbox9.Add (this.hbox4);
-			global::Gtk.Box.BoxChild w98 = ((global::Gtk.Box.BoxChild)(this.vbox9 [this.hbox4]));
+			global::Gtk.Box.BoxChild w98 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox4]));
 			w98.Position = 0;
 			w98.Expand = false;
 			w98.Fill = false;
@@ -712,10 +806,10 @@ namespace DeMixer
 			this.saveTempImagesCb.DrawIndicator = true;
 			this.saveTempImagesCb.UseUnderline = true;
 			this.hbox6.Add (this.saveTempImagesCb);
-			global::Gtk.Box.BoxChild w99 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.saveTempImagesCb]));
+			global::Gtk.Box.BoxChild w99 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.saveTempImagesCb]));
 			w99.Position = 0;
 			this.vbox9.Add (this.hbox6);
-			global::Gtk.Box.BoxChild w100 = ((global::Gtk.Box.BoxChild)(this.vbox9 [this.hbox6]));
+			global::Gtk.Box.BoxChild w100 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox6]));
 			w100.Position = 1;
 			w100.Expand = false;
 			w100.Fill = false;
@@ -727,7 +821,7 @@ namespace DeMixer
 			this.GtkLabel20.UseMarkup = true;
 			this.frame5.LabelWidget = this.GtkLabel20;
 			this.vbox6.Add (this.frame5);
-			global::Gtk.Box.BoxChild w103 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame5]));
+			global::Gtk.Box.BoxChild w103 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.frame5]));
 			w103.Position = 1;
 			w103.Expand = false;
 			w103.Fill = false;
@@ -736,7 +830,7 @@ namespace DeMixer
 			this.frame6.Name = "frame6";
 			this.frame6.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame6.Gtk.Container+ContainerChild
-			this.GtkAlignment14 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment14 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment14.Name = "GtkAlignment14";
 			this.GtkAlignment14.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment14.Gtk.Container+ContainerChild
@@ -752,7 +846,7 @@ namespace DeMixer
 			this.label12.Name = "label12";
 			this.label12.LabelProp = global::Mono.Unix.Catalog.GetString ("Language");
 			this.hbox7.Add (this.label12);
-			global::Gtk.Box.BoxChild w104 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.label12]));
+			global::Gtk.Box.BoxChild w104 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.label12]));
 			w104.Position = 0;
 			w104.Expand = false;
 			w104.Fill = false;
@@ -760,11 +854,11 @@ namespace DeMixer
 			this.languageCB = global::Gtk.ComboBox.NewText ();
 			this.languageCB.Name = "languageCB";
 			this.hbox7.Add (this.languageCB);
-			global::Gtk.Box.BoxChild w105 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.languageCB]));
+			global::Gtk.Box.BoxChild w105 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.languageCB]));
 			w105.Position = 1;
 			w105.Expand = false;
 			this.vbox10.Add (this.hbox7);
-			global::Gtk.Box.BoxChild w106 = ((global::Gtk.Box.BoxChild)(this.vbox10 [this.hbox7]));
+			global::Gtk.Box.BoxChild w106 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.hbox7]));
 			w106.Position = 0;
 			w106.Expand = false;
 			w106.Fill = false;
@@ -776,7 +870,7 @@ namespace DeMixer
 			this.checkbutton3.DrawIndicator = true;
 			this.checkbutton3.UseUnderline = true;
 			this.vbox10.Add (this.checkbutton3);
-			global::Gtk.Box.BoxChild w107 = ((global::Gtk.Box.BoxChild)(this.vbox10 [this.checkbutton3]));
+			global::Gtk.Box.BoxChild w107 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.checkbutton3]));
 			w107.Position = 1;
 			w107.Expand = false;
 			w107.Fill = false;
@@ -788,7 +882,7 @@ namespace DeMixer
 			this.GtkLabel21.UseMarkup = true;
 			this.frame6.LabelWidget = this.GtkLabel21;
 			this.vbox6.Add (this.frame6);
-			global::Gtk.Box.BoxChild w110 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame6]));
+			global::Gtk.Box.BoxChild w110 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.frame6]));
 			w110.Position = 2;
 			w110.Expand = false;
 			w110.Fill = false;
@@ -797,7 +891,7 @@ namespace DeMixer
 			this.frame7.Name = "frame7";
 			this.frame7.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame7.Gtk.Container+ContainerChild
-			this.GtkAlignment15 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment15 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment15.Name = "GtkAlignment15";
 			this.GtkAlignment15.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment15.Gtk.Container+ContainerChild
@@ -810,7 +904,7 @@ namespace DeMixer
 			this.label2.Name = "label2";
 			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Before change");
 			this.table1.Add (this.label2);
-			global::Gtk.Table.TableChild w111 = ((global::Gtk.Table.TableChild)(this.table1 [this.label2]));
+			global::Gtk.Table.TableChild w111 = ((global::Gtk.Table.TableChild)(this.table1[this.label2]));
 			w111.XOptions = ((global::Gtk.AttachOptions)(4));
 			w111.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
@@ -818,7 +912,7 @@ namespace DeMixer
 			this.label4.Name = "label4";
 			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("After change");
 			this.table1.Add (this.label4);
-			global::Gtk.Table.TableChild w112 = ((global::Gtk.Table.TableChild)(this.table1 [this.label4]));
+			global::Gtk.Table.TableChild w112 = ((global::Gtk.Table.TableChild)(this.table1[this.label4]));
 			w112.TopAttach = ((uint)(1));
 			w112.BottomAttach = ((uint)(2));
 			w112.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -828,7 +922,7 @@ namespace DeMixer
 			this.label6.Name = "label6";
 			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("Set wallpaper");
 			this.table1.Add (this.label6);
-			global::Gtk.Table.TableChild w113 = ((global::Gtk.Table.TableChild)(this.table1 [this.label6]));
+			global::Gtk.Table.TableChild w113 = ((global::Gtk.Table.TableChild)(this.table1[this.label6]));
 			w113.TopAttach = ((uint)(2));
 			w113.BottomAttach = ((uint)(3));
 			w113.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -838,7 +932,7 @@ namespace DeMixer
 			this.scriptAfterCB.Sensitive = false;
 			this.scriptAfterCB.Name = "scriptAfterCB";
 			this.table1.Add (this.scriptAfterCB);
-			global::Gtk.Table.TableChild w114 = ((global::Gtk.Table.TableChild)(this.table1 [this.scriptAfterCB]));
+			global::Gtk.Table.TableChild w114 = ((global::Gtk.Table.TableChild)(this.table1[this.scriptAfterCB]));
 			w114.TopAttach = ((uint)(1));
 			w114.BottomAttach = ((uint)(2));
 			w114.LeftAttach = ((uint)(1));
@@ -850,7 +944,7 @@ namespace DeMixer
 			this.scriptBeforeCB.Sensitive = false;
 			this.scriptBeforeCB.Name = "scriptBeforeCB";
 			this.table1.Add (this.scriptBeforeCB);
-			global::Gtk.Table.TableChild w115 = ((global::Gtk.Table.TableChild)(this.table1 [this.scriptBeforeCB]));
+			global::Gtk.Table.TableChild w115 = ((global::Gtk.Table.TableChild)(this.table1[this.scriptBeforeCB]));
 			w115.LeftAttach = ((uint)(1));
 			w115.RightAttach = ((uint)(2));
 			w115.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -859,7 +953,7 @@ namespace DeMixer
 			this.scriptChangeCB = global::Gtk.ComboBox.NewText ();
 			this.scriptChangeCB.Name = "scriptChangeCB";
 			this.table1.Add (this.scriptChangeCB);
-			global::Gtk.Table.TableChild w116 = ((global::Gtk.Table.TableChild)(this.table1 [this.scriptChangeCB]));
+			global::Gtk.Table.TableChild w116 = ((global::Gtk.Table.TableChild)(this.table1[this.scriptChangeCB]));
 			w116.TopAttach = ((uint)(2));
 			w116.BottomAttach = ((uint)(3));
 			w116.LeftAttach = ((uint)(1));
@@ -874,12 +968,12 @@ namespace DeMixer
 			this.GtkLabel22.UseMarkup = true;
 			this.frame7.LabelWidget = this.GtkLabel22;
 			this.vbox6.Add (this.frame7);
-			global::Gtk.Box.BoxChild w119 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.frame7]));
+			global::Gtk.Box.BoxChild w119 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.frame7]));
 			w119.Position = 3;
 			w119.Expand = false;
 			w119.Fill = false;
 			this.notebook1.Add (this.vbox6);
-			global::Gtk.Notebook.NotebookChild w120 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox6]));
+			global::Gtk.Notebook.NotebookChild w120 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1[this.vbox6]));
 			w120.Position = 3;
 			w120.MenuLabel = "";
 			// Notebook tab
@@ -889,13 +983,13 @@ namespace DeMixer
 			this.notebook1.SetTabLabel (this.vbox6, this.label7);
 			this.label7.ShowAll ();
 			this.vbox2.Add (this.notebook1);
-			global::Gtk.Box.BoxChild w121 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.notebook1]));
+			global::Gtk.Box.BoxChild w121 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.notebook1]));
 			w121.Position = 0;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hseparator2 = new global::Gtk.HSeparator ();
 			this.hseparator2.Name = "hseparator2";
 			this.vbox2.Add (this.hseparator2);
-			global::Gtk.Box.BoxChild w122 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hseparator2]));
+			global::Gtk.Box.BoxChild w122 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hseparator2]));
 			w122.Position = 1;
 			w122.Expand = false;
 			w122.Fill = false;
@@ -904,7 +998,7 @@ namespace DeMixer
 			this.frame1.Name = "frame1";
 			this.frame1.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame1.Gtk.Container+ContainerChild
-			this.GtkAlignment6 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment6 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment6.Name = "GtkAlignment6";
 			this.GtkAlignment6.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment6.Gtk.Container+ContainerChild
@@ -916,7 +1010,7 @@ namespace DeMixer
 			this.ProfilesCb.CanFocus = true;
 			this.ProfilesCb.Name = "ProfilesCb";
 			this.hbox1.Add (this.ProfilesCb);
-			global::Gtk.Box.BoxChild w123 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ProfilesCb]));
+			global::Gtk.Box.BoxChild w123 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.ProfilesCb]));
 			w123.Position = 0;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.hbuttonbox2 = new global::Gtk.HButtonBox ();
@@ -930,7 +1024,7 @@ namespace DeMixer
 			this.applyProfileBtn.Name = "applyProfileBtn";
 			this.applyProfileBtn.UseUnderline = true;
 			// Container child applyProfileBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w124 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w124 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w125 = new global::Gtk.HBox ();
 			w125.Spacing = 2;
@@ -946,7 +1040,7 @@ namespace DeMixer
 			w124.Add (w125);
 			this.applyProfileBtn.Add (w124);
 			this.hbuttonbox2.Add (this.applyProfileBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w132 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.applyProfileBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w132 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2[this.applyProfileBtn]));
 			w132.Expand = false;
 			w132.Fill = false;
 			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
@@ -955,7 +1049,7 @@ namespace DeMixer
 			this.saveProfileBtn.Name = "saveProfileBtn";
 			this.saveProfileBtn.UseUnderline = true;
 			// Container child saveProfileBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w133 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w133 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w134 = new global::Gtk.HBox ();
 			w134.Spacing = 2;
@@ -971,7 +1065,7 @@ namespace DeMixer
 			w133.Add (w134);
 			this.saveProfileBtn.Add (w133);
 			this.hbuttonbox2.Add (this.saveProfileBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w141 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.saveProfileBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w141 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2[this.saveProfileBtn]));
 			w141.Position = 1;
 			w141.Expand = false;
 			w141.Fill = false;
@@ -982,7 +1076,7 @@ namespace DeMixer
 			this.deleteProfileBtn.Name = "deleteProfileBtn";
 			this.deleteProfileBtn.UseUnderline = true;
 			// Container child deleteProfileBtn.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w142 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w142 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w143 = new global::Gtk.HBox ();
 			w143.Spacing = 2;
@@ -998,12 +1092,12 @@ namespace DeMixer
 			w142.Add (w143);
 			this.deleteProfileBtn.Add (w142);
 			this.hbuttonbox2.Add (this.deleteProfileBtn);
-			global::Gtk.ButtonBox.ButtonBoxChild w150 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.deleteProfileBtn]));
+			global::Gtk.ButtonBox.ButtonBoxChild w150 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2[this.deleteProfileBtn]));
 			w150.Position = 2;
 			w150.Expand = false;
 			w150.Fill = false;
 			this.hbox1.Add (this.hbuttonbox2);
-			global::Gtk.Box.BoxChild w151 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.hbuttonbox2]));
+			global::Gtk.Box.BoxChild w151 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.hbuttonbox2]));
 			w151.Position = 1;
 			w151.Expand = false;
 			w151.Fill = false;
@@ -1015,12 +1109,12 @@ namespace DeMixer
 			this.GtkLabel14.UseMarkup = true;
 			this.frame1.LabelWidget = this.GtkLabel14;
 			this.vbox2.Add (this.frame1);
-			global::Gtk.Box.BoxChild w154 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
+			global::Gtk.Box.BoxChild w154 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.frame1]));
 			w154.Position = 2;
 			w154.Expand = false;
 			w154.Fill = false;
 			w1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w155 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox2]));
+			global::Gtk.Box.BoxChild w155 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
 			w155.Position = 0;
 			// Internal child DeMixer.ConfigDlg.ActionArea
 			global::Gtk.HButtonBox w156 = this.ActionArea;
@@ -1035,7 +1129,7 @@ namespace DeMixer
 			this.buttonOk.Name = "buttonOk";
 			this.buttonOk.UseUnderline = true;
 			// Container child buttonOk.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w157 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w157 = new global::Gtk.Alignment (0.5f, 0.5f, 0f, 0f);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w158 = new global::Gtk.HBox ();
 			w158.Spacing = 2;
@@ -1051,7 +1145,7 @@ namespace DeMixer
 			w157.Add (w158);
 			this.buttonOk.Add (w157);
 			this.AddActionWidget (this.buttonOk, -7);
-			global::Gtk.ButtonBox.ButtonBoxChild w165 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w156 [this.buttonOk]));
+			global::Gtk.ButtonBox.ButtonBoxChild w165 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w156[this.buttonOk]));
 			w165.Expand = false;
 			w165.Fill = false;
 			if ((this.Child != null)) {

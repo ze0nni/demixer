@@ -6,9 +6,9 @@
   </configuration>
   <import>
     <widget-library name="notify-sharp, Version=0.4.0.0, Culture=neutral, PublicKeyToken=2df29c54e245917a" />
-    <widget-library name="../../DeMixer.lib/bin/Release/DeMixer.lib.dll" />
-    <widget-library name="../../DeMixer.lib.std/bin/Release/DeMixer.lib.std.dll" />
-    <widget-library name="../bin/Release/DeMixer.exe" internal="true" />
+    <widget-library name="../../DeMixer.lib/bin/Debug/DeMixer.lib.dll" />
+    <widget-library name="../../DeMixer.lib.std/bin/Debug/DeMixer.lib.std.dll" />
+    <widget-library name="../bin/Debug/DeMixer.exe" internal="true" />
   </import>
   <widget class="Gtk.Dialog" id="DeMixer.AboutDialog" design-size="404 373">
     <property name="MemberName" />
