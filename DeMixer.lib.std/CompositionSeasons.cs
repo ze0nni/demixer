@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 
 namespace DeMixer.lib.std {
@@ -13,7 +14,7 @@ namespace DeMixer.lib.std {
 		public int ImagesCount {
 			get { return imagesCount; }
 			set {
-				if (value >= 2 && value <= 6)
+				if (value >= 2 && value <= 7)
 					imagesCount = value;
 			}
 				
@@ -27,6 +28,12 @@ namespace DeMixer.lib.std {
 				separatorSize = value;
 			}
 				
+		}
+		
+		DashStyle lineStyle = DashStyle.Solid;
+		public DashStyle LineStyle {
+			get { return lineStyle; }
+			set { lineStyle = value; }
 		}
 		
 		Color separatorColor1 = Color.White;
@@ -47,12 +54,88 @@ namespace DeMixer.lib.std {
 			}
 		}
 		
+		int separatorAngle = 0;
+		public int SeparatorAngle {
+			get { return separatorAngle; }
+			set {
+				separatorAngle = value;
+				if (separatorAngle > 30) separatorAngle = 30;
+				if (separatorAngle < -30) separatorAngle = -30;
+			}
+		}
+		
+		int separatorOffset = 0;
+		public int SeparatorOffset {
+			get { return separatorOffset; }
+			set {
+				separatorOffset = value;
+				if (separatorOffset > 50) separatorOffset = 50;
+				if (separatorOffset < 0) separatorOffset = 0;
+			}
+		}
+		
 		public override Image GetCompostion(int width, int height) {
 			Image[] imgs = new Image[imagesCount];
 			Source.GetNextImages(imgs, 5);
 			
 			Image des = new Bitmap(width, height);
 			Graphics g = Graphics.FromImage(des);
+			g.SmoothingMode = SmoothingMode.HighQuality;
+			//
+			float sectorWidth = width/ImagesCount;
+			for (int i=0; i<ImagesCount; i++) {
+				//init
+				Image img = imgs[i];
+				//float angle = 15f * (i % 2 == 1 ? 1 : -1);
+				float angle = SeparatorAngle * (float)(Math.Cos(i*Math.PI*(1f + SeparatorOffset/100f)));
+				
+				PointF center = new PointF(sectorWidth * i + sectorWidth / 2f, height / 2f);				
+				Matrix matrix = g.Transform;
+				//find image height
+				float sectorHeight = height;
+				//transform
+				g.TranslateTransform(center.X, center.Y);
+				//g.RotateTransform(angle);
+				//draw
+				try {
+					
+					float imgScale = Math.Max((float)width / img.Width,
+				                      (float)sectorHeight / img.Height);
+					float neww = img.Width * imgScale;
+					float newh = img.Height * imgScale;
+					if (i > 0) {
+						Matrix matrixR = g.Transform;
+						g.RotateTransform(angle);
+						g.SetClip(new RectangleF(-sectorWidth/2f, -sectorHeight, sectorWidth*2f, sectorHeight*2f));
+						g.Transform = matrixR;
+					}
+					//Draw image
+					g.DrawImage(img, new RectangleF(-neww/2f, -newh/2f, neww, newh));
+					g.ResetClip();
+					//Draw separator
+					if (i > 0 && SeparatorSize > 0) {
+						g.RotateTransform(angle);
+						g.TranslateTransform(-sectorWidth/2f, 0);											
+						
+						Brush gradBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+						new Point(0, 0), new Point(0, height),
+						SeparatorColor1,
+						SeparatorColor2);
+						Pen p = new Pen(gradBrush, SeparatorSize);
+						p.DashStyle = LineStyle;
+						p.DashOffset = SeparatorSize * i;
+						g.DrawLine(p,
+						           0,
+						           -sectorHeight,
+						           0,
+						           sectorHeight);
+					}
+				} finally {
+					g.Transform = matrix;
+				}
+			}
+			
+			/*
 			g.SetClip(new Rectangle(0, 0, width / ImagesCount, height));
 			for (int i=0; i<ImagesCount; i++) {
 				Image img = imgs[i];
@@ -93,6 +176,7 @@ namespace DeMixer.lib.std {
 					           height);
 				}
 			}
+			*/
 			return des;
 		}
 		
@@ -101,8 +185,11 @@ namespace DeMixer.lib.std {
 			cfg.WriteStartElement("separator");
 			try {
 				cfg.WriteElementString("size", SeparatorSize.ToString());
+				cfg.WriteElementString("style", LineStyle.ToString());
 				cfg.WriteElementString("color1", SeparatorColor1.Name);
 				cfg.WriteElementString("color2", SeparatorColor2.Name);
+				cfg.WriteElementString("angle", SeparatorAngle.ToString());
+				cfg.WriteElementString("offset", SeparatorOffset.ToString());
 			} finally {
 				cfg.WriteEndElement();
 			}
@@ -114,11 +201,17 @@ namespace DeMixer.lib.std {
 			System.Xml.XmlNode sep = r.SelectSingleNode("separator");
 			if (sep != null) {
 				SeparatorSize = int.Parse(
-					sep.SelectSingleNode("size").InnerXml);
+					sep.SelectSingleNode("size").InnerXml);				
 				SeparatorColor1 = Color.FromName(
 					sep.SelectSingleNode("color1").InnerXml);
 				SeparatorColor1 = Color.FromName(
 					sep.SelectSingleNode("color2").InnerXml);
+				 SeparatorAngle = int.Parse(
+					sep.SelectSingleNode("angle").InnerXml);
+				SeparatorOffset = int.Parse(
+					sep.SelectSingleNode("offset").InnerXml);
+				LineStyle = (DashStyle)Enum.Parse(typeof(DashStyle),
+				    sep.SelectSingleNode("style").InnerXml);
 			}
 		}
 

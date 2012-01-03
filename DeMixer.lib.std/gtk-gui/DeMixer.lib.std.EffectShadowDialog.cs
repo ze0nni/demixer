@@ -5,33 +5,59 @@ namespace DeMixer.lib.std
 	public partial class EffectShadowDialog
 	{
 		private global::Gtk.VBox vbox2;
+
 		private global::Gtk.Frame frame1;
+
 		private global::Gtk.Alignment GtkAlignment2;
+
 		private global::Gtk.Table table1;
+
 		private global::Gtk.CheckButton checkbAbove;
+
 		private global::Gtk.CheckButton checkbBelow;
+
 		private global::Gtk.CheckButton checkbLeft;
+
 		private global::Gtk.CheckButton checkbRight;
+
 		private global::Gtk.Image displayImage;
+
 		private global::Gtk.Label GtkLabel6;
+
 		private global::Gtk.Frame frame2;
+
 		private global::Gtk.Alignment GtkAlignment3;
+
 		private global::Gtk.VBox vbox3;
+
 		private global::Gtk.HBox hbox3;
+
 		private global::Gtk.Label label5;
+
 		private global::Gtk.HScale hscaleSize;
+
 		private global::Gtk.Table table2;
+
 		private global::Gtk.CheckButton checkbSyncColor;
+
 		private global::Gtk.ColorButton colorbuttonEnd;
+
 		private global::Gtk.ColorButton colorbuttonStart;
+
 		private global::Gtk.HScale hscaleTransparentEnd;
+
 		private global::Gtk.HScale hscaleTransparentStart;
+
 		private global::Gtk.Label label3;
+
 		private global::Gtk.Label label4;
+
 		private global::Gtk.Label GtkLabel7;
+
 		private global::Gtk.Button buttonCancel;
+
 		private global::Gtk.Button buttonOk;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -52,7 +78,7 @@ namespace DeMixer.lib.std
 			this.frame1.Name = "frame1";
 			this.frame1.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame1.Gtk.Container+ContainerChild
-			this.GtkAlignment2 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment2 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment2.Name = "GtkAlignment2";
 			this.GtkAlignment2.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment2.Gtk.Container+ContainerChild
@@ -68,7 +94,7 @@ namespace DeMixer.lib.std
 			this.checkbAbove.DrawIndicator = true;
 			this.checkbAbove.UseUnderline = true;
 			this.table1.Add (this.checkbAbove);
-			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.checkbAbove]));
+			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1[this.checkbAbove]));
 			w2.LeftAttach = ((uint)(1));
 			w2.RightAttach = ((uint)(2));
 			w2.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -81,7 +107,7 @@ namespace DeMixer.lib.std
 			this.checkbBelow.DrawIndicator = true;
 			this.checkbBelow.UseUnderline = true;
 			this.table1.Add (this.checkbBelow);
-			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table1 [this.checkbBelow]));
+			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table1[this.checkbBelow]));
 			w3.TopAttach = ((uint)(2));
 			w3.BottomAttach = ((uint)(3));
 			w3.LeftAttach = ((uint)(1));
@@ -96,7 +122,7 @@ namespace DeMixer.lib.std
 			this.checkbLeft.DrawIndicator = true;
 			this.checkbLeft.UseUnderline = true;
 			this.table1.Add (this.checkbLeft);
-			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.checkbLeft]));
+			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1[this.checkbLeft]));
 			w4.TopAttach = ((uint)(1));
 			w4.BottomAttach = ((uint)(2));
 			w4.XOptions = ((global::Gtk.AttachOptions)(1));
@@ -109,7 +135,7 @@ namespace DeMixer.lib.std
 			this.checkbRight.DrawIndicator = true;
 			this.checkbRight.UseUnderline = true;
 			this.table1.Add (this.checkbRight);
-			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table1 [this.checkbRight]));
+			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table1[this.checkbRight]));
 			w5.TopAttach = ((uint)(1));
 			w5.BottomAttach = ((uint)(2));
 			w5.LeftAttach = ((uint)(2));
@@ -120,7 +146,7 @@ namespace DeMixer.lib.std
 			this.displayImage = new global::Gtk.Image ();
 			this.displayImage.Name = "displayImage";
 			this.table1.Add (this.displayImage);
-			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table1 [this.displayImage]));
+			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table1[this.displayImage]));
 			w6.TopAttach = ((uint)(1));
 			w6.BottomAttach = ((uint)(2));
 			w6.LeftAttach = ((uint)(1));
@@ -135,7 +161,7 @@ namespace DeMixer.lib.std
 			this.GtkLabel6.UseMarkup = true;
 			this.frame1.LabelWidget = this.GtkLabel6;
 			this.vbox2.Add (this.frame1);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.frame1]));
 			w9.Position = 0;
 			w9.Expand = false;
 			w9.Fill = false;
@@ -144,7 +170,7 @@ namespace DeMixer.lib.std
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame2.Gtk.Container+ContainerChild
-			this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment3 = new global::Gtk.Alignment (0f, 0f, 1f, 1f);
 			this.GtkAlignment3.Name = "GtkAlignment3";
 			this.GtkAlignment3.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment3.Gtk.Container+ContainerChild
@@ -160,7 +186,7 @@ namespace DeMixer.lib.std
 			this.label5.Name = "label5";
 			this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("Size");
 			this.hbox3.Add (this.label5);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label5]));
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.label5]));
 			w10.Position = 0;
 			w10.Expand = false;
 			w10.Fill = false;
@@ -175,10 +201,10 @@ namespace DeMixer.lib.std
 			this.hscaleSize.Digits = 0;
 			this.hscaleSize.ValuePos = ((global::Gtk.PositionType)(2));
 			this.hbox3.Add (this.hscaleSize);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hscaleSize]));
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.hscaleSize]));
 			w11.Position = 1;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.hbox3]));
 			w12.Position = 0;
 			w12.Expand = false;
 			w12.Fill = false;
@@ -195,7 +221,7 @@ namespace DeMixer.lib.std
 			this.checkbSyncColor.DrawIndicator = true;
 			this.checkbSyncColor.UseUnderline = true;
 			this.table2.Add (this.checkbSyncColor);
-			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table2 [this.checkbSyncColor]));
+			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table2[this.checkbSyncColor]));
 			w13.TopAttach = ((uint)(2));
 			w13.BottomAttach = ((uint)(3));
 			w13.LeftAttach = ((uint)(1));
@@ -207,7 +233,7 @@ namespace DeMixer.lib.std
 			this.colorbuttonEnd.Events = ((global::Gdk.EventMask)(784));
 			this.colorbuttonEnd.Name = "colorbuttonEnd";
 			this.table2.Add (this.colorbuttonEnd);
-			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.table2 [this.colorbuttonEnd]));
+			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.table2[this.colorbuttonEnd]));
 			w14.TopAttach = ((uint)(1));
 			w14.BottomAttach = ((uint)(2));
 			w14.LeftAttach = ((uint)(1));
@@ -219,7 +245,7 @@ namespace DeMixer.lib.std
 			this.colorbuttonStart.Events = ((global::Gdk.EventMask)(784));
 			this.colorbuttonStart.Name = "colorbuttonStart";
 			this.table2.Add (this.colorbuttonStart);
-			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.table2 [this.colorbuttonStart]));
+			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.table2[this.colorbuttonStart]));
 			w15.LeftAttach = ((uint)(1));
 			w15.RightAttach = ((uint)(2));
 			w15.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -235,7 +261,7 @@ namespace DeMixer.lib.std
 			this.hscaleTransparentEnd.Digits = 0;
 			this.hscaleTransparentEnd.ValuePos = ((global::Gtk.PositionType)(2));
 			this.table2.Add (this.hscaleTransparentEnd);
-			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.table2 [this.hscaleTransparentEnd]));
+			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.table2[this.hscaleTransparentEnd]));
 			w16.TopAttach = ((uint)(1));
 			w16.BottomAttach = ((uint)(2));
 			w16.LeftAttach = ((uint)(2));
@@ -252,7 +278,7 @@ namespace DeMixer.lib.std
 			this.hscaleTransparentStart.Digits = 0;
 			this.hscaleTransparentStart.ValuePos = ((global::Gtk.PositionType)(2));
 			this.table2.Add (this.hscaleTransparentStart);
-			global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.table2 [this.hscaleTransparentStart]));
+			global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.table2[this.hscaleTransparentStart]));
 			w17.LeftAttach = ((uint)(2));
 			w17.RightAttach = ((uint)(3));
 			w17.YOptions = ((global::Gtk.AttachOptions)(4));
@@ -261,7 +287,7 @@ namespace DeMixer.lib.std
 			this.label3.Name = "label3";
 			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Start");
 			this.table2.Add (this.label3);
-			global::Gtk.Table.TableChild w18 = ((global::Gtk.Table.TableChild)(this.table2 [this.label3]));
+			global::Gtk.Table.TableChild w18 = ((global::Gtk.Table.TableChild)(this.table2[this.label3]));
 			w18.XOptions = ((global::Gtk.AttachOptions)(4));
 			w18.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table2.Gtk.Table+TableChild
@@ -269,13 +295,13 @@ namespace DeMixer.lib.std
 			this.label4.Name = "label4";
 			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("End");
 			this.table2.Add (this.label4);
-			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.table2 [this.label4]));
+			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.table2[this.label4]));
 			w19.TopAttach = ((uint)(1));
 			w19.BottomAttach = ((uint)(2));
 			w19.XOptions = ((global::Gtk.AttachOptions)(4));
 			w19.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.vbox3.Add (this.table2);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.table2]));
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.table2]));
 			w20.Position = 1;
 			w20.Expand = false;
 			w20.Fill = false;
@@ -287,12 +313,12 @@ namespace DeMixer.lib.std
 			this.GtkLabel7.UseMarkup = true;
 			this.frame2.LabelWidget = this.GtkLabel7;
 			this.vbox2.Add (this.frame2);
-			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame2]));
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.frame2]));
 			w23.Position = 1;
 			w23.Expand = false;
 			w23.Fill = false;
 			w1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox2]));
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
 			w24.Position = 0;
 			w24.Expand = false;
 			w24.Fill = false;
@@ -311,7 +337,7 @@ namespace DeMixer.lib.std
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w26 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25 [this.buttonCancel]));
+			global::Gtk.ButtonBox.ButtonBoxChild w26 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25[this.buttonCancel]));
 			w26.Expand = false;
 			w26.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
@@ -323,7 +349,7 @@ namespace DeMixer.lib.std
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25 [this.buttonOk]));
+			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25[this.buttonOk]));
 			w27.Position = 1;
 			w27.Expand = false;
 			w27.Fill = false;

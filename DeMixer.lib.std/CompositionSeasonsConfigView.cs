@@ -1,4 +1,5 @@
 using System;
+using System.Drawing.Drawing2D;
 
 namespace DeMixer.lib.std {
 	[System.ComponentModel.ToolboxItem(true)]
@@ -18,6 +19,19 @@ namespace DeMixer.lib.std {
 				Compositon.SeparatorColor2.R,
 				Compositon.SeparatorColor2.G,
 				Compositon.SeparatorColor2.B);
+			
+			{
+				int iindex = -1;
+				foreach (string dsName in Enum.GetNames(typeof(DashStyle))) {
+					iindex++;
+					lineStyle.AppendText(dsName);
+					if (Compositon.LineStyle.ToString() == dsName) 
+						lineStyle.Active = iindex;
+				}
+			}
+			
+			rotateAngle.Value = Compositon.SeparatorAngle;
+			rotateOffset.Value = Compositon.SeparatorOffset;
 		}
 
 		protected void OnHscaleCountChangeValue (object o, Gtk.ChangeValueArgs args) {			
@@ -54,6 +68,26 @@ namespace DeMixer.lib.std {
 				colorbEnd.Color.Blue);
 			Compositon.doUpdatePreview();
 		}
+		protected virtual void OnRotateAngleChangeValue (object o, Gtk.ChangeValueArgs args) {
+			Compositon.SeparatorAngle = (int)rotateAngle.Value;
+			Compositon.doUpdatePreview();
+		}
+		
+		protected virtual void OnRotateOffsetChangeValue (object o, Gtk.ChangeValueArgs args) {
+			Compositon.SeparatorOffset = (int)rotateOffset.Value;
+			Compositon.doUpdatePreview();
+		}
+		
+		protected virtual void OnLineStyleChanged (object sender, System.EventArgs e) {
+			System.Array types = Enum.GetValues(typeof(DashStyle));
+			Console.WriteLine(types.ToString());
+			Compositon.LineStyle = (DashStyle)types.GetValue(lineStyle.Active);
+			Compositon.doUpdatePreview();
+		}
+		
+		
+		
+		
 	}
 }
 
