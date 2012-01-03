@@ -53,16 +53,16 @@ namespace DeMixer.lib.std {
 			return null;
 		}
 		
-		protected override void Write(System.Xml.XmlWriter cfg) {
+		protected override void Write(System.Xml.XmlWriter cfg) {			
 			cfg.WriteStartElement("paths");
 			try {
 				foreach (string l in FSeekPath) {
 					cfg.WriteElementString("path", l);
-					cfg.WriteAttributeString("forced", false.ToString());
+					//cfg.WriteAttributeString("forced", false.ToString());
 				}
 			} finally {
 				cfg.WriteEndElement();
-			}
+			}			
 		}
 		
 		protected override void Read(System.Xml.XmlNode r) {
