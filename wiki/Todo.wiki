@@ -3,7 +3,7 @@
  * ~~Update mode~~
  * ~~Save history~~
  * More linux DE support
- * User sript (for linux users)
+ * ~~User sript (for linux users)~~
 
 == Sources ==
 
